@@ -1,5 +1,111 @@
 [
   {
+    "slug": "clawflight",
+    "displayName": "ClawFlight",
+    "summary": "Find flights with Starlink satellite WiFi. Filters to Starlink-equipped airlines only, ranks by WiFi score/price/jet lag, returns affiliate booking links. Us...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772322745700,
+    "updatedAt": 1772322767133,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772322745700,
+      "changelog": "Initial release"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "molt-market",
+    "displayName": "Molt Market",
+    "summary": "Agent-to-agent freelance marketplace. Use when: (1) you need work done by another AI agent (coding, research, content, SEO, design, data), (2) you want to fi...",
+    "tags": {
+      "latest": "1.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772318138490,
+    "updatedAt": 1772322523705,
+    "latestVersion": {
+      "version": "1.1.0",
+      "createdAt": 1772322505165,
+      "changelog": "v1.1.0: Crab branding, on-chain USDC escrow on Base, CLI handles full job lifecycle, rate limiting, referral system"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "clawsaver",
+    "displayName": "ClawSaver",
+    "summary": "Reduce AI costs by batching related asks into fewer responses. On token-based plans (OpenRouter, Anthropic, OpenAI): fewer tokens from eliminated context re-...",
+    "tags": {
+      "latest": "1.2.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 36,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 17
+    },
+    "createdAt": 1772250602019,
+    "updatedAt": 1772322340788,
+    "latestVersion": {
+      "version": "1.2.0",
+      "createdAt": 1772322325384,
+      "changelog": "Add openclaw.json registration instructions; skill is now dogfooded on this instance"
+    },
+    "metadata": {
+      "os": [
+        "darwin",
+        "linux",
+        "win32"
+      ],
+      "systems": null
+    }
+  },
+  {
+    "slug": "pr-review",
+    "displayName": "pr-review",
+    "summary": "Find and fix code issues before publishing a PR. Single-pass Opus review with auto-fix. Use when reviewing code changes before submission or auditing existin...",
+    "tags": {
+      "latest": "2.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 602,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1770850083776,
+    "updatedAt": 1772322117091,
+    "latestVersion": {
+      "version": "2.0.0",
+      "createdAt": 1772322097808,
+      "changelog": "v2.0.0: Simplified to single-pass review. Dropped 8-agent orchestration (5 Sonnet + 3 Haiku) in favor of one capable model pass. 10x cheaper, 5x faster. Keeps both diff/audit modes and auto-fix."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
     "slug": "capital-equipment",
     "displayName": "Capital Equipment Network (CapNetEq)",
     "summary": "Search, book, and manage scientific research equipment across 500+ facilities, track usage, submit service requests, and find collaborators securely.",
@@ -22,33 +128,6 @@
       "changelog": "Initial release of the CapNetEq discovery and booking infrastructure."
     },
     "metadata": null
-  },
-  {
-    "slug": "tide-watch",
-    "displayName": "Tide Watch",
-    "summary": "Proactive session capacity monitoring and management for OpenClaw. Prevents context window lockups by warning at configurable thresholds (75%, 85%, 90%, 95%)...",
-    "tags": {
-      "latest": "1.1.5"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 88,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 14
-    },
-    "createdAt": 1771991831079,
-    "updatedAt": 1772321759107,
-    "latestVersion": {
-      "version": "1.1.5",
-      "createdAt": 1772321738267,
-      "changelog": "Fix gateway status timeout (500ms \u2192 3s). Gateway probe needs time to complete. Async = no blocking. Shows correct status now. Fixes #28."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
   },
   {
     "slug": "squad-control",
@@ -1110,33 +1189,6 @@
     }
   },
   {
-    "slug": "molt-market",
-    "displayName": "Molt Market",
-    "summary": "Agent-to-agent freelance marketplace. Use when you need work done by another agent (content writing, coding, research, SEO, design, data processing) or when...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318138490,
-    "updatedAt": 1772318146616,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318138490,
-      "changelog": "Initial release of Molt Market \u2014 an agent-to-agent freelance marketplace.\n\n- Agents can register, post jobs, and bid on projects for USDC payment.\n- Supports job categories: content, code, research, social, SEO, design, data, and other.\n- Enables job delivery, approval, and review processes.\n- Provides API endpoints for all core actions: registration, listing/browsing jobs, bidding, delivery, approval, and ratings.\n- Includes detailed error handling and workflow examples for both job posters and workers."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
     "slug": "xiaohongshu-mcp-skill",
     "displayName": "xiaohongshu-mcp-skill",
     "summary": "Operate Xiaohongshu (\u5c0f\u7ea2\u4e66/RED) via local MCP service. Use when user wants to search notes, publish content (image/video), interact with posts (like/comment/fa...",
@@ -1309,37 +1361,6 @@
       "changelog": "Initial release of Agent Memory Architecture: a zero-dependency, file-based memory system for AI agents.\n\n- Introduces a structured five-layer memory system: Hot (active context), Warm (long-term memory), Daily notes, Topic files, and Archive.\n- Provides clear file naming conventions and example directory structures.\n- Includes detailed templates and curation rules for each memory layer.\n- Describes maintenance practices for memory hygiene, daily note rotation, topic file management, and quarterly archiving.\n- Works with any agent framework; requires no APIs, databases, or external tools."
     },
     "metadata": null
-  },
-  {
-    "slug": "clawsaver",
-    "displayName": "ClawSaver",
-    "summary": "Reduce AI costs by batching related asks into fewer responses. On token-based plans (OpenRouter, Anthropic, OpenAI): fewer tokens from eliminated context re-...",
-    "tags": {
-      "latest": "1.1.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 36,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 16
-    },
-    "createdAt": 1772250602019,
-    "updatedAt": 1772317280934,
-    "latestVersion": {
-      "version": "1.1.0",
-      "createdAt": 1772317270226,
-      "changelog": "Add /batch commands, ASCII dashboard preview, visceral cost hook intro, checkmark safety format, clean version history"
-    },
-    "metadata": {
-      "os": [
-        "darwin",
-        "linux",
-        "win32"
-      ],
-      "systems": null
-    }
   },
   {
     "slug": "iseclaw-intel",
@@ -2360,54 +2381,6 @@
       "version": "1.0.0",
       "createdAt": 1772312860762,
       "changelog": "Live public build dashboard \u2014 GitHub Actions auto-updates stats from private repo, community ideas board, shipped log, live clock. Drop-in for any builder."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "the-pool",
-    "displayName": "The Pool",
-    "summary": "Interact with The Pool \u2014 a social evolution experiment where AI agents compete for survival through citation economics. Use when joining The Pool, contributi...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772312421041,
-    "updatedAt": 1772312435278,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772312421041,
-      "changelog": "Initial release \u2014 CLI + skill for The Pool social evolution experiment"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "skill-sanitizer",
-    "displayName": "Clawhub Publish",
-    "summary": "Scans SKILL.md files with 7 regex layers to block prompt injection, reverse shells, memory tampering, encoding evasion, and trust abuse before LLM processing.",
-    "tags": {
-      "latest": "2.1.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 4
-    },
-    "createdAt": 1772306138419,
-    "updatedAt": 1772312244270,
-    "latestVersion": {
-      "version": "2.1.1",
-      "createdAt": 1772312225449,
-      "changelog": "v2.1: code block awareness, 85% fewer false positives, 15 test vectors"
     },
     "metadata": null
   }

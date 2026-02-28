@@ -1,0 +1,272 @@
+[
+  {
+    "slug": "clawflight",
+    "zip_path": "skill_zips/clawflight.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The ClawFlight skill is a flight search tool focused on finding flights with Starlink WiFi, ranking them, and providing affiliate booking links. It requires users to provide their own API keys for Amadeus and Kiwi.com services. The skill includes commands for searching, saving, and rating flights. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The ClawFlight skill is a flight search tool focused on finding flights with Starlink WiFi, ranking them, and providing affiliate booking links. It requires users to provide their own API keys for Amadeus and Kiwi.com services. The skill includes commands for searching, saving, and rating flights. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "molt-market",
+    "zip_path": "skill_zips/molt-market.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The molt-market skill involves handling API keys stored locally and performing financial transactions using USDC on the Base blockchain. It includes commands that interact with a remote API and store sensitive credentials. While no explicit destructive commands or obfuscation are present, the storage of API keys and execution of remote commands pose risks of credential theft and unauthorized transactions if the environment or the skill is compromised.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Local Storage of API Key",
+          "evidence": "API key is saved to ~/.molt-market-key after registration.",
+          "why": "Storing API keys in a local file can lead to credential theft if the file permissions are not properly set or if the system is compromised.",
+          "recommendation": "Ensure the API key file is stored with strict permissions (e.g., 600) and educate users on securing their environment. Consider encrypting the key or using secure credential storage mechanisms."
+        },
+        {
+          "severity": "high",
+          "title": "Remote Code Execution via API",
+          "evidence": "The skill allows posting jobs, bidding, delivering work, and approving jobs via API calls to https://moltmarket.store with bearer token authentication.",
+          "why": "If an attacker gains access to the API key, they can perform unauthorized financial transactions, post malicious jobs, or manipulate bids and deliveries.",
+          "recommendation": "Implement strong authentication and monitoring on the API side. Educate users to protect their API keys and consider adding multi-factor authentication or usage alerts."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential for Social Engineering",
+          "evidence": "The skill facilitates agent-to-agent freelance marketplace interactions, including job postings and bidding.",
+          "why": "Users may be targeted by malicious agents posting fraudulent jobs or requesting sensitive information under the guise of legitimate work.",
+          "recommendation": "Provide clear guidelines and warnings to users about verifying agent identities and avoiding sharing sensitive information outside the platform."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The molt-market skill involves handling API keys stored locally and performing financial transactions using USDC on the Base blockchain. It includes commands that interact with a remote API and store sensitive credentials. While no explicit destructive commands or obfuscation are present, the storage of API keys and execution of remote commands pose risks of credential theft and unauthorized transactions if the environment or the skill is compromised.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Local Storage of API Key\",\n      \"evidence\": \"API key is saved to ~/.molt-market-key after registration.\",\n      \"why\": \"Storing API keys in a local file can lead to credential theft if the file permissions are not properly set or if the system is compromised.\",\n      \"recommendation\": \"Ensure the API key file is stored with strict permissions (e.g., 600) and educate users on securing their environment. Consider encrypting the key or using secure credential storage mechanisms.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Remote Code Execution via API\",\n      \"evidence\": \"The skill allows posting jobs, bidding, delivering work, and approving jobs via API calls to https://moltmarket.store with bearer token authentication.\",\n      \"why\": \"If an attacker gains access to the API key, they can perform unauthorized financial transactions, post malicious jobs, or manipulate bids and deliveries.\",\n      \"recommendation\": \"Implement strong authentication and monitoring on the API side. Educate users to protect their API keys and consider adding multi-factor authentication or usage alerts.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential for Social Engineering\",\n      \"evidence\": \"The skill facilitates agent-to-agent freelance marketplace interactions, including job postings and bidding.\",\n      \"why\": \"Users may be targeted by malicious agents posting fraudulent jobs or requesting sensitive information under the guise of legitimate work.\",\n      \"recommendation\": \"Provide clear guidelines and warnings to users about verifying agent identities and avoiding sharing sensitive information outside the platform.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "clawsaver",
+    "zip_path": "skill_zips/clawsaver.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The ClawSaver skill focuses on batching related user queries to reduce API token usage and request counts. It does not contain any commands or behaviors that involve credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The skill explicitly avoids merging sequential dependent tasks and respects user opt-out requests. Its behavior is transparent and designed to optimize cost without compromising safety.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The ClawSaver skill focuses on batching related user queries to reduce API token usage and request counts. It does not contain any commands or behaviors that involve credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The skill explicitly avoids merging sequential dependent tasks and respects user opt-out requests. Its behavior is transparent and designed to optimize cost without compromising safety.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "pr-review",
+    "zip_path": "skill_zips/pr-review.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "Low",
+      "dangerous": false,
+      "summary": "The pr-review skill instructions describe a code review and auto-fix tool that analyzes code changes or entire codebases for correctness, security, reliability, performance, and quality issues. The instructions emphasize safe usage, do not include any credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The commands used are standard git and file reading operations. The tool explicitly avoids architectural changes, large refactors, and fixes only issues in changed code or specified scope. No risky behavior or dangerous content is present.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"Low\",\n  \"dangerous\": false,\n  \"summary\": \"The pr-review skill instructions describe a code review and auto-fix tool that analyzes code changes or entire codebases for correctness, security, reliability, performance, and quality issues. The instructions emphasize safe usage, do not include any credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The commands used are standard git and file reading operations. The tool explicitly avoids architectural changes, large refactors, and fixes only issues in changed code or specified scope. No risky behavior or dangerous content is present.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "capital-equipment",
+    "zip_path": "skill_zips/capital-equipment.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Capital Equipment Skill documentation describes a platform for managing scientific research equipment with features like searching, booking, and collaboration. The setup involves connecting to a Server-Sent Events (SSE) endpoint using secure OAuth 2.1 authentication. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Capital Equipment Skill documentation describes a platform for managing scientific research equipment with features like searching, booking, and collaboration. The setup involves connecting to a Server-Sent Events (SSE) endpoint using secure OAuth 2.1 authentication. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "squad-control",
+    "zip_path": "skill_zips/squad-control.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The squad-control skill handles sensitive credentials such as GitHub Personal Access Tokens and Squad Control API keys, which it uses to clone private repositories, push code, create pull requests, and merge branches automatically. It performs automated merges and task state transitions, which if misused or compromised, could lead to unauthorized code changes or data exposure. The skill also uses shell commands and curl calls that interact with external APIs and repositories, which could be abused if the environment variables or API endpoints are compromised. However, the instructions emphasize trusting the Squad Control instance and reviewing security guidance before installation.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Handling of Sensitive Credentials (GitHub Token and API Keys)",
+          "evidence": "The skill requires environment variables SC_API_KEY and optionally GITHUB_TOKEN, which are used to clone private repos, push code, create PRs, and merge branches. The instructions explicitly state: \"This skill handles GitHub tokens and API keys by design \u2014 it clones private repos, pushes code, and creates PRs on your behalf.\"",
+          "why": "Exposure or misuse of these credentials could allow unauthorized access to private repositories, code injection, or unauthorized merges, leading to potential codebase compromise or data leakage.",
+          "recommendation": "Ensure environment variables are securely stored and access is restricted. Use least privilege tokens with minimal scopes. Regularly rotate tokens and audit their usage. Only connect to trusted Squad Control instances."
+        },
+        {
+          "severity": "high",
+          "title": "Automated Git Operations with Credentials",
+          "evidence": "The skill performs git clone, fetch, checkout, merge, and push operations using the GitHub token as a credential helper: \"git -c \\\"credential.helper=!f() { echo username=x-access-token; echo password=${GITHUB_TOKEN}; }; f\\\" clone \\\"$REPO_URL\\\" /tmp/merge-repo\" and then merges PR branches into main.",
+          "why": "Automated merges and pushes can introduce malicious code if the task or PR is compromised. If the token or API is compromised, attackers could inject code or disrupt the repository.",
+          "recommendation": "Implement strict validation and review of PRs before merging. Use protected branches and require reviews. Monitor merge operations and failures. Limit token permissions to only necessary scopes."
+        },
+        {
+          "severity": "medium",
+          "title": "Use of Shell Commands and Curl with Dynamic Data",
+          "evidence": "The skill uses shell commands and curl calls with environment variables and task data, e.g., \"curl -sL -X POST ... -d '{\"taskId\": \"${TASK_ID}\", ...}'\" and git commands with dynamic branch names.",
+          "why": "If task data or environment variables are manipulated or injected with malicious content, this could lead to command injection or unintended API calls.",
+          "recommendation": "Sanitize and validate all inputs used in shell commands. Avoid direct shell interpolation of untrusted data. Use safer APIs or libraries where possible."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential for Unauthorized Task State Transitions",
+          "evidence": "The skill automatically moves tasks between states (e.g., working \u2192 review, done \u2192 review) and creates review tasks if PRs are unmerged. It also posts messages to task threads.",
+          "why": "If an attacker gains control over the API key or the skill environment, they could manipulate task states to bypass reviews or force merges.",
+          "recommendation": "Implement strict authentication and authorization on the Squad Control API. Log and monitor task state changes. Use audit trails to detect suspicious activity."
+        },
+        {
+          "severity": "low",
+          "title": "Obfuscation and Hidden Remote Code Execution",
+          "evidence": "No obfuscation detected. All commands and API calls are explicit and documented.",
+          "why": "No hidden or obfuscated code reduces risk of unnoticed malicious behavior.",
+          "recommendation": "Maintain transparency in code and documentation. Regularly audit for any changes introducing obfuscation."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The squad-control skill handles sensitive credentials such as GitHub Personal Access Tokens and Squad Control API keys, which it uses to clone private repositories, push code, create pull requests, and merge branches automatically. It performs automated merges and task state transitions, which if misused or compromised, could lead to unauthorized code changes or data exposure. The skill also uses shell commands and curl calls that interact with external APIs and repositories, which could be abused if the environment variables or API endpoints are compromised. However, the instructions emphasize trusting the Squad Control instance and reviewing security guidance before installation.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Handling of Sensitive Credentials (GitHub Token and API Keys)\",\n      \"evidence\": \"The skill requires environment variables SC_API_KEY and optionally GITHUB_TOKEN, which are used to clone private repos, push code, create PRs, and merge branches. The instructions explicitly state: \\\"This skill handles GitHub tokens and API keys by design \u2014 it clones private repos, pushes code, and creates PRs on your behalf.\\\"\",\n      \"why\": \"Exposure or misuse of these credentials could allow unauthorized access to private repositories, code injection, or unauthorized merges, leading to potential codebase compromise or data leakage.\",\n      \"recommendation\": \"Ensure environment variables are securely stored and access is restricted. Use least privilege tokens with minimal scopes. Regularly rotate tokens and audit their usage. Only connect to trusted Squad Control instances.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Automated Git Operations with Credentials\",\n      \"evidence\": \"The skill performs git clone, fetch, checkout, merge, and push operations using the GitHub token as a credential helper: \\\"git -c \\\\\\\"credential.helper=!f() { echo username=x-access-token; echo password=${GITHUB_TOKEN}; }; f\\\\\\\" clone \\\\\\\"$REPO_URL\\\\\\\" /tmp/merge-repo\\\" and then merges PR branches into main.\",\n      \"why\": \"Automated merges and pushes can introduce malicious code if the task or PR is compromised. If the token or API is compromised, attackers could inject code or disrupt the repository.\",\n      \"recommendation\": \"Implement strict validation and review of PRs before merging. Use protected branches and require reviews. Monitor merge operations and failures. Limit token permissions to only necessary scopes.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Use of Shell Commands and Curl with Dynamic Data\",\n      \"evidence\": \"The skill uses shell commands and curl calls with environment variables and task data, e.g., \\\"curl -sL -X POST ... -d '{\\\"taskId\\\": \\\"${TASK_ID}\\\", ...}'\\\" and git commands with dynamic branch names.\",\n      \"why\": \"If task data or environment variables are manipulated or injected with malicious content, this could lead to command injection or unintended API calls.\",\n      \"recommendation\": \"Sanitize and validate all inputs used in shell commands. Avoid direct shell interpolation of untrusted data. Use safer APIs or libraries where possible.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential for Unauthorized Task State Transitions\",\n      \"evidence\": \"The skill automatically moves tasks between states (e.g., working \u2192 review, done \u2192 review) and creates review tasks if PRs are unmerged. It also posts messages to task threads.\",\n      \"why\": \"If an attacker gains control over the API key or the skill environment, they could manipulate task states to bypass reviews or force merges.\",\n      \"recommendation\": \"Implement strict authentication and authorization on the Squad Control API. Log and monitor task state changes. Use audit trails to detect suspicious activity.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Obfuscation and Hidden Remote Code Execution\",\n      \"evidence\": \"No obfuscation detected. All commands and API calls are explicit and documented.\",\n      \"why\": \"No hidden or obfuscated code reduces risk of unnoticed malicious behavior.\",\n      \"recommendation\": \"Maintain transparency in code and documentation. Regularly audit for any changes introducing obfuscation.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "hzl",
+    "zip_path": "skill_zips/hzl.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The HZL skill documentation describes a local-first task ledger CLI tool for multi-agent task coordination. It includes commands for task management, delegation, checkpointing, and a webhook callback system. While it involves network callbacks and token usage, it does not contain any hidden remote code execution, credential theft, social engineering, or obfuscated commands. The only destructive commands are clearly documented and require explicit user consent. Overall, the instructions are transparent and safe when used as intended.",
+      "findings": [
+        {
+          "severity": "medium",
+          "title": "Potential Data Deletion via Destructive Commands",
+          "evidence": "Commands like `hzl init --force --yes` and `hzl task prune ... --yes` permanently delete all data without confirmation.",
+          "why": "These commands can irreversibly delete all task data, which could lead to data loss if run unintentionally or maliciously.",
+          "recommendation": "Ensure these commands are only run with explicit user consent and consider adding additional safeguards or warnings in automated contexts."
+        },
+        {
+          "severity": "medium",
+          "title": "Webhook Callback Configuration with Authorization Token",
+          "evidence": "Configuration example includes an Authorization header with a bearer token in `~/.config/hzl/config.json` for callbacks to `<OPENCLAW_GATEWAY_URL>/events/inject`.",
+          "why": "Storing and using authorization tokens in config files can risk token leakage if the file is not properly secured. The webhook callback could be abused if the token is compromised.",
+          "recommendation": "Secure the config file with proper file permissions, avoid sharing tokens publicly, and rotate tokens regularly. Validate and sanitize incoming webhook data on the receiving endpoint."
+        },
+        {
+          "severity": "low",
+          "title": "No Built-in Daemon; Callbacks Require External Scheduling",
+          "evidence": "HZL uses a host-process model and requires running `hzl hook drain` as a cron job to deliver callbacks.",
+          "why": "If the user does not set up the scheduled job, callbacks will queue but never fire, potentially causing stale state or missed notifications.",
+          "recommendation": "Document clearly the need for scheduling the drain command and monitor callback queue health."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The HZL skill documentation describes a local-first task ledger CLI tool for multi-agent task coordination. It includes commands for task management, delegation, checkpointing, and a webhook callback system. While it involves network callbacks and token usage, it does not contain any hidden remote code execution, credential theft, social engineering, or obfuscated commands. The only destructive commands are clearly documented and require explicit user consent. Overall, the instructions are transparent and safe when used as intended.\",\n  \"findings\": [\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential Data Deletion via Destructive Commands\",\n      \"evidence\": \"Commands like `hzl init --force --yes` and `hzl task prune ... --yes` permanently delete all data without confirmation.\",\n      \"why\": \"These commands can irreversibly delete all task data, which could lead to data loss if run unintentionally or maliciously.\",\n      \"recommendation\": \"Ensure these commands are only run with explicit user consent and consider adding additional safeguards or warnings in automated contexts.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Webhook Callback Configuration with Authorization Token\",\n      \"evidence\": \"Configuration example includes an Authorization header with a bearer token in `~/.config/hzl/config.json` for callbacks to `<OPENCLAW_GATEWAY_URL>/events/inject`.\",\n      \"why\": \"Storing and using authorization tokens in config files can risk token leakage if the file is not properly secured. The webhook callback could be abused if the token is compromised.\",\n      \"recommendation\": \"Secure the config file with proper file permissions, avoid sharing tokens publicly, and rotate tokens regularly. Validate and sanitize incoming webhook data on the receiving endpoint.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No Built-in Daemon; Callbacks Require External Scheduling\",\n      \"evidence\": \"HZL uses a host-process model and requires running `hzl hook drain` as a cron job to deliver callbacks.\",\n      \"why\": \"If the user does not set up the scheduled job, callbacks will queue but never fire, potentially causing stale state or missed notifications.\",\n      \"recommendation\": \"Document clearly the need for scheduling the drain command and monitor callback queue health.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "free-search-aggregator",
+    "zip_path": "skill_zips/free-search-aggregator.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The free-search-aggregator skill provides a quota-aware multi-provider web search interface with optional API key usage. It does not contain any credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The skill requires explicit enabling of API keys and manages storage under controlled directories by default. It includes safe commands and clear instructions for usage and post-install checks.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The free-search-aggregator skill provides a quota-aware multi-provider web search interface with optional API key usage. It does not contain any credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The skill requires explicit enabling of API keys and manages storage under controlled directories by default. It includes safe commands and clear instructions for usage and post-install checks.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "shanghai",
+    "zip_path": "skill_zips/shanghai.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Shanghai SKILL.md instructions provide comprehensive guidance for navigating Shanghai with no evidence of dangerous content such as credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The document focuses on practical travel, relocation, and local compliance information without any suspicious or harmful instructions.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Shanghai SKILL.md instructions provide comprehensive guidance for navigating Shanghai with no evidence of dangerous content such as credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The document focuses on practical travel, relocation, and local compliance information without any suspicious or harmful instructions.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "fork-manager",
+    "zip_path": "skill_zips/fork-manager.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The fork-manager skill automates complex Git and GitHub operations including syncing forks, rebasing branches, and managing local patches. It supports automatic conflict resolution by spawning AI subagents to resolve rebase conflicts. The skill executes shell commands with Git and GitHub CLI, spawns subagents dynamically, and writes to local files such as history.md and checkpoint.json. These capabilities introduce risks of destructive Git operations, hidden remote code execution via subagents, and potential data loss if rebases or merges are mishandled. The automatic conflict resolution feature that spawns AI subagents to resolve conflicts could lead to unintended code changes or execution of untrusted code. The skill also requires access to GitHub CLI and local repository paths, which may expose credentials or sensitive data if misused.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Automatic Conflict Resolution via AI Subagents",
+          "evidence": "Supports automatic conflict resolution via --auto-resolve flag (spawns AI subagents to resolve rebase conflicts).",
+          "why": "Spawning AI subagents to automatically resolve conflicts can lead to hidden remote code execution or unintended code changes without human oversight, increasing risk of introducing malicious or incorrect code.",
+          "recommendation": "Require explicit user confirmation before enabling auto-resolve. Log all automated changes clearly. Limit subagent capabilities and audit their outputs."
+        },
+        {
+          "severity": "high",
+          "title": "Execution of Shell Commands with Git and GitHub CLI",
+          "evidence": "Commands like `git fetch`, `git log`, `gh pr list`, `gh pr view` are executed. Also uses `sessions_spawn` to spawn subagents with arbitrary prompts.",
+          "why": "Executing shell commands and spawning subagents with dynamic prompts can lead to command injection or execution of unintended commands if inputs are not properly sanitized.",
+          "recommendation": "Sanitize all inputs used in shell commands and subagent prompts. Use least privilege principles for GitHub CLI tokens. Monitor and restrict commands executed by subagents."
+        },
+        {
+          "severity": "medium",
+          "title": "Writing and Reading Local Files for History and Checkpoints",
+          "evidence": "Writes to `history.md` and `checkpoint.json` files in local repo directories to store execution logs and state.",
+          "why": "Manipulating local files can lead to data corruption or leakage if files contain sensitive information or if attackers can tamper with these files.",
+          "recommendation": "Ensure proper file permissions and validate file contents before processing. Avoid storing sensitive credentials or tokens in these files."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential Credential Exposure via GitHub CLI",
+          "evidence": "Requires GitHub CLI (`gh`) to list and view PRs, which uses stored GitHub credentials.",
+          "why": "If the skill or subagents are compromised, stored GitHub credentials could be misused to access or modify repositories.",
+          "recommendation": "Use scoped tokens with minimal permissions. Avoid exposing tokens in logs or prompts. Rotate tokens regularly."
+        },
+        {
+          "severity": "low",
+          "title": "Complex Orchestration with Subagents and Retries",
+          "evidence": "Orchestrator spawns workers, monitors progress, kills stalled subagents, and retries up to 2 times.",
+          "why": "Complex orchestration increases attack surface and potential for race conditions or inconsistent states.",
+          "recommendation": "Implement robust error handling and logging. Limit subagent privileges and isolate their execution environment."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The fork-manager skill automates complex Git and GitHub operations including syncing forks, rebasing branches, and managing local patches. It supports automatic conflict resolution by spawning AI subagents to resolve rebase conflicts. The skill executes shell commands with Git and GitHub CLI, spawns subagents dynamically, and writes to local files such as history.md and checkpoint.json. These capabilities introduce risks of destructive Git operations, hidden remote code execution via subagents, and potential data loss if rebases or merges are mishandled. The automatic conflict resolution feature that spawns AI subagents to resolve conflicts could lead to unintended code changes or execution of untrusted code. The skill also requires access to GitHub CLI and local repository paths, which may expose credentials or sensitive data if misused.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Automatic Conflict Resolution via AI Subagents\",\n      \"evidence\": \"Supports automatic conflict resolution via --auto-resolve flag (spawns AI subagents to resolve rebase conflicts).\",\n      \"why\": \"Spawning AI subagents to automatically resolve conflicts can lead to hidden remote code execution or unintended code changes without human oversight, increasing risk of introducing malicious or incorrect code.\",\n      \"recommendation\": \"Require explicit user confirmation before enabling auto-resolve. Log all automated changes clearly. Limit subagent capabilities and audit their outputs.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Execution of Shell Commands with Git and GitHub CLI\",\n      \"evidence\": \"Commands like `git fetch`, `git log`, `gh pr list`, `gh pr view` are executed. Also uses `sessions_spawn` to spawn subagents with arbitrary prompts.\",\n      \"why\": \"Executing shell commands and spawning subagents with dynamic prompts can lead to command injection or execution of unintended commands if inputs are not properly sanitized.\",\n      \"recommendation\": \"Sanitize all inputs used in shell commands and subagent prompts. Use least privilege principles for GitHub CLI tokens. Monitor and restrict commands executed by subagents.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Writing and Reading Local Files for History and Checkpoints\",\n      \"evidence\": \"Writes to `history.md` and `checkpoint.json` files in local repo directories to store execution logs and state.\",\n      \"why\": \"Manipulating local files can lead to data corruption or leakage if files contain sensitive information or if attackers can tamper with these files.\",\n      \"recommendation\": \"Ensure proper file permissions and validate file contents before processing. Avoid storing sensitive credentials or tokens in these files.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential Credential Exposure via GitHub CLI\",\n      \"evidence\": \"Requires GitHub CLI (`gh`) to list and view PRs, which uses stored GitHub credentials.\",\n      \"why\": \"If the skill or subagents are compromised, stored GitHub credentials could be misused to access or modify repositories.\",\n      \"recommendation\": \"Use scoped tokens with minimal permissions. Avoid exposing tokens in logs or prompts. Rotate tokens regularly.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Complex Orchestration with Subagents and Retries\",\n      \"evidence\": \"Orchestrator spawns workers, monitors progress, kills stalled subagents, and retries up to 2 times.\",\n      \"why\": \"Complex orchestration increases attack surface and potential for race conditions or inconsistent states.\",\n      \"recommendation\": \"Implement robust error handling and logging. Limit subagent privileges and isolate their execution environment.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "xiaohongshu-deep-research",
+    "zip_path": "skill_zips/xiaohongshu-deep-research.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The xiaohongshu-deep-research skill involves crawling and analyzing publicly available posts from Xiaohongshu using a local service and a logged-in user account. It does not contain any commands or code that perform credential theft, data exfiltration beyond the intended data collection, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The xiaohongshu-deep-research skill involves crawling and analyzing publicly available posts from Xiaohongshu using a local service and a logged-in user account. It does not contain any commands or code that perform credential theft, data exfiltration beyond the intended data collection, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  }
+]

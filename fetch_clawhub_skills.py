@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Fetch one skills list page and optionally download skill ZIP files.
+"""Fetch skills, download ZIPs, and optionally audit SKILL.md with an LLM.
 
-Example:
+Examples:
   python fetch_clawhub_skills.py --output clawhub_skills.json --limit 100
-  python fetch_clawhub_skills.py --download-slug gifgrep
+  python fetch_clawhub_skills.py --download-slug gifgrep --skip-list-fetch
+  python fetch_clawhub_skills.py --download-all-from-list --delay 1.0
+  OPENAI_API_KEY=... python fetch_clawhub_skills.py --download-all-from-list --audit-skill-md
 """
 
 from __future__ import annotations
@@ -13,12 +15,69 @@ import json
 import os
 import re
 import sys
+import time
+import zipfile
 from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 DEFAULT_BASE_URL = "https://clawhub.ai"
+DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1/responses"
+DEFAULT_AUDIT_MODEL = "gpt-4.1-mini"
+
+COLOR_RESET = "\033[0m"
+COLOR_INFO = "\033[36m"
+COLOR_WARN = "\033[33m"
+COLOR_ERROR = "\033[31m"
+COLOR_OK = "\033[32m"
+
+
+def _supports_color() -> bool:
+    return sys.stdout.isatty()
+
+
+def log(level: str, message: str) -> None:
+    color = ""
+    if _supports_color():
+        if level == "INFO":
+            color = COLOR_INFO
+        elif level == "WARN":
+            color = COLOR_WARN
+        elif level == "ERROR":
+            color = COLOR_ERROR
+        elif level == "OK":
+            color = COLOR_OK
+
+    prefix = f"[{level}]"
+    ts = time.strftime("%H:%M:%S")
+    if color:
+        print(f"{color}{prefix}{COLOR_RESET} {ts} {message}")
+        return
+    print(f"{prefix} {ts} {message}")
+
+
+def sleep_before_next(current_idx: int, total: int, delay: float, reason: str) -> None:
+    if current_idx < total - 1 and delay > 0:
+        log("INFO", f"Sleeping {delay:.2f}s before next skill ({reason})")
+        time.sleep(delay)
+
+
+def flush_audit_results(path: str, audit_results: List[Dict[str, Any]]) -> None:
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(audit_results, f, indent=2)
+    log("INFO", f"Updated audit report: {path} ({len(audit_results)} entries)")
+
+
+def post_json(url: str, payload: Dict[str, Any], headers: Dict[str, str], timeout: int) -> Dict[str, Any]:
+    req = Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers=headers,
+        method="POST",
+    )
+    with urlopen(req, timeout=timeout) as resp:
+        return json.loads(resp.read().decode("utf-8"))
 
 
 def join_api_url(base_url: str, path: str) -> str:
@@ -83,6 +142,172 @@ def download_zip(base_url: str, slug: str, output_dir: str, timeout: int) -> str
     return out_path
 
 
+def extract_slug(skill: Dict[str, Any]) -> str | None:
+    for key in ("slug", "name", "id"):
+        value = skill.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return None
+
+
+def extract_skill_md_text(zip_path: str, max_chars: int) -> Dict[str, Any]:
+    with zipfile.ZipFile(zip_path, "r") as zf:
+        names = zf.namelist()
+        skill_md = None
+        for name in names:
+            if name.lower().endswith("skill.md"):
+                skill_md = name
+                break
+        if skill_md is None:
+            return {
+                "found": False,
+                "path_in_zip": None,
+                "text": "",
+                "truncated": False,
+            }
+
+        data = zf.read(skill_md)
+        text = data.decode("utf-8", errors="replace")
+        truncated = len(text) > max_chars
+        if truncated:
+            text = text[:max_chars]
+
+        return {
+            "found": True,
+            "path_in_zip": skill_md,
+            "text": text,
+            "truncated": truncated,
+        }
+
+
+def extract_openai_text(response: Dict[str, Any]) -> str:
+    if isinstance(response.get("output_text"), str):
+        return response["output_text"]
+
+    output = response.get("output")
+    if isinstance(output, list):
+        chunks: List[str] = []
+        for item in output:
+            if not isinstance(item, dict):
+                continue
+            content = item.get("content")
+            if not isinstance(content, list):
+                continue
+            for part in content:
+                if not isinstance(part, dict):
+                    continue
+                if part.get("type") in ("output_text", "text") and isinstance(part.get("text"), str):
+                    chunks.append(part["text"])
+        if chunks:
+            return "\n".join(chunks)
+
+    return json.dumps(response, ensure_ascii=False)
+
+
+def parse_json_dict_from_text(text: str) -> Dict[str, Any] | None:
+    candidates: List[str] = []
+    raw = text.strip()
+    if raw:
+        candidates.append(raw)
+
+    # Common model shape: fenced markdown like ```json ... ```
+    if raw.startswith("```"):
+        lines = raw.splitlines()
+        if lines and lines[0].strip().startswith("```"):
+            lines = lines[1:]
+        if lines and lines[-1].strip() == "```":
+            lines = lines[:-1]
+        unfenced = "\n".join(lines).strip()
+        if unfenced:
+            candidates.append(unfenced)
+
+    # Try extracting the outermost JSON object from surrounding text.
+    first_brace = raw.find("{")
+    last_brace = raw.rfind("}")
+    if first_brace != -1 and last_brace != -1 and first_brace < last_brace:
+        candidates.append(raw[first_brace : last_brace + 1].strip())
+
+    seen = set()
+    for candidate in candidates:
+        if candidate in seen:
+            continue
+        seen.add(candidate)
+        try:
+            parsed = json.loads(candidate)
+        except json.JSONDecodeError:
+            continue
+        if isinstance(parsed, dict):
+            return parsed
+    return None
+
+
+def normalize_audit_shape(parsed: Dict[str, Any], raw_text: str) -> Dict[str, Any]:
+    result = dict(parsed)
+    if not isinstance(result.get("risk_level"), str):
+        result["risk_level"] = "unknown"
+    if not isinstance(result.get("dangerous"), bool):
+        if result.get("dangerous") not in (None,):
+            result["dangerous"] = None
+    if not isinstance(result.get("summary"), str):
+        result["summary"] = ""
+    if not isinstance(result.get("findings"), list):
+        result["findings"] = []
+    result["_raw_text"] = raw_text
+    return result
+
+
+def audit_skill_md(
+    openai_base_url: str,
+    api_key: str,
+    model: str,
+    slug: str,
+    skill_md_text: str,
+    timeout: int,
+) -> Dict[str, Any]:
+    prompt = (
+        "You are a software security auditor reviewing OpenClaw SKILL.md instructions. "
+        "Detect potentially dangerous content such as credential theft, data exfiltration, "
+        "social engineering, hidden remote code execution, destructive commands, and obfuscation. "
+        "Return strict JSON with keys: risk_level, dangerous, summary, findings. "
+        "findings must be a list of objects with keys: severity, title, evidence, why, recommendation."
+    )
+
+    payload = {
+        "model": model,
+        "input": [
+            {"role": "system", "content": [{"type": "input_text", "text": prompt}]},
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "input_text",
+                        "text": f"Skill slug: {slug}\n\nSKILL.md:\n\n{skill_md_text}",
+                    }
+                ],
+            },
+        ],
+        "temperature": 0,
+    }
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+    }
+
+    raw = post_json(openai_base_url, payload, headers, timeout)
+    text = extract_openai_text(raw).strip()
+    parsed = parse_json_dict_from_text(text)
+    if parsed is not None:
+        return normalize_audit_shape(parsed, text)
+
+    return {
+        "risk_level": "unknown",
+        "dangerous": None,
+        "summary": "Model response was not valid JSON.",
+        "findings": [],
+        "_raw_text": text,
+    }
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Fetch one skills page and optionally download skill ZIP files.")
     parser.add_argument(
@@ -106,21 +331,67 @@ def parse_args() -> argparse.Namespace:
         help="Directory to write downloaded ZIP files.",
     )
     parser.add_argument(
+        "--download-all-from-list",
+        action="store_true",
+        help="Download all slugs found in the fetched list response.",
+    )
+    parser.add_argument(
+        "--delay",
+        type=float,
+        default=1.0,
+        help="Delay in seconds between ZIP downloads when downloading multiple skills.",
+    )
+    parser.add_argument(
         "--skip-list-fetch",
         action="store_true",
         help="Skip /skills request and only run ZIP downloads for --download-slug values.",
+    )
+    parser.add_argument(
+        "--audit-skill-md",
+        action="store_true",
+        help="After download, extract SKILL.md and run LLM safety audit.",
+    )
+    parser.add_argument(
+        "--audit-output",
+        default="skill_audit_report.json",
+        help="Output JSON file for audit results.",
+    )
+    parser.add_argument(
+        "--max-skill-md-chars",
+        type=int,
+        default=12000,
+        help="Max SKILL.md characters sent to the LLM per skill.",
+    )
+    parser.add_argument(
+        "--openai-api-key",
+        default=os.environ.get("OPENAI_API_KEY", ""),
+        help="OpenAI API key (defaults to OPENAI_API_KEY env var).",
+    )
+    parser.add_argument(
+        "--openai-model",
+        default=DEFAULT_AUDIT_MODEL,
+        help="Model used for auditing.",
+    )
+    parser.add_argument(
+        "--openai-base-url",
+        default=DEFAULT_OPENAI_BASE_URL,
+        help="OpenAI Responses API URL.",
     )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
+    log("INFO", f"Starting run with base URL: {args.base_url}")
 
     if args.limit <= 0:
-        print("--limit must be > 0", file=sys.stderr)
+        log("ERROR", "--limit must be > 0")
         return 2
 
+    skills: List[Dict[str, Any]] = []
+
     if not args.skip_list_fetch:
+        log("INFO", f"Fetching skills list (limit={args.limit}, sort={args.sort})")
         try:
             skills = fetch_page(
                 base_url=args.base_url,
@@ -130,16 +401,45 @@ def main() -> int:
                 timeout=args.timeout,
             )
         except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError) as err:
-            print(f"Failed to fetch skills: {err}", file=sys.stderr)
+            log("ERROR", f"Failed to fetch skills: {err}")
             return 1
 
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(skills, f, indent=2)
 
-        print(f"Saved {len(skills)} skills to {args.output}")
+        log("OK", f"Saved {len(skills)} skills to {args.output}")
+    else:
+        log("WARN", "Skipping skills list fetch (--skip-list-fetch)")
 
-    if args.download_slug:
-        for slug in args.download_slug:
+    all_slugs: List[str] = list(args.download_slug)
+    if args.download_all_from_list:
+        if args.skip_list_fetch:
+            log("ERROR", "--download-all-from-list requires list fetch (remove --skip-list-fetch).")
+            return 2
+        for skill in skills:
+            slug = extract_slug(skill)
+            if slug:
+                all_slugs.append(slug)
+
+    # Deduplicate while preserving order.
+    deduped_slugs: List[str] = []
+    seen = set()
+    for slug in all_slugs:
+        if slug not in seen:
+            deduped_slugs.append(slug)
+            seen.add(slug)
+
+    audit_results: List[Dict[str, Any]] = []
+
+    if args.audit_skill_md and not args.openai_api_key:
+        log("ERROR", "Missing OpenAI API key. Set --openai-api-key or OPENAI_API_KEY.")
+        return 2
+
+    processed_count = 0
+    if deduped_slugs:
+        log("INFO", f"Processing {len(deduped_slugs)} skill(s)")
+        for idx, slug in enumerate(deduped_slugs):
+            log("INFO", f"[{idx + 1}/{len(deduped_slugs)}] Downloading {slug}")
             try:
                 out_path = download_zip(
                     base_url=args.base_url,
@@ -147,10 +447,110 @@ def main() -> int:
                     output_dir=args.download_dir,
                     timeout=args.timeout,
                 )
-                print(f"Downloaded {slug} -> {out_path}")
+                log("OK", f"Downloaded {slug} -> {out_path}")
+                processed_count += 1
             except (HTTPError, URLError, TimeoutError) as err:
-                print(f"Failed to download slug '{slug}': {err}", file=sys.stderr)
-                return 1
+                log("ERROR", f"Failed to download slug '{slug}': {err}")
+                if args.audit_skill_md:
+                    audit_results.append(
+                        {
+                            "slug": slug,
+                            "downloaded": False,
+                            "error": f"Download failed: {err}",
+                        }
+                    )
+                    flush_audit_results(args.audit_output, audit_results)
+                sleep_before_next(idx, len(deduped_slugs), args.delay, "download failure")
+                continue
+
+            # Sequential mode: audit each skill immediately after download.
+            if args.audit_skill_md:
+                log("INFO", f"Extracting SKILL.md for {slug}")
+                try:
+                    md_info = extract_skill_md_text(out_path, max_chars=args.max_skill_md_chars)
+                except (OSError, zipfile.BadZipFile) as err:
+                    audit_results.append(
+                        {
+                            "slug": slug,
+                            "zip_path": out_path,
+                            "error": f"Failed to read ZIP: {err}",
+                        }
+                    )
+                    flush_audit_results(args.audit_output, audit_results)
+                    log("ERROR", f"{slug}: failed to read ZIP: {err}")
+                    sleep_before_next(idx, len(deduped_slugs), args.delay, "zip read failure")
+                    continue
+
+                if not md_info["found"]:
+                    audit_results.append(
+                        {
+                            "slug": slug,
+                            "zip_path": out_path,
+                            "skill_md_found": False,
+                            "summary": "SKILL.md not found in ZIP.",
+                        }
+                    )
+                    flush_audit_results(args.audit_output, audit_results)
+                    log("WARN", f"{slug}: SKILL.md not found in ZIP")
+                    sleep_before_next(idx, len(deduped_slugs), args.delay, "missing SKILL.md")
+                    continue
+
+                log(
+                    "INFO",
+                    f"Auditing {slug} with model={args.openai_model}"
+                    + (" (truncated SKILL.md)" if md_info["truncated"] else ""),
+                )
+                try:
+                    audit = audit_skill_md(
+                        openai_base_url=args.openai_base_url,
+                        api_key=args.openai_api_key,
+                        model=args.openai_model,
+                        slug=slug,
+                        skill_md_text=md_info["text"],
+                        timeout=args.timeout,
+                    )
+                except (HTTPError, URLError, TimeoutError, json.JSONDecodeError) as err:
+                    audit_results.append(
+                        {
+                            "slug": slug,
+                            "zip_path": out_path,
+                            "skill_md_found": True,
+                            "skill_md_path": md_info["path_in_zip"],
+                            "skill_md_truncated": md_info["truncated"],
+                            "error": f"LLM audit failed: {err}",
+                        }
+                    )
+                    flush_audit_results(args.audit_output, audit_results)
+                    log("ERROR", f"{slug}: LLM audit failed: {err}")
+                    sleep_before_next(idx, len(deduped_slugs), args.delay, "audit API failure")
+                    continue
+
+                audit_results.append(
+                    {
+                        "slug": slug,
+                        "zip_path": out_path,
+                        "skill_md_found": True,
+                        "skill_md_path": md_info["path_in_zip"],
+                        "skill_md_truncated": md_info["truncated"],
+                        "audit": audit,
+                    }
+                )
+                flush_audit_results(args.audit_output, audit_results)
+                log("OK", f"Audited {slug}")
+
+            sleep_before_next(idx, len(deduped_slugs), args.delay, "completed")
+    else:
+        log("WARN", "No slugs to process")
+
+    if args.audit_skill_md:
+        if processed_count == 0:
+            log("ERROR", "No downloaded ZIPs to audit.")
+            return 2
+
+        flush_audit_results(args.audit_output, audit_results)
+        log("OK", f"Saved final audit results to {args.audit_output}")
+
+    log("OK", "Run completed")
 
     return 0
 
