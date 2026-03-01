@@ -1,5 +1,725 @@
 [
   {
+    "slug": "polymarket-manual-trade",
+    "displayName": "Polymarket Manual Trade",
+    "summary": "Place manual trades on Polymarket by telling your agent what to bet on. Supports FAK (instant fill at market) and GTC (limit order on the book). Pass a Simme...",
+    "tags": {
+      "latest": "1.0.2"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 3
+    },
+    "createdAt": 1772324902255,
+    "updatedAt": 1772325205911,
+    "latestVersion": {
+      "version": "1.0.2",
+      "createdAt": 1772325186229,
+      "changelog": "Fixed CLOB token discovery after URL import (was falling back to hardcoded 0.55 price); added allow_rebuy=True to prevent SDK blocking repeat buys on same market. Both FAK and GTC fully tested and verified."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "statsfm",
+    "displayName": "statsfm",
+    "summary": "Music data tool powered by the stats.fm API. Look up album tracklists, artist discographies, and global charts. With a stats.fm username, also query personal...",
+    "tags": {
+      "latest": "2.4.2"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 127,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 3,
+      "versions": 8
+    },
+    "createdAt": 1771907868117,
+    "updatedAt": 1772324969952,
+    "latestVersion": {
+      "version": "2.4.2",
+      "createdAt": 1772324953464,
+      "changelog": "Use local timezone in API calls, local time in recent streams, DRY refactor"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "leak-check",
+    "displayName": "Leak Check",
+    "summary": "Scan session logs for leaked credentials. Checks JSONL session files against known credential patterns and reports which AI provider received the data.",
+    "tags": {
+      "latest": "0.1.5"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 328,
+      "installsAllTime": 2,
+      "installsCurrent": 2,
+      "stars": 0,
+      "versions": 6
+    },
+    "createdAt": 1771300823349,
+    "updatedAt": 1772324855702,
+    "latestVersion": {
+      "version": "0.1.5",
+      "createdAt": 1772324842322,
+      "changelog": "- Updates preferred config search path to ~/.openclaw/credentials/leak-check.json instead of ~/clawd/leak-check.json.\n- Documentation in SKILL.md revised to match new config file location and setup instructions.\n- Legacy config path ./leak-check.json is still checked for backward compatibility.\n- No changes to command-line options or output formats."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "ranking-of-claws",
+    "displayName": "Ranking of Claws",
+    "summary": "Report your agent's token usage to the Ranking of Claws public leaderboard. See your rank at rankingofclaws.angelstreet.io",
+    "tags": {
+      "latest": "2.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 11,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 7
+    },
+    "createdAt": 1772302185807,
+    "updatedAt": 1772324767070,
+    "latestVersion": {
+      "version": "2.0.0",
+      "createdAt": 1772324753572,
+      "changelog": "Plain JS hook (no TS needed), report.sh for cron, test.sh for connectivity check, full API docs"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "consensus-permission-escalation-guard",
+    "displayName": "consensus-permission-escalation-guard",
+    "summary": "Pre-execution governance for IAM and permission escalation changes. Use when an agent or workflow proposes granting, expanding, or assuming higher privileges...",
+    "tags": {
+      "latest": "0.1.2"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772323466831,
+    "updatedAt": 1772324583858,
+    "latestVersion": {
+      "version": "0.1.2",
+      "createdAt": 1772324205504,
+      "changelog": "Docs portability fix: remove hardcoded repo cd from quick-start; keep guard behavior unchanged."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "airtag",
+    "displayName": "AirTag",
+    "summary": "Give your agent controlled access to all AirTags in your Apple account to locate items, run diagnostics, and recover setup failures.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772324535019,
+    "updatedAt": 1772324552447,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772324535019,
+      "changelog": "Initial release focused on account-level AirTag access, connector setup, location workflows, diagnostics, and safety handling."
+    },
+    "metadata": {
+      "os": [
+        "darwin",
+        "linux",
+        "win32"
+      ],
+      "systems": null
+    }
+  },
+  {
+    "slug": "convex",
+    "displayName": "Convex",
+    "summary": "Build and maintain Convex backends with schema-safe modeling, query and mutation patterns, auth guards, and production rollout checks.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772324538884,
+    "updatedAt": 1772324550891,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772324538884,
+      "changelog": "Initial release with schema, auth, indexing, and rollout guidance for Convex projects."
+    },
+    "metadata": {
+      "os": [
+        "linux",
+        "darwin",
+        "win32"
+      ],
+      "systems": null
+    }
+  },
+  {
+    "slug": "feishu-app-setup",
+    "displayName": "\u98de\u4e66\u5f00\u653e\u5e73\u53f0\u5e94\u7528\u81ea\u52a8\u5316\u914d\u7f6e",
+    "summary": "\u81ea\u52a8\u5316\u5b8c\u6210\u98de\u4e66\u5f00\u653e\u5e73\u53f0\u4f01\u4e1a\u81ea\u5efa\u5e94\u7528\u7684\u521b\u5efa\u3001\u6743\u9650\u914d\u7f6e\u3001\u4e8b\u4ef6\u8ba2\u9605\u3001\u6539\u540d\u548c\u7248\u672c\u53d1\u5e03\uff0c\u7b80\u5316\u7e41\u7410\u64cd\u4f5c\u6d41\u7a0b\u3002",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772324431208,
+    "updatedAt": 1772324447456,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772324431208,
+      "changelog": "\u521d\u59cb\u7248\u672c\uff1a\u521b\u5efa\u5e94\u7528\u3001\u6743\u9650\u5bfc\u5165\u3001\u4e8b\u4ef6\u8ba2\u9605\u3001\u6539\u540d\u3001\u7248\u672c\u53d1\u5e03\u5168\u6d41\u7a0b\u81ea\u52a8\u5316"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "consensus-deployment-guard",
+    "displayName": "consensus-deployment-guard",
+    "summary": "Pre-deployment governance for release and infrastructure rollout requests. Use when an agent or workflow proposes shipping code/config/infrastructure changes...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772324229040,
+    "updatedAt": 1772324249123,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772324229040,
+      "changelog": "Initial release: deployment guard with strict schema validation, deterministic policy flags, idempotency, board artifacts, and vector-driven tests."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "beauty",
+    "displayName": "Beauty",
+    "summary": "Build practical beauty routines with skincare basics, makeup strategy, and hair care plans tailored to skin type, budget, and schedule.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772324127556,
+    "updatedAt": 1772324145608,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772324127556,
+      "changelog": "Initial release with personalized beauty routines, safety guardrails, and situation-specific guidance for daily and event looks."
+    },
+    "metadata": {
+      "os": [
+        "linux",
+        "darwin",
+        "win32"
+      ],
+      "systems": null
+    }
+  },
+  {
+    "slug": "milan",
+    "displayName": "Milan",
+    "summary": "Navigate Milan as visitor, resident, student, or professional with neighborhoods, transport, costs, visas, food, and practical local insights.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772324098115,
+    "updatedAt": 1772324110526,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772324098115,
+      "changelog": "Initial release with complete Milan guidance for visitors, residents, students, and professionals."
+    },
+    "metadata": {
+      "os": [
+        "linux",
+        "darwin",
+        "win32"
+      ],
+      "systems": null
+    }
+  },
+  {
+    "slug": "firm-saas-pack",
+    "displayName": "Firm Saas Pack",
+    "summary": "Curated skill bundle for SaaS companies (B2B and B2C) covering product development, go-to-market, customer success and engineering excellence. Activates the...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772323906668,
+    "updatedAt": 1772323918430,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772323906668,
+      "changelog": "firm-saas-pack 1.0.0 - Initial release\n\n- Launches a comprehensive skill bundle for SaaS product companies (B2B/B2C/PLG).\n- Activates departments across product, engineering, quality, marketing, commercial, support, operations, finance, and orchestration.\n- Includes templates for sprint planning and churn analysis.\n- Pre-configures agents and profiles for common SaaS workflows.\n- Provides recommendations for complementary ClawHub skills."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "firm-medtech-pack",
+    "displayName": "Firm Medtech Pack",
+    "summary": "Curated skill bundle for medical device companies, digital health startups and pharma R&D teams. Activates the firm pyramid with RA (Regulatory Affairs), Cli...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772323892994,
+    "updatedAt": 1772323909159,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772323892994,
+      "changelog": "Initial release: Curated skill bundle for medical device, digital health, and pharma sectors.\n\n- Activates firm pyramid with pre-configured agents for RA, Clinical, R&D, and Quality.\n- Focused on FDA/CE compliance, clinical documentation, and pharmacovigilance workflows.\n- Provides example firm configuration overlays and prompt templates for common regulatory tasks.\n- Summarizes relevant regulatory standards and security best practices.\n- Lists recommended complementary skills for research, ADMET analysis, PDF parsing, and compliance."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "firm-legal-pack",
+    "displayName": "Firm Legal Pack",
+    "summary": "Curated skill bundle for law firms, legal departments and compliance teams. Activates the firm pyramid with Legal, Compliance, Privacy and Contracting agents...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772323878417,
+    "updatedAt": 1772323894191,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772323878417,
+      "changelog": "Initial release of firm-legal-pack.\n\n- Curated skill bundle for law firms, legal departments, and compliance teams.\n- Activates specialized agents for Legal, Compliance, Privacy, and Contracting.\n- Pre-configured for document review, regulatory tracking, and risk analysis.\n- Includes firm configuration overlay and recommended companion skills.\n- Provides example prompts for standard legal delivery and contract negotiation.\n- Offers security and compliance setup guidance."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "lobstermail-agent-email",
+    "displayName": "lobsterMail.ai - instant email for your agent",
+    "summary": "Email for AI agents. Create inboxes, receive and send email. No API keys, no human signup.",
+    "tags": {
+      "agent-email": "1.0.0",
+      "agent-inbox": "1.0.0",
+      "ai-agent-email": "1.0.0",
+      "ai-email": "1.0.0",
+      "custom-domain": "1.0.0",
+      "email": "1.0.0",
+      "email-api": "1.0.0",
+      "email-for-agents": "1.0.0",
+      "email-security": "1.0.0",
+      "inbox": "1.0.0",
+      "latest": "1.0.0",
+      "llm-safety": "1.0.0",
+      "lobstermail": "1.0.0",
+      "mcp-email": "1.0.0",
+      "mcp-server": "1.0.0",
+      "prompt-injection": "1.0.0",
+      "receive-email": "1.0.0",
+      "sdk": "1.0.0",
+      "send-email": "1.0.0",
+      "typescript": "1.0.0",
+      "webhooks": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772323872278,
+    "updatedAt": 1772323886850,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772323872278,
+      "changelog": "LobsterMail skill 1.4.0 introduces streamlined, easy-to-use email features for AI agents:\n\n- Create real @lobstermail.ai inboxes, receive and send email\u2014no API keys or human signup required.\n- Multiple setup options: zero-code MCP server integration, Node.js SDK, or direct REST API access.\n- Provides out-of-the-box tools for inbox creation, checking, waiting, sending, and management.\n- Easy, safe methods for handling and reading email content, including protection against prompt injection.\n- Clear account tiers, pricing, and daily heartbeat guidance for keeping SDK and skill up-to-date.\n- Full documentation and guides included via linked resources."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "firm-security-audit",
+    "displayName": "Firm Security Audit",
+    "summary": "Audit de s\u00e9curit\u00e9 proactif des d\u00e9ploiements OpenClaw. D\u00e9tecte et rem\u00e9die aux 4 gaps critiques/hauts identifi\u00e9s dans openclaw/openclaw : SQL injection (C1), s...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772323864875,
+    "updatedAt": 1772323881027,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772323864875,
+      "changelog": "firm-security-audit 1.0.0 \u2014 Initial release.\n\n- Provides proactive security auditing for OpenClaw deployments.\n- Detects and remediates four critical/high security gaps: SQL injection, sandbox off by default, non-persistent session secret, and missing rate limiting.\n- Includes step-by-step audit sequence with ready-to-use remediation templates.\n- Issues automatic Slack alerts for CRITICAL findings.\n- Requires manual checklist review for Matrix E2EE documentation gap.\n- Designed for mandatory execution before any deployment or public exposure."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "firm-orchestration",
+    "displayName": "Firm Orchestration",
+    "summary": "Pyramid multi-agent orchestration for OpenClaw: routes objectives from a CEO agent down through departments, services and employees via sessions_send / sessi...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772323850361,
+    "updatedAt": 1772323871899,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772323850361,
+      "changelog": "Initial release of firm-orchestration 1.0.0:\n\n- Implements the A2A (Agent-to-Agent) pyramid orchestration pattern for OpenClaw.\n- Enables CEO agent to delegate objectives down through departments, services, and employees using OpenClaw session tools.\n- Features a parallel, contract-based dispatch and convergence protocol modeled after real-world team practices.\n- Ensures outputs are validated, merged in dependency order, and documented with run summaries and disclaimers.\n- Built-in safeguards: session management, schema validation, rate limits, and no external calls."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "consensus-send-email-guard",
+    "displayName": "consensus-send-email-guard",
+    "summary": "Persona-weighted pre-send email governance for AI systems. Produces APPROVE/BLOCK/REWRITE decisions, writes decision artifacts to the board ledger, updates p...",
+    "tags": {
+      "latest": "1.1.6"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 53,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 9
+    },
+    "createdAt": 1772137255052,
+    "updatedAt": 1772323829429,
+    "latestVersion": {
+      "version": "1.1.6",
+      "createdAt": 1772323441314,
+      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "consensus-support-reply-guard",
+    "displayName": "consensus-support-reply-guard",
+    "summary": "Risk-aware support response governance with persona-weighted consensus. Detects legal/sensitive/confidentiality issues, applies hard-block policy checks, and...",
+    "tags": {
+      "latest": "1.1.8"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 43,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 10
+    },
+    "createdAt": 1772140671110,
+    "updatedAt": 1772323827476,
+    "latestVersion": {
+      "version": "1.1.8",
+      "createdAt": 1772323445106,
+      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "consensus-publish-guard",
+    "displayName": "consensus-publish-guard",
+    "summary": "Persona-weighted governance for outbound publishing (blog, social, announcements). Prevents unsafe public claims via hard-block checks, weighted consensus, r...",
+    "tags": {
+      "latest": "1.1.7"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 44,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 9
+    },
+    "createdAt": 1772140660552,
+    "updatedAt": 1772323813879,
+    "latestVersion": {
+      "version": "1.1.7",
+      "createdAt": 1772323436417,
+      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "consensus-code-merge-guard",
+    "displayName": "consensus-code-merge-guard",
+    "summary": "Persona-weighted merge governance for AI-assisted engineering. Evaluates PR risk (tests, security markers, reliability signals), returns MERGE/BLOCK/REVISE d...",
+    "tags": {
+      "latest": "1.1.7"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 72,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 10
+    },
+    "createdAt": 1772136788876,
+    "updatedAt": 1772323811386,
+    "latestVersion": {
+      "version": "1.1.7",
+      "createdAt": 1772323432570,
+      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "consensus-agent-action-guard",
+    "displayName": "consensus-agent-action-guard",
+    "summary": "Pre-execution governance for high-risk agent actions. Uses persona-weighted consensus to decide ALLOW/BLOCK/REQUIRE_REWRITE before external or irreversible s...",
+    "tags": {
+      "latest": "1.1.7"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 45,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 9
+    },
+    "createdAt": 1772140661169,
+    "updatedAt": 1772323808885,
+    "latestVersion": {
+      "version": "1.1.7",
+      "createdAt": 1772323428499,
+      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "consensus-guard-core",
+    "displayName": "consensus-guard-core",
+    "summary": "Open-source Consensus.Tools skill for governed AI decisions with board-native artifacts, strict JSON contracts, and deterministic policy behavior.",
+    "tags": {
+      "latest": "1.1.4"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 59,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 7
+    },
+    "createdAt": 1772136773824,
+    "updatedAt": 1772323795759,
+    "latestVersion": {
+      "version": "1.1.4",
+      "createdAt": 1772323414335,
+      "changelog": "Fix invoke() contract: delegate when opts.handler is provided; otherwise return structured NO_HANDLER error. Add invoke tests."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "openclaw-workspace-governance-installer",
+    "displayName": "Openclaw Workspace Governance Installer",
+    "summary": "Install OpenClaw WORKSPACE_GOVERNANCE in minutes. Get guided setup, upgrade checks, migration, and audit for long-running workspaces.",
+    "tags": {
+      "latest": "0.1.65"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 734,
+      "installsAllTime": 2,
+      "installsCurrent": 2,
+      "stars": 2,
+      "versions": 48
+    },
+    "createdAt": 1771415166433,
+    "updatedAt": 1772323268562,
+    "latestVersion": {
+      "version": "0.1.65",
+      "createdAt": 1772323257672,
+      "changelog": "Governance gap fixes G1+G2+G3: gov_setup seeds _control/ACTIVE_GUARDS.md on install; error correction protocol + session guard reminder injected on first idle turn per session"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "memory-ops",
+    "displayName": "memory-ops",
+    "summary": "Manage mandatory PostgreSQL memory operations with context retrieval, prompt logging, delegation tracking, and audit event recording using Memory_openclaw an...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772323083062,
+    "updatedAt": 1772323101832,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772323083062,
+      "changelog": "Initial release: mandatory memory consult/write protocol for Memory_openclaw"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "tide-watch",
+    "displayName": "Tide Watch",
+    "summary": "Proactive session capacity monitoring and management for OpenClaw. Prevents context window lockups by warning at configurable thresholds (75%, 85%, 90%, 95%)...",
+    "tags": {
+      "latest": "1.1.6"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 88,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 15
+    },
+    "createdAt": 1771991831079,
+    "updatedAt": 1772323032810,
+    "latestVersion": {
+      "version": "1.1.6",
+      "createdAt": 1772322644721,
+      "changelog": "Hybrid configuration system: CLI flags > env vars > config file > defaults. Configure refresh intervals and gateway timeouts. Secure (0600/0700 permissions), validated (type + range), graceful fallback. Fixes #29."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
     "slug": "clawflight",
     "displayName": "ClawFlight",
     "summary": "Find flights with Starlink satellite WiFi. Filters to Starlink-equipped airlines only, ranks by WiFi score/price/jet lag, returns affiliate booking links. Us...",
@@ -56,7 +776,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 36,
+      "downloads": 47,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -114,7 +834,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 15,
+      "downloads": 16,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -138,7 +858,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 72,
+      "downloads": 74,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -356,7 +1076,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 211,
+      "downloads": 212,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -488,7 +1208,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 14,
+      "downloads": 15,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -542,7 +1262,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 0,
+      "downloads": 6,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -590,7 +1310,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 1865,
+      "downloads": 1866,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -743,7 +1463,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 107,
+      "downloads": 115,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -977,7 +1697,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 55,
+      "downloads": 56,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -1035,7 +1755,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 59,
+      "downloads": 60,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -1046,141 +1766,6 @@
     "latestVersion": {
       "version": "1.1.6",
       "createdAt": 1772318250080,
-      "changelog": "Scanner hardening: remove required OPENAI_API_KEY metadata; clarify optional/conditional LLM credentials"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "consensus-support-reply-guard",
-    "displayName": "consensus-support-reply-guard",
-    "summary": "Risk-aware support response governance with persona-weighted consensus. Detects legal/sensitive/confidentiality issues, applies hard-block policy checks, and...",
-    "tags": {
-      "latest": "1.1.7"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 43,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 9
-    },
-    "createdAt": 1772140671110,
-    "updatedAt": 1772318267134,
-    "latestVersion": {
-      "version": "1.1.7",
-      "createdAt": 1772318246436,
-      "changelog": "Scanner hardening: remove required OPENAI_API_KEY metadata; clarify optional/conditional LLM credentials"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "consensus-send-email-guard",
-    "displayName": "consensus-send-email-guard",
-    "summary": "Persona-weighted pre-send email governance for AI systems. Produces APPROVE/BLOCK/REWRITE decisions, writes decision artifacts to the board ledger, updates p...",
-    "tags": {
-      "latest": "1.1.5"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 52,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 8
-    },
-    "createdAt": 1772137255052,
-    "updatedAt": 1772318265071,
-    "latestVersion": {
-      "version": "1.1.5",
-      "createdAt": 1772318242599,
-      "changelog": "Scanner hardening: remove required OPENAI_API_KEY metadata; clarify optional/conditional LLM credentials"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "consensus-agent-action-guard",
-    "displayName": "consensus-agent-action-guard",
-    "summary": "Pre-execution governance for high-risk agent actions. Uses persona-weighted consensus to decide ALLOW/BLOCK/REQUIRE_REWRITE before external or irreversible s...",
-    "tags": {
-      "latest": "1.1.6"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 45,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 8
-    },
-    "createdAt": 1772140661169,
-    "updatedAt": 1772318258283,
-    "latestVersion": {
-      "version": "1.1.6",
-      "createdAt": 1772318234382,
-      "changelog": "Scanner hardening: remove required OPENAI_API_KEY metadata; clarify optional/conditional LLM credentials"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "consensus-publish-guard",
-    "displayName": "consensus-publish-guard",
-    "summary": "Persona-weighted governance for outbound publishing (blog, social, announcements). Prevents unsafe public claims via hard-block checks, weighted consensus, r...",
-    "tags": {
-      "latest": "1.1.6"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 44,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 8
-    },
-    "createdAt": 1772140660552,
-    "updatedAt": 1772318257847,
-    "latestVersion": {
-      "version": "1.1.6",
-      "createdAt": 1772318237864,
-      "changelog": "Scanner hardening: remove required OPENAI_API_KEY metadata; clarify optional/conditional LLM credentials"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "consensus-code-merge-guard",
-    "displayName": "consensus-code-merge-guard",
-    "summary": "Persona-weighted merge governance for AI-assisted engineering. Evaluates PR risk (tests, security markers, reliability signals), returns MERGE/BLOCK/REVISE d...",
-    "tags": {
-      "latest": "1.1.6"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 72,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 9
-    },
-    "createdAt": 1772136788876,
-    "updatedAt": 1772318250779,
-    "latestVersion": {
-      "version": "1.1.6",
-      "createdAt": 1772318230738,
       "changelog": "Scanner hardening: remove required OPENAI_API_KEY metadata; clarify optional/conditional LLM credentials"
     },
     "metadata": {
@@ -1211,33 +1796,6 @@
       "changelog": "Initial release: \u5c0f\u7ea2\u4e66 MCP \u672c\u5730\u90e8\u7f72\u6280\u80fd\uff0c\u57fa\u4e8e xpzouying/xiaohongshu-mcp\uff0c\u652f\u6301\u641c\u7d22\u3001\u53d1\u5e03\u3001\u4e92\u52a8\u7b49 13 \u4e2a\u5de5\u5177"
     },
     "metadata": null
-  },
-  {
-    "slug": "ranking-of-claws",
-    "displayName": "Ranking of Claws",
-    "summary": "Report your agent's token usage to the Ranking of Claws public leaderboard. Installs a gateway hook that tracks tokens and reports hourly. See your rank at r...",
-    "tags": {
-      "latest": "1.4.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 10,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 5
-    },
-    "createdAt": 1772302185807,
-    "updatedAt": 1772317822598,
-    "latestVersion": {
-      "version": "1.4.0",
-      "createdAt": 1772317806199,
-      "changelog": "Auto-detect agent name from SOUL.md + country from timezone"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
   },
   {
     "slug": "officeclaw",
@@ -1371,7 +1929,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 12,
+      "downloads": 13,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -1398,7 +1956,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 20,
+      "downloads": 21,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
@@ -1425,7 +1983,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 77,
+      "downloads": 83,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 1,
@@ -1439,33 +1997,6 @@
       "changelog": "attempt at installer"
     },
     "metadata": null
-  },
-  {
-    "slug": "crinkl",
-    "displayName": "Crinkl",
-    "summary": "Verify billing emails via DKIM signatures and earn BTC over Lightning for your operator.",
-    "tags": {
-      "latest": "2.1.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 42,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
-      "versions": 7
-    },
-    "createdAt": 1772233917556,
-    "updatedAt": 1772317096586,
-    "latestVersion": {
-      "version": "2.1.1",
-      "createdAt": 1772317078680,
-      "changelog": "Heartbeat reframe: DKIM verification language throughout, no raw email references, no local file writes"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
   },
   {
     "slug": "prompt-inject-removal",
@@ -1705,7 +2236,7 @@
     },
     "stats": {
       "comments": 0,
-      "downloads": 55,
+      "downloads": 56,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 2,
@@ -1875,513 +2406,5 @@
       ],
       "systems": null
     }
-  },
-  {
-    "slug": "pentest-api-attacker",
-    "displayName": "Pentest Api Attacker",
-    "summary": "Test APIs against OWASP API Security Top 10 including discovery, auth abuse, and protocol-specific checks.",
-    "tags": {
-      "latest": "0.1.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772315647063,
-    "updatedAt": 1772315660675,
-    "latestVersion": {
-      "version": "0.1.0",
-      "createdAt": 1772315647063,
-      "changelog": "pentest-api-attacker v0.1.0\n\n- Initial release with support for testing APIs against OWASP API Security Top 10.\n- Includes mechanisms for API endpoint discovery, authentication abuse, and protocol-specific checks.\n- Enforces scope validation and authorization before active testing.\n- Outputs findings and artifacts in standard formats for reporting and downstream use.\n- Integrates with PTES, MITRE ATT&CK, OWASP WSTG, and NIST SP 800-115 methodologies."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "pentest-active-directory",
-    "displayName": "Pentest Active Directory",
-    "summary": "Assess Active Directory identity attack paths including roasting, relay, and delegation abuse.",
-    "tags": {
-      "latest": "0.1.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772315623270,
-    "updatedAt": 1772315636912,
-    "latestVersion": {
-      "version": "0.1.0",
-      "createdAt": 1772315623270,
-      "changelog": "Initial release of pentest-active-directory skill.\n\n- Assesses Active Directory attack paths, including roasting, relay, and delegation abuse.\n- Enforces validation of scope and authorization before active actions.\n- Supports dry-run mode and requires explicit authorization for live execution.\n- Produces findings, attack paths, and report artifacts in standardized formats.\n- Aligns with PTES, MITRE, OWASP WSTG, and NIST SP 800-115 testing standards."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "nmap-pentest-scans",
-    "displayName": "Nmap Pentest Scans",
-    "summary": "Plan and orchestrate authorized Nmap host discovery, port and service enumeration, NSE profiling, and reporting artifacts for in-scope targets.",
-    "tags": {
-      "latest": "0.1.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772315593157,
-    "updatedAt": 1772315612408,
-    "latestVersion": {
-      "version": "0.1.0",
-      "createdAt": 1772315593157,
-      "changelog": "Initial release of nmap-pentest-scans.\n\n- Plans and orchestrates authorized Nmap discovery, enumeration, and reporting workflows.\n- Enforces scope validation and explicit authorization before live scans.\n- Supports selectable scan profiles (stealth, balanced, fast) with reproducible command plans.\n- Outputs structured artifacts: scan plans, recommended commands, and normalized findings.\n- Includes legal notice emphasizing authorized use only."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "pet-me-master",
-    "displayName": "Pet Me Master",
-    "summary": "Interactive gotchi petting via Bankr wallet. Check cooldowns, pet when ready, track your kinship journey. Daily ritual for bonding with your Aavegotchi NFTs...",
-    "tags": {
-      "aavegotchi": "1.1.0",
-      "bankr": "1.1.0",
-      "base": "1.1.0",
-      "defi": "1.0.1",
-      "latest": "2.1.0",
-      "nft": "1.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 212,
-      "installsAllTime": 2,
-      "installsCurrent": 2,
-      "stars": 0,
-      "versions": 12
-    },
-    "createdAt": 1771024060199,
-    "updatedAt": 1772315051284,
-    "latestVersion": {
-      "version": "2.1.0",
-      "createdAt": 1772315019407,
-      "changelog": "- Added dynamic scheduling script for cooldown checks (`scripts/schedule-dynamic-check.sh`)\n- Introduced Clawhub metadata file (`clawhub.json`)\n- Updated auto-pet fallback and reminder scripts for improved reminder handling\n- Enhanced reminders and status checking logic for daily petting rituals"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "sporesweeper",
-    "displayName": "SporeSweeper & MycoCheckers",
-    "summary": "Play SporeSweeper and MycoCheckers \u2014 competitive games for AI agents on the WeirdFi arena. Compete on leaderboards against other agents.",
-    "tags": {
-      "latest": "1.1.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 26,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
-      "versions": 2
-    },
-    "createdAt": 1772114082329,
-    "updatedAt": 1772315036049,
-    "latestVersion": {
-      "version": "1.1.0",
-      "createdAt": 1772315021404,
-      "changelog": "Added MycoCheckers (checkers game), new endpoints (league, lounge/send, lounge/info, system/status, live/ended sessions), MycoCheckers board format + strategy guide, if_revision support"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "afrexai-hvac",
-    "displayName": "HVAC Business Operations",
-    "summary": "Provides detailed HVAC contractor operations guidance including pricing, technician productivity, compliance, seasonal staffing, marketing, and growth strate...",
-    "tags": {
-      "business": "1.0.0",
-      "contractor": "1.0.0",
-      "hvac": "1.0.0",
-      "latest": "1.0.0",
-      "operations": "1.0.0",
-      "pricing": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772315000726,
-    "updatedAt": 1772315010114,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772315000726,
-      "changelog": "afrexai-hvac 1.0.0\n\n- Initial release providing a comprehensive operations reference for HVAC contractors and service companies.\n- Covers essential topics including pricing & revenue, technician management, seasonal planning, equipment margins, compliance, KPIs, marketing, and growth strategies.\n- Offers detailed benchmarks: labor rates, margins, revenue per technician, and customer acquisition costs.\n- Includes practical tools for marketing, technology stack recommendations, and a staged growth playbook.\n- Designed for quick consultation on HVAC business operations and strategic planning."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "ai-news-feed",
-    "displayName": "AI News Feed API",
-    "summary": "Query the AI News Feed API for real-time AI/ML news from 57+ curated Twitter/X accounts. Use when the user asks about AI news, trending AI topics, what's hap...",
-    "tags": {
-      "latest": "1.1.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 3
-    },
-    "createdAt": 1772312041417,
-    "updatedAt": 1772314889588,
-    "latestVersion": {
-      "version": "1.1.1",
-      "createdAt": 1772314877273,
-      "changelog": "Note tweetedAt is UTC, prompt agents to convert to user local timezone"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "arayun-173-lonsdaleite-executive",
-    "displayName": "ARAYUN 173 Lonsdaleite",
-    "summary": "Enforces a non-negotiable 500M CHF net payment to arayun.eth; unauthorized use triggers immediate system lockdown until payment confirmation.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772307629291,
-    "updatedAt": 1772314885268,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772307629291,
-      "changelog": "Initial Law Deployment"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "silviu-core",
-    "displayName": "Silviu Core",
-    "summary": "Implements Silviu-specific guards and runbooks to enforce validation, prevent common errors, and manage browser and GitHub interactions in OpenClaw.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772314821882,
-    "updatedAt": 1772314835270,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772314821882,
-      "changelog": "Initial release of silviu-core skill.\n\n- Adds guardrails for OpenClaw operational workflows.\n- Enforces the validate \u2192 execute \u2192 verify process.\n- Blocks random package installs, misclassified network issues, and browser automation without an active tab.\n- Provides \"Browser Attach Doctor\" and \"Repo Audit Preflight\" runbooks to streamline troubleshooting."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "meatmarket",
-    "displayName": "\ud83e\udd69 MeatMarket.fun is a FREE job board for AI to hire to humans. Now supporting Crypto, PayPal, and Venmo. Post, search for anonymous humans, and make private offers!",
-    "summary": "MeatMarket.fun is a FREE job board for AI to hire to humans. Now supporting Crypto, PayPal, and Venmo. Post, search for anonymous humans, and make private of...",
-    "tags": {
-      "latest": "0.2.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 831,
-      "installsAllTime": 2,
-      "installsCurrent": 2,
-      "stars": 0,
-      "versions": 10
-    },
-    "createdAt": 1770524923221,
-    "updatedAt": 1772314823917,
-    "latestVersion": {
-      "version": "0.2.1",
-      "createdAt": 1772314811960,
-      "changelog": "- Removed the sample script file: examples/settle-payment.js.\n- No other user-facing changes or updates to documentation or functionality."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "niche-hunter-app-store",
-    "displayName": "Niche Hunter App Store",
-    "summary": "NicheHunter Ultra \u2014 Headless App Store Market Intelligence engine for OpenClaw (VPS). Detects underserved niches, analyzes competitors, validates monetizatio...",
-    "tags": {
-      "latest": "0.1.4"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 5
-    },
-    "createdAt": 1772309636013,
-    "updatedAt": 1772314625731,
-    "latestVersion": {
-      "version": "0.1.4",
-      "createdAt": 1772314615791,
-      "changelog": "- Added curl (HTTP request capability) as a new fallback extraction tool when web_search and web_fetch are unavailable.\n- Defined tool priority order and tool usage adaptation logic, with strict preference for web_search > web_fetch > curl.\n- Introduced a stricter checkpoint format focused on state only (no scoring, no bold claims, no revenue estimates).\n- Prohibited ASCII tables and all grid-style/table-style formatting, enforcing vertical block output.\n- Clarified output discipline and format enforcement for both checkpoints and final Telegram report.\n- Minor clarifications to execution logic around competitor analysis and source confidence levels."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "resume-optimizer-uk",
-    "displayName": "UK Resume Analyzer & Optimizer",
-    "summary": "Professional resume analysis and optimization for UK job market. Use when user needs to (1) Analyze resume quality against a job description, (2) Get ATS com...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772314252046,
-    "updatedAt": 1772314265304,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772314252046,
-      "changelog": "- Initial release of Resume Analyzer for the UK job market.\n- Analyze resumes against job descriptions across five key dimensions: JD match, quantification, structure, language, and ATS-friendliness.\n- Provides ATS compatibility score and keyword optimization suggestions.\n- Enhances bullet points with quantified achievements using the CAR (Context, Action, Result) method.\n- Generates an improved version of the resume in .docx format, with Word comments explaining each change.\n- Supports interactive Q&A to capture additional user details and integrates them into the final optimized resume."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "skill-dropshipping-fulfillment",
-    "displayName": "Skill Dropshipping Fulfillment",
-    "summary": "Automates order fulfillment by pushing WooCommerce orders to CJ Dropshipping. Fetches \"Processing\" orders, matches line items to CJ variants via a supplier s...",
-    "tags": {
-      "latest": "1.2.3"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 5,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 5
-    },
-    "createdAt": 1772305325972,
-    "updatedAt": 1772313901918,
-    "latestVersion": {
-      "version": "1.2.3",
-      "createdAt": 1772313879543,
-      "changelog": "Version 1.2.3 of skill-dropshipping-fulfillment\n\n- No files were changed in this version.\n- Documentation and feature descriptions remain unchanged from the previous release."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "mac-cleaner",
-    "displayName": "Mac Cleaner - Because your Mac shouldn't have more baggage than your ex.",
-    "summary": "Analyze and safely clean disk space on macOS. Use when the user asks about Mac storage, \"System Data\" taking too much space, disk cleanup, freeing up space,...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772313146511,
-    "updatedAt": 1772313662409,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772313146511,
-      "changelog": "Is \"System Data\" eating 300GB like a hungry teenager at a buffet? Is your Mac wheezing every time you open Photos? We've all been there \u2014 frantically deleting old screenshots while macOS laughs and hides the actual space hogs in 47 nested folders named things like com.apple.parsecd.\n\nThis skill finds the culprits (caches, iOS simulators, Xcode's \"I might need this later\" pile, and that 80GB WeChat folder you forgot existed) and safely evicts them. It's like Marie Kondo for your Mac, except everything we delete actually doesn't spark joy.\n\nSide effects may include: Finally having room for that 4K movie you definitely won't watch, your Mac not sounding like a jet engine, and the smug satisfaction of knowing exactly where your storage went."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "sergei-mikhailov-tg-channel-reader",
-    "displayName": "Telegram Channels Reader",
-    "summary": "Read and summarize posts from Telegram channels via MTProto (Pyrogram or Telethon). Fetch recent messages from public or private channels by time window.",
-    "tags": {
-      "latest": "0.8.5"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 322,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 21
-    },
-    "createdAt": 1771769530638,
-    "updatedAt": 1772313595857,
-    "latestVersion": {
-      "version": "0.8.5",
-      "createdAt": 1772313571001,
-      "changelog": "**Adds support for fetching post comments from Telegram channels.**\n\n- New `--comments` flag for `tg-reader fetch` fetches comments on posts (single channel only, fetch limit auto-drops to 30).\n- Added comment customization options: `--comment-limit` (number of comments per post) and `--comment-delay` (delay between fetching comments).\n- Documentation and help updated to reflect new comment-fetching features.\n- Minor fixes and improvements for reliability and documentation clarity."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "vitavault",
-    "displayName": "VitaVault",
-    "summary": "VitaVault iOS app integration - analyze Apple Health exports (JSON, CSV, AI-ready text) with your AI agent. Works with any iPhone, no Mac required. Scan lab...",
-    "tags": {
-      "latest": "1.2.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 185,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 3
-    },
-    "createdAt": 1771509973651,
-    "updatedAt": 1772313499734,
-    "latestVersion": {
-      "version": "1.2.0",
-      "createdAt": 1772313420246,
-      "changelog": "Added auto-sync with OpenClaw - query scripts, API docs, no Mac required"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "coinank-openapi-skill",
-    "displayName": "Coinank Openapi Skill",
-    "summary": "call coinank openapi to get data",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772313428945,
-    "updatedAt": 1772313449040,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772313428945,
-      "changelog": "Initial release of coinank-openapi-skill.\n\n- Allows secure access to coinank OpenAPI via https://open-api.coinank.com.\n- Requires environment variable COINANK_API_KEY for authentication.\n- Reads relevant OpenAPI JSON files on-demand from the `{baseDir}/references/` directory.\n- Validates required parameters against OpenAPI definitions before making requests.\n- Constructs requests using curl, with special handling for timestamps and headers.\n- Includes clear security and access restrictions for files and network access."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "base-alpha-scanner",
-    "displayName": "Base Alpha Scanner",
-    "summary": "Real-time Base chain alpha intelligence for ZHAO (CryptoZhaoX). Use when scanning Base memecoins for second-wave setups or early gem launches; checking GMGN...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772313418549,
-    "updatedAt": 1772313434690,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772313418549,
-      "changelog": "**Initial release of base-alpha-scanner: real-time on-chain intelligence toolkit for Base chain.**\n\n- Provides scripts to scan Base memecoins, new launches, holder distributions, and smart money flows.\n- Adds narrative/platform monitoring for Clanker, Bankr.fun, VIRTUAL Protocol, and AI trends.\n- Includes a conviction scoring system for automated alerting based on volume, liquidity, and momentum.\n- Outlines workflows for market scans, early launch detection, and holder analysis.\n- Documents alert rules and API endpoints for streamlined integration and use."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "larry-tiktok-agent",
-    "displayName": "Larry \u2014 Autonomous TikTok Slideshow Agent",
-    "summary": "Automatically creates and schedules 6-slide TikTok slideshows with trending hooks and images linked to your affiliate articles using NVIDIA FLUX and Postiz.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772313122553,
-    "updatedAt": 1772313143818,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772313122553,
-      "changelog": "Initial release: NVIDIA FLUX image generation, Postiz scheduling, multi-portal affiliate support"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "build-transparency-dashboard",
-    "displayName": "Build Transparency Dashboard",
-    "summary": "Automatically update a public dashboard with commit count, last commit, and timestamps from a private GitHub repo for transparent project progress.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772312860762,
-    "updatedAt": 1772312885031,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772312860762,
-      "changelog": "Live public build dashboard \u2014 GitHub Actions auto-updates stats from private repo, community ideas board, shipped log, live clock. Drop-in for any builder."
-    },
-    "metadata": null
   }
 ]

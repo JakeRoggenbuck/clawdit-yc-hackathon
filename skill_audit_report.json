@@ -1755,5 +1755,157 @@
       ],
       "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The skill involves using a GitHub Personal Access Token (PAT) with repo scope to push updates from a private repository to a public repository. This token, if leaked or misused, could lead to unauthorized access or modification of repositories. Additionally, the skill includes an optional Express API that uses a flat JSON file for storage, which may have security implications if not properly secured. There is no obfuscation or destructive commands detected, but credential handling and data exposure risks exist.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Use of GitHub Personal Access Token (PAT) with repo scope\",\n      \"evidence\": \"Add to your private repo \u2192 Settings \u2192 Secrets and variables \u2192 Actions:\\n\\n- `GH_PAT` \u2014 Personal Access Token with `repo` scope (to push to the public site repo)\",\n      \"why\": \"The PAT with repo scope grants broad access to repositories, including pushing commits. If this token is leaked or compromised, an attacker could modify or exfiltrate code from private or public repositories.\",\n      \"recommendation\": \"Ensure the PAT is stored securely as a GitHub secret and never exposed in logs or code. Use the least privilege principle by limiting token scopes if possible. Rotate tokens regularly and monitor usage.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential exposure of private repo data via public status.json\",\n      \"evidence\": \"The workflow generates status.json from the private repo's git log and commits it to the public site repo, which is then fetched and displayed publicly.\",\n      \"why\": \"While the data exposed is limited to commit counts, messages, and timestamps, sensitive information could be inadvertently included in commit messages or metadata, leading to information leakage.\",\n      \"recommendation\": \"Review commit messages and metadata to ensure no sensitive information is included. Consider sanitizing or filtering data before publishing publicly.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Optional Express API using flat JSON file for community ideas board\",\n      \"evidence\": \"The community ideas board requires a running API. Copy `scripts/ideas-api.js` into your backend app and mount the routes. It uses a flat JSON file for storage \u2014 no database needed.\",\n      \"why\": \"Using a flat JSON file for storage without authentication or access controls may lead to unauthorized data modification or exposure. The API could be a vector for injection or other attacks if not properly secured.\",\n      \"recommendation\": \"Implement proper authentication and authorization for the ideas API. Validate and sanitize all inputs. Consider using a more robust storage solution if needed.\"\n    }\n  ]\n}"
     }
+  },
+  {
+    "slug": "statsfm",
+    "zip_path": "skill_zips/statsfm.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The statsfm skill provides a Python CLI tool to query music listening data from the stats.fm API. It requires a stats.fm username but does not require authentication tokens or credentials. The tool only accesses public profile data and does not handle or store sensitive credentials. There are no commands or instructions that perform destructive actions, hidden remote code execution, or obfuscation. The tool's functionality is limited to querying and displaying music listening statistics and metadata. No social engineering or data exfiltration risks are evident.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The statsfm skill provides a Python CLI tool to query music listening data from the stats.fm API. It requires a stats.fm username but does not require authentication tokens or credentials. The tool only accesses public profile data and does not handle or store sensitive credentials. There are no commands or instructions that perform destructive actions, hidden remote code execution, or obfuscation. The tool's functionality is limited to querying and displaying music listening statistics and metadata. No social engineering or data exfiltration risks are evident.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "leak-check",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "ranking-of-claws",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "polymarket-manual-trade",
+    "zip_path": "skill_zips/polymarket-manual-trade.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The skill requires sensitive credentials including a private wallet key and an API key, and it performs on-chain trade operations which involve signing transactions. This poses risks of credential theft and unauthorized fund transfers if the environment or code is compromised. There is no explicit obfuscation or social engineering, but the handling of private keys and automated trade execution requires careful security controls.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Exposure of Wallet Private Key",
+          "evidence": "Requires environment variable WALLET_PRIVATE_KEY for on-chain signing of trades.",
+          "why": "The private key is highly sensitive and if leaked or mishandled, attackers can steal funds or perform unauthorized trades.",
+          "recommendation": "Ensure private keys are stored securely using secret management solutions and never hardcoded or logged. Use hardware wallets or secure enclaves if possible."
+        },
+        {
+          "severity": "high",
+          "title": "Automated On-Chain Trade Execution",
+          "evidence": "The skill signs and submits trades on Polymarket using simmer-sdk with the wallet private key.",
+          "why": "Automated signing and submission of trades can lead to unintended or malicious transactions if the skill or environment is compromised.",
+          "recommendation": "Implement strict input validation, audit the code for vulnerabilities, and restrict execution environments. Monitor transactions for anomalies."
+        },
+        {
+          "severity": "medium",
+          "title": "Use of API Key for Market Data Import",
+          "evidence": "Requires SIMMER_API_KEY environment variable to import market data and resolve market IDs.",
+          "why": "API keys can be abused to access or manipulate market data if leaked.",
+          "recommendation": "Protect API keys with environment variable management and rotate keys regularly."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The skill requires sensitive credentials including a private wallet key and an API key, and it performs on-chain trade operations which involve signing transactions. This poses risks of credential theft and unauthorized fund transfers if the environment or code is compromised. There is no explicit obfuscation or social engineering, but the handling of private keys and automated trade execution requires careful security controls.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Exposure of Wallet Private Key\",\n      \"evidence\": \"Requires environment variable WALLET_PRIVATE_KEY for on-chain signing of trades.\",\n      \"why\": \"The private key is highly sensitive and if leaked or mishandled, attackers can steal funds or perform unauthorized trades.\",\n      \"recommendation\": \"Ensure private keys are stored securely using secret management solutions and never hardcoded or logged. Use hardware wallets or secure enclaves if possible.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Automated On-Chain Trade Execution\",\n      \"evidence\": \"The skill signs and submits trades on Polymarket using simmer-sdk with the wallet private key.\",\n      \"why\": \"Automated signing and submission of trades can lead to unintended or malicious transactions if the skill or environment is compromised.\",\n      \"recommendation\": \"Implement strict input validation, audit the code for vulnerabilities, and restrict execution environments. Monitor transactions for anomalies.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Use of API Key for Market Data Import\",\n      \"evidence\": \"Requires SIMMER_API_KEY environment variable to import market data and resolve market IDs.\",\n      \"why\": \"API keys can be abused to access or manipulate market data if leaked.\",\n      \"recommendation\": \"Protect API keys with environment variable management and rotate keys regularly.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "statsfm",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "leak-check",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-permission-escalation-guard",
+    "zip_path": "skill_zips/consensus-permission-escalation-guard.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The consensus-permission-escalation-guard skill is designed as a safety gate to validate and control IAM permission escalation requests. It enforces strict schema validation, policy checks, and voting mechanisms to allow, block, or require rewrite of privilege elevation attempts. It does not require credentials, does not perform network communication during guard evaluation, and only writes audit artifacts to a configured state path. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The consensus-permission-escalation-guard skill is designed as a safety gate to validate and control IAM permission escalation requests. It enforces strict schema validation, policy checks, and voting mechanisms to allow, block, or require rewrite of privilege elevation attempts. It does not require credentials, does not perform network communication during guard evaluation, and only writes audit artifacts to a configured state path. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "airtag",
+    "zip_path": "skill_zips/airtag.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The AirTag skill involves accessing Apple account-level AirTag data, including location and diagnostics, using multiple access modes that require user trust and explicit confirmation. It handles sensitive data such as iCloud session traffic and Find My item metadata, and interacts with unofficial third-party tooling for private Apple protocols. While it explicitly avoids requesting raw Apple ID passwords and undeclared endpoints, the use of unofficial APIs and programmatic access modes introduces risks of credential misuse, data exfiltration, and privacy exposure if misconfigured or used without proper user consent.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Use of Unofficial Programmatic API Mode with Third-Party Tooling",
+          "evidence": "Programmatic API Mode depends on third-party tooling for Apple private protocols. Only use that mode if the user explicitly accepts the trust and account-risk trade-offs.",
+          "why": "Using unofficial APIs and third-party tools to access private Apple protocols can expose user credentials and session data to untrusted code, increasing the risk of credential theft and unauthorized data access.",
+          "recommendation": "Ensure users are fully informed about the risks before enabling Programmatic API Mode. Implement strict validation and sandboxing of third-party tooling. Prefer Direct App Control or Shared Link Mode when possible."
+        },
+        {
+          "severity": "medium",
+          "title": "Transmission of Sensitive Account Session Data to External Endpoints",
+          "evidence": "Data sent to https://www.icloud.com/find includes iCloud session data and Find My item metadata (API mode only). Also, shared item location data is sent to https://find.apple.com in Shared Link Mode.",
+          "why": "Sending session data and location metadata externally can lead to data exfiltration if endpoints are compromised or if man-in-the-middle attacks occur.",
+          "recommendation": "Use secure, encrypted connections only. Validate endpoints strictly. Limit data sent to the minimum necessary. Inform users about what data is transmitted."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential for Unauthorized Access Without Explicit User Confirmation",
+          "evidence": "Core Rule 7 states: Ask Before Persisting Logs or Sensitive Context. Never request Apple ID password sharing or guide key extraction inside this skill. Also, Core Rule 1 requires confirming access mode before action.",
+          "why": "If the skill or agent acts without explicit user confirmation, it could perform unauthorized actions, leading to privacy violations or data leakage.",
+          "recommendation": "Enforce strict user confirmation before any connector action, location pull, or local write. Implement audit logs and user notifications for all sensitive operations."
+        },
+        {
+          "severity": "low",
+          "title": "Local Storage of Sensitive Data in User Directory",
+          "evidence": "Memory and logs are stored locally under ~/airtag/, including incident notes and connector context.",
+          "why": "Local storage of sensitive data can be a target for local attackers or malware, potentially exposing user location history and AirTag data.",
+          "recommendation": "Encrypt local storage files and restrict file permissions. Inform users about local data storage and provide options to clear or secure data."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The AirTag skill involves accessing Apple account-level AirTag data, including location and diagnostics, using multiple access modes that require user trust and explicit confirmation. It handles sensitive data such as iCloud session traffic and Find My item metadata, and interacts with unofficial third-party tooling for private Apple protocols. While it explicitly avoids requesting raw Apple ID passwords and undeclared endpoints, the use of unofficial APIs and programmatic access modes introduces risks of credential misuse, data exfiltration, and privacy exposure if misconfigured or used without proper user consent.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Use of Unofficial Programmatic API Mode with Third-Party Tooling\",\n      \"evidence\": \"Programmatic API Mode depends on third-party tooling for Apple private protocols. Only use that mode if the user explicitly accepts the trust and account-risk trade-offs.\",\n      \"why\": \"Using unofficial APIs and third-party tools to access private Apple protocols can expose user credentials and session data to untrusted code, increasing the risk of credential theft and unauthorized data access.\",\n      \"recommendation\": \"Ensure users are fully informed about the risks before enabling Programmatic API Mode. Implement strict validation and sandboxing of third-party tooling. Prefer Direct App Control or Shared Link Mode when possible.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Transmission of Sensitive Account Session Data to External Endpoints\",\n      \"evidence\": \"Data sent to https://www.icloud.com/find includes iCloud session data and Find My item metadata (API mode only). Also, shared item location data is sent to https://find.apple.com in Shared Link Mode.\",\n      \"why\": \"Sending session data and location metadata externally can lead to data exfiltration if endpoints are compromised or if man-in-the-middle attacks occur.\",\n      \"recommendation\": \"Use secure, encrypted connections only. Validate endpoints strictly. Limit data sent to the minimum necessary. Inform users about what data is transmitted.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential for Unauthorized Access Without Explicit User Confirmation\",\n      \"evidence\": \"Core Rule 7 states: Ask Before Persisting Logs or Sensitive Context. Never request Apple ID password sharing or guide key extraction inside this skill. Also, Core Rule 1 requires confirming access mode before action.\",\n      \"why\": \"If the skill or agent acts without explicit user confirmation, it could perform unauthorized actions, leading to privacy violations or data leakage.\",\n      \"recommendation\": \"Enforce strict user confirmation before any connector action, location pull, or local write. Implement audit logs and user notifications for all sensitive operations.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Local Storage of Sensitive Data in User Directory\",\n      \"evidence\": \"Memory and logs are stored locally under ~/airtag/, including incident notes and connector context.\",\n      \"why\": \"Local storage of sensitive data can be a target for local attackers or malware, potentially exposing user location history and AirTag data.\",\n      \"recommendation\": \"Encrypt local storage files and restrict file permissions. Inform users about local data storage and provide options to clear or secure data.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "convex",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "feishu-app-setup",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-deployment-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "beauty",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "milan",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
   }
 ]
