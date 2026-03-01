@@ -168,6 +168,14 @@ def extract_slug(skill: Dict[str, Any]) -> str | None:
     return None
 
 
+def extract_name(skill: Dict[str, Any]) -> str | None:
+    for key in ("name", "title", "displayName"):
+        value = skill.get(key)
+        if isinstance(value, str) and value.strip():
+            return value.strip()
+    return None
+
+
 def extract_skill_md_text(zip_path: str, max_chars: int) -> Dict[str, Any]:
     with zipfile.ZipFile(zip_path, "r") as zf:
         names = zf.namelist()
@@ -377,6 +385,12 @@ def parse_args() -> argparse.Namespace:
         help="Download ZIP for a skill slug (repeat for multiple).",
     )
     parser.add_argument(
+        "--download-name",
+        action="append",
+        default=[],
+        help="Download by skill name from fetched list (repeat for multiple).",
+    )
+    parser.add_argument(
         "--download-dir",
         default="skill_zips",
         help="Directory to write downloaded ZIP files.",
@@ -477,6 +491,37 @@ def main() -> int:
         log("WARN", "Skipping skills list fetch (--skip-list-fetch)")
 
     all_slugs: List[str] = list(args.download_slug)
+    if args.download_name:
+        if args.skip_list_fetch:
+            log("ERROR", "--download-name requires list fetch (remove --skip-list-fetch).")
+            return 2
+        for wanted_name in args.download_name:
+            target = wanted_name.strip().lower()
+            if not target:
+                continue
+
+            exact_matches: List[tuple[str, str]] = []
+            fuzzy_matches: List[tuple[str, str]] = []
+            for skill in skills:
+                slug = extract_slug(skill)
+                name = extract_name(skill)
+                if not slug or not name:
+                    continue
+                current = name.lower()
+                if current == target:
+                    exact_matches.append((slug, name))
+                elif target in current:
+                    fuzzy_matches.append((slug, name))
+
+            matches = exact_matches or fuzzy_matches
+            if not matches:
+                log("WARN", f"No skills matched name '{wanted_name}'")
+                continue
+
+            for slug, resolved_name in matches:
+                all_slugs.append(slug)
+                log("INFO", f"Matched name '{wanted_name}' -> slug '{slug}' ({resolved_name})")
+
     if args.download_all_from_list:
         if args.skip_list_fetch:
             log("ERROR", "--download-all-from-list requires list fetch (remove --skip-list-fetch).")
