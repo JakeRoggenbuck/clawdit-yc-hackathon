@@ -1,0 +1,502 @@
+[
+  {
+    "slug": "sleekdotdesign/agent-skills/sleek-design-mobile-apps",
+    "url": "https://skills.sh/sleekdotdesign/agent-skills/sleek-design-mobile-apps",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "microsoft/github-copilot-for-azure/azure-cloud-migrate",
+    "url": "https://skills.sh/microsoft/github-copilot-for-azure/azure-cloud-migrate",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "vercel-labs/agent-browser/agent-browser",
+    "url": "https://skills.sh/vercel-labs/agent-browser/agent-browser",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/pollinations-ai",
+    "url": "https://skills.sh/supercent-io/skills-template/pollinations-ai",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/web-design-guidelines",
+    "url": "https://skills.sh/supercent-io/skills-template/web-design-guidelines",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/responsive-design",
+    "url": "https://skills.sh/supercent-io/skills-template/responsive-design",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/data-analysis",
+    "url": "https://skills.sh/supercent-io/skills-template/data-analysis",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/vercel-react-best-practices",
+    "url": "https://skills.sh/supercent-io/skills-template/vercel-react-best-practices",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/frontend-design-system",
+    "url": "https://skills.sh/supercent-io/skills-template/frontend-design-system",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/codebase-search",
+    "url": "https://skills.sh/supercent-io/skills-template/codebase-search",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/pptx-presentation-builder",
+    "url": "https://skills.sh/supercent-io/skills-template/pptx-presentation-builder",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/task-estimation",
+    "url": "https://skills.sh/supercent-io/skills-template/task-estimation",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/prompt-repetition",
+    "url": "https://skills.sh/supercent-io/skills-template/prompt-repetition",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/firebase-ai-logic",
+    "url": "https://skills.sh/supercent-io/skills-template/firebase-ai-logic",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/log-analysis",
+    "url": "https://skills.sh/supercent-io/skills-template/log-analysis",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/agentic-workflow",
+    "url": "https://skills.sh/supercent-io/skills-template/agentic-workflow",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/vibe-kanban",
+    "url": "https://skills.sh/supercent-io/skills-template/vibe-kanban",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/npm-git-install",
+    "url": "https://skills.sh/supercent-io/skills-template/npm-git-install",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/authentication-setup",
+    "url": "https://skills.sh/supercent-io/skills-template/authentication-setup",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/sprint-retrospective",
+    "url": "https://skills.sh/supercent-io/skills-template/sprint-retrospective",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/pattern-detection",
+    "url": "https://skills.sh/supercent-io/skills-template/pattern-detection",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/system-environment-setup",
+    "url": "https://skills.sh/supercent-io/skills-template/system-environment-setup",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/genkit",
+    "url": "https://skills.sh/supercent-io/skills-template/genkit",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/testing-strategies",
+    "url": "https://skills.sh/supercent-io/skills-template/testing-strategies",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/file-organization",
+    "url": "https://skills.sh/supercent-io/skills-template/file-organization",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/ralph",
+    "url": "https://skills.sh/supercent-io/skills-template/ralph",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/standup-meeting",
+    "url": "https://skills.sh/supercent-io/skills-template/standup-meeting",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/marketing-skills-collection",
+    "url": "https://skills.sh/supercent-io/skills-template/marketing-skills-collection",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/vercel-deploy",
+    "url": "https://skills.sh/supercent-io/skills-template/vercel-deploy",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/agent-evaluation",
+    "url": "https://skills.sh/supercent-io/skills-template/agent-evaluation",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/agentic-development-principles",
+    "url": "https://skills.sh/supercent-io/skills-template/agentic-development-principles",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/api-design",
+    "url": "https://skills.sh/supercent-io/skills-template/api-design",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/plannotator",
+    "url": "https://skills.sh/supercent-io/skills-template/plannotator",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/ui-component-patterns",
+    "url": "https://skills.sh/supercent-io/skills-template/ui-component-patterns",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/environment-setup",
+    "url": "https://skills.sh/supercent-io/skills-template/environment-setup",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/user-guide-writing",
+    "url": "https://skills.sh/supercent-io/skills-template/user-guide-writing",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/web-accessibility",
+    "url": "https://skills.sh/supercent-io/skills-template/web-accessibility",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/code-refactoring",
+    "url": "https://skills.sh/supercent-io/skills-template/code-refactoring",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/jeo",
+    "url": "https://skills.sh/supercent-io/skills-template/jeo",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/copilot-coding-agent",
+    "url": "https://skills.sh/supercent-io/skills-template/copilot-coding-agent",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/opencontext",
+    "url": "https://skills.sh/supercent-io/skills-template/opencontext",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/bmad-orchestrator",
+    "url": "https://skills.sh/supercent-io/skills-template/bmad-orchestrator",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/debugging",
+    "url": "https://skills.sh/supercent-io/skills-template/debugging",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/git-workflow",
+    "url": "https://skills.sh/supercent-io/skills-template/git-workflow",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/performance-optimization",
+    "url": "https://skills.sh/supercent-io/skills-template/performance-optimization",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/agentic-principles",
+    "url": "https://skills.sh/supercent-io/skills-template/agentic-principles",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/security-best-practices",
+    "url": "https://skills.sh/supercent-io/skills-template/security-best-practices",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/database-schema-design",
+    "url": "https://skills.sh/supercent-io/skills-template/database-schema-design",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/looker-studio-bigquery",
+    "url": "https://skills.sh/supercent-io/skills-template/looker-studio-bigquery",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/workflow-automation",
+    "url": "https://skills.sh/supercent-io/skills-template/workflow-automation",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/skill-standardization",
+    "url": "https://skills.sh/supercent-io/skills-template/skill-standardization",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/agent-configuration",
+    "url": "https://skills.sh/supercent-io/skills-template/agent-configuration",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/oh-my-codex",
+    "url": "https://skills.sh/supercent-io/skills-template/oh-my-codex",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/agent-browser",
+    "url": "https://skills.sh/supercent-io/skills-template/agent-browser",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/backend-testing",
+    "url": "https://skills.sh/supercent-io/skills-template/backend-testing",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/deployment-automation",
+    "url": "https://skills.sh/supercent-io/skills-template/deployment-automation",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/state-management",
+    "url": "https://skills.sh/supercent-io/skills-template/state-management",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/omc",
+    "url": "https://skills.sh/supercent-io/skills-template/omc",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/git-submodule",
+    "url": "https://skills.sh/supercent-io/skills-template/git-submodule",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/image-generation-mcp",
+    "url": "https://skills.sh/supercent-io/skills-template/image-generation-mcp",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/task-planning",
+    "url": "https://skills.sh/supercent-io/skills-template/task-planning",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/ohmg",
+    "url": "https://skills.sh/supercent-io/skills-template/ohmg",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/technical-writing",
+    "url": "https://skills.sh/supercent-io/skills-template/technical-writing",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/api-documentation",
+    "url": "https://skills.sh/supercent-io/skills-template/api-documentation",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/code-review",
+    "url": "https://skills.sh/supercent-io/skills-template/code-review",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/changelog-maintenance",
+    "url": "https://skills.sh/supercent-io/skills-template/changelog-maintenance",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/monitoring-observability",
+    "url": "https://skills.sh/supercent-io/skills-template/monitoring-observability",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "supercent-io/skills-template/remotion-video-production",
+    "url": "https://skills.sh/supercent-io/skills-template/remotion-video-production",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/frontend-design",
+    "url": "https://skills.sh/am-will/codex-skills/frontend-design",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/openai-docs-skill",
+    "url": "https://skills.sh/am-will/codex-skills/openai-docs-skill",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/context7",
+    "url": "https://skills.sh/am-will/codex-skills/context7",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/read-github",
+    "url": "https://skills.sh/am-will/codex-skills/read-github",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/gemini-computer-use",
+    "url": "https://skills.sh/am-will/codex-skills/gemini-computer-use",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/frontend-responsive-design-standards",
+    "url": "https://skills.sh/am-will/codex-skills/frontend-responsive-design-standards",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/vercel-react-best-practices",
+    "url": "https://skills.sh/am-will/codex-skills/vercel-react-best-practices",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/swarm-planner",
+    "url": "https://skills.sh/am-will/codex-skills/swarm-planner",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/plan-harder",
+    "url": "https://skills.sh/am-will/codex-skills/plan-harder",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/llm-council",
+    "url": "https://skills.sh/am-will/codex-skills/llm-council",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/agent-browser",
+    "url": "https://skills.sh/am-will/codex-skills/agent-browser",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/super-swarm-spark",
+    "url": "https://skills.sh/am-will/codex-skills/super-swarm-spark",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/parallel-task",
+    "url": "https://skills.sh/am-will/codex-skills/parallel-task",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/parallel-task-spark",
+    "url": "https://skills.sh/am-will/codex-skills/parallel-task-spark",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/role-creator",
+    "url": "https://skills.sh/am-will/codex-skills/role-creator",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/codex-subagent",
+    "url": "https://skills.sh/am-will/codex-skills/codex-subagent",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/markdown-url",
+    "url": "https://skills.sh/am-will/codex-skills/markdown-url",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "am-will/codex-skills/planner",
+    "url": "https://skills.sh/am-will/codex-skills/planner",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "imbue-ai/vet/vet",
+    "url": "https://skills.sh/imbue-ai/vet/vet",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/prd",
+    "url": "https://skills.sh/github/awesome-copilot/prd",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/create-specification",
+    "url": "https://skills.sh/github/awesome-copilot/create-specification",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/gh-cli",
+    "url": "https://skills.sh/github/awesome-copilot/gh-cli",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/web-design-reviewer",
+    "url": "https://skills.sh/github/awesome-copilot/web-design-reviewer",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/excalidraw-diagram-generator",
+    "url": "https://skills.sh/github/awesome-copilot/excalidraw-diagram-generator",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/create-llms",
+    "url": "https://skills.sh/github/awesome-copilot/create-llms",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/documentation-writer",
+    "url": "https://skills.sh/github/awesome-copilot/documentation-writer",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "founderjourney/claude-skills/firecrawl",
+    "url": "https://skills.sh/founderjourney/claude-skills/firecrawl",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/comment-code-generate-a-tutorial",
+    "url": "https://skills.sh/github/awesome-copilot/comment-code-generate-a-tutorial",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/arch-linux-triage",
+    "url": "https://skills.sh/github/awesome-copilot/arch-linux-triage",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/editorconfig",
+    "url": "https://skills.sh/github/awesome-copilot/editorconfig",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/shuffle-json-data",
+    "url": "https://skills.sh/github/awesome-copilot/shuffle-json-data",
+    "source": "skills.sh leaderboard scrape"
+  },
+  {
+    "slug": "github/awesome-copilot/model-recommendation",
+    "url": "https://skills.sh/github/awesome-copilot/model-recommendation",
+    "source": "skills.sh leaderboard scrape"
+  }
+]
