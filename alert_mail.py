@@ -5,20 +5,17 @@ from __future__ import annotations
 
 import argparse
 import os
-import smtplib
 from dataclasses import dataclass
 from datetime import datetime, timezone
-from email.message import EmailMessage
 from typing import Any, Callable, Dict, List, Set
 
+import kronicler
+from agentmail import AgentMail
+from dotenv import load_dotenv
+
+load_dotenv()
+
 KNOWN_LEVELS = {"critical", "high", "medium", "low", "info", "unknown"}
-
-
-def _env_bool(name: str, default: bool) -> bool:
-    raw = os.environ.get(name)
-    if raw is None:
-        return default
-    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
 
 def parse_alert_levels(raw: str) -> Set[str]:
@@ -35,52 +32,18 @@ def parse_alert_levels(raw: str) -> Set[str]:
 def add_alert_mail_args(parser: argparse.ArgumentParser) -> None:
     parser.add_argument(
         "--alert-email-to",
-        default=os.environ.get("ALERT_EMAIL_TO", ""),
+        default=os.environ.get("ALERT_EMAIL_TO", os.environ.get("ADMIN_EMAIL", "")),
         help="Destination email for alert notifications.",
     )
     parser.add_argument(
-        "--alert-email-from",
-        default=os.environ.get("ALERT_EMAIL_FROM", ""),
-        help="Sender email address for alert notifications.",
+        "--agentmail-api-key",
+        default=os.environ.get("AGENTMAIL_API_KEY", ""),
+        help="AgentMail API key.",
     )
     parser.add_argument(
-        "--alert-email-smtp-host",
-        default=os.environ.get("ALERT_EMAIL_SMTP_HOST", ""),
-        help="SMTP host used to send alert emails.",
-    )
-    parser.add_argument(
-        "--alert-email-smtp-port",
-        type=int,
-        default=int(os.environ.get("ALERT_EMAIL_SMTP_PORT", "587")),
-        help="SMTP port used to send alert emails.",
-    )
-    parser.add_argument(
-        "--alert-email-smtp-user",
-        default=os.environ.get("ALERT_EMAIL_SMTP_USER", ""),
-        help="SMTP username (optional).",
-    )
-    parser.add_argument(
-        "--alert-email-smtp-password",
-        default=os.environ.get("ALERT_EMAIL_SMTP_PASSWORD", ""),
-        help="SMTP password (optional).",
-    )
-    parser.add_argument(
-        "--alert-email-use-ssl",
-        action="store_true",
-        default=_env_bool("ALERT_EMAIL_USE_SSL", False),
-        help="Use SMTP over SSL (smtplib.SMTP_SSL).",
-    )
-    parser.add_argument(
-        "--alert-email-use-starttls",
-        action="store_true",
-        default=_env_bool("ALERT_EMAIL_USE_STARTTLS", True),
-        help="Use STARTTLS when not using SSL (enabled by default).",
-    )
-    parser.add_argument(
-        "--no-alert-email-use-starttls",
-        action="store_false",
-        dest="alert_email_use_starttls",
-        help="Disable STARTTLS.",
+        "--agentmail-inbox-id",
+        default=os.environ.get("AGENTMAIL_INBOX_ID", "gracefulbird586@agentmail.to"),
+        help="AgentMail inbox ID used to send alerts.",
     )
     parser.add_argument(
         "--alert-levels",
@@ -96,37 +59,20 @@ def add_alert_mail_args(parser: argparse.ArgumentParser) -> None:
 
 @dataclass
 class AlertMailer:
+    client: AgentMail
+    inbox_id: str
     to_email: str
-    from_email: str
-    smtp_host: str
-    smtp_port: int
-    smtp_user: str
-    smtp_password: str
-    use_ssl: bool
-    use_starttls: bool
     subject_prefix: str
     levels: Set[str]
 
+    @kronicler.capture
     def send(self, subject: str, body: str) -> None:
-        msg = EmailMessage()
-        msg["Subject"] = subject
-        msg["From"] = self.from_email
-        msg["To"] = self.to_email
-        msg.set_content(body)
-
-        if self.use_ssl:
-            with smtplib.SMTP_SSL(self.smtp_host, self.smtp_port, timeout=30) as smtp:
-                if self.smtp_user:
-                    smtp.login(self.smtp_user, self.smtp_password)
-                smtp.send_message(msg)
-            return
-
-        with smtplib.SMTP(self.smtp_host, self.smtp_port, timeout=30) as smtp:
-            if self.use_starttls:
-                smtp.starttls()
-            if self.smtp_user:
-                smtp.login(self.smtp_user, self.smtp_password)
-            smtp.send_message(msg)
+        self.client.inboxes.messages.send(
+            inbox_id=self.inbox_id,
+            to=[self.to_email],
+            subject=subject,
+            text=body,
+        )
 
 
 def build_alert_mailer(args: argparse.Namespace, log: Callable[[str, str], None]) -> AlertMailer | None:
@@ -134,25 +80,20 @@ def build_alert_mailer(args: argparse.Namespace, log: Callable[[str, str], None]
     if not to_email:
         return None
 
-    from_email = (args.alert_email_from or "").strip()
-    smtp_host = (args.alert_email_smtp_host or "").strip()
-    if not from_email or not smtp_host:
+    agentmail_api_key = (args.agentmail_api_key or "").strip()
+    inbox_id = (args.agentmail_inbox_id or "").strip()
+    if not agentmail_api_key or not inbox_id:
         log(
             "WARN",
-            "Alert email disabled: --alert-email-to requires --alert-email-from and --alert-email-smtp-host.",
+            "Alert email disabled: --alert-email-to requires --agentmail-api-key and --agentmail-inbox-id.",
         )
         return None
 
     levels = parse_alert_levels(args.alert_levels or "")
     return AlertMailer(
+        client=AgentMail(api_key=agentmail_api_key),
+        inbox_id=inbox_id,
         to_email=to_email,
-        from_email=from_email,
-        smtp_host=smtp_host,
-        smtp_port=args.alert_email_smtp_port,
-        smtp_user=(args.alert_email_smtp_user or "").strip(),
-        smtp_password=args.alert_email_smtp_password or "",
-        use_ssl=bool(args.alert_email_use_ssl),
-        use_starttls=bool(args.alert_email_use_starttls),
         subject_prefix=(args.alert_email_subject_prefix or "").strip() or "[Puller Alert]",
         levels=levels,
     )

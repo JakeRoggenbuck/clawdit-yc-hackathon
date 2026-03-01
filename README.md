@@ -98,18 +98,13 @@ This lets you stop/restart long runs without losing prior audit entries.
 
 ## Alert email notifications (critical/high)
 
-All pullers now support SMTP alert emails when an audit result contains `critical`/`high` findings (or matching risk level).
+All pullers now support AgentMail alert emails when an audit result contains `critical`/`high` findings (or matching risk level).
 
 Configure via flags (or equivalent env vars):
 
 - `--alert-email-to` (`ALERT_EMAIL_TO`)
-- `--alert-email-from` (`ALERT_EMAIL_FROM`)
-- `--alert-email-smtp-host` (`ALERT_EMAIL_SMTP_HOST`)
-- `--alert-email-smtp-port` (`ALERT_EMAIL_SMTP_PORT`, default `587`)
-- `--alert-email-smtp-user` (`ALERT_EMAIL_SMTP_USER`, optional)
-- `--alert-email-smtp-password` (`ALERT_EMAIL_SMTP_PASSWORD`, optional)
-- `--alert-email-use-ssl` (`ALERT_EMAIL_USE_SSL`, default `false`)
-- `--alert-email-use-starttls` / `--no-alert-email-use-starttls` (`ALERT_EMAIL_USE_STARTTLS`, default `true`)
+- `--agentmail-api-key` (`AGENTMAIL_API_KEY`)
+- `--agentmail-inbox-id` (`AGENTMAIL_INBOX_ID`, default `gracefulbird586@agentmail.to`)
 - `--alert-levels` (`ALERT_LEVELS`, default `critical,high`)
 - `--alert-email-subject-prefix` (`ALERT_EMAIL_SUBJECT_PREFIX`, default `[Puller Alert]`)
 
@@ -118,11 +113,8 @@ Example:
 ```bash
 OPENAI_API_KEY=... \
 ALERT_EMAIL_TO=you@example.com \
-ALERT_EMAIL_FROM=bot@example.com \
-ALERT_EMAIL_SMTP_HOST=smtp.example.com \
-ALERT_EMAIL_SMTP_PORT=587 \
-ALERT_EMAIL_SMTP_USER=bot@example.com \
-ALERT_EMAIL_SMTP_PASSWORD=... \
+AGENTMAIL_API_KEY=... \
+AGENTMAIL_INBOX_ID=gracefulbird586@agentmail.to \
 python3 fetch_clawhub_skills.py \
   --download-all-from-list \
   --audit-skill-md
