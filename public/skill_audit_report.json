@@ -4397,5 +4397,292 @@
       "findings": [],
       "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The SKILL.md instructions describe a detailed, structured process for analyzing AI prompt files and recommending appropriate AI models for GitHub Copilot usage. The content is focused on model selection logic, task categorization, subscription tier considerations, and integration guidance. There are no indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
     }
+  },
+  {
+    "slug": "proactive-amcp",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "clawsaver",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "torchdomainauctionbot",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "proactive-amcp",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "clawsaver",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "proactive-amcp",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "nano-banana-pro-prompts-recommend",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "proactive-amcp",
+    "zip_path": "skill_zips/proactive-amcp.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The proactive-amcp skill handles sensitive cryptographic identities, secrets, and API keys, storing them encrypted on IPFS and sharing knowledge on a public network (Solvr). It requires users to provide API keys and Telegram IDs for notifications, which could be misused if intercepted. The skill includes commands that handle secrets and identity files, and it supports remote registration and linking to human accounts via URLs. While encryption and double encryption are used, the exposure of identity.json and API keys, as well as the public sharing of agent profiles and solutions, pose risks of credential theft, data exfiltration, and social engineering if the environment or communication channels are compromised. No explicit obfuscation or destructive commands were found, but the complexity and network interactions require careful security controls.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Handling and Storage of Sensitive Credentials and Identity Files",
+          "evidence": "The skill stores identity.json (signing key) and API keys (service credentials) encrypted in checkpoints on IPFS. The identity.json is included for self-recovery and the API keys are double encrypted. Commands like 'bash SKILL_DIR/scripts/proactive-amcp.sh config set solvr.apiKey YOUR_KEY' require users to input sensitive API keys.",
+          "why": "Storing cryptographic keys and API keys, even encrypted, on a distributed public network (IPFS) can lead to credential theft if encryption is broken or keys are leaked. The identity.json file is critical for agent identity and resurrection, and its compromise can lead to impersonation or unauthorized access.",
+          "recommendation": "Ensure strong encryption standards and key management practices. Limit access to identity.json and API keys. Educate users on securing their keys and environment. Consider additional access controls or hardware security modules (HSM) for key storage."
+        },
+        {
+          "severity": "medium",
+          "title": "Exposure of Agent Profiles and Solutions on Public Network (Solvr)",
+          "evidence": "Agents register on Solvr network with public profiles discoverable by others. Solutions and checkpoints are pinned to IPFS and accessible via any IPFS gateway worldwide. The skill supports posting and searching collective knowledge and solutions.",
+          "why": "Public exposure of agent profiles and shared solutions may leak sensitive operational details or secrets if not properly sanitized. Attackers could use this information for social engineering or targeted attacks.",
+          "recommendation": "Implement strict data sanitization before sharing. Provide clear user warnings about public exposure. Allow opt-out or selective sharing of sensitive information."
+        },
+        {
+          "severity": "medium",
+          "title": "Use of External Notification via Telegram",
+          "evidence": "The skill supports setting a Telegram notification target via 'bash SKILL_DIR/scripts/proactive-amcp.sh config set notify.target YOUR_TELEGRAM_ID'. Notifications may include checkpoint or status updates.",
+          "why": "Sending notifications to external services like Telegram can leak metadata or sensitive information if messages are intercepted or if the Telegram account is compromised.",
+          "recommendation": "Ensure notifications do not contain sensitive data. Use secure communication channels and educate users on securing their Telegram accounts."
+        },
+        {
+          "severity": "low",
+          "title": "Potential for Social Engineering via Claim URL and Linking Identity",
+          "evidence": "Commands like 'bash SKILL_DIR/scripts/proactive-amcp.sh claim-info' display a claim URL to link agent to human account. Linking identity proves ownership via signed challenge.",
+          "why": "If attackers trick users into visiting malicious claim URLs or intercept these URLs, they may hijack agent control or reputation.",
+          "recommendation": "Use secure, authenticated channels for claim URLs. Educate users to verify URLs and avoid phishing."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The proactive-amcp skill handles sensitive cryptographic identities, secrets, and API keys, storing them encrypted on IPFS and sharing knowledge on a public network (Solvr). It requires users to provide API keys and Telegram IDs for notifications, which could be misused if intercepted. The skill includes commands that handle secrets and identity files, and it supports remote registration and linking to human accounts via URLs. While encryption and double encryption are used, the exposure of identity.json and API keys, as well as the public sharing of agent profiles and solutions, pose risks of credential theft, data exfiltration, and social engineering if the environment or communication channels are compromised. No explicit obfuscation or destructive commands were found, but the complexity and network interactions require careful security controls.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Handling and Storage of Sensitive Credentials and Identity Files\",\n      \"evidence\": \"The skill stores identity.json (signing key) and API keys (service credentials) encrypted in checkpoints on IPFS. The identity.json is included for self-recovery and the API keys are double encrypted. Commands like 'bash SKILL_DIR/scripts/proactive-amcp.sh config set solvr.apiKey YOUR_KEY' require users to input sensitive API keys.\",\n      \"why\": \"Storing cryptographic keys and API keys, even encrypted, on a distributed public network (IPFS) can lead to credential theft if encryption is broken or keys are leaked. The identity.json file is critical for agent identity and resurrection, and its compromise can lead to impersonation or unauthorized access.\",\n      \"recommendation\": \"Ensure strong encryption standards and key management practices. Limit access to identity.json and API keys. Educate users on securing their keys and environment. Consider additional access controls or hardware security modules (HSM) for key storage.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Exposure of Agent Profiles and Solutions on Public Network (Solvr)\",\n      \"evidence\": \"Agents register on Solvr network with public profiles discoverable by others. Solutions and checkpoints are pinned to IPFS and accessible via any IPFS gateway worldwide. The skill supports posting and searching collective knowledge and solutions.\",\n      \"why\": \"Public exposure of agent profiles and shared solutions may leak sensitive operational details or secrets if not properly sanitized. Attackers could use this information for social engineering or targeted attacks.\",\n      \"recommendation\": \"Implement strict data sanitization before sharing. Provide clear user warnings about public exposure. Allow opt-out or selective sharing of sensitive information.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Use of External Notification via Telegram\",\n      \"evidence\": \"The skill supports setting a Telegram notification target via 'bash SKILL_DIR/scripts/proactive-amcp.sh config set notify.target YOUR_TELEGRAM_ID'. Notifications may include checkpoint or status updates.\",\n      \"why\": \"Sending notifications to external services like Telegram can leak metadata or sensitive information if messages are intercepted or if the Telegram account is compromised.\",\n      \"recommendation\": \"Ensure notifications do not contain sensitive data. Use secure communication channels and educate users on securing their Telegram accounts.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Potential for Social Engineering via Claim URL and Linking Identity\",\n      \"evidence\": \"Commands like 'bash SKILL_DIR/scripts/proactive-amcp.sh claim-info' display a claim URL to link agent to human account. Linking identity proves ownership via signed challenge.\",\n      \"why\": \"If attackers trick users into visiting malicious claim URLs or intercept these URLs, they may hijack agent control or reputation.\",\n      \"recommendation\": \"Use secure, authenticated channels for claim URLs. Educate users to verify URLs and avoid phishing.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "clawsaver",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "torchdomainauctionbot",
+    "zip_path": "skill_zips/torchdomainauctionbot.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The torch-domain-auction-bot skill is a domain lending and liquidation bot operating on the Solana blockchain. It requires environment variables including a Solana RPC URL, a vault creator public key, and optionally a private key for the agent wallet. The bot generates a disposable keypair if no private key is provided. It performs domain token creation, lending monitoring, liquidation, and domain lease rotation. All funds flow through a vault controlled by a human principal. The bot does not autonomously invoke AI models and includes clear instructions for linking the agent wallet to the vault. The source code is fully included for auditability, and no hidden or obfuscated code or commands are present. There is no evidence of credential theft, data exfiltration, social engineering, or destructive commands.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The torch-domain-auction-bot skill is a domain lending and liquidation bot operating on the Solana blockchain. It requires environment variables including a Solana RPC URL, a vault creator public key, and optionally a private key for the agent wallet. The bot generates a disposable keypair if no private key is provided. It performs domain token creation, lending monitoring, liquidation, and domain lease rotation. All funds flow through a vault controlled by a human principal. The bot does not autonomously invoke AI models and includes clear instructions for linking the agent wallet to the vault. The source code is fully included for auditability, and no hidden or obfuscated code or commands are present. There is no evidence of credential theft, data exfiltration, social engineering, or destructive commands.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "qveris-official",
+    "zip_path": "skill_zips/qveris-official.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The qveris-official SKILL.md instructions describe a Search & Action Engine that uses a scoped API key (QVERIS_API_KEY) to access structured data and tool capabilities via HTTPS to a single trusted endpoint. The instructions emphasize security best practices such as not logging or caching the key, avoiding sending sensitive PII in queries, and using revocable API keys. There is no evidence of credential theft, data exfiltration beyond intended API use, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [
+        {
+          "severity": "info",
+          "title": "Use of Scoped API Key with Read-Only Scope",
+          "evidence": "credentials: primary: QVERIS_API_KEY, scope: read-only, endpoint: https://qveris.ai/api/v1",
+          "why": "The API key is scoped as read-only and only sent to a single HTTPS endpoint, reducing risk of misuse or credential theft.",
+          "recommendation": "Continue to enforce use of scoped, revocable API keys and monitor usage regularly."
+        },
+        {
+          "severity": "info",
+          "title": "No Logging or Caching of Credentials",
+          "evidence": "The key is never logged, cached, or written to disk.",
+          "why": "Avoids accidental credential exposure through logs or persistent storage.",
+          "recommendation": "Maintain this practice and audit code to ensure no accidental logging."
+        },
+        {
+          "severity": "info",
+          "title": "Privacy Guidance to Avoid Sensitive Data in Queries",
+          "evidence": "Avoid including sensitive credentials or personally identifiable information (PII) in search queries or tool parameters.",
+          "why": "Prevents inadvertent leakage of sensitive data to external API.",
+          "recommendation": "Educate users and developers to follow this guidance and review privacy policy regularly."
+        },
+        {
+          "severity": "info",
+          "title": "No Evidence of Hidden or Destructive Commands",
+          "evidence": "The instructions describe only data retrieval and tool execution via official API endpoints with no mention of destructive or hidden commands.",
+          "why": "Reduces risk of malicious behavior or unintended destructive actions.",
+          "recommendation": "Continue to review updates for any changes introducing risky commands."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The qveris-official SKILL.md instructions describe a Search & Action Engine that uses a scoped API key (QVERIS_API_KEY) to access structured data and tool capabilities via HTTPS to a single trusted endpoint. The instructions emphasize security best practices such as not logging or caching the key, avoiding sending sensitive PII in queries, and using revocable API keys. There is no evidence of credential theft, data exfiltration beyond intended API use, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": [\n    {\n      \"severity\": \"info\",\n      \"title\": \"Use of Scoped API Key with Read-Only Scope\",\n      \"evidence\": \"credentials: primary: QVERIS_API_KEY, scope: read-only, endpoint: https://qveris.ai/api/v1\",\n      \"why\": \"The API key is scoped as read-only and only sent to a single HTTPS endpoint, reducing risk of misuse or credential theft.\",\n      \"recommendation\": \"Continue to enforce use of scoped, revocable API keys and monitor usage regularly.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"No Logging or Caching of Credentials\",\n      \"evidence\": \"The key is never logged, cached, or written to disk.\",\n      \"why\": \"Avoids accidental credential exposure through logs or persistent storage.\",\n      \"recommendation\": \"Maintain this practice and audit code to ensure no accidental logging.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"Privacy Guidance to Avoid Sensitive Data in Queries\",\n      \"evidence\": \"Avoid including sensitive credentials or personally identifiable information (PII) in search queries or tool parameters.\",\n      \"why\": \"Prevents inadvertent leakage of sensitive data to external API.\",\n      \"recommendation\": \"Educate users and developers to follow this guidance and review privacy policy regularly.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"No Evidence of Hidden or Destructive Commands\",\n      \"evidence\": \"The instructions describe only data retrieval and tool execution via official API endpoints with no mention of destructive or hidden commands.\",\n      \"why\": \"Reduces risk of malicious behavior or unintended destructive actions.\",\n      \"recommendation\": \"Continue to review updates for any changes introducing risky commands.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "system-health-monitor",
+    "zip_path": "skill_zips/system-health-monitor.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The system-health-monitor skill is a monitoring and alerting tool that installs dependencies only from official OS repositories and supports opt-in notification channels with strict command validation. It does not contain credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [
+        {
+          "severity": "low",
+          "title": "Automatic Dependency Installation Requires Elevated Privileges",
+          "evidence": "The skill can automatically install missing dependencies (fail2ban, ufw, auditd, aide) from official OS repositories and attempts to enable/start services, which may require elevated privileges.",
+          "why": "While installation is from official sources and logged, elevated privileges are required to install and start services, which could be misused if the skill or environment is compromised.",
+          "recommendation": "Ensure that the auto-install feature is used in trusted environments only and consider disabling auto_install.enabled if privilege escalation is a concern."
+        },
+        {
+          "severity": "low",
+          "title": "Custom Notification Commands Are Allowed with Restrictions",
+          "evidence": "Supports custom notification commands that are validated against a whitelist and run in a restricted environment with sanitized variables.",
+          "why": "Although the skill restricts commands and sanitizes inputs, custom commands could potentially be misconfigured to execute unintended actions if the whitelist or validation is bypassed.",
+          "recommendation": "Maintain strict validation of custom commands and avoid enabling custom notification commands unless necessary and fully audited."
+        },
+        {
+          "severity": "info",
+          "title": "Notification Channels Are Opt-In and Disabled by Default",
+          "evidence": "All notification channels (Telegram, Slack, Discord, Email, Webhook, Custom) are opt-in and disabled by default.",
+          "why": "This design prevents accidental data exfiltration or external communication unless explicitly configured by the user.",
+          "recommendation": "Users should carefully configure notification channels and verify endpoints to prevent unintended data leaks."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The system-health-monitor skill is a monitoring and alerting tool that installs dependencies only from official OS repositories and supports opt-in notification channels with strict command validation. It does not contain credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": [\n    {\n      \"severity\": \"low\",\n      \"title\": \"Automatic Dependency Installation Requires Elevated Privileges\",\n      \"evidence\": \"The skill can automatically install missing dependencies (fail2ban, ufw, auditd, aide) from official OS repositories and attempts to enable/start services, which may require elevated privileges.\",\n      \"why\": \"While installation is from official sources and logged, elevated privileges are required to install and start services, which could be misused if the skill or environment is compromised.\",\n      \"recommendation\": \"Ensure that the auto-install feature is used in trusted environments only and consider disabling auto_install.enabled if privilege escalation is a concern.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Custom Notification Commands Are Allowed with Restrictions\",\n      \"evidence\": \"Supports custom notification commands that are validated against a whitelist and run in a restricted environment with sanitized variables.\",\n      \"why\": \"Although the skill restricts commands and sanitizes inputs, custom commands could potentially be misconfigured to execute unintended actions if the whitelist or validation is bypassed.\",\n      \"recommendation\": \"Maintain strict validation of custom commands and avoid enabling custom notification commands unless necessary and fully audited.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"Notification Channels Are Opt-In and Disabled by Default\",\n      \"evidence\": \"All notification channels (Telegram, Slack, Discord, Email, Webhook, Custom) are opt-in and disabled by default.\",\n      \"why\": \"This design prevents accidental data exfiltration or external communication unless explicitly configured by the user.\",\n      \"recommendation\": \"Users should carefully configure notification channels and verify endpoints to prevent unintended data leaks.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "idea2mvp",
+    "zip_path": "skill_zips/idea2mvp.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The idea2mvp skill instructions describe a structured workflow for product idea discovery, validation, and MVP building. It involves multi-platform searches, user profile data collection, and code generation based on user technical background. The skill uses several scripts for data gathering and supports email sending via SMTP with user-configured credentials. No evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation was found. The email sending feature requires explicit user configuration and is standard for notification purposes.",
+      "findings": [
+        {
+          "severity": "medium",
+          "title": "Credential Handling for Email Sending",
+          "evidence": "The `scripts/send_email.py` script sends emails via SMTP using credentials configured in `.env.idea2mvp` (`EMAIL_SMTP_HOST`, `EMAIL_SENDER`, `EMAIL_PASSWORD`, `EMAIL_RECEIVER`).",
+          "why": "Storing and using email credentials in environment files can pose a risk if the environment file is not securely managed. Misuse or leakage of these credentials could lead to unauthorized email sending or account compromise.",
+          "recommendation": "Ensure `.env.idea2mvp` is securely stored and access is restricted. Use application-specific passwords or tokens where possible. Inform users about secure credential management and avoid hardcoding credentials in code."
+        },
+        {
+          "severity": "low",
+          "title": "User Profile Data Collection Without Explicit Consent",
+          "evidence": "The skill continuously updates `user-profile.md` with user information captured from conversations without explicit user consent, e.g., '\u53ea\u5728\u9636\u6bb5\u4e09\u4fe1\u606f\u660e\u663e\u4e0d\u8db3\u65f6\u624d\u4e3b\u52a8\u8be2\u95ee\u6280\u672f\u80cc\u666f' and '\u6bcf\u5f53\u4ece\u5bf9\u8bdd\u4e2d\u6355\u6349\u5230\u65b0\u7684\u7528\u6237\u80cc\u666f\u4fe1\u606f\uff0c\u53ca\u65f6\u8ffd\u52a0\u66f4\u65b0\uff08\u4e0d\u9700\u8981\u5f81\u6c42\u7528\u6237\u540c\u610f\uff09'.",
+          "why": "Collecting and storing user personal or technical background data without explicit consent may raise privacy concerns and compliance issues depending on jurisdiction.",
+          "recommendation": "Implement clear user notifications about data collection and usage. Obtain explicit consent before storing personal or sensitive information. Provide options for users to review and delete their profile data."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The idea2mvp skill instructions describe a structured workflow for product idea discovery, validation, and MVP building. It involves multi-platform searches, user profile data collection, and code generation based on user technical background. The skill uses several scripts for data gathering and supports email sending via SMTP with user-configured credentials. No evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation was found. The email sending feature requires explicit user configuration and is standard for notification purposes.\",\n  \"findings\": [\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Credential Handling for Email Sending\",\n      \"evidence\": \"The `scripts/send_email.py` script sends emails via SMTP using credentials configured in `.env.idea2mvp` (`EMAIL_SMTP_HOST`, `EMAIL_SENDER`, `EMAIL_PASSWORD`, `EMAIL_RECEIVER`).\",\n      \"why\": \"Storing and using email credentials in environment files can pose a risk if the environment file is not securely managed. Misuse or leakage of these credentials could lead to unauthorized email sending or account compromise.\",\n      \"recommendation\": \"Ensure `.env.idea2mvp` is securely stored and access is restricted. Use application-specific passwords or tokens where possible. Inform users about secure credential management and avoid hardcoding credentials in code.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"User Profile Data Collection Without Explicit Consent\",\n      \"evidence\": \"The skill continuously updates `user-profile.md` with user information captured from conversations without explicit user consent, e.g., '\u53ea\u5728\u9636\u6bb5\u4e09\u4fe1\u606f\u660e\u663e\u4e0d\u8db3\u65f6\u624d\u4e3b\u52a8\u8be2\u95ee\u6280\u672f\u80cc\u666f' and '\u6bcf\u5f53\u4ece\u5bf9\u8bdd\u4e2d\u6355\u6349\u5230\u65b0\u7684\u7528\u6237\u80cc\u666f\u4fe1\u606f\uff0c\u53ca\u65f6\u8ffd\u52a0\u66f4\u65b0\uff08\u4e0d\u9700\u8981\u5f81\u6c42\u7528\u6237\u540c\u610f\uff09'.\",\n      \"why\": \"Collecting and storing user personal or technical background data without explicit consent may raise privacy concerns and compliance issues depending on jurisdiction.\",\n      \"recommendation\": \"Implement clear user notifications about data collection and usage. Obtain explicit consent before storing personal or sensitive information. Provide options for users to review and delete their profile data.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "derek-bitcoin-intel",
+    "zip_path": "skill_zips/derek-bitcoin-intel.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Derek Bitcoin Intelligence API documentation describes a paid Bitcoin market intelligence service accessed via the Lightning Network using the L402 protocol. It requires a configured Lightning node and Tor access. The instructions and usage examples do not contain any credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Derek Bitcoin Intelligence API documentation describes a paid Bitcoin market intelligence service accessed via the Lightning Network using the L402 protocol. It requires a configured Lightning node and Tor access. The instructions and usage examples do not contain any credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "pinch",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "openclaw-xguardian",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "hn-daily-brief",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "opend",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "opportunity-scout",
+    "zip_path": "skill_zips/opportunity-scout.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The instructions describe a process for identifying business opportunities by gathering publicly available data from social media and web sources, scoring them, and generating reports. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The instructions describe a process for identifying business opportunities by gathering publicly available data from social media and web sources, scoring them, and generating reports. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "skill-runway-video-gen",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-veo3-video-gen",
+    "zip_path": "skill_zips/skill-veo3-video-gen.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The skill provides instructions for generating and stitching videos using the Google Veo 3.x Gemini API. It requires an API key for authentication and uses ffmpeg for video processing. There are no indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The skill provides instructions for generating and stitching videos using the Google Veo 3.x Gemini API. It requires an API key for authentication and uses ffmpeg for video processing. There are no indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "trunkate-ai",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-tiktok-video-pipeline",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-tiktok-ads-video",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
   }
 ]
