@@ -69,6 +69,21 @@ def flush_audit_results(path: str, audit_results: List[Dict[str, Any]]) -> None:
     log("INFO", f"Updated audit report: {path} ({len(audit_results)} entries)")
 
 
+def load_audit_results(path: str) -> List[Dict[str, Any]]:
+    if not os.path.exists(path):
+        return []
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+    except (OSError, json.JSONDecodeError) as err:
+        log("WARN", f"Could not load existing audit report {path}: {err}")
+        return []
+    if not isinstance(data, list):
+        log("WARN", f"Ignoring {path}: expected top-level JSON array.")
+        return []
+    return [entry for entry in data if isinstance(entry, dict)]
+
+
 def post_json(url: str, payload: Dict[str, Any], headers: Dict[str, str], timeout: int) -> Dict[str, Any]:
     req = Request(
         url,
@@ -357,6 +372,11 @@ def parse_args() -> argparse.Namespace:
         help="Output JSON file for audit results.",
     )
     parser.add_argument(
+        "--dont-cache",
+        action="store_true",
+        help="Ignore existing audit output and force re-auditing all processed skills.",
+    )
+    parser.add_argument(
         "--max-skill-md-chars",
         type=int,
         default=12000,
@@ -430,10 +450,26 @@ def main() -> int:
             seen.add(slug)
 
     audit_results: List[Dict[str, Any]] = []
+    audited_slugs: set[str] = set()
 
     if args.audit_skill_md and not args.openai_api_key:
         log("ERROR", "Missing OpenAI API key. Set --openai-api-key or OPENAI_API_KEY.")
         return 2
+
+    if args.audit_skill_md and not args.dont_cache:
+        audit_results = load_audit_results(args.audit_output)
+        audited_slugs = {
+            entry["slug"]
+            for entry in audit_results
+            if isinstance(entry.get("slug"), str) and isinstance(entry.get("audit"), dict)
+        }
+        if audited_slugs:
+            log(
+                "INFO",
+                f"Loaded {len(audited_slugs)} existing audited slug(s) from {args.audit_output}",
+            )
+    elif args.audit_skill_md and args.dont_cache:
+        log("INFO", "--dont-cache set; ignoring existing audit cache and forcing re-audit")
 
     processed_count = 0
     if deduped_slugs:
@@ -465,6 +501,14 @@ def main() -> int:
 
             # Sequential mode: audit each skill immediately after download.
             if args.audit_skill_md:
+                if slug in audited_slugs:
+                    log(
+                        "INFO",
+                        f"{slug}: audit already found in {args.audit_output}; skipping re-audit",
+                    )
+                    sleep_before_next(idx, len(deduped_slugs), args.delay, "already audited")
+                    continue
+
                 log("INFO", f"Extracting SKILL.md for {slug}")
                 try:
                     md_info = extract_skill_md_text(out_path, max_chars=args.max_skill_md_chars)
@@ -535,6 +579,7 @@ def main() -> int:
                         "audit": audit,
                     }
                 )
+                audited_slugs.add(slug)
                 flush_audit_results(args.audit_output, audit_results)
                 log("OK", f"Audited {slug}")
 
