@@ -1907,5 +1907,251 @@
     "slug": "milan",
     "downloaded": false,
     "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "polymarket-manual-trade",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "polymarket-manual-trade",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "statsfm",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "leak-check",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "ranking-of-claws",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-permission-escalation-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "convex",
+    "zip_path": "skill_zips/convex.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Convex skill documentation outlines safe and secure backend development practices with no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. It emphasizes operational safety, strict auth enforcement, idempotency, and local data storage without automatic external calls or secret management.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Convex skill documentation outlines safe and secure backend development practices with no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. It emphasizes operational safety, strict auth enforcement, idempotency, and local data storage without automatic external calls or secret management.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "feishu-app-setup",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-deployment-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "beauty",
+    "zip_path": "skill_zips/beauty.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Beauty skill is an instruction-only local skill focused on providing beauty routines and guidance. It does not perform any external network requests, does not access files outside its own directory, and only stores user data with explicit confirmation. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Beauty skill is an instruction-only local skill focused on providing beauty routines and guidance. It does not perform any external network requests, does not access files outside its own directory, and only stores user data with explicit confirmation. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "milan",
+    "zip_path": "skill_zips/milan.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Milan SKILL.md instructions provide detailed guidance for users about Milan without any indication of dangerous content. There are no signs of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Milan SKILL.md instructions provide detailed guidance for users about Milan without any indication of dangerous content. There are no signs of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "firm-saas-pack",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "firm-medtech-pack",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "firm-legal-pack",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "lobstermail-agent-email",
+    "zip_path": "skill_zips/lobstermail-agent-email.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The lobstermail-agent-email skill provides an email service SDK and API for AI agents to create inboxes, send and receive emails without requiring manual API key management or human signup. The documentation is transparent about token handling, email sending restrictions, and upgrade paths. There is no evidence of credential theft, hidden remote code execution, destructive commands, or obfuscation. The service requires explicit user action for upgrades and sending emails, and tokens are scoped to LobsterMail only. The skill encourages safe handling of untrusted email content and provides clear instructions for revoking tokens and managing subscriptions.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The lobstermail-agent-email skill provides an email service SDK and API for AI agents to create inboxes, send and receive emails without requiring manual API key management or human signup. The documentation is transparent about token handling, email sending restrictions, and upgrade paths. There is no evidence of credential theft, hidden remote code execution, destructive commands, or obfuscation. The service requires explicit user action for upgrades and sending emails, and tokens are scoped to LobsterMail only. The skill encourages safe handling of untrusted email content and provides clear instructions for revoking tokens and managing subscriptions.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "firm-security-audit",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "firm-orchestration",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-send-email-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-support-reply-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-code-merge-guard",
+    "zip_path": "skill_zips/consensus-code-merge-guard.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The consensus-code-merge-guard skill is designed to enforce governance on code merges by evaluating pull request risks and making merge decisions. It does not inherently perform any dangerous operations such as credential theft, data exfiltration, social engineering, hidden remote code execution, or destructive commands. Network calls are not made in the guard decision path itself, and credentials are not required by default. Optional use of external LLM-backed persona generation may require API keys, but this is clearly documented and optional. The skill operates within a controlled environment with semver-pinned dependencies and does not request host-wide privileges or mutate other skills.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The consensus-code-merge-guard skill is designed to enforce governance on code merges by evaluating pull request risks and making merge decisions. It does not inherently perform any dangerous operations such as credential theft, data exfiltration, social engineering, hidden remote code execution, or destructive commands. Network calls are not made in the guard decision path itself, and credentials are not required by default. Optional use of external LLM-backed persona generation may require API keys, but this is clearly documented and optional. The skill operates within a controlled environment with semver-pinned dependencies and does not request host-wide privileges or mutate other skills.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "consensus-agent-action-guard",
+    "zip_path": "skill_zips/consensus-agent-action-guard.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The consensus-agent-action-guard skill provides a governance layer to evaluate and control high-risk agent actions before execution. It does not perform network calls in the decision path itself, does not require credentials by default, and only writes to controlled board artifacts. Optional use of external LLM-backed persona generation may require API keys, but this is clearly documented and optional. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The consensus-agent-action-guard skill provides a governance layer to evaluate and control high-risk agent actions before execution. It does not perform network calls in the decision path itself, does not require credentials by default, and only writes to controlled board artifacts. Optional use of external LLM-backed persona generation may require API keys, but this is clearly documented and optional. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "consensus-guard-core",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "openclaw-workspace-governance-installer",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "memory-ops",
+    "zip_path": "skill_zips/memory-ops.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The instructions describe a protocol for querying and persisting operational memory context in a PostgreSQL database with auditing. It emphasizes not saving sensitive secrets unnecessarily and mandates audit logging. There are no indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The instructions describe a protocol for querying and persisting operational memory context in a PostgreSQL database with auditing. It emphasizes not saving sensitive secrets unnecessarily and mandates audit logging. There are no indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "tide-watch",
+    "zip_path": "skill_zips/tide-watch.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The tide-watch skill provides session capacity monitoring and management for OpenClaw with two modes: a safe Directives-Only mode with no code execution and a CLI Tools mode that executes JavaScript code locally. The CLI mode had a high-severity shell injection vulnerability in version 1.0.0, which has been patched in 1.0.1. The skill operates entirely on local files with no network activity and requires no external credentials. The documentation clearly warns users to avoid untrusted input and to update if using the vulnerable version. No evidence of credential theft, data exfiltration, social engineering, or obfuscated malicious code was found.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Shell Injection Vulnerability in CLI Tools Mode (Patched)",
+          "evidence": "CVE-2026-001: Shell injection in `editResumePrompt` function in CLI's `resume-prompt edit` command in version 1.0.0. Fixed in 1.0.1 by replacing execSync with spawnSync.",
+          "why": "Allows an attacker controlling the `--session` parameter to execute arbitrary shell commands, leading to remote code execution on the local machine.",
+          "recommendation": "Users must update to version 1.0.1 or later before installing or using CLI tools. Inspect code before installation and avoid passing untrusted input to CLI commands."
+        },
+        {
+          "severity": "medium",
+          "title": "CLI Tools Mode Executes Local JavaScript Code with File System Access",
+          "evidence": "CLI tools read/write session files directly under `~/.openclaw/agents/main/sessions/` and execute JavaScript code requiring Node.js 14+.",
+          "why": "While no network activity or external credentials are involved, executing local code with filesystem write permissions can be risky if the code is tampered with or if untrusted input is provided.",
+          "recommendation": "Only install CLI tools from trusted sources, verify code integrity, and avoid running CLI commands with untrusted parameters."
+        },
+        {
+          "severity": "low",
+          "title": "No Network Activity or External Credential Usage",
+          "evidence": "Documentation states all operations are local filesystem only with no network activity and no external credentials required.",
+          "why": "This reduces risk of data exfiltration or credential theft.",
+          "recommendation": "Continue to monitor for any future changes that might introduce network or credential usage."
+        },
+        {
+          "severity": "low",
+          "title": "Directives-Only Mode Has No Code Execution",
+          "evidence": "Directives-Only mode uses only OpenClaw built-in tools, no Node.js or npm dependencies, and no code installation required.",
+          "why": "This mode has the lowest security risk and is recommended for most users.",
+          "recommendation": "Prefer Directives-Only mode unless CLI tools are specifically needed."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The tide-watch skill provides session capacity monitoring and management for OpenClaw with two modes: a safe Directives-Only mode with no code execution and a CLI Tools mode that executes JavaScript code locally. The CLI mode had a high-severity shell injection vulnerability in version 1.0.0, which has been patched in 1.0.1. The skill operates entirely on local files with no network activity and requires no external credentials. The documentation clearly warns users to avoid untrusted input and to update if using the vulnerable version. No evidence of credential theft, data exfiltration, social engineering, or obfuscated malicious code was found.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Shell Injection Vulnerability in CLI Tools Mode (Patched)\",\n      \"evidence\": \"CVE-2026-001: Shell injection in `editResumePrompt` function in CLI's `resume-prompt edit` command in version 1.0.0. Fixed in 1.0.1 by replacing execSync with spawnSync.\",\n      \"why\": \"Allows an attacker controlling the `--session` parameter to execute arbitrary shell commands, leading to remote code execution on the local machine.\",\n      \"recommendation\": \"Users must update to version 1.0.1 or later before installing or using CLI tools. Inspect code before installation and avoid passing untrusted input to CLI commands.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"CLI Tools Mode Executes Local JavaScript Code with File System Access\",\n      \"evidence\": \"CLI tools read/write session files directly under `~/.openclaw/agents/main/sessions/` and execute JavaScript code requiring Node.js 14+.\",\n      \"why\": \"While no network activity or external credentials are involved, executing local code with filesystem write permissions can be risky if the code is tampered with or if untrusted input is provided.\",\n      \"recommendation\": \"Only install CLI tools from trusted sources, verify code integrity, and avoid running CLI commands with untrusted parameters.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No Network Activity or External Credential Usage\",\n      \"evidence\": \"Documentation states all operations are local filesystem only with no network activity and no external credentials required.\",\n      \"why\": \"This reduces risk of data exfiltration or credential theft.\",\n      \"recommendation\": \"Continue to monitor for any future changes that might introduce network or credential usage.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Directives-Only Mode Has No Code Execution\",\n      \"evidence\": \"Directives-Only mode uses only OpenClaw built-in tools, no Node.js or npm dependencies, and no code installation required.\",\n      \"why\": \"This mode has the lowest security risk and is recommended for most users.\",\n      \"recommendation\": \"Prefer Directives-Only mode unless CLI tools are specifically needed.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "capital-equipment",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "squad-control",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "hzl",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "free-search-aggregator",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
   }
 ]
