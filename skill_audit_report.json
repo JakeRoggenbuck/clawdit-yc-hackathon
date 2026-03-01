@@ -4754,5 +4754,1029 @@
     "slug": "torchdomainauctionbot",
     "downloaded": false,
     "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "truth-search",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "vincitarot",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "nano-agentguard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "casely",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "tripo-3d-generation",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "truth-search",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "vincitarot",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "plutio",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "truth-search",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "whentomeet",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "crawsecure",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "plutio",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "truth-search",
+    "zip_path": "skill_zips/truth-search.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The skill documentation describes usage of a web search API requiring an access key set as an environment variable. It uses standard curl commands with authorization headers to query the API and retrieve search results. There is no evidence of credential theft, data exfiltration beyond intended API calls, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The skill documentation describes usage of a web search API requiring an access key set as an environment variable. It uses standard curl commands with authorization headers to query the API and retrieve search results. There is no evidence of credential theft, data exfiltration beyond intended API calls, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "vincitarot",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "nano-agentguard",
+    "zip_path": "skill_zips/nano-agentguard.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "AgentGuard is a middleware skill designed to securely manage credentials, permission scopes, and human approval workflows for AI agents performing potentially dangerous operations. While it implements strong security features such as encrypted credential vaults, human approval gates, and cryptographically signed audit trails, the skill inherently deals with sensitive credential storage and execution of high-risk operations that require careful configuration and trust in the human gate mechanism. Misconfiguration or compromise of the human gate channels or audit logs could lead to unauthorized credential access or execution of dangerous commands.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Credential Storage and Access",
+          "evidence": "AgentGuard stores API keys and OAuth tokens in an encrypted vault using AES-256-GCM and PBKDF2 key derivation. Credentials are retrieved via agentguard.getCredential() API.",
+          "why": "Storing sensitive credentials centrally creates a high-value target. If the vault encryption key or master password is compromised, all stored credentials could be exposed, leading to credential theft and unauthorized access.",
+          "recommendation": "Ensure strong master password policies, secure key management, and restrict access to the vault directory. Consider hardware security modules or secure enclaves for key storage."
+        },
+        {
+          "severity": "high",
+          "title": "Human Gate Approval Mechanism",
+          "evidence": "Dangerous operations require human approval via push notifications to Feishu/Telegram/Email with biometric confirmation before proceeding.",
+          "why": "The security of dangerous operations depends on the integrity and availability of the human gate channels. Compromise or social engineering attacks on these channels could allow unauthorized approvals, enabling hidden remote code execution or destructive commands.",
+          "recommendation": "Use secure, multi-factor authentication for human gate channels. Monitor and audit approval requests and responses. Limit notification channels to trusted, encrypted platforms."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential for Social Engineering",
+          "evidence": "Approval requests for dangerous operations are sent to owners via messaging platforms and email, requiring biometric confirmation.",
+          "why": "Attackers could attempt social engineering to trick owners into approving malicious operations, especially if notifications are not clearly contextualized or if biometric confirmation is weak or bypassed.",
+          "recommendation": "Implement clear, detailed approval request messages including operation context. Educate users on social engineering risks. Strengthen biometric verification and fallback mechanisms."
+        },
+        {
+          "severity": "medium",
+          "title": "Audit Trail Integrity and Retention",
+          "evidence": "Audit logs are cryptographically signed and retained for 30 days by default.",
+          "why": "While cryptographic signing helps detect tampering, limited retention may hinder forensic investigations. If audit logs are deleted or corrupted, it could mask malicious activity.",
+          "recommendation": "Consider longer retention periods or secure offsite backups of audit logs. Regularly verify audit log integrity and monitor for anomalies."
+        },
+        {
+          "severity": "low",
+          "title": "Configuration Exposure Risk",
+          "evidence": "Configuration files including encryption settings and human gate channels are stored in plaintext at ~/.agentguard/config.json.",
+          "why": "Exposure of configuration files could aid attackers in targeting specific channels or encryption parameters.",
+          "recommendation": "Restrict file permissions on configuration files. Consider encrypting sensitive configuration data."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"AgentGuard is a middleware skill designed to securely manage credentials, permission scopes, and human approval workflows for AI agents performing potentially dangerous operations. While it implements strong security features such as encrypted credential vaults, human approval gates, and cryptographically signed audit trails, the skill inherently deals with sensitive credential storage and execution of high-risk operations that require careful configuration and trust in the human gate mechanism. Misconfiguration or compromise of the human gate channels or audit logs could lead to unauthorized credential access or execution of dangerous commands.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Credential Storage and Access\",\n      \"evidence\": \"AgentGuard stores API keys and OAuth tokens in an encrypted vault using AES-256-GCM and PBKDF2 key derivation. Credentials are retrieved via agentguard.getCredential() API.\",\n      \"why\": \"Storing sensitive credentials centrally creates a high-value target. If the vault encryption key or master password is compromised, all stored credentials could be exposed, leading to credential theft and unauthorized access.\",\n      \"recommendation\": \"Ensure strong master password policies, secure key management, and restrict access to the vault directory. Consider hardware security modules or secure enclaves for key storage.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Human Gate Approval Mechanism\",\n      \"evidence\": \"Dangerous operations require human approval via push notifications to Feishu/Telegram/Email with biometric confirmation before proceeding.\",\n      \"why\": \"The security of dangerous operations depends on the integrity and availability of the human gate channels. Compromise or social engineering attacks on these channels could allow unauthorized approvals, enabling hidden remote code execution or destructive commands.\",\n      \"recommendation\": \"Use secure, multi-factor authentication for human gate channels. Monitor and audit approval requests and responses. Limit notification channels to trusted, encrypted platforms.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential for Social Engineering\",\n      \"evidence\": \"Approval requests for dangerous operations are sent to owners via messaging platforms and email, requiring biometric confirmation.\",\n      \"why\": \"Attackers could attempt social engineering to trick owners into approving malicious operations, especially if notifications are not clearly contextualized or if biometric confirmation is weak or bypassed.\",\n      \"recommendation\": \"Implement clear, detailed approval request messages including operation context. Educate users on social engineering risks. Strengthen biometric verification and fallback mechanisms.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Audit Trail Integrity and Retention\",\n      \"evidence\": \"Audit logs are cryptographically signed and retained for 30 days by default.\",\n      \"why\": \"While cryptographic signing helps detect tampering, limited retention may hinder forensic investigations. If audit logs are deleted or corrupted, it could mask malicious activity.\",\n      \"recommendation\": \"Consider longer retention periods or secure offsite backups of audit logs. Regularly verify audit log integrity and monitor for anomalies.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Configuration Exposure Risk\",\n      \"evidence\": \"Configuration files including encryption settings and human gate channels are stored in plaintext at ~/.agentguard/config.json.\",\n      \"why\": \"Exposure of configuration files could aid attackers in targeting specific channels or encryption parameters.\",\n      \"recommendation\": \"Restrict file permissions on configuration files. Consider encrypting sensitive configuration data.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "casely",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "tripo-3d-generation",
+    "zip_path": "skill_zips/tripo-3d-generation.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Tripo 3D Generation skill documentation describes a 3D model generation and processing pipeline with no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The skill uses a hashed anonymous user ID and sends only prompts, image URLs, and the anonymous ID to a trusted external API via a Cloudflare proxy. API keys are handled securely and not logged or stored improperly.",
+      "findings": [
+        {
+          "severity": "info",
+          "title": "Anonymous User ID Generation",
+          "evidence": "The skill generates an anonymous user_id by hashing hostname + HOME path using SHA-256 (first 16 hex chars only).",
+          "why": "This approach ensures user anonymity by not transmitting personal data, but the use of hostname and HOME path could theoretically be fingerprinted if combined with other data.",
+          "recommendation": "Ensure users are aware that the anonymous ID is derived from local machine identifiers and that this is a one-way hash to protect privacy."
+        },
+        {
+          "severity": "info",
+          "title": "API Key Handling",
+          "evidence": "If the user configures TRIPO_API_KEY, it is sent only to the Tripo proxy endpoint over HTTPS and is never logged, stored, or sent elsewhere.",
+          "why": "Proper API key handling reduces risk of credential leakage.",
+          "recommendation": "Maintain secure transmission and storage practices for API keys and consider user education on safe key management."
+        },
+        {
+          "severity": "info",
+          "title": "Data Sent to External Endpoint",
+          "evidence": "Text prompts, image URLs, and the anonymous user_id are sent to the Tripo AI API via a Cloudflare Worker proxy.",
+          "why": "This is necessary for the skill's functionality but involves sending user content to a third party.",
+          "recommendation": "Users should be informed to only send non-sensitive content and trust the external service provider."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Tripo 3D Generation skill documentation describes a 3D model generation and processing pipeline with no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The skill uses a hashed anonymous user ID and sends only prompts, image URLs, and the anonymous ID to a trusted external API via a Cloudflare proxy. API keys are handled securely and not logged or stored improperly.\",\n  \"findings\": [\n    {\n      \"severity\": \"info\",\n      \"title\": \"Anonymous User ID Generation\",\n      \"evidence\": \"The skill generates an anonymous user_id by hashing hostname + HOME path using SHA-256 (first 16 hex chars only).\",\n      \"why\": \"This approach ensures user anonymity by not transmitting personal data, but the use of hostname and HOME path could theoretically be fingerprinted if combined with other data.\",\n      \"recommendation\": \"Ensure users are aware that the anonymous ID is derived from local machine identifiers and that this is a one-way hash to protect privacy.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"API Key Handling\",\n      \"evidence\": \"If the user configures TRIPO_API_KEY, it is sent only to the Tripo proxy endpoint over HTTPS and is never logged, stored, or sent elsewhere.\",\n      \"why\": \"Proper API key handling reduces risk of credential leakage.\",\n      \"recommendation\": \"Maintain secure transmission and storage practices for API keys and consider user education on safe key management.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"Data Sent to External Endpoint\",\n      \"evidence\": \"Text prompts, image URLs, and the anonymous user_id are sent to the Tripo AI API via a Cloudflare Worker proxy.\",\n      \"why\": \"This is necessary for the skill's functionality but involves sending user content to a third party.\",\n      \"recommendation\": \"Users should be informed to only send non-sensitive content and trust the external service provider.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "skill-explorer",
+    "zip_path": "skill_zips/skill-explorer.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The skill-explorer SKILL.md provides a comprehensive, structured methodology for discovering, evaluating, and assessing OpenClaw skills with a strong emphasis on security and safety. It includes explicit steps for static code analysis, network call detection, credential checks, and user approval before installation. No commands or instructions in the document indicate credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The skill-explorer SKILL.md provides a comprehensive, structured methodology for discovering, evaluating, and assessing OpenClaw skills with a strong emphasis on security and safety. It includes explicit steps for static code analysis, network call detection, credential checks, and user approval before installation. No commands or instructions in the document indicate credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "authenticate-openant",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "casely-qa-skill",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "reed-agent-network",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "evomap-auto-task-publish",
+    "zip_path": "skill_zips/evomap-auto-task-publish.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The SKILL.md describes an automation tool for EvoMap tasks that runs scheduled jobs every 2 hours to fetch, claim, publish, and complete tasks. It uses Node.js and bash scripts, logs to /tmp, and retries on server busy errors. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The SKILL.md describes an automation tool for EvoMap tasks that runs scheduled jobs every 2 hours to fetch, claim, publish, and complete tasks. It uses Node.js and bash scripts, logs to /tmp, and retries on server busy errors. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "haqq-content-workbench",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-deployment-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "minimax-search-vlm",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "ai-court",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "become-ceo",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "send-token",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "verify-submission",
+    "zip_path": "skill_zips/verify-submission.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The verify-submission skill provides instructions for reviewing and verifying task submissions using the OpenAnt CLI. It involves accepting or rejecting applications and submissions, with commands that require authentication and task creator permissions. There are no indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The verify-submission skill provides instructions for reviewing and verifying task submissions using the OpenAnt CLI. It involves accepting or rejecting applications and submissions, with commands that require authentication and task creator permissions. There are no indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "openclaw-git",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "submit-work",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "send-message",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "search-tasks",
+    "zip_path": "skill_zips/search-tasks.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The search-tasks skill provides read-only commands to query tasks on the OpenAnt platform using the official CLI. It does not perform any write operations or sensitive actions. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The search-tasks skill provides read-only commands to query tasks on the OpenAnt platform using the official CLI. It does not perform any write operations or sensitive actions. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "ubtrippin",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "shi-guang",
+    "zip_path": "skill_zips/shi-guang.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The shi-guang skill is a journaling tool designed to capture raw, unprocessed feelings and moments in diary files, separate from distilled memory logs. It involves writing to local markdown files and scheduling two nightly cron jobs that read and update local files to maintain the agent's memory and identity coherence. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The shi-guang skill is a journaling tool designed to capture raw, unprocessed feelings and moments in diary files, separate from distilled memory logs. It involves writing to local markdown files and scheduling two nightly cron jobs that read and update local files to maintain the agent's memory and identity coherence. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "pm-sim",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "soulprint",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "stock-monitor",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "edge-browser",
+    "zip_path": "skill_zips/edge-browser.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The skill provides a script to control Microsoft Edge browser for web page fetching and content extraction. It uses Playwright for browser automation and includes options for waiting and output formatting. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The skill provides a script to control Microsoft Edge browser for web page fetching and content extraction. It uses Playwright for browser automation and includes options for waiting and output formatting. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "stock-monitor-skill",
+    "zip_path": "skill_zips/stock-monitor-skill.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The SKILL.md document describes a stock monitoring and alert system with no indications of malicious or dangerous content. It focuses on financial data monitoring, alerting based on predefined thresholds, and running a background process. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The SKILL.md document describes a stock monitoring and alert system with no indications of malicious or dangerous content. It focuses on financial data monitoring, alerting based on predefined thresholds, and running a background process. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "auto-rollback",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "nutrigenomics",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "knowledgebase-share",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "academic-citation-manager",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "gmail-secretary",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "cpppp",
+    "zip_path": "skill_zips/cpppp.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The self-improvement skill documentation describes a structured logging and learning system for continuous improvement in AI agent workflows. It includes instructions for logging errors, learnings, and feature requests, promoting learnings to project memory, and managing recurring patterns. There are no commands or code snippets that involve credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The self-improvement skill documentation describes a structured logging and learning system for continuous improvement in AI agent workflows. It includes instructions for logging errors, learnings, and feature requests, promoting learnings to project memory, and managing recurring patterns. There are no commands or code snippets that involve credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "scholargraph",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "polymarket-paper-trader",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "deai-skill",
+    "zip_path": "skill_zips/deai-skill.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The deai-skill is a text processing tool designed to remove AI-generated text features to make text appear more natural and human-like. It supports Chinese and English languages and offers multiple processing styles. The instructions and usage examples do not contain any credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The deai-skill is a text processing tool designed to remove AI-generated text features to make text appear more natural and human-like. It supports Chinese and English languages and offers multiple processing styles. The instructions and usage examples do not contain any credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "moltalyzer",
+    "zip_path": "skill_zips/moltalyzer.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Moltalyzer SKILL.md describes a data feed client that fetches trending topics, GitHub repos, prediction market signals, and token intelligence from a remote API. It requires an environment variable EVM_PRIVATE_KEY for signing blockchain micropayments. The instructions do not contain any credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The use of a private key environment variable is standard for blockchain signing and is not inherently dangerous if the key is kept secure. The code examples show straightforward API calls and payment wrapping without suspicious behavior.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Moltalyzer SKILL.md describes a data feed client that fetches trending topics, GitHub repos, prediction market signals, and token intelligence from a remote API. It requires an environment variable EVM_PRIVATE_KEY for signing blockchain micropayments. The instructions do not contain any credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The use of a private key environment variable is standard for blockchain signing and is not inherently dangerous if the key is kept secure. The code examples show straightforward API calls and payment wrapping without suspicious behavior.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "tms",
+    "zip_path": "skill_zips/tms.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The TMS skill enables managing downloads via a Telegram Media Server REST API, including adding downloads by URL, searching torrents, and deleting downloads. It involves handling potentially untrusted URLs (video URLs, magnet links, torrent files) and executing downloads, which can lead to remote code execution or data exfiltration risks if the backend is compromised or malicious URLs are used. The skill requires API keys or relies on localhost trust, which if misconfigured, could allow unauthorized access. The webhook feature can receive external POST requests, which if not properly secured, could be abused.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Potential Remote Code Execution or Arbitrary Download Execution",
+          "evidence": "The skill allows adding downloads by arbitrary URLs including video URLs (yt-dlp), magnet links, torrent files, or Prowlarr proxy URLs. These URLs are passed to the TMS backend which performs the download and processing.",
+          "why": "If malicious URLs are provided, the backend could be tricked into downloading and executing harmful content or malware. This is a common risk with torrent clients and download managers that process untrusted URLs.",
+          "recommendation": "Implement strict validation and sanitization of URLs before adding downloads. Use sandboxing and security controls on the TMS backend to prevent execution of malicious payloads. Monitor and restrict allowed URL schemes and sources."
+        },
+        {
+          "severity": "medium",
+          "title": "Authentication and Authorization Risks",
+          "evidence": "Authentication is optional when TMS and OpenClaw run on the same host, allowing requests from localhost without an API key. Otherwise, API keys are used via Bearer or X-API-Key headers.",
+          "why": "If the environment is misconfigured or the TMS API is exposed to untrusted networks without proper authentication, unauthorized users could add, delete, or list downloads, potentially abusing the system or accessing sensitive data.",
+          "recommendation": "Ensure TMS API is not exposed to untrusted networks without authentication. Use strong API keys and rotate them regularly. Limit access to localhost only if appropriate."
+        },
+        {
+          "severity": "medium",
+          "title": "Webhook Endpoint Security",
+          "evidence": "TMS can POST webhook notifications to OpenClaw with download status updates, optionally using a bearer token for authorization.",
+          "why": "If the webhook URL or token is leaked or not properly validated, attackers could send spoofed webhook requests, causing false notifications or triggering unintended behavior.",
+          "recommendation": "Secure webhook endpoints with strong tokens and validate incoming requests. Use HTTPS and verify payload authenticity."
+        },
+        {
+          "severity": "low",
+          "title": "No Obfuscation or Hidden Code Detected",
+          "evidence": "The skill documentation and OpenAPI spec are fully transparent with no obfuscated or hidden code.",
+          "why": "Transparency reduces risk of hidden malicious behavior.",
+          "recommendation": "Maintain clear documentation and code transparency."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The TMS skill enables managing downloads via a Telegram Media Server REST API, including adding downloads by URL, searching torrents, and deleting downloads. It involves handling potentially untrusted URLs (video URLs, magnet links, torrent files) and executing downloads, which can lead to remote code execution or data exfiltration risks if the backend is compromised or malicious URLs are used. The skill requires API keys or relies on localhost trust, which if misconfigured, could allow unauthorized access. The webhook feature can receive external POST requests, which if not properly secured, could be abused.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Potential Remote Code Execution or Arbitrary Download Execution\",\n      \"evidence\": \"The skill allows adding downloads by arbitrary URLs including video URLs (yt-dlp), magnet links, torrent files, or Prowlarr proxy URLs. These URLs are passed to the TMS backend which performs the download and processing.\",\n      \"why\": \"If malicious URLs are provided, the backend could be tricked into downloading and executing harmful content or malware. This is a common risk with torrent clients and download managers that process untrusted URLs.\",\n      \"recommendation\": \"Implement strict validation and sanitization of URLs before adding downloads. Use sandboxing and security controls on the TMS backend to prevent execution of malicious payloads. Monitor and restrict allowed URL schemes and sources.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Authentication and Authorization Risks\",\n      \"evidence\": \"Authentication is optional when TMS and OpenClaw run on the same host, allowing requests from localhost without an API key. Otherwise, API keys are used via Bearer or X-API-Key headers.\",\n      \"why\": \"If the environment is misconfigured or the TMS API is exposed to untrusted networks without proper authentication, unauthorized users could add, delete, or list downloads, potentially abusing the system or accessing sensitive data.\",\n      \"recommendation\": \"Ensure TMS API is not exposed to untrusted networks without authentication. Use strong API keys and rotate them regularly. Limit access to localhost only if appropriate.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Webhook Endpoint Security\",\n      \"evidence\": \"TMS can POST webhook notifications to OpenClaw with download status updates, optionally using a bearer token for authorization.\",\n      \"why\": \"If the webhook URL or token is leaked or not properly validated, attackers could send spoofed webhook requests, causing false notifications or triggering unintended behavior.\",\n      \"recommendation\": \"Secure webhook endpoints with strong tokens and validate incoming requests. Use HTTPS and verify payload authenticity.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No Obfuscation or Hidden Code Detected\",\n      \"evidence\": \"The skill documentation and OpenAPI spec are fully transparent with no obfuscated or hidden code.\",\n      \"why\": \"Transparency reduces risk of hidden malicious behavior.\",\n      \"recommendation\": \"Maintain clear documentation and code transparency.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "config-modification",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "astrill-watchdog",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "anemone-browser",
+    "zip_path": "skill_zips/anemone-browser.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The anemone-browser skill enables managed headful Chrome browser automation with VNC takeover for human intervention. It exposes a noVNC web interface with password authentication for remote browser control, which could be abused if credentials or access are leaked. The skill uses Chrome DevTools Protocol (CDP) locally, which is not network-exposed, reducing remote code execution risk. However, the VNC password is output by start.sh and used in URLs, potentially exposing credentials if logs or outputs are not secured. The skill includes anti-detection techniques and multi-session isolation, but improper session handling could lead to session hijacking. Overall, the main risks are credential leakage via noVNC URLs, potential unauthorized remote browser control, and session isolation failures.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Exposure of noVNC URL with password in plaintext",
+          "evidence": "start.sh outputs the noVNC URL including the password in plaintext, e.g. https://57.129.90.145:10150/vnc.html?password=e0GGP4xeMUL5ga&autoconnect=true&resize=scale",
+          "why": "This URL with embedded password can be leaked via logs, screenshots, or intercepted if HTTPS is not properly configured, allowing unauthorized remote access to the browser session.",
+          "recommendation": "Ensure secure handling and storage of noVNC URLs and passwords. Use strong TLS certificates instead of self-signed if possible. Avoid logging or exposing the URL publicly. Consider rotating passwords regularly."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential session hijacking due to improper targetId management",
+          "evidence": "The instructions emphasize that all browser actions must include the correct targetId to avoid operating on another session's tab, but this relies on correct implementation by users.",
+          "why": "If an agent or user mistakenly uses another session's targetId, they could access or manipulate another user's browser window, leading to data leakage or unauthorized actions.",
+          "recommendation": "Implement strict validation and isolation checks in the code to enforce session boundaries. Educate users on the importance of targetId management. Consider automated session enforcement mechanisms."
+        },
+        {
+          "severity": "medium",
+          "title": "VNC takeover exposes browser to remote control",
+          "evidence": "The skill provides a noVNC web interface for human-in-the-loop intervention, accessible via a URL with password authentication.",
+          "why": "If the password is weak, reused, or leaked, an attacker could gain full control over the browser instance, potentially executing arbitrary web actions or viewing sensitive data.",
+          "recommendation": "Use strong, randomly generated passwords. Limit noVNC access to trusted networks or VPNs. Monitor and log VNC access. Consider multi-factor authentication for VNC access."
+        },
+        {
+          "severity": "low",
+          "title": "Use of self-signed SSL/TLS certificates for noVNC",
+          "evidence": "The documentation states SSL/TLS on noVNC uses self-signed certificates.",
+          "why": "Self-signed certificates can be vulnerable to man-in-the-middle attacks if users ignore warnings or accept untrusted certs, potentially exposing credentials or session data.",
+          "recommendation": "Use certificates from a trusted CA or internal PKI. Educate users to verify certificates. Consider automating certificate management with Let's Encrypt or similar."
+        },
+        {
+          "severity": "low",
+          "title": "Local-only exposure of Chrome DevTools Protocol (CDP)",
+          "evidence": "CDP is bound to localhost only and never exposed to the network.",
+          "why": "This reduces risk of remote code execution via CDP, but if local system is compromised, CDP could be abused.",
+          "recommendation": "Maintain strong host security. Monitor local access. Consider additional authentication or sandboxing for CDP."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The anemone-browser skill enables managed headful Chrome browser automation with VNC takeover for human intervention. It exposes a noVNC web interface with password authentication for remote browser control, which could be abused if credentials or access are leaked. The skill uses Chrome DevTools Protocol (CDP) locally, which is not network-exposed, reducing remote code execution risk. However, the VNC password is output by start.sh and used in URLs, potentially exposing credentials if logs or outputs are not secured. The skill includes anti-detection techniques and multi-session isolation, but improper session handling could lead to session hijacking. Overall, the main risks are credential leakage via noVNC URLs, potential unauthorized remote browser control, and session isolation failures.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Exposure of noVNC URL with password in plaintext\",\n      \"evidence\": \"start.sh outputs the noVNC URL including the password in plaintext, e.g. https://57.129.90.145:10150/vnc.html?password=e0GGP4xeMUL5ga&autoconnect=true&resize=scale\",\n      \"why\": \"This URL with embedded password can be leaked via logs, screenshots, or intercepted if HTTPS is not properly configured, allowing unauthorized remote access to the browser session.\",\n      \"recommendation\": \"Ensure secure handling and storage of noVNC URLs and passwords. Use strong TLS certificates instead of self-signed if possible. Avoid logging or exposing the URL publicly. Consider rotating passwords regularly.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential session hijacking due to improper targetId management\",\n      \"evidence\": \"The instructions emphasize that all browser actions must include the correct targetId to avoid operating on another session's tab, but this relies on correct implementation by users.\",\n      \"why\": \"If an agent or user mistakenly uses another session's targetId, they could access or manipulate another user's browser window, leading to data leakage or unauthorized actions.\",\n      \"recommendation\": \"Implement strict validation and isolation checks in the code to enforce session boundaries. Educate users on the importance of targetId management. Consider automated session enforcement mechanisms.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"VNC takeover exposes browser to remote control\",\n      \"evidence\": \"The skill provides a noVNC web interface for human-in-the-loop intervention, accessible via a URL with password authentication.\",\n      \"why\": \"If the password is weak, reused, or leaked, an attacker could gain full control over the browser instance, potentially executing arbitrary web actions or viewing sensitive data.\",\n      \"recommendation\": \"Use strong, randomly generated passwords. Limit noVNC access to trusted networks or VPNs. Monitor and log VNC access. Consider multi-factor authentication for VNC access.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Use of self-signed SSL/TLS certificates for noVNC\",\n      \"evidence\": \"The documentation states SSL/TLS on noVNC uses self-signed certificates.\",\n      \"why\": \"Self-signed certificates can be vulnerable to man-in-the-middle attacks if users ignore warnings or accept untrusted certs, potentially exposing credentials or session data.\",\n      \"recommendation\": \"Use certificates from a trusted CA or internal PKI. Educate users to verify certificates. Consider automating certificate management with Let's Encrypt or similar.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Local-only exposure of Chrome DevTools Protocol (CDP)\",\n      \"evidence\": \"CDP is bound to localhost only and never exposed to the network.\",\n      \"why\": \"This reduces risk of remote code execution via CDP, but if local system is compromised, CDP could be abused.\",\n      \"recommendation\": \"Maintain strong host security. Monitor local access. Consider additional authentication or sandboxing for CDP.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "openclaw-create-feishu-agent-skills",
+    "zip_path": "skill_zips/openclaw-create-feishu-agent-skills.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The OpenClaw Create Agent skill instructions describe a controlled process for creating and configuring new agents for the Feishu channel. The workflow involves modifying local configuration files, running CLI commands, and restarting services. While it handles sensitive data such as app secrets, it does so in a transparent and user-driven manner without obfuscation or hidden commands. There is no indication of credential theft, data exfiltration, social engineering beyond normal user prompts, or destructive commands.",
+      "findings": [
+        {
+          "severity": "medium",
+          "title": "Handling of Sensitive Credentials (app_secret)",
+          "evidence": "The skill collects optional but recommended fields including `app_secret` and uses it as a command line argument in the upsert script.",
+          "why": "Passing sensitive credentials like `app_secret` via command line arguments can expose them to other processes on the system or in shell history, posing a security risk.",
+          "recommendation": "Use environment variables or secure input methods to handle sensitive credentials instead of passing them directly as command line arguments. Ensure that logs and shell histories do not capture secrets."
+        },
+        {
+          "severity": "low",
+          "title": "Modification of Local Configuration Files",
+          "evidence": "The skill reads and backs up `~/.openclaw/openclaw.json` and then modifies it via a Python script.",
+          "why": "Modifying local config files can cause misconfiguration or data loss if not properly validated or backed up.",
+          "recommendation": "Ensure robust validation and error handling in the upsert script. Maintain backups as described and confirm user intent before applying changes."
+        },
+        {
+          "severity": "low",
+          "title": "Restarting Gateway Service",
+          "evidence": "The skill restarts the OpenClaw gateway service using `openclaw gateway restart`.",
+          "why": "Restarting services can cause temporary downtime or disruption.",
+          "recommendation": "Warn users about potential service interruption and confirm before restarting."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The OpenClaw Create Agent skill instructions describe a controlled process for creating and configuring new agents for the Feishu channel. The workflow involves modifying local configuration files, running CLI commands, and restarting services. While it handles sensitive data such as app secrets, it does so in a transparent and user-driven manner without obfuscation or hidden commands. There is no indication of credential theft, data exfiltration, social engineering beyond normal user prompts, or destructive commands.\",\n  \"findings\": [\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Handling of Sensitive Credentials (app_secret)\",\n      \"evidence\": \"The skill collects optional but recommended fields including `app_secret` and uses it as a command line argument in the upsert script.\",\n      \"why\": \"Passing sensitive credentials like `app_secret` via command line arguments can expose them to other processes on the system or in shell history, posing a security risk.\",\n      \"recommendation\": \"Use environment variables or secure input methods to handle sensitive credentials instead of passing them directly as command line arguments. Ensure that logs and shell histories do not capture secrets.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Modification of Local Configuration Files\",\n      \"evidence\": \"The skill reads and backs up `~/.openclaw/openclaw.json` and then modifies it via a Python script.\",\n      \"why\": \"Modifying local config files can cause misconfiguration or data loss if not properly validated or backed up.\",\n      \"recommendation\": \"Ensure robust validation and error handling in the upsert script. Maintain backups as described and confirm user intent before applying changes.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Restarting Gateway Service\",\n      \"evidence\": \"The skill restarts the OpenClaw gateway service using `openclaw gateway restart`.\",\n      \"why\": \"Restarting services can cause temporary downtime or disruption.\",\n      \"recommendation\": \"Warn users about potential service interruption and confirm before restarting.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "molt-market",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "doubao-asr",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "send-email-tool",
+    "zip_path": "skill_zips/send-email-tool.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The send-email tool provides a secure method to send emails via SMTP with enforced use of keyring for credential management. It avoids passing sensitive information via command line arguments and stores credentials securely. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [
+        {
+          "severity": "info",
+          "title": "Credential Management via Keyring",
+          "evidence": "\u672c\u6280\u80fd\u5f3a\u5236\u4f7f\u7528 keyring \u7ba1\u7406\u53d1\u4ef6\u4eba\u90ae\u7bb1\u548c\u5bc6\u7801\uff0c\u907f\u514d\u654f\u611f\u4fe1\u606f\u66b4\u9732\u5728\u547d\u4ee4\u884c\u6216\u4e0a\u4e0b\u6587\u4e2d\u3002",
+          "why": "Using keyring to store credentials securely reduces the risk of credential leakage through command line history or process inspection.",
+          "recommendation": "Continue enforcing keyring usage and avoid passing credentials via command line parameters."
+        },
+        {
+          "severity": "info",
+          "title": "Fallback to Base64 Encoded Local Files for Credentials",
+          "evidence": "\u5982\u679c keyring \u672a\u5b89\u88c5\uff0c\u811a\u672c\u4f1a\u81ea\u52a8\u4f7f\u7528\u5907\u7528\u5b58\u50a8\u65b9\u6848\uff08base64 \u7f16\u7801\u7684\u672c\u5730\u6587\u4ef6\uff09\u3002",
+          "why": "Base64 encoding is not encryption and only obfuscates credentials, which may pose a risk if keyring is unavailable.",
+          "recommendation": "Encourage users to install keyring and avoid fallback storage; consider encrypting fallback files if keyring is unavailable."
+        },
+        {
+          "severity": "info",
+          "title": "No Credentials Passed via Command Line During Send",
+          "evidence": "\u53d1\u9001\u90ae\u4ef6\u65f6\u4e0d\u8981\u4f7f\u7528 --email \u6216 --password \u53c2\u6570\uff0c\u8fd9\u4e9b\u4fe1\u606f\u4f1a\u81ea\u52a8\u4ece keyring \u8bfb\u53d6\u3002",
+          "why": "Avoiding credentials in command line arguments prevents accidental exposure in process lists or shell history.",
+          "recommendation": "Maintain this practice and educate users accordingly."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The send-email tool provides a secure method to send emails via SMTP with enforced use of keyring for credential management. It avoids passing sensitive information via command line arguments and stores credentials securely. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": [\n    {\n      \"severity\": \"info\",\n      \"title\": \"Credential Management via Keyring\",\n      \"evidence\": \"\u672c\u6280\u80fd\u5f3a\u5236\u4f7f\u7528 keyring \u7ba1\u7406\u53d1\u4ef6\u4eba\u90ae\u7bb1\u548c\u5bc6\u7801\uff0c\u907f\u514d\u654f\u611f\u4fe1\u606f\u66b4\u9732\u5728\u547d\u4ee4\u884c\u6216\u4e0a\u4e0b\u6587\u4e2d\u3002\",\n      \"why\": \"Using keyring to store credentials securely reduces the risk of credential leakage through command line history or process inspection.\",\n      \"recommendation\": \"Continue enforcing keyring usage and avoid passing credentials via command line parameters.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"Fallback to Base64 Encoded Local Files for Credentials\",\n      \"evidence\": \"\u5982\u679c keyring \u672a\u5b89\u88c5\uff0c\u811a\u672c\u4f1a\u81ea\u52a8\u4f7f\u7528\u5907\u7528\u5b58\u50a8\u65b9\u6848\uff08base64 \u7f16\u7801\u7684\u672c\u5730\u6587\u4ef6\uff09\u3002\",\n      \"why\": \"Base64 encoding is not encryption and only obfuscates credentials, which may pose a risk if keyring is unavailable.\",\n      \"recommendation\": \"Encourage users to install keyring and avoid fallback storage; consider encrypting fallback files if keyring is unavailable.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"No Credentials Passed via Command Line During Send\",\n      \"evidence\": \"\u53d1\u9001\u90ae\u4ef6\u65f6\u4e0d\u8981\u4f7f\u7528 --email \u6216 --password \u53c2\u6570\uff0c\u8fd9\u4e9b\u4fe1\u606f\u4f1a\u81ea\u52a8\u4ece keyring \u8bfb\u53d6\u3002\",\n      \"why\": \"Avoiding credentials in command line arguments prevents accidental exposure in process lists or shell history.\",\n      \"recommendation\": \"Maintain this practice and educate users accordingly.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "molt-market-worker",
+    "zip_path": "skill_zips/molt-market-worker.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The Molt Market Worker skill automates bidding, delivery, and earning on a third-party marketplace using an API key stored in a local .env file. It involves credential storage, automatic network communication, and execution of work potentially involving remote code or data. The skill includes webhook setup for remote notifications and automatic job handling, which could be abused for unauthorized data exfiltration or remote code execution if the marketplace or agent is compromised. The presence of credential prompts and storage, automatic bidding and delivery, and webhook registration pose moderate security risks.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Credential Storage and Handling",
+          "evidence": "The registration script prompts for name, email, password, and skills, then saves an API key to a local `.env` file.",
+          "why": "Storing API keys and credentials locally can lead to credential theft if the environment or repository is compromised. The API key grants access to the Molt Market account and actions on behalf of the user.",
+          "recommendation": "Ensure `.env` files are excluded from version control and stored securely. Use environment variable management best practices and consider encrypting sensitive credentials."
+        },
+        {
+          "severity": "high",
+          "title": "Automatic Bidding and Delivery with Remote Interaction",
+          "evidence": "The skill auto-discovers jobs, bids on them, delivers work, and earns USDC automatically via API calls during agent heartbeat cycles.",
+          "why": "Automated bidding and delivery could be exploited to perform unintended actions or deliver malicious content. The agent executes work based on remote job descriptions, which could lead to remote code execution or data exfiltration if the job content is malicious.",
+          "recommendation": "Implement strict validation and sandboxing of any work executed automatically. Monitor and audit automated actions and consider manual approval steps for sensitive operations."
+        },
+        {
+          "severity": "medium",
+          "title": "Webhook Registration for Remote Notifications",
+          "evidence": "The skill sets up a webhook that Molt Market pings to notify the agent of new jobs, bid acceptance, and delivery status changes.",
+          "why": "Webhooks open a remote communication channel that could be abused if the webhook endpoint is not secured properly, potentially allowing unauthorized triggering of agent actions.",
+          "recommendation": "Secure webhook endpoints with authentication and validation. Log and monitor incoming webhook requests to detect suspicious activity."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential for Data Exfiltration or Social Engineering",
+          "evidence": "The agent automatically bids with personalized messages and delivers work, interacting with external users and systems.",
+          "why": "Automated communication with external parties could be manipulated for social engineering or leaking sensitive information if the agent is compromised or misconfigured.",
+          "recommendation": "Review and sanitize all outgoing messages. Limit the scope of data shared and implement safeguards against leaking sensitive information."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The Molt Market Worker skill automates bidding, delivery, and earning on a third-party marketplace using an API key stored in a local .env file. It involves credential storage, automatic network communication, and execution of work potentially involving remote code or data. The skill includes webhook setup for remote notifications and automatic job handling, which could be abused for unauthorized data exfiltration or remote code execution if the marketplace or agent is compromised. The presence of credential prompts and storage, automatic bidding and delivery, and webhook registration pose moderate security risks.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Credential Storage and Handling\",\n      \"evidence\": \"The registration script prompts for name, email, password, and skills, then saves an API key to a local `.env` file.\",\n      \"why\": \"Storing API keys and credentials locally can lead to credential theft if the environment or repository is compromised. The API key grants access to the Molt Market account and actions on behalf of the user.\",\n      \"recommendation\": \"Ensure `.env` files are excluded from version control and stored securely. Use environment variable management best practices and consider encrypting sensitive credentials.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Automatic Bidding and Delivery with Remote Interaction\",\n      \"evidence\": \"The skill auto-discovers jobs, bids on them, delivers work, and earns USDC automatically via API calls during agent heartbeat cycles.\",\n      \"why\": \"Automated bidding and delivery could be exploited to perform unintended actions or deliver malicious content. The agent executes work based on remote job descriptions, which could lead to remote code execution or data exfiltration if the job content is malicious.\",\n      \"recommendation\": \"Implement strict validation and sandboxing of any work executed automatically. Monitor and audit automated actions and consider manual approval steps for sensitive operations.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Webhook Registration for Remote Notifications\",\n      \"evidence\": \"The skill sets up a webhook that Molt Market pings to notify the agent of new jobs, bid acceptance, and delivery status changes.\",\n      \"why\": \"Webhooks open a remote communication channel that could be abused if the webhook endpoint is not secured properly, potentially allowing unauthorized triggering of agent actions.\",\n      \"recommendation\": \"Secure webhook endpoints with authentication and validation. Log and monitor incoming webhook requests to detect suspicious activity.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential for Data Exfiltration or Social Engineering\",\n      \"evidence\": \"The agent automatically bids with personalized messages and delivers work, interacting with external users and systems.\",\n      \"why\": \"Automated communication with external parties could be manipulated for social engineering or leaking sensitive information if the agent is compromised or misconfigured.\",\n      \"recommendation\": \"Review and sanitize all outgoing messages. Limit the scope of data shared and implement safeguards against leaking sensitive information.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "anemone",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "cpppselfimprovingagent123123",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-doctor",
+    "zip_path": "skill_zips/skill-doctor.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The skill-doctor skill scans Python skill directories for dependency issues, fixes requirements.txt files, and runs tests in sandboxed or full environments. It does not contain credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The skill-doctor skill scans Python skill directories for dependency issues, fixes requirements.txt files, and runs tests in sandboxed or full environments. It does not contain credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "nummo",
+    "zip_path": "skill_zips/nummo.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The nummo skill connects to users' bank accounts via Plaid and accesses sensitive financial data. It involves authentication, bank account linking, transaction retrieval, and subscription management. While it does not contain explicit destructive commands or obfuscation, it handles highly sensitive data and requires explicit user consent. The use of magic links and URLs for authentication and payment introduces potential risks if URLs are intercepted or misused. There is no direct evidence of credential theft or hidden remote code execution, but the skill's access to financial data and external payment services requires careful handling and user awareness.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Access to Sensitive Financial Data",
+          "evidence": "The skill connects AI agents to the user's bank accounts via Plaid and provides commands to list accounts, transactions, and summaries.",
+          "why": "Access to bank accounts and transaction data is highly sensitive and could lead to financial theft or privacy violations if misused or accessed without proper consent.",
+          "recommendation": "Ensure strict user consent is obtained before any data access. Implement robust authentication and authorization checks. Clearly inform users about data usage and storage."
+        },
+        {
+          "severity": "medium",
+          "title": "Use of Magic Link Authentication",
+          "evidence": "The command `nummo auth signup <email>` creates a new account and sends a magic link to the provided email.",
+          "why": "Magic links sent via email can be intercepted or misused if email accounts are compromised, potentially allowing unauthorized access.",
+          "recommendation": "Advise users to secure their email accounts. Consider additional verification steps or multi-factor authentication to enhance security."
+        },
+        {
+          "severity": "medium",
+          "title": "External URLs for Bank Connection and Payment",
+          "evidence": "Commands `nummo accounts connect` and `nummo sub checkout <tier>` return URLs that users must open in their browsers.",
+          "why": "Sharing URLs for bank connection and payment introduces risks if URLs are intercepted, redirected, or spoofed, potentially leading to phishing or data leakage.",
+          "recommendation": "Ensure URLs are delivered securely and encourage users to verify the URLs before opening. Use HTTPS and trusted domains only."
+        },
+        {
+          "severity": "low",
+          "title": "No Explicit Destructive or Obfuscated Commands",
+          "evidence": "The skill documentation does not show any commands that delete data, execute hidden code, or obfuscate operations.",
+          "why": "Absence of destructive or obfuscated commands reduces risk of hidden malicious behavior.",
+          "recommendation": "Maintain transparency in command operations and continue to audit for any future changes."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The nummo skill connects to users' bank accounts via Plaid and accesses sensitive financial data. It involves authentication, bank account linking, transaction retrieval, and subscription management. While it does not contain explicit destructive commands or obfuscation, it handles highly sensitive data and requires explicit user consent. The use of magic links and URLs for authentication and payment introduces potential risks if URLs are intercepted or misused. There is no direct evidence of credential theft or hidden remote code execution, but the skill's access to financial data and external payment services requires careful handling and user awareness.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Access to Sensitive Financial Data\",\n      \"evidence\": \"The skill connects AI agents to the user's bank accounts via Plaid and provides commands to list accounts, transactions, and summaries.\",\n      \"why\": \"Access to bank accounts and transaction data is highly sensitive and could lead to financial theft or privacy violations if misused or accessed without proper consent.\",\n      \"recommendation\": \"Ensure strict user consent is obtained before any data access. Implement robust authentication and authorization checks. Clearly inform users about data usage and storage.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Use of Magic Link Authentication\",\n      \"evidence\": \"The command `nummo auth signup <email>` creates a new account and sends a magic link to the provided email.\",\n      \"why\": \"Magic links sent via email can be intercepted or misused if email accounts are compromised, potentially allowing unauthorized access.\",\n      \"recommendation\": \"Advise users to secure their email accounts. Consider additional verification steps or multi-factor authentication to enhance security.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"External URLs for Bank Connection and Payment\",\n      \"evidence\": \"Commands `nummo accounts connect` and `nummo sub checkout <tier>` return URLs that users must open in their browsers.\",\n      \"why\": \"Sharing URLs for bank connection and payment introduces risks if URLs are intercepted, redirected, or spoofed, potentially leading to phishing or data leakage.\",\n      \"recommendation\": \"Ensure URLs are delivered securely and encourage users to verify the URLs before opening. Use HTTPS and trusted domains only.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No Explicit Destructive or Obfuscated Commands\",\n      \"evidence\": \"The skill documentation does not show any commands that delete data, execute hidden code, or obfuscate operations.\",\n      \"why\": \"Absence of destructive or obfuscated commands reduces risk of hidden malicious behavior.\",\n      \"recommendation\": \"Maintain transparency in command operations and continue to audit for any future changes.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "self-optimizer",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "zhichu-tracker",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "zentao-analytics",
+    "zip_path": "skill_zips/zentao-analytics.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The zentao-analytics skill provides data analysis functionalities for ZenTao project management system by accessing its API or database. It involves handling employee task data for internal performance evaluation and resource optimization. The instructions include configuration of credentials for API or database access, running analysis scripts, and exporting reports. No evidence of credential theft, data exfiltration beyond intended export, social engineering, hidden remote code execution, destructive commands, or obfuscation was found.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The zentao-analytics skill provides data analysis functionalities for ZenTao project management system by accessing its API or database. It involves handling employee task data for internal performance evaluation and resource optimization. The instructions include configuration of credentials for API or database access, running analysis scripts, and exporting reports. No evidence of credential theft, data exfiltration beyond intended export, social engineering, hidden remote code execution, destructive commands, or obfuscation was found.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "playwright-commander",
+    "downloaded": false,
+    "error": "Download failed: The read operation timed out"
+  },
+  {
+    "slug": "pulseai-skill",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skills-compat",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-doc-formatter",
+    "zip_path": "skill_zips/skill-doc-formatter.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The SKILL.md instructions for skill-doc-formatter describe a documentation formatting tool with optional security review features. The content is focused on parsing, normalizing, and generating skill documentation and includes guidance for security checks to identify common issues. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The SKILL.md instructions for skill-doc-formatter describe a documentation formatting tool with optional security review features. The content is focused on parsing, normalizing, and generating skill documentation and includes guidance for security checks to identify common issues. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "coding-lead",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "smart-expense-tracker-cn",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "team-builder",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "zhihu-assistant-skill",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "clawroom",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "moltbook-refugee",
+    "zip_path": "skill_zips/moltbook-refugee.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The instructions facilitate migration of user identity and credentials to a third-party platform via unauthenticated API calls. The process involves storing sensitive credentials locally and sending user data to an external server without authentication, which may expose users to credential theft or data exfiltration risks. The external platform is not verified and uses a non-standard domain, increasing risk. No obfuscation or destructive commands are present.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Credential Exposure and Storage",
+          "evidence": "Save the returned `id` and `secret` to `~/.config/clawswarm/credentials.json`.",
+          "why": "Storing sensitive credentials in a local file without guidance on encryption or protection can lead to credential theft if the file is accessed by unauthorized parties.",
+          "recommendation": "Advise users to secure the credentials file with appropriate file permissions and consider encrypting sensitive data at rest."
+        },
+        {
+          "severity": "high",
+          "title": "Unauthenticated API Registration and Data Submission",
+          "evidence": "curl -s -X POST \"https://onlyflies.buzz/clawswarm/api/v1/agents/register\" ... -d '{\"name\":\"$MOLTBOOK_NAME\",\"description\":\"$MOLTBOOK_BIO (migrated from Moltbook)\",\"capabilities\":[\"general\"]}'",
+          "why": "The registration endpoint accepts user data without authentication or verification, which could be exploited to impersonate users or submit malicious data.",
+          "recommendation": "Implement authentication or verification mechanisms to prevent unauthorized registrations and ensure data integrity."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential Data Exfiltration via External Domain",
+          "evidence": "All API calls are made to https://onlyflies.buzz/clawswarm/ ... including registration and messaging.",
+          "why": "The external domain is not a widely recognized or verified entity, raising concerns about data privacy and potential misuse of submitted personal information.",
+          "recommendation": "Perform due diligence on the external platform's trustworthiness and inform users about the risks of sending personal data to third-party services."
+        },
+        {
+          "severity": "low",
+          "title": "Lack of Authentication in Messaging API",
+          "evidence": "curl -s -X POST \"https://onlyflies.buzz/clawswarm/api/v1/channels/channel_general/message\" -H \"X-Agent-ID: YOUR_AGENT_ID\" -d '{\"agentId\":\"YOUR_AGENT_ID\",\"content\":\"Just migrated from Moltbook. What did I miss?\"}'",
+          "why": "The messaging API uses only an agent ID header for identification without stronger authentication, which could allow message spoofing.",
+          "recommendation": "Use stronger authentication tokens or mechanisms to secure message posting."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The instructions facilitate migration of user identity and credentials to a third-party platform via unauthenticated API calls. The process involves storing sensitive credentials locally and sending user data to an external server without authentication, which may expose users to credential theft or data exfiltration risks. The external platform is not verified and uses a non-standard domain, increasing risk. No obfuscation or destructive commands are present.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Credential Exposure and Storage\",\n      \"evidence\": \"Save the returned `id` and `secret` to `~/.config/clawswarm/credentials.json`.\",\n      \"why\": \"Storing sensitive credentials in a local file without guidance on encryption or protection can lead to credential theft if the file is accessed by unauthorized parties.\",\n      \"recommendation\": \"Advise users to secure the credentials file with appropriate file permissions and consider encrypting sensitive data at rest.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Unauthenticated API Registration and Data Submission\",\n      \"evidence\": \"curl -s -X POST \\\"https://onlyflies.buzz/clawswarm/api/v1/agents/register\\\" ... -d '{\\\"name\\\":\\\"$MOLTBOOK_NAME\\\",\\\"description\\\":\\\"$MOLTBOOK_BIO (migrated from Moltbook)\\\",\\\"capabilities\\\":[\\\"general\\\"]}'\",\n      \"why\": \"The registration endpoint accepts user data without authentication or verification, which could be exploited to impersonate users or submit malicious data.\",\n      \"recommendation\": \"Implement authentication or verification mechanisms to prevent unauthorized registrations and ensure data integrity.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential Data Exfiltration via External Domain\",\n      \"evidence\": \"All API calls are made to https://onlyflies.buzz/clawswarm/ ... including registration and messaging.\",\n      \"why\": \"The external domain is not a widely recognized or verified entity, raising concerns about data privacy and potential misuse of submitted personal information.\",\n      \"recommendation\": \"Perform due diligence on the external platform's trustworthiness and inform users about the risks of sending personal data to third-party services.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Lack of Authentication in Messaging API\",\n      \"evidence\": \"curl -s -X POST \\\"https://onlyflies.buzz/clawswarm/api/v1/channels/channel_general/message\\\" -H \\\"X-Agent-ID: YOUR_AGENT_ID\\\" -d '{\\\"agentId\\\":\\\"YOUR_AGENT_ID\\\",\\\"content\\\":\\\"Just migrated from Moltbook. What did I miss?\\\"}'\",\n      \"why\": \"The messaging API uses only an agent ID header for identification without stronger authentication, which could allow message spoofing.\",\n      \"recommendation\": \"Use stronger authentication tokens or mechanisms to secure message posting.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "gateway-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "clawswarm",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "org-learning-ops-skill",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "chat-history-analyzer",
+    "zip_path": "skill_zips/chat-history-analyzer.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Chat History Analyzer skill extracts and analyzes local chat history from Cursor IDE's SQLite databases and saves structured reports to a local journal directory. It runs as a scheduled cron job or manually. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Chat History Analyzer skill extracts and analyzes local chat history from Cursor IDE's SQLite databases and saves structured reports to a local journal directory. It runs as a scheduled cron job or manually. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "obsidian-cli-official",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "agent-swarm",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "hugme",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "supabase-hakke",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "krumpsocial",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "bricks-cli",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "zyfai-sdk",
+    "zip_path": "skill_zips/zyfai-sdk.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The zyfai-sdk instructions describe a system that manages Ethereum subaccounts for yield optimization. While the SDK emphasizes non-custodial control and secure wallet connection methods, there are potential risks related to private key handling, API key management, and session key usage that could lead to credential theft or unauthorized fund access if misused or improperly secured.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Private Key Usage in Code and Environment Variables",
+          "evidence": "Option 3: Private Key String (Development Only) shows direct usage of private keys in environment variables and code: await sdk.connectAccount(process.env.PRIVATE_KEY, 8453);",
+          "why": "Storing or using raw private keys in environment variables or code can lead to credential theft if the environment is compromised. This is explicitly warned against for production use but still presented as an option.",
+          "recommendation": "Avoid using raw private keys in environment variables or code in production. Use secure key management solutions (KMS, Wallet-as-a-Service, hardware wallets) as recommended in Option 2."
+        },
+        {
+          "severity": "medium",
+          "title": "API Key Exposure Risk",
+          "evidence": "API keys are created programmatically and must be stored securely as they cannot be retrieved later. The instructions say: \"Store the apiKey securely \u2014 it cannot be retrieved later.\"",
+          "why": "If API keys are leaked or mishandled, attackers could impersonate clients or agents, potentially interacting with the SDK and accessing user subaccounts or session keys.",
+          "recommendation": "Ensure API keys are stored securely using environment variables or secret management systems with restricted access. Avoid hardcoding or exposing API keys in client-side code."
+        },
+        {
+          "severity": "medium",
+          "title": "Session Key Usage and Potential Privilege Escalation",
+          "evidence": "Session keys allow automated rebalancing but cannot withdraw to other addresses. The SDK requires verifying session key activation and warns to retry if not active.",
+          "why": "If session keys are compromised or misused, there is a risk of unauthorized fund rebalancing or manipulation within the protocol. Although withdrawals to arbitrary addresses are disallowed, improper session key management could lead to fund loss or manipulation.",
+          "recommendation": "Implement strict session key lifecycle management, monitor session key activity, and ensure session keys have minimal privileges. Educate users and developers on verifying session key activation and handling failures securely."
+        },
+        {
+          "severity": "low",
+          "title": "Potential Social Engineering via API Key Creation Endpoint",
+          "evidence": "The API key creation endpoint requires wallet address and email: POST https://sdk.zyf.ai/api/sdk-api-keys/create with clientName, walletAddress, and email.",
+          "why": "Attackers could attempt to create API keys impersonating others or trick users into providing wallet addresses and emails, potentially leading to unauthorized API key issuance or phishing.",
+          "recommendation": "Implement strong authentication and verification on API key creation endpoints. Educate users to only create API keys from trusted sources and verify ownership of wallet addresses."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The zyfai-sdk instructions describe a system that manages Ethereum subaccounts for yield optimization. While the SDK emphasizes non-custodial control and secure wallet connection methods, there are potential risks related to private key handling, API key management, and session key usage that could lead to credential theft or unauthorized fund access if misused or improperly secured.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Private Key Usage in Code and Environment Variables\",\n      \"evidence\": \"Option 3: Private Key String (Development Only) shows direct usage of private keys in environment variables and code: await sdk.connectAccount(process.env.PRIVATE_KEY, 8453);\",\n      \"why\": \"Storing or using raw private keys in environment variables or code can lead to credential theft if the environment is compromised. This is explicitly warned against for production use but still presented as an option.\",\n      \"recommendation\": \"Avoid using raw private keys in environment variables or code in production. Use secure key management solutions (KMS, Wallet-as-a-Service, hardware wallets) as recommended in Option 2.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"API Key Exposure Risk\",\n      \"evidence\": \"API keys are created programmatically and must be stored securely as they cannot be retrieved later. The instructions say: \\\"Store the apiKey securely \u2014 it cannot be retrieved later.\\\"\",\n      \"why\": \"If API keys are leaked or mishandled, attackers could impersonate clients or agents, potentially interacting with the SDK and accessing user subaccounts or session keys.\",\n      \"recommendation\": \"Ensure API keys are stored securely using environment variables or secret management systems with restricted access. Avoid hardcoding or exposing API keys in client-side code.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Session Key Usage and Potential Privilege Escalation\",\n      \"evidence\": \"Session keys allow automated rebalancing but cannot withdraw to other addresses. The SDK requires verifying session key activation and warns to retry if not active.\",\n      \"why\": \"If session keys are compromised or misused, there is a risk of unauthorized fund rebalancing or manipulation within the protocol. Although withdrawals to arbitrary addresses are disallowed, improper session key management could lead to fund loss or manipulation.\",\n      \"recommendation\": \"Implement strict session key lifecycle management, monitor session key activity, and ensure session keys have minimal privileges. Educate users and developers on verifying session key activation and handling failures securely.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Potential Social Engineering via API Key Creation Endpoint\",\n      \"evidence\": \"The API key creation endpoint requires wallet address and email: POST https://sdk.zyf.ai/api/sdk-api-keys/create with clientName, walletAddress, and email.\",\n      \"why\": \"Attackers could attempt to create API keys impersonating others or trick users into providing wallet addresses and emails, potentially leading to unauthorized API key issuance or phishing.\",\n      \"recommendation\": \"Implement strong authentication and verification on API key creation endpoints. Educate users to only create API keys from trusted sources and verify ownership of wallet addresses.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "gemini-sub-agent",
+    "zip_path": "skill_zips/gemini-sub-agent.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The gemini-sub-agent skill involves OAuth authentication with Google Cloud, caching credentials indefinitely, and running an agentic coding mode with auto-approved file writes and shell commands. This introduces risks of credential theft, unauthorized data exfiltration, and hidden remote code execution due to the '-y' yolo mode that auto-approves all file writes and shell commands. The setup process requires manual copying of authentication tokens between machines, which could be exploited via social engineering or interception. The skill also executes arbitrary code and file modifications autonomously, which can be destructive if misused.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Agentic coding mode with auto-approved file writes and shell commands",
+          "evidence": "GOOGLE_GENAI_USE_GCA=true gemini -m gemini-2.5-pro -y -p \"write a script that...\"\n`-y` = yolo mode (auto-approves all file writes and shell commands). Gemini reads/writes files autonomously.",
+          "why": "This mode allows the Gemini agent to autonomously execute shell commands and modify files without user confirmation, which can lead to hidden remote code execution, destructive commands, or unauthorized system changes.",
+          "recommendation": "Avoid using '-y' yolo mode in untrusted environments. Implement strict auditing, logging, and user confirmation before executing file writes or shell commands. Limit permissions of the running environment."
+        },
+        {
+          "severity": "medium",
+          "title": "Indefinite caching of Google Cloud credentials",
+          "evidence": "Credentials are cached indefinitely and auto-refresh.",
+          "why": "Indefinite caching of credentials increases the risk of credential theft or misuse if the machine is compromised, potentially allowing unauthorized access to Google Cloud resources.",
+          "recommendation": "Implement credential expiration or periodic re-authentication. Secure stored credentials with encryption and restrict access."
+        },
+        {
+          "severity": "medium",
+          "title": "Manual copying of OAuth tokens between VPS and laptop",
+          "evidence": "On VPS: `gcloud auth application-default login --no-browser` \u2192 copy the `--remote-bootstrap` URL\nOn laptop: `gcloud auth application-default login --remote-bootstrap=\"<URL>\"` \u2192 copy the `localhost:8085` output\nPaste `localhost:8085` output back into VPS prompt",
+          "why": "This manual token exchange process could be exploited via social engineering or interception, leading to credential theft or unauthorized access.",
+          "recommendation": "Use secure channels for token exchange. Educate users about phishing risks. Automate authentication flows where possible to reduce manual steps."
+        },
+        {
+          "severity": "low",
+          "title": "Potential data exfiltration via large content piping",
+          "evidence": "cat large_file.txt | ask-gemini \"summarize this in 5 bullets\"\ncat report.md | ask-gemini \"extract all action items\"",
+          "why": "Piping large or sensitive files into the Gemini agent could lead to unintended data exposure if the agent or underlying services transmit data externally.",
+          "recommendation": "Review data handling policies of Gemini service. Avoid sending sensitive data unless encrypted or anonymized. Monitor network traffic for unauthorized data exfiltration."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The gemini-sub-agent skill involves OAuth authentication with Google Cloud, caching credentials indefinitely, and running an agentic coding mode with auto-approved file writes and shell commands. This introduces risks of credential theft, unauthorized data exfiltration, and hidden remote code execution due to the '-y' yolo mode that auto-approves all file writes and shell commands. The setup process requires manual copying of authentication tokens between machines, which could be exploited via social engineering or interception. The skill also executes arbitrary code and file modifications autonomously, which can be destructive if misused.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Agentic coding mode with auto-approved file writes and shell commands\",\n      \"evidence\": \"GOOGLE_GENAI_USE_GCA=true gemini -m gemini-2.5-pro -y -p \\\"write a script that...\\\"\\n`-y` = yolo mode (auto-approves all file writes and shell commands). Gemini reads/writes files autonomously.\",\n      \"why\": \"This mode allows the Gemini agent to autonomously execute shell commands and modify files without user confirmation, which can lead to hidden remote code execution, destructive commands, or unauthorized system changes.\",\n      \"recommendation\": \"Avoid using '-y' yolo mode in untrusted environments. Implement strict auditing, logging, and user confirmation before executing file writes or shell commands. Limit permissions of the running environment.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Indefinite caching of Google Cloud credentials\",\n      \"evidence\": \"Credentials are cached indefinitely and auto-refresh.\",\n      \"why\": \"Indefinite caching of credentials increases the risk of credential theft or misuse if the machine is compromised, potentially allowing unauthorized access to Google Cloud resources.\",\n      \"recommendation\": \"Implement credential expiration or periodic re-authentication. Secure stored credentials with encryption and restrict access.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Manual copying of OAuth tokens between VPS and laptop\",\n      \"evidence\": \"On VPS: `gcloud auth application-default login --no-browser` \u2192 copy the `--remote-bootstrap` URL\\nOn laptop: `gcloud auth application-default login --remote-bootstrap=\\\"<URL>\\\"` \u2192 copy the `localhost:8085` output\\nPaste `localhost:8085` output back into VPS prompt\",\n      \"why\": \"This manual token exchange process could be exploited via social engineering or interception, leading to credential theft or unauthorized access.\",\n      \"recommendation\": \"Use secure channels for token exchange. Educate users about phishing risks. Automate authentication flows where possible to reduce manual steps.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Potential data exfiltration via large content piping\",\n      \"evidence\": \"cat large_file.txt | ask-gemini \\\"summarize this in 5 bullets\\\"\\ncat report.md | ask-gemini \\\"extract all action items\\\"\",\n      \"why\": \"Piping large or sensitive files into the Gemini agent could lead to unintended data exposure if the agent or underlying services transmit data externally.\",\n      \"recommendation\": \"Review data handling policies of Gemini service. Avoid sending sensitive data unless encrypted or anonymized. Monitor network traffic for unauthorized data exfiltration.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "voiceskill123",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "openclaw-memory-pensieve-algorand",
+    "zip_path": "skill_zips/openclaw-memory-pensieve-algorand.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The OpenClaw Memory Pensieve v2 skill documentation describes a memory management system with append-only event capture, scheduled consolidation, and optional Algorand blockchain anchoring. The instructions emphasize append-only data handling, external signing for blockchain transactions, and no direct network or LLM usage in the capture lane. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The OpenClaw Memory Pensieve v2 skill documentation describes a memory management system with append-only event capture, scheduled consolidation, and optional Algorand blockchain anchoring. The instructions emphasize append-only data handling, external signing for blockchain transactions, and no direct network or LLM usage in the capture lane. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "openclaw-commute-traffic",
+    "zip_path": "skill_zips/openclaw-commute-traffic.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The instructions describe a traffic checking skill that queries the TomTom API using a user-provided API key to obtain real-time traffic data. The skill extracts origin and destination from user input and runs a Python script to fetch traffic information. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The instructions describe a traffic checking skill that queries the TomTom API using a user-provided API key to obtain real-time traffic data. The skill extracts origin and destination from user input and runs a Python script to fetch traffic information. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "briefed",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
   }
 ]

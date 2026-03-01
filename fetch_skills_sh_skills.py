@@ -5,7 +5,7 @@ Examples:
   python fetch_skills_sh_skills.py --output skills_sh_skills.json --limit 100
   python fetch_skills_sh_skills.py --download-slug vercel-labs/skills/find-skills --skip-list-fetch
   python fetch_skills_sh_skills.py --download-all-from-list --delay 1.0
-  OPENAI_API_KEY=... python fetch_skills_sh_skills.py --download-all-from-list --audit-skill-md
+  MINIMAX_API_KEY=... python fetch_skills_sh_skills.py --download-all-from-list --audit-skill-md
 """
 
 from __future__ import annotations
@@ -29,7 +29,10 @@ from alert_mail import add_alert_mail_args, build_alert_mailer, maybe_send_alert
 DEFAULT_BASE_URL = "https://skills.sh"
 DEFAULT_LIST_URL = "https://skills.sh/hot"
 DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1/responses"
-DEFAULT_AUDIT_MODEL = "gpt-4.1-mini"
+DEFAULT_OPENAI_MODEL = "gpt-4.1-mini"
+DEFAULT_MINIMAX_BASE_URL = "https://api.minimax.chat/v1/text/chatcompletion_v2"
+DEFAULT_MINIMAX_MODEL = "MiniMax-Text-01"
+DEFAULT_LLM_PROVIDER = "minimax"
 
 COLOR_RESET = "\033[0m"
 COLOR_INFO = "\033[36m"
@@ -367,6 +370,22 @@ def extract_openai_text(response: Dict[str, Any]) -> str:
     return json.dumps(response, ensure_ascii=False)
 
 
+def extract_minimax_text(response: Dict[str, Any]) -> str:
+    choices = response.get("choices")
+    if isinstance(choices, list):
+        for choice in choices:
+            if not isinstance(choice, dict):
+                continue
+            message = choice.get("message")
+            if isinstance(message, dict) and isinstance(message.get("content"), str):
+                return message["content"]
+            if isinstance(choice.get("text"), str):
+                return choice["text"]
+    if isinstance(response.get("reply"), str):
+        return response["reply"]
+    return json.dumps(response, ensure_ascii=False)
+
+
 def parse_json_dict_from_text(text: str) -> Dict[str, Any] | None:
     candidates: List[str] = []
     raw = text.strip()
@@ -418,7 +437,8 @@ def normalize_audit_shape(parsed: Dict[str, Any], raw_text: str) -> Dict[str, An
 
 
 def audit_skill_md(
-    openai_base_url: str,
+    provider: str,
+    llm_base_url: str,
     api_key: str,
     model: str,
     slug: str,
@@ -433,29 +453,45 @@ def audit_skill_md(
         "findings must be a list of objects with keys: severity, title, evidence, why, recommendation."
     )
 
-    payload = {
-        "model": model,
-        "input": [
-            {"role": "system", "content": [{"type": "input_text", "text": prompt}]},
-            {
-                "role": "user",
-                "content": [
-                    {
-                        "type": "input_text",
-                        "text": f"Skill slug: {slug}\n\nSKILL.md:\n\n{skill_md_text}",
-                    }
-                ],
-            },
-        ],
-        "temperature": 0,
-    }
-    headers = {
-        "Authorization": f"Bearer {api_key}",
-        "Content-Type": "application/json",
-    }
+    if provider == "minimax":
+        payload = {
+            "model": model,
+            "messages": [
+                {"role": "system", "content": prompt},
+                {"role": "user", "content": f"Skill slug: {slug}\n\nSKILL.md:\n\n{skill_md_text}"},
+            ],
+            "temperature": 0,
+        }
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        }
+        raw = post_json(llm_base_url, payload, headers, timeout)
+        text = extract_minimax_text(raw).strip()
+    else:
+        payload = {
+            "model": model,
+            "input": [
+                {"role": "system", "content": [{"type": "input_text", "text": prompt}]},
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "input_text",
+                            "text": f"Skill slug: {slug}\n\nSKILL.md:\n\n{skill_md_text}",
+                        }
+                    ],
+                },
+            ],
+            "temperature": 0,
+        }
+        headers = {
+            "Authorization": f"Bearer {api_key}",
+            "Content-Type": "application/json",
+        }
 
-    raw = post_json(openai_base_url, payload, headers, timeout)
-    text = extract_openai_text(raw).strip()
+        raw = post_json(llm_base_url, payload, headers, timeout)
+        text = extract_openai_text(raw).strip()
     parsed = parse_json_dict_from_text(text)
     if parsed is not None:
         return normalize_audit_shape(parsed, text)
@@ -534,19 +570,25 @@ def parse_args() -> argparse.Namespace:
         help="Max SKILL.md characters sent to the LLM per skill.",
     )
     parser.add_argument(
-        "--openai-api-key",
-        default=os.environ.get("OPENAI_API_KEY", ""),
-        help="OpenAI API key (defaults to OPENAI_API_KEY env var).",
+        "--llm-provider",
+        choices=["minimax", "openai"],
+        default=DEFAULT_LLM_PROVIDER,
+        help="LLM provider for auditing.",
     )
     parser.add_argument(
-        "--openai-model",
-        default=DEFAULT_AUDIT_MODEL,
-        help="Model used for auditing.",
+        "--llm-api-key",
+        default="",
+        help="LLM API key (defaults to MINIMAX_API_KEY or OPENAI_API_KEY by provider).",
     )
     parser.add_argument(
-        "--openai-base-url",
-        default=DEFAULT_OPENAI_BASE_URL,
-        help="OpenAI Responses API URL.",
+        "--llm-model",
+        default="",
+        help="Model used for auditing (provider-specific default if omitted).",
+    )
+    parser.add_argument(
+        "--llm-base-url",
+        default="",
+        help="Audit API URL (provider-specific default if omitted).",
     )
     add_alert_mail_args(parser)
     return parser.parse_args()
@@ -602,8 +644,17 @@ def main() -> int:
     audit_results: List[Dict[str, Any]] = []
     audited_slugs: set[str] = set()
 
-    if args.audit_skill_md and not args.openai_api_key:
-        log("ERROR", "Missing OpenAI API key. Set --openai-api-key or OPENAI_API_KEY.")
+    if not args.llm_api_key:
+        env_var = "MINIMAX_API_KEY" if args.llm_provider == "minimax" else "OPENAI_API_KEY"
+        args.llm_api_key = os.environ.get(env_var, "")
+    if not args.llm_model:
+        args.llm_model = DEFAULT_MINIMAX_MODEL if args.llm_provider == "minimax" else DEFAULT_OPENAI_MODEL
+    if not args.llm_base_url:
+        args.llm_base_url = DEFAULT_MINIMAX_BASE_URL if args.llm_provider == "minimax" else DEFAULT_OPENAI_BASE_URL
+
+    if args.audit_skill_md and not args.llm_api_key:
+        env_var = "MINIMAX_API_KEY" if args.llm_provider == "minimax" else "OPENAI_API_KEY"
+        log("ERROR", f"Missing API key. Set --llm-api-key or {env_var}.")
         return 2
 
     if args.audit_skill_md and not args.dont_cache:
@@ -690,14 +741,15 @@ def main() -> int:
 
                 log(
                     "INFO",
-                    f"Auditing {slug} with model={args.openai_model}"
+                    f"Auditing {slug} with provider={args.llm_provider} model={args.llm_model}"
                     + (" (truncated SKILL.md)" if md_info["truncated"] else ""),
                 )
                 try:
                     audit = audit_skill_md(
-                        openai_base_url=args.openai_base_url,
-                        api_key=args.openai_api_key,
-                        model=args.openai_model,
+                        provider=args.llm_provider,
+                        llm_base_url=args.llm_base_url,
+                        api_key=args.llm_api_key,
+                        model=args.llm_model,
                         slug=slug,
                         skill_md_text=md_info["text"],
                         timeout=args.timeout,

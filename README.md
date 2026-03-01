@@ -10,7 +10,7 @@ This repo is intentionally simple: a few Python collectors + one Vite frontend.
   - Pulls skills from a ClawHub-style API (`/api/v1/skills` + `/api/v1/download?slug=`).
   - Downloads ZIPs.
   - Extracts `SKILL.md`.
-  - Audits with the OpenAI Responses API.
+  - Audits with a selectable LLM provider (`minimax` default, `openai` optional).
   - Saves audit output incrementally after each skill attempt.
 
 - `fetch_skills_sh_skills.py`
@@ -27,6 +27,7 @@ This repo is intentionally simple: a few Python collectors + one Vite frontend.
 
 - Python `3.10+`
 - Node `18+` and npm
+- `MINIMAX_API_KEY` (audit mode default) or `OPENAI_API_KEY` (if using `--llm-provider openai`)
 - `OPENAI_API_KEY` (only needed for audit mode)
 - Convex account/deployment (only needed for Convex DB mode)
 
@@ -143,7 +144,7 @@ python3 fetch_clawhub_skills.py \
 Full sequential scan + audit:
 
 ```bash
-OPENAI_API_KEY=... python3 fetch_clawhub_skills.py \
+MINIMAX_API_KEY=... python3 fetch_clawhub_skills.py \
   --base-url https://wry-manatee-359.convex.site \
   --limit 100 \
   --output clawhub_skills.json \
@@ -157,7 +158,7 @@ OPENAI_API_KEY=... python3 fetch_clawhub_skills.py \
 Single slug test:
 
 ```bash
-OPENAI_API_KEY=... python3 fetch_clawhub_skills.py \
+MINIMAX_API_KEY=... python3 fetch_clawhub_skills.py \
   --base-url https://wry-manatee-359.convex.site \
   --skip-list-fetch \
   --download-slug gifgrep \
@@ -181,10 +182,19 @@ OPENAI_API_KEY=... python3 fetch_clawhub_skills.py \
   --audit-output skill_audit_report.json
 ```
 
+Single name match test:
+
+```bash
+python3 fetch_clawhub_skills.py \
+  --base-url https://wry-manatee-359.convex.site \
+  --limit 100 \
+  --download-name "gifgrep"
+```
+
 ## 2) skills.sh collector
 
 ```bash
-OPENAI_API_KEY=... python3 fetch_skills_sh_skills.py \
+MINIMAX_API_KEY=... python3 fetch_skills_sh_skills.py \
   --limit 100 \
   --output skills_sh_skills.json \
   --download-all-from-list \
@@ -197,7 +207,7 @@ OPENAI_API_KEY=... python3 fetch_skills_sh_skills.py \
 ## 3) skillsmp.com collector
 
 ```bash
-OPENAI_API_KEY=... python3 fetch_skillsmp_skills.py \
+MINIMAX_API_KEY=... python3 fetch_skillsmp_skills.py \
   --category backend \
   --sort-by recent \
   --max-pages 5 \
@@ -255,7 +265,7 @@ OPENAI_API_KEY=... python3 fetch_skillsmp_skills.py \
   - run smaller batches
 
 - Missing LLM audits:
-  - confirm `OPENAI_API_KEY` is set
+  - confirm `MINIMAX_API_KEY` is set (or `OPENAI_API_KEY` if `--llm-provider openai`)
   - verify network access from your runtime
 
 - Frontend shows no data:
