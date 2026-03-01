@@ -28,6 +28,8 @@ This repo is intentionally simple: a few Python collectors + one Vite frontend.
 - Python `3.10+`
 - Node `18+` and npm
 - `MINIMAX_API_KEY` (audit mode default) or `OPENAI_API_KEY` (if using `--llm-provider openai`)
+- `OPENAI_API_KEY` (only needed for audit mode)
+- Convex account/deployment (only needed for Convex DB mode)
 
 ## Quick start
 
@@ -47,6 +49,41 @@ npm run dev
 
 - `public/skill_audit_report.json` (autoload)
 - or upload a JSON file from the UI
+
+## Convex database mode (Python + Convex)
+
+This repo now supports storing audit records in Convex and loading them from the dashboard.
+
+1. Set up Convex in this repo (first time only):
+
+```bash
+npx convex dev
+```
+
+2. Install the Python Convex client:
+
+```bash
+pip install convex
+```
+
+3. Sync your local report into Convex:
+
+```bash
+python3 sync_audit_report_to_convex.py \
+  --input skill_audit_report.json \
+  --convex-url https://YOUR-DEPLOYMENT.convex.cloud \
+  --clear-first
+```
+
+4. Point the frontend to Convex via `.env.local`:
+
+```bash
+VITE_CONVEX_URL=https://YOUR-DEPLOYMENT.convex.cloud
+# Optional override (default already matches this repo)
+VITE_CONVEX_QUERY_PATH=skillAudits:list
+```
+
+When `VITE_CONVEX_URL` is set, the UI loads from Convex first. If that fails, it falls back to `public/skill_audit_report.json`.
 
 ## Core workflow
 
@@ -146,6 +183,10 @@ MINIMAX_API_KEY=... python3 fetch_skillsmp_skills.py \
 - `skill_audit_report.json`
   - Main audit dataset used by the dashboard.
   - Updated after each processed attempt in audit mode.
+- `sync_audit_report_to_convex.py`
+  - Pushes JSON audit records into Convex (`skillAudits` table) via upsert.
+- `convex/schema.js`, `convex/skillAudits.js`
+  - Convex schema/functions for storing and querying audit records.
 
 - `public/skill_audit_report.json`
   - Frontend autoload copy.

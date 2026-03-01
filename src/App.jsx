@@ -141,20 +141,45 @@ export default function App() {
   const [sortBy, setSortBy] = useState('risk_desc')
 
   useEffect(() => {
-    fetch('/skill_audit_report.json', { cache: 'no-store' })
-      .then((res) => {
+    const convexUrl = import.meta.env.VITE_CONVEX_URL
+    const convexQueryPath = import.meta.env.VITE_CONVEX_QUERY_PATH || 'skillAudits:list'
+
+    const load = async () => {
+      if (convexUrl) {
+        try {
+          const trimmed = String(convexUrl).replace(/\/+$/, '')
+          const res = await fetch(`${trimmed}/api/query`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ path: convexQueryPath, args: {} }),
+          })
+          if (!res.ok) throw new Error('convex query failed')
+          const payload = await res.json()
+          if (payload?.status !== 'success' || !Array.isArray(payload?.value)) {
+            throw new Error('invalid convex response')
+          }
+          setItems(payload.value)
+          setSource(`Loaded from Convex (${payload.value.length} entries)`)
+          return
+        } catch {
+          setSource('Convex load failed, trying local JSON...')
+        }
+      }
+
+      try {
+        const res = await fetch('/skill_audit_report.json', { cache: 'no-store' })
         if (!res.ok) throw new Error('fetch failed')
-        return res.json()
-      })
-      .then((data) => {
+        const data = await res.json()
         if (!Array.isArray(data)) throw new Error('Invalid JSON shape')
         setItems(data)
-        setSource(`Loaded default dataset (${data.length} entries)`)
-      })
-      .catch(() => {
+        setSource(`Loaded local dataset (${data.length} entries)`)
+      } catch {
         setItems([])
         setSource('Auto-load failed. Upload a JSON file.')
-      })
+      }
+    }
+
+    load()
   }, [])
 
   const filtered = useMemo(() => {
