@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 const riskOrder = ['critical', 'high', 'medium', 'low', 'unknown']
 const severityOrder = ['critical', 'high', 'medium', 'low', 'info', 'unknown']
+const riskRank = { critical: 5, high: 4, medium: 3, low: 2, unknown: 1 }
 
 const riskTone = {
   critical: 'text-rose-300 border-rose-300/40 bg-rose-500/15',
@@ -125,6 +126,7 @@ export default function App() {
   const [search, setSearch] = useState('')
   const [riskFilter, setRiskFilter] = useState('all')
   const [statusFilter, setStatusFilter] = useState('all')
+  const [sortBy, setSortBy] = useState('risk_desc')
 
   useEffect(() => {
     fetch('/skill_audit_report.json', { cache: 'no-store' })
@@ -149,14 +151,41 @@ export default function App() {
       const risk = normalizeRisk(item.audit?.risk_level)
       const status = statusOf(item)
       const q = search.trim().toLowerCase()
+      const summary = String(item.audit?.summary || item.error || '').toLowerCase()
+      const findingTitles = asArray(item.audit?.findings)
+        .map((f) => String(f.title || '').toLowerCase())
+        .join(' ')
 
       return (
-        (!q || slug.includes(q)) &&
+        (!q || slug.includes(q) || summary.includes(q) || findingTitles.includes(q)) &&
         (riskFilter === 'all' || risk === riskFilter) &&
         (statusFilter === 'all' || status === statusFilter)
       )
     })
   }, [items, search, riskFilter, statusFilter])
+
+  const sortedFiltered = useMemo(() => {
+    const out = [...filtered]
+    out.sort((a, b) => {
+      if (sortBy === 'slug_asc') {
+        return String(a.slug || '').localeCompare(String(b.slug || ''))
+      }
+      if (sortBy === 'slug_desc') {
+        return String(b.slug || '').localeCompare(String(a.slug || ''))
+      }
+      if (sortBy === 'findings_desc') {
+        return asArray(b.audit?.findings).length - asArray(a.audit?.findings).length
+      }
+      if (sortBy === 'findings_asc') {
+        return asArray(a.audit?.findings).length - asArray(b.audit?.findings).length
+      }
+      if (sortBy === 'risk_asc') {
+        return riskRank[normalizeRisk(a.audit?.risk_level)] - riskRank[normalizeRisk(b.audit?.risk_level)]
+      }
+      return riskRank[normalizeRisk(b.audit?.risk_level)] - riskRank[normalizeRisk(a.audit?.risk_level)]
+    })
+    return out
+  }, [filtered, sortBy])
 
   const stats = useMemo(() => {
     const findings = filtered.reduce((sum, item) => sum + asArray(item.audit?.findings).length, 0)
@@ -231,8 +260,8 @@ export default function App() {
           <StatCard label="Findings" value={stats.findings} />
         </section>
 
-        <section className="grid gap-3 rounded-3xl border border-slate-100/15 bg-slate-900/60 p-4 sm:grid-cols-3">
-          <div className="sm:col-span-1">
+        <section className="grid gap-3 rounded-3xl border border-slate-100/15 bg-slate-900/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="sm:col-span-2 lg:col-span-1">
             <label className="font-mono text-xs uppercase tracking-widest text-slate-300">Search skill</label>
             <input
               value={search}
@@ -267,6 +296,21 @@ export default function App() {
               <option value="missing_skill_md">Missing SKILL.md</option>
             </select>
           </div>
+          <div>
+            <label className="font-mono text-xs uppercase tracking-widest text-slate-300">Sort</label>
+            <select
+              value={sortBy}
+              onChange={(e) => setSortBy(e.target.value)}
+              className="mt-1 w-full rounded-xl border border-slate-300/20 bg-slate-950/70 px-3 py-2 text-sm"
+            >
+              <option value="risk_desc">Risk: High to Low</option>
+              <option value="risk_asc">Risk: Low to High</option>
+              <option value="findings_desc">Findings: Most to Least</option>
+              <option value="findings_asc">Findings: Least to Most</option>
+              <option value="slug_asc">Name: A to Z</option>
+              <option value="slug_desc">Name: Z to A</option>
+            </select>
+          </div>
         </section>
 
         <section className="grid gap-4 lg:grid-cols-2">
@@ -276,11 +320,11 @@ export default function App() {
 
         <section className="space-y-3 rounded-3xl border border-slate-100/15 bg-slate-900/60 p-4">
           <h2 className="text-lg font-semibold">Skill Drilldown</h2>
-          {filtered.length === 0 ? (
+          {sortedFiltered.length === 0 ? (
             <p className="text-slate-400">No skills match the current filters.</p>
           ) : (
             <div className="grid gap-3">
-              {filtered.map((item, idx) => (
+              {sortedFiltered.map((item, idx) => (
                 <SkillCard item={item} key={`${item.slug || 'skill'}-${idx}`} />
               ))}
             </div>
