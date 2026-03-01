@@ -108,7 +108,7 @@ def fetch_page(base_url: str, limit: int, offset: int, sort: str, timeout: int) 
         url,
         headers={
             "Accept": "application/json",
-            "User-Agent": "clawhub-skill-fetcher/0.1",
+            "User-Agent": "clawhub-skill-fetcher/0.2",
         },
         method="GET",
     )

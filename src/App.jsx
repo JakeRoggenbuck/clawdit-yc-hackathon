@@ -258,7 +258,7 @@ export default function App() {
       <main className="relative mx-auto grid w-full max-w-7xl gap-4">
         <header className="rounded-3xl border border-cyan-200/20 bg-slate-900/70 p-6 shadow-2xl shadow-black/30 backdrop-blur">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-cyan-300">Clawdit</p>
-          <h1 className="mt-2 text-3xl font-bold leading-tight sm:text-5xl">Skill Audit Atlas</h1>
+          <h1 className="mt-2 text-3xl font-bold leading-tight sm:text-5xl">Clawdit: Skill Audit Toolkit</h1>
           <p className="mt-3 max-w-3xl text-slate-300">
             Immersive security map for OpenClaw skills with risk posture, failure tracking, and finding-level drilldowns.
           </p>
