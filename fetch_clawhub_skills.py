@@ -19,12 +19,17 @@ import time
 import zipfile
 from typing import Any, Dict, List
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlencode
+from urllib.parse import urlencode, urlparse
 from urllib.request import Request, urlopen
+
+from alert_mail import add_alert_mail_args, build_alert_mailer, maybe_send_alert_email
 
 DEFAULT_BASE_URL = "https://clawhub.ai"
 DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1/responses"
 DEFAULT_AUDIT_MODEL = "gpt-4.1-mini"
+DEFAULT_GITHUB_REPO_URL = "https://github.com/openclaw/skills"
+DEFAULT_GITHUB_REF = "main"
+DEFAULT_GITHUB_SKILLS_PATH = "skills"
 
 COLOR_RESET = "\033[0m"
 COLOR_INFO = "\033[36m"
@@ -99,6 +104,84 @@ def join_api_url(base_url: str, path: str) -> str:
     return f"{base_url.rstrip('/')}{path}"
 
 
+def parse_github_owner_repo(repo_url: str) -> tuple[str, str]:
+    parsed = urlparse(repo_url)
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 2:
+        raise ValueError(f"Invalid GitHub repo URL: {repo_url}")
+    owner, repo = parts[0], parts[1]
+    if repo.endswith(".git"):
+        repo = repo[:-4]
+    if not owner or not repo:
+        raise ValueError(f"Invalid GitHub repo URL: {repo_url}")
+    return owner, repo
+
+
+def fetch_github_skills_list(
+    repo_url: str,
+    ref: str,
+    skills_path: str,
+    timeout: int,
+) -> List[Dict[str, Any]]:
+    owner, repo = parse_github_owner_repo(repo_url)
+    api_url = f"https://api.github.com/repos/{owner}/{repo}/git/trees/{ref}?recursive=1"
+    req = Request(
+        api_url,
+        headers={
+            "Accept": "application/vnd.github+json",
+            "User-Agent": "clawhub-skill-fetcher/0.2",
+        },
+        method="GET",
+    )
+
+    with urlopen(req, timeout=timeout) as resp:
+        payload = json.loads(resp.read().decode("utf-8"))
+
+    tree = payload.get("tree")
+    if not isinstance(tree, list):
+        raise ValueError("Unexpected GitHub tree response shape")
+
+    cleaned_path = skills_path.strip("/").strip()
+    prefix = f"{cleaned_path}/" if cleaned_path else ""
+
+    skills: List[Dict[str, Any]] = []
+    for item in tree:
+        if not isinstance(item, dict):
+            continue
+        if item.get("type") != "blob":
+            continue
+        path = item.get("path")
+        if not isinstance(path, str):
+            continue
+        if not path.startswith(prefix):
+            continue
+        if not path.lower().endswith("/skill.md"):
+            continue
+
+        relative = path[len(prefix) :]
+        if not relative.lower().endswith("/skill.md"):
+            continue
+        slug = relative[: -len("/skill.md")]
+        if not slug:
+            continue
+
+        skills.append(
+            {
+                "slug": slug,
+                "skill_md_path": path,
+                "source": "github tree",
+                "repo": f"{owner}/{repo}",
+                "ref": ref,
+            }
+        )
+
+    if not skills:
+        raise ValueError(f"No SKILL.md files found under '{cleaned_path or '.'}'")
+
+    skills.sort(key=lambda x: str(x.get("slug", "")))
+    return skills
+
+
 def fetch_page(base_url: str, limit: int, offset: int, sort: str, timeout: int) -> List[Dict[str, Any]]:
     api_url = join_api_url(base_url, "/api/v1/skills")
     query = urlencode({"limit": limit, "offset": offset, "sort": sort})
@@ -153,6 +236,50 @@ def download_zip(base_url: str, slug: str, output_dir: str, timeout: int) -> str
 
     with open(out_path, "wb") as f:
         f.write(data)
+
+    return out_path
+
+
+def download_github_skill_zip(
+    repo_url: str,
+    ref: str,
+    slug: str,
+    skill_md_path: str,
+    output_dir: str,
+    timeout: int,
+) -> str:
+    owner, repo = parse_github_owner_repo(repo_url)
+    os.makedirs(output_dir, exist_ok=True)
+    out_name = f"{safe_slug_filename(slug)}.zip"
+    out_path = os.path.join(output_dir, out_name)
+
+    raw_url = f"https://raw.githubusercontent.com/{owner}/{repo}/{ref}/{skill_md_path}"
+    req = Request(
+        raw_url,
+        headers={
+            "Accept": "text/plain,*/*",
+            "User-Agent": "clawhub-skill-fetcher/0.2",
+        },
+        method="GET",
+    )
+
+    with urlopen(req, timeout=timeout) as resp:
+        skill_md_text = resp.read().decode("utf-8", errors="replace")
+
+    zip_root = safe_slug_filename(slug)
+    metadata = {
+        "slug": slug,
+        "source_url": raw_url,
+        "source_type": "raw.githubusercontent.com",
+        "repo": f"{owner}/{repo}",
+        "ref": ref,
+        "skill_md_path": skill_md_path,
+        "fetched_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+    }
+
+    with zipfile.ZipFile(out_path, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr(f"{zip_root}/SKILL.md", skill_md_text)
+        zf.writestr(f"{zip_root}/metadata.json", json.dumps(metadata, indent=2))
 
     return out_path
 
@@ -397,32 +524,68 @@ def parse_args() -> argparse.Namespace:
         default=DEFAULT_OPENAI_BASE_URL,
         help="OpenAI Responses API URL.",
     )
+    parser.add_argument(
+        "--github-repo-url",
+        default="",
+        help=f"Optional GitHub source repo URL (e.g. {DEFAULT_GITHUB_REPO_URL}).",
+    )
+    parser.add_argument(
+        "--github-ref",
+        default=DEFAULT_GITHUB_REF,
+        help="Git reference for --github-repo-url source mode (default: main).",
+    )
+    parser.add_argument(
+        "--github-skills-path",
+        default=DEFAULT_GITHUB_SKILLS_PATH,
+        help="Path within repo where skills live (default: skills).",
+    )
+    add_alert_mail_args(parser)
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
     log("INFO", f"Starting run with base URL: {args.base_url}")
+    alert_mailer = build_alert_mailer(args, log)
 
     if args.limit <= 0:
         log("ERROR", "--limit must be > 0")
         return 2
 
     skills: List[Dict[str, Any]] = []
+    use_github_source = bool((args.github_repo_url or "").strip())
 
     if not args.skip_list_fetch:
-        log("INFO", f"Fetching skills list (limit={args.limit}, sort={args.sort})")
-        try:
-            skills = fetch_page(
-                base_url=args.base_url,
-                limit=args.limit,
-                offset=0,
-                sort=args.sort,
-                timeout=args.timeout,
+        if use_github_source:
+            log(
+                "INFO",
+                f"Fetching skills list from GitHub repo={args.github_repo_url} ref={args.github_ref} path={args.github_skills_path}",
             )
-        except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError) as err:
-            log("ERROR", f"Failed to fetch skills: {err}")
-            return 1
+            try:
+                skills = fetch_github_skills_list(
+                    repo_url=args.github_repo_url,
+                    ref=args.github_ref,
+                    skills_path=args.github_skills_path,
+                    timeout=args.timeout,
+                )
+            except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError) as err:
+                log("ERROR", f"Failed to fetch skills from GitHub: {err}")
+                return 1
+            if args.limit > 0:
+                skills = skills[: args.limit]
+        else:
+            log("INFO", f"Fetching skills list (limit={args.limit}, sort={args.sort})")
+            try:
+                skills = fetch_page(
+                    base_url=args.base_url,
+                    limit=args.limit,
+                    offset=0,
+                    sort=args.sort,
+                    timeout=args.timeout,
+                )
+            except (HTTPError, URLError, TimeoutError, ValueError, json.JSONDecodeError) as err:
+                log("ERROR", f"Failed to fetch skills: {err}")
+                return 1
 
         with open(args.output, "w", encoding="utf-8") as f:
             json.dump(skills, f, indent=2)
@@ -448,6 +611,14 @@ def main() -> int:
         if slug not in seen:
             deduped_slugs.append(slug)
             seen.add(slug)
+
+    github_path_by_slug: Dict[str, str] = {}
+    if use_github_source:
+        for skill in skills:
+            slug = extract_slug(skill)
+            path = skill.get("skill_md_path")
+            if isinstance(slug, str) and isinstance(path, str):
+                github_path_by_slug[slug] = path
 
     audit_results: List[Dict[str, Any]] = []
     audited_slugs: set[str] = set()
@@ -477,15 +648,29 @@ def main() -> int:
         for idx, slug in enumerate(deduped_slugs):
             log("INFO", f"[{idx + 1}/{len(deduped_slugs)}] Downloading {slug}")
             try:
-                out_path = download_zip(
-                    base_url=args.base_url,
-                    slug=slug,
-                    output_dir=args.download_dir,
-                    timeout=args.timeout,
-                )
+                if use_github_source:
+                    skill_md_path = github_path_by_slug.get(
+                        slug,
+                        f"{args.github_skills_path.strip('/')}/{slug}/SKILL.md",
+                    )
+                    out_path = download_github_skill_zip(
+                        repo_url=args.github_repo_url,
+                        ref=args.github_ref,
+                        slug=slug,
+                        skill_md_path=skill_md_path,
+                        output_dir=args.download_dir,
+                        timeout=args.timeout,
+                    )
+                else:
+                    out_path = download_zip(
+                        base_url=args.base_url,
+                        slug=slug,
+                        output_dir=args.download_dir,
+                        timeout=args.timeout,
+                    )
                 log("OK", f"Downloaded {slug} -> {out_path}")
                 processed_count += 1
-            except (HTTPError, URLError, TimeoutError) as err:
+            except (HTTPError, URLError, TimeoutError, ValueError) as err:
                 log("ERROR", f"Failed to download slug '{slug}': {err}")
                 if args.audit_skill_md:
                     audit_results.append(
@@ -578,6 +763,14 @@ def main() -> int:
                         "skill_md_truncated": md_info["truncated"],
                         "audit": audit,
                     }
+                )
+                maybe_send_alert_email(
+                    mailer=alert_mailer,
+                    source_name="clawhub",
+                    slug=slug,
+                    audit=audit,
+                    zip_path=out_path,
+                    log=log,
                 )
                 audited_slugs.add(slug)
                 flush_audit_results(args.audit_output, audit_results)

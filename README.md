@@ -95,6 +95,38 @@ When `VITE_CONVEX_URL` is set, the UI loads from Convex first. If that fails, it
 
 This lets you stop/restart long runs without losing prior audit entries.
 
+## Alert email notifications (critical/high)
+
+All pullers now support SMTP alert emails when an audit result contains `critical`/`high` findings (or matching risk level).
+
+Configure via flags (or equivalent env vars):
+
+- `--alert-email-to` (`ALERT_EMAIL_TO`)
+- `--alert-email-from` (`ALERT_EMAIL_FROM`)
+- `--alert-email-smtp-host` (`ALERT_EMAIL_SMTP_HOST`)
+- `--alert-email-smtp-port` (`ALERT_EMAIL_SMTP_PORT`, default `587`)
+- `--alert-email-smtp-user` (`ALERT_EMAIL_SMTP_USER`, optional)
+- `--alert-email-smtp-password` (`ALERT_EMAIL_SMTP_PASSWORD`, optional)
+- `--alert-email-use-ssl` (`ALERT_EMAIL_USE_SSL`, default `false`)
+- `--alert-email-use-starttls` / `--no-alert-email-use-starttls` (`ALERT_EMAIL_USE_STARTTLS`, default `true`)
+- `--alert-levels` (`ALERT_LEVELS`, default `critical,high`)
+- `--alert-email-subject-prefix` (`ALERT_EMAIL_SUBJECT_PREFIX`, default `[Puller Alert]`)
+
+Example:
+
+```bash
+OPENAI_API_KEY=... \
+ALERT_EMAIL_TO=you@example.com \
+ALERT_EMAIL_FROM=bot@example.com \
+ALERT_EMAIL_SMTP_HOST=smtp.example.com \
+ALERT_EMAIL_SMTP_PORT=587 \
+ALERT_EMAIL_SMTP_USER=bot@example.com \
+ALERT_EMAIL_SMTP_PASSWORD=... \
+python3 fetch_clawhub_skills.py \
+  --download-all-from-list \
+  --audit-skill-md
+```
+
 ## Collector usage
 
 ## 1) ClawHub-compatible collector
@@ -130,6 +162,21 @@ OPENAI_API_KEY=... python3 fetch_clawhub_skills.py \
   --skip-list-fetch \
   --download-slug gifgrep \
   --download-dir skill_zips \
+  --audit-skill-md \
+  --audit-output skill_audit_report.json
+```
+
+Use GitHub repo source mode (for `openclaw/skills` style repos):
+
+```bash
+OPENAI_API_KEY=... python3 fetch_clawhub_skills.py \
+  --github-repo-url https://github.com/openclaw/skills \
+  --github-ref main \
+  --github-skills-path skills \
+  --limit 12000 \
+  --download-all-from-list \
+  --download-dir skill_zips \
+  --delay 0.2 \
   --audit-skill-md \
   --audit-output skill_audit_report.json
 ```
