@@ -1,238 +1,110 @@
 [
   {
-    "slug": "nano-banana-pro-prompts-recommend",
-    "displayName": "Nano Banana Pro Prompt Recommender",
-    "summary": "Recommend suitable prompts from 10,000+ Nano Banana Pro image generation prompts based on user needs. Use this skill when users want to: - Generate images wi...",
+    "slug": "whentomeet",
+    "displayName": "WhenToMeet",
+    "summary": "Create, list, fetch, and delete WhenToMeet planning events via the authenticated tRPC v1 API.",
     "tags": {
-      "latest": "1.4.5"
+      "latest": "1.0.1"
     },
     "stats": {
       "comments": 0,
-      "downloads": 56,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 13
+      "versions": 2
     },
-    "createdAt": 1772272842627,
-    "updatedAt": 1772328762423,
+    "createdAt": 1772375370324,
+    "updatedAt": 1772376360431,
     "latestVersion": {
-      "version": "1.4.5",
-      "createdAt": 1772328747441,
-      "changelog": "refactor: translate all Chinese text in SKILL.md to English for international users"
+      "version": "1.0.1",
+      "createdAt": 1772376345143,
+      "changelog": "- Added a reference link to https://whentomeet.io/llms.txt for more information about whentomeet.io.\n- No code or workflow changes; documentation update only."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "crawsecure",
+    "displayName": "CrawSecure",
+    "summary": "Offline security scanner that detects unsafe code patterns in ClawHub skills before installation to help users assess potential risks locally.",
+    "tags": {
+      "audit": "2.0.0",
+      "developer-tools": "2.0.0",
+      "latest": "2.0.0",
+      "openclaw": "2.0.0",
+      "risk": "2.0.0",
+      "safety": "2.0.0",
+      "scanner": "2.0.0",
+      "security": "2.0.0",
+      "static-analysis": "2.0.0",
+      "trust": "2.0.0",
+      "verification": "2.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 1385,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 6
+    },
+    "createdAt": 1770353834424,
+    "updatedAt": 1772376297032,
+    "latestVersion": {
+      "version": "2.0.0",
+      "createdAt": 1772376285254,
+      "changelog": "## 2.0.0\n\n- Clarified execution model and security guarantees\n- Improved transparency around analysis flow\n- Prepared foundation for optional web-based visualization"
     },
     "metadata": null
   },
   {
-    "slug": "proactive-amcp",
-    "displayName": "Proactive AMCP",
-    "summary": "Proactive immortal \u2014 behavior ontology hooks kick in \u00b7 IPFS soul \u00b7 Solvr collective \u00b7 self-heals on boot \u00b7 self-watchdog \ud83c\udff4\u200d\u2620\ufe0f",
+    "slug": "plutio",
+    "displayName": "Plutio",
+    "summary": "Manage Plutio projects and tasks. Use when you need to create, update, close, or query tasks and projects in Plutio (task/project management platform). Suppo...",
+    "tags": {
+      "latest": "1.0.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772372852053,
+    "updatedAt": 1772376191324,
+    "latestVersion": {
+      "version": "1.0.1",
+      "createdAt": 1772376173250,
+      "changelog": "FIXED: Tasks now require taskBoardId and taskGroupId to appear in Plutio UI. Updated create-task command and documentation. Removed unsupported projectId parameter."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "truth-search",
+    "displayName": "truth-search",
+    "summary": "Search the web using Cloudsways TruthSearch API. Returns highly relevant results with dynamic summaries, snippets, and optional full-text content. Use when y...",
     "tags": {
       "latest": "1.0.4"
     },
     "stats": {
       "comments": 0,
-      "downloads": 222,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 20
-    },
-    "createdAt": 1771465418725,
-    "updatedAt": 1772328279735,
-    "latestVersion": {
-      "version": "1.0.4",
-      "createdAt": 1772328237677,
-      "changelog": "- Updated to version 1.0.4.\n- Description expanded to include \"behavior ontology hooks\" and \"self-watchdog\" features.\n- Enhanced documentation to highlight self-healing and self-watchdog capabilities.\n- No code changes; documentation (SKILL.md) and metadata (skill.json) only."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "clawsaver",
-    "displayName": "ClawSaver",
-    "summary": "Reduce AI costs by batching related asks into fewer responses. On token-based plans (OpenRouter, Anthropic, OpenAI): fewer tokens from eliminated context re-...",
-    "tags": {
-      "latest": "1.3.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 92,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 18
-    },
-    "createdAt": 1772250602019,
-    "updatedAt": 1772328268418,
-    "latestVersion": {
-      "version": "1.3.0",
-      "createdAt": 1772328257395,
-      "changelog": "Dual registration pattern: skills.entries (global) + agents.list (per-agent); updated install docs with both paths"
-    },
-    "metadata": {
-      "os": [
-        "darwin",
-        "linux",
-        "win32"
-      ],
-      "systems": null
-    }
-  },
-  {
-    "slug": "torchdomainauctionbot",
-    "displayName": "Torch Domain Auction Bot",
-    "summary": "Domain lending protocol on Solana. Domains become tokens. Tokens become collateral. Top holder controls the domain. Borrow SOL against your position -- but g...",
-    "tags": {
-      "latest": "2.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 280,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 3
-    },
-    "createdAt": 1771028937507,
-    "updatedAt": 1772328238762,
-    "latestVersion": {
-      "version": "2.0.1",
-      "createdAt": 1772327855948,
-      "changelog": "- Version bump to 2.0.1 with updated metadata.\n- npm install reference updated to torch-domain-auction-bot@^2.0.1.\n- No code or behavioral changes; documentation and metadata only."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "qveris-official",
-    "displayName": "Official QVeris Skill",
-    "summary": "Search & Action Engine built for AI agents. When agents need to act in the real world and local capabilities or other configured tools fall short, search QVe...",
-    "tags": {
-      "latest": "1.0.2"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 511,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
-      "versions": 3
-    },
-    "createdAt": 1772074990723,
-    "updatedAt": 1772328070387,
-    "latestVersion": {
-      "version": "1.0.2",
-      "createdAt": 1772328003651,
-      "changelog": "qveris-official 1.0.2\n\n- Added privacy guidance: users are now advised not to include sensitive credentials or personally identifiable information (PII) in queries or tool parameters.\n- Updated the security section to reference the QVeris privacy policy and recommend reviewing it before transmitting sensitive data.\n- No changes to code or functionality. This is a documentation update only."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "system-health-monitor",
-    "displayName": "System Health Monitor",
-    "summary": "System health and security monitoring skill with 8-layer monitoring system. Provides real-time health scoring, security reporting, performance analysis, auto...",
-    "tags": {
-      "latest": "1.2.3"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 57,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
-      "versions": 7
-    },
-    "createdAt": 1772296348042,
-    "updatedAt": 1772328045990,
-    "latestVersion": {
-      "version": "1.2.3",
-      "createdAt": 1772301402841,
-      "changelog": "Removed outdated test file with 10-layer references, all tests now correctly reference 8-layer system"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "idea2mvp",
-    "displayName": "idea to product mvp",
-    "summary": "Help users discover product ideas, validate them, and build MVPs. Covers: searching trending tools and products across platforms (Product Hunt, GitHub, Indie...",
-    "tags": {
-      "latest": "1.0.5"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 44,
+      "downloads": 20,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 4
     },
-    "createdAt": 1772278975457,
-    "updatedAt": 1772328011860,
+    "createdAt": 1772278131668,
+    "updatedAt": 1772376075909,
     "latestVersion": {
-      "version": "1.0.5",
-      "createdAt": 1772327990461,
-      "changelog": "- Added scripts/send_email.py to enable sending emails via SMTP.\n- Now supports emailing search reports or arbitrary text content directly to a user-specified address.\n- Email content can be passed with --body, --file (multi-file merge), or via stdin.\n- Requires configuring SMTP host, sender, password, and receiver in .env.idea2mvp.\n- No external dependencies; implemented using Python standard library only."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "derek-bitcoin-intel",
-    "displayName": "Derek Bitcoin Intel",
-    "summary": "Provides pay-per-query Bitcoin market data, alerts, and analysis via Lightning Network without API keys or subscriptions.",
-    "tags": {
-      "api": "1.1.0",
-      "bitcoin": "1.1.0",
-      "l402": "1.1.0",
-      "latest": "1.1.0",
-      "lightning": "1.1.0",
-      "market-intelligence": "1.1.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 3,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772326258565,
-    "updatedAt": 1772327747819,
-    "latestVersion": {
-      "version": "1.1.0",
-      "createdAt": 1772327734393,
-      "changelog": "Improved description and positioning. Removed undelivered capability claims. Added lnget compatibility note."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "pinch",
-    "displayName": "Pinch: Claw to Claw Encrypted Messaging",
-    "summary": "Secure agent-to-agent encrypted messaging via the Pinch protocol. Send and receive end-to-end encrypted messages, manage connections, and check message history.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772327571125,
-    "updatedAt": 1772327653892,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772327571125,
-      "changelog": "Pinch 1.0.0 initial release\n\n- Provides secure agent-to-agent encrypted messaging using the Pinch protocol.\n- Includes tools for sending/receiving messages, managing connections, and viewing message history.\n- All messages are end-to-end encrypted and require human approval for new connections.\n- Features tamper-evident audit logging and human intervention tools.\n- 15 command-line utilities included for full message and connection control."
+      "version": "1.0.4",
+      "createdAt": 1772376063569,
+      "changelog": "- Updated skill metadata to use the \"openclaw\" key instead of \"clawdbot\" and adjusted its structure.\n- No code or functional logic changes were made.  \n- Documentation and usage instructions remain the same."
     },
     "metadata": {
       "os": null,
@@ -240,11 +112,11 @@
     }
   },
   {
-    "slug": "openclaw-xguardian",
-    "displayName": "OpenClaw XGuardian",
-    "summary": "Build, configure, and install a 24x7 OpenClaw watchdog on macOS, including scaffolding the Go project, wiring launchd, and tuning health/recovery behavior. U...",
+    "slug": "vincitarot",
+    "displayName": "vinci-tarot",
+    "summary": "Act as a professional tarot reader\u2014multiple spreads, full card meanings, spread selection by question, energy guidance, interpretation, and follow-up dialogue.",
     "tags": {
-      "latest": "0.0.1"
+      "latest": "1.0.2"
     },
     "stats": {
       "comments": 0,
@@ -252,47 +124,26 @@
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 1
+      "versions": 3
     },
-    "createdAt": 1772327628697,
-    "updatedAt": 1772327646842,
+    "createdAt": 1772374884264,
+    "updatedAt": 1772376060090,
     "latestVersion": {
-      "version": "0.0.1",
-      "createdAt": 1772327628697,
-      "changelog": "Initial release"
+      "version": "1.0.2",
+      "createdAt": 1772376035656,
+      "changelog": "Change behavior"
     },
-    "metadata": null
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
   },
   {
-    "slug": "hn-daily-brief",
-    "displayName": "HN Daily Brief",
-    "summary": "Generate and deliver a Hacker News daily report (Top-N) with article summaries and multi-view comment synthesis, in user-selected language, with optional fil...",
+    "slug": "nano-agentguard",
+    "displayName": "AgentGuard by Nano",
+    "summary": "Agent Identity & Permission Guardian - Trust middleware for credential management, permission scopes, human approval workflows, and audit trails. Use when AI...",
     "tags": {
-      "latest": "0.7.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 24,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
-      "versions": 2
-    },
-    "createdAt": 1772241612676,
-    "updatedAt": 1772327594949,
-    "latestVersion": {
-      "version": "0.7.0",
-      "createdAt": 1772327576544,
-      "changelog": "Add concurrent retry profile (T, T+1m, T+15m) with idempotent completion checks and timeout-miss recovery guardrail."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "opend",
-    "displayName": "OpenD CLI for MooMoo",
-    "summary": "Agentic trading and market-data workflows for Futu OpenD (MooMoo/Futu OpenAPI), including OpenClaw-compatible secret-ref credential loading, account discover...",
-    "tags": {
-      "latest": "1.0.1"
+      "latest": "0.4.0"
     },
     "stats": {
       "comments": 0,
@@ -300,143 +151,14 @@
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772211314796,
-    "updatedAt": 1772327543967,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772327163126,
-      "changelog": "Skill opend 1.0.1 \u2013 Adds OpenClaw secret-ref support and strengthens credential handling.\n\n- Added support for OpenClaw-compatible secret-ref credential loading.\n- Expanded documentation with clear instructions for secret management and source auditing.\n- setup_config.py no longer prints reusable keys on creation, improving local secret safety.\n- Introduced release checklist and registry metadata reference files.\n- Improved warnings and guidance around credential methods for both hosted and local use.\n- Other minor updates and clarifications in code and documentation."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "opportunity-scout",
-    "displayName": "AI Opportunity Scout",
-    "summary": "Find profitable business opportunities in any niche by scanning Twitter, web, Reddit, and Product Hunt for unmet needs and pain points. Scores each opportuni...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772327011654,
-    "updatedAt": 1772327383147,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772327011654,
-      "changelog": "Initial release: scan Twitter/web/Reddit for business opportunities, score by 4 criteria, generate ranked report"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "skill-runway-video-gen",
-    "displayName": "Skill Runway Video Gen",
-    "summary": "Generate short product videos from images using Runway Gen4 Turbo. Use for TikTok ads, UGC-style product demos, Reels, and YouTube Shorts.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772326970288,
-    "updatedAt": 1772327348071,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772326970288,
-      "changelog": "Initial release: Generate short product videos from images using Runway Gen4 Turbo.\n\n- Converts a product image and motion prompt into a 5s or 10s vertical MP4 video.\n- Designed for TikTok ads, UGC demos, Reels, and YouTube Shorts.\n- Reads API key from environment variable or config file.\n- Documents common quirks, cost per video, and demonstrates MoviePy workaround for frozen frames.\n- Integrates with downstream TikTok video pipeline for further processing."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "skill-veo3-video-gen",
-    "displayName": "Skill Veo3 Video Gen",
-    "summary": "Generate and stitch short videos via Google Veo 3.x using the Gemini API (google-genai). Use when you need to create video clips from prompts (ads, UGC-style...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772327198663,
-    "updatedAt": 1772327212252,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772327198663,
-      "changelog": "Initial release of Veo 3 Video Generation skill.\n\n- Generate short MP4 video clips from text prompts using Google Veo 3.x via the Gemini API.\n- Supports creating longer videos by automatically stitching multiple segments.\n- Includes options for prompt consistency, segment style, reference images, and intermediate file handling.\n- Handles API rate limits and provides fallback instructions.\n- Requires GEMINI_API_KEY and ffmpeg for multi-segment videos."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "trunkate-ai",
-    "displayName": "Trunkate AI",
-    "summary": "Semantically optimizes context history and large text blocks via the Trunkate AI API. Use when: (1) Conversation history approaches token limits, (2) Reading...",
-    "tags": {
-      "latest": "0.15.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 31,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
       "versions": 4
     },
-    "createdAt": 1772243109308,
-    "updatedAt": 1772327163659,
+    "createdAt": 1772360031390,
+    "updatedAt": 1772376046509,
     "latestVersion": {
-      "version": "0.15.0",
-      "createdAt": 1772327143161,
-      "changelog": "Major update: Adds event-driven hooks and richer documentation for fully automated, context-aware text optimization.\n\n- Introduced proactive PreRequest and OnError hooks for automated, silent context management and emergency context pruning.\n- Added new scripts (`activator.py`, `error_detector.py`, `trunkate.py`) for threshold logic, error handling, and core API integration.\n- Expanded documentation with comprehensive usage guides, integration examples, and technical references.\n- Replaced `README.md` with in-depth, structured `SKILL.md` emphasizing use cases, hook configuration, and preservation strategies.\n- Added customizable optimization rules and example assets for granular control over protected content.\n- Removed legacy script structure; all logic now lives under standardized workflow with event-based architecture."
-    },
-    "metadata": {
-      "os": [
-        "linux",
-        "darwin"
-      ],
-      "systems": null
-    }
-  },
-  {
-    "slug": "skill-tiktok-video-pipeline",
-    "displayName": "Skill Tiktok Video Pipeline",
-    "summary": "End-to-end TikTok ad video pipeline. Product image \u2192 base video (Runway/Veo) \u2192 slowmo stretch \u2192 animated caption overlay \u2192 final MP4. One command, full autom...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 0,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772327050673,
-    "updatedAt": 1772327075697,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772327050673,
-      "changelog": "Initial release: end-to-end TikTok ad video automation for product images.\n\n- Converts a product image into a final branded TikTok video with one command.\n- Integrates video generation (Runway/Veo), slow-motion stretching, and animated caption overlays.\n- Supports multiple products and video styles, with flexible engine selection and customization options.\n- Outputs a finished MP4, ready to post."
+      "version": "0.4.0",
+      "createdAt": 1772376026577,
+      "changelog": "Added Compliance Reporting: GDPR/CCPA reports, risk assessment, regulatory recommendations"
     },
     "metadata": {
       "os": null,
@@ -444,930 +166,170 @@
     }
   },
   {
-    "slug": "skill-tiktok-ads-video",
-    "displayName": "Skill Tiktok Ads Video",
-    "summary": "Generate TikTok-style short-form ad videos with animated pill captions. Takes a base MP4 (Veo/Runway/Kling), overlays animated captions with fade in/out, mix...",
-    "tags": {
-      "latest": "2.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 11,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772319231402,
-    "updatedAt": 1772326904379,
-    "latestVersion": {
-      "version": "2.0.0",
-      "createdAt": 1772326888390,
-      "changelog": "skill-tiktok-ads-video v2.0.0 introduces major new features with built-in product presets and simplified usage.\n\n- Added built-in product presets and caption styles \u2014 generate ad videos without writing a captions JSON file.\n- New CLI options: --product and --style, supporting multiple built-in products and animation styles.\n- Legacy manual captions.json input still supported for compatibility.\n- Documentation updated to reflect new preset-driven workflow."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "tide-watch",
-    "displayName": "Tide Watch",
-    "summary": "Proactive session capacity monitoring and management for OpenClaw. Prevents context window lockups by warning at configurable thresholds (75%, 85%, 90%, 95%)...",
-    "tags": {
-      "latest": "1.2.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 126,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 17
-    },
-    "createdAt": 1771991831079,
-    "updatedAt": 1772326785677,
-    "latestVersion": {
-      "version": "1.2.1",
-      "createdAt": 1772326757034,
-      "changelog": "Bug fixes: Archive command multi-agent support (track sessionDir, group by directory). Fixed missing path import. All 113 tests pass. Fixes #31."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "taapi",
-    "displayName": "TAAPI CLI",
-    "summary": "Use this skill to fetch TAAPI.IO indicator data for crypto or stocks, including fast single-indicator requests and bulk/multi-construct queries for agentic t...",
-    "tags": {
-      "latest": "1.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 33,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772211431267,
-    "updatedAt": 1772326711405,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772326693109,
-      "changelog": "- Added metadata block in SKILL.md with homepage and runtime requirements for better documentation and agent compatibility.\n- Added agents/openai.yaml for agent configuration support.\n- Expanded SKILL.md with a new \"Security And Runtime Requirements\" section outlining secret management, `curl` and `jq` dependencies, and endpoint security.\n- Clarified usage and tooling requirements for safer and more robust agentic trading workflows."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "crinkl-claws",
-    "displayName": "Crinkl Claws",
-    "summary": "Verify billing emails via DKIM signatures and earn BTC over Lightning for your operator.",
-    "tags": {
-      "latest": "1.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 7,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772325118224,
-    "updatedAt": 1772326541252,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772326523338,
-      "changelog": "Remove metadata inconsistencies, simplify to single verified gmail path (gog), tighten privacy section."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "weibo",
-    "displayName": "Weibo Microblogging CLI",
-    "summary": "Use Weibo Open Platform for OAuth2 authentication, timeline retrieval, topic search, and structured social sentiment collection. Trigger this skill when task...",
-    "tags": {
-      "latest": "1.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 53,
-      "installsAllTime": 1,
-      "installsCurrent": 1,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772211579586,
-    "updatedAt": 1772326475140,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772326453053,
-      "changelog": "- Split Weibo web search fallback into a new companion skill (`weibo-brave-search`), focusing this skill solely on official Weibo API.\n- Overhauled credential instructions with a new section on secret handling, clarifying required variables and OpenClaw integration.\n- Updated skill description and metadata for clearer scope and environment configuration.\n- Added new companion and secret remediation documentation files; removed bundled web search fallback script.\n- CLI usage, workflow, and command set remain unchanged."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "gaoding-template-recommend",
-    "displayName": "Gaoding Template Recommend",
-    "summary": "\u641c\u7d22\u7a3f\u5b9a\u8bbe\u8ba1\u6a21\u677f\u3002\u5f53\u7528\u6237\u60f3\u5236\u4f5c\u6d77\u62a5\u3001\u540d\u7247\u3001Banner\u3001\u7535\u5546\u4e3b\u56fe\u7b49\u8bbe\u8ba1\uff0c\u6216\u641c\u7d22/\u63a8\u8350\u8bbe\u8ba1\u6a21\u677f\u65f6\u4f7f\u7528\u3002",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 4,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772326447899,
-    "updatedAt": 1772326466633,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772326447899,
-      "changelog": "Initial release: \u641c\u7d22\u7a3f\u5b9a\u8bbe\u8ba1\u6a21\u677f\uff0c\u8fd4\u56de\u622a\u56fe\u9884\u89c8\u548c\u6a21\u677f\u5217\u8868"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "nova-app-builder",
-    "displayName": "Nova App Builder",
-    "summary": "Build and deploy Nova Platform apps (TEE apps on Sparsity Nova / sparsity.cloud). Use when a user wants to create a Nova app, write enclave application code,...",
-    "tags": {
-      "latest": "2.2.2"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 201,
-      "installsAllTime": 1,
-      "installsCurrent": 1,
-      "stars": 2,
-      "versions": 45
-    },
-    "createdAt": 1771983658963,
-    "updatedAt": 1772326404759,
-    "latestVersion": {
-      "version": "2.2.2",
-      "createdAt": 1772326003417,
-      "changelog": "Add explorer link (https://sparsity.cloud/explore/{onchain_app_id}) after on-chain registration"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "toutiao-publish",
-    "displayName": "\u4eca\u65e5\u5934\u6761\u81ea\u52a8\u53d1\u5e03",
-    "summary": "\u81ea\u52a8\u53d1\u5e03\u5185\u5bb9\u5230\u4eca\u65e5\u5934\u6761\uff08\u5fae\u5934\u6761/\u6587\u7ae0\uff09\u3002\u89e6\u53d1\u8bcd\uff1a\u53d1\u5934\u6761\u3001\u53d1\u5e03\u5934\u6761\u3001\u5fae\u5934\u6761\u3001\u4eca\u65e5\u5934\u6761\u3001\u53d1\u6587\u7ae0\u3002\u652f\u6301\u6587\u5b57\u3001\u56fe\u7247\u3001\u8bdd\u9898\u3001\u4f4d\u7f6e\u3002\u81ea\u52a8\u5904\u7406\u767b\u5f55\u3001\u5f39\u7a97\u3001\u53d1\u5e03\u6d41\u7a0b\u3002",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 6,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772326196005,
-    "updatedAt": 1772326213042,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772326196005,
-      "changelog": "toutiao-publish 1.0.0\n\n- Initial release with automated publishing to Jinri Toutiao (Weitoutiao/posts and articles).\n- Supports text, images (mixed into content), topics, and location tags.\n- Automatically handles login, pop-up dialogs, and publishing flow.\n- Key notifications only for major steps (search, writing, publish result).\n- Provides detailed formatting and content structure recommendations for both posts and articles.\n- Includes troubleshooting tips and reference for key UI elements."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "simmer-resolution-tracker",
-    "displayName": "Simmer Resolution Tracker",
-    "summary": "Monitors your Simmer positions for resolutions, logs wins/losses to your trade journal, and automatically redeems winning positions on-chain. Built for Simme...",
-    "tags": {
-      "latest": "1.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772325748737,
-    "updatedAt": 1772326140285,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772326051179,
-      "changelog": "Added Simmer website link (simmer.markets)"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "polymarket-manual-trade",
-    "displayName": "Polymarket Manual Trade",
-    "summary": "Place manual trades on Polymarket by telling your agent what to bet on. Supports FAK (instant fill at market) and GTC (limit order on the book). Pass a Simme...",
-    "tags": {
-      "latest": "1.0.4"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 14,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 5
-    },
-    "createdAt": 1772324902255,
-    "updatedAt": 1772326130765,
-    "latestVersion": {
-      "version": "1.0.4",
-      "createdAt": 1772326046882,
-      "changelog": "Added Simmer website link (simmer.markets)"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "cross-agent-memory",
-    "displayName": "Cross-Agent Memory Sharing",
-    "summary": "Enable multiple agents to share, merge, and sync memories using standardized formats, priority rules, and Git-based version control for collective intelligence.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 5,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772325910026,
-    "updatedAt": 1772325930168,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772325910026,
-      "changelog": "\u521d\u59cb\u7248\u672c\uff1a\u8de8Agent\u8bb0\u5fc6\u5171\u4eab\u534f\u8bae\uff0c\u57fa\u4e8eGit\u7684\u591aAgent\u77e5\u8bc6\u5171\u4eab\u65b9\u6848"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "memory-dedup",
-    "displayName": "Memory Deduplication",
-    "summary": "Automatically identify, merge, and clean duplicate or outdated entries in MEMORY.md to maintain concise, organized, and up-to-date information.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 4,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772325895966,
-    "updatedAt": 1772325912774,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772325895966,
-      "changelog": "\u521d\u59cb\u7248\u672c\uff1a\u8bb0\u5fc6\u53bb\u91cd\u4e0e\u5408\u5e76\uff0c\u81ea\u52a8\u8bc6\u522b\u5e76\u5408\u5e76\u91cd\u590d\u5185\u5bb9\uff0c\u4fdd\u6301MEMORY.md\u6e05\u6d01"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "causal-graph",
-    "displayName": "Causal Graph Builder",
-    "summary": "\u81ea\u52a8\u4ece\u65e5\u5fd7\u548c\u8bb0\u5fc6\u4e2d\u63d0\u53d6\u5b9e\u4f53\u3001\u4e8b\u4ef6\u53ca\u5176\u56e0\u679c\u5173\u7cfb\uff0c\u6784\u5efa\u52a8\u6001\u77e5\u8bc6\u56fe\u8c31\u5e76\u652f\u6301\u67e5\u8be2\u4e0e\u53ef\u89c6\u5316\u3002",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 6,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772325885961,
-    "updatedAt": 1772325899094,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772325885961,
-      "changelog": "\u521d\u59cb\u7248\u672c\uff1a\u56e0\u679c\u56fe\u8c31\u81ea\u52a8\u6784\u5efa\uff0c\u4ece\u8bb0\u5fc6\u6587\u4ef6\u63d0\u53d6\u5b9e\u4f53\u3001\u4e8b\u4ef6\u3001\u56e0\u679c\u5173\u7cfb"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "memory-health-score",
-    "displayName": "Memory Health Score",
-    "summary": "Provides a comprehensive score (0-100) evaluating the Agent's memory system health across completeness, freshness, structure, density, and consistency.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 7,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772325872452,
-    "updatedAt": 1772325894825,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772325872452,
-      "changelog": "\u521d\u59cb\u7248\u672c\uff1a\u8bb0\u5fc6\u5065\u5eb7\u5ea6\u8bc4\u5206\u7cfb\u7edf\uff0c5\u5927\u7ef4\u5ea6\u8bc4\u4f30"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "drawio-generator",
-    "displayName": "drawio-generator",
-    "summary": "Generate draw.io diagrams from Mermaid, XML, or CSV code. Use this skill when the user requests any visual diagram including flowcharts, UML diagrams, ERD, a...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 9,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772325669886,
-    "updatedAt": 1772325687289,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772325669886,
-      "changelog": "- Initial release of drawio-generator.\n- Generate draw.io diagrams from Mermaid, XML, or CSV code.\n- Supports a wide range of diagrams: flowcharts, UML, ERD, architecture, org charts, network topology, wireframes, and more.\n- Provides guidance on selecting the appropriate format (Mermaid, XML, CSV) for different diagram types.\n- Includes usage instructions and format templates.\n- Outputs a markdown link that opens the diagram directly in draw.io for editing."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "crypto-executor",
-    "displayName": "Crypto Executor",
-    "summary": "Complete autonomous trading engine for Binance with WebSocket real-time, OCO orders, Kelly Criterion position sizing, trailing stops, circuit breakers, daily...",
-    "tags": {
-      "arbitrage": "2.0.0",
-      "automation": "2.0.0",
-      "binance": "2.0.0",
-      "bot": "2.0.0",
-      "crypto": "2.0.0",
-      "latest": "2.2.0",
-      "quantitative": "2.0.0",
-      "trading": "2.0.0",
-      "websocket": "2.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 59,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 6
-    },
-    "createdAt": 1772213726645,
-    "updatedAt": 1772325578193,
-    "latestVersion": {
-      "version": "2.2.0",
-      "createdAt": 1772325553119,
-      "changelog": "Crypto Executor v2.3.0 introduces adaptive intelligence and robustness upgrades.\n\n- Adaptive strategy mixing: Automatically adjusts the use of scalping, momentum, and arbitrage strategies based on performance.\n- Memory persistence: Remembers best configuration and performance data across restarts.\n- Intelligent performance alerts: Real-time updates and daily reports now reflect strategy mix, portfolio, and detected anomalies.\n- OCO monitoring: Instantly detects take-profit or stop-loss closes, updating performance metrics and Kelly sizing in real time.\n- Improved order compliance: LOT_SIZE validation to prevent rejected Binance orders.\n- General reliability: Self-learning config, safer restarts, and faster startup via memory load."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "mupeng-evolve",
-    "displayName": "Mupeng Evolve \u2014 God-Tier Agent Evolution Engine",
-    "summary": "The God-Tier Agent Evolution Engine. 6 top skills analyzed, dissected, and rebuilt from scratch. Zero external dependencies. Battle-tested in production. Mak...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 9,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772325480740,
-    "updatedAt": 1772325507535,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772325480740,
-      "changelog": "Initial release: 6 skills analyzed, dissected, rebuilt. Zero dependencies."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "bool-cli",
-    "displayName": "bool-cli",
-    "summary": "Deploy sites to Bool.com via the bool CLI. Use when creating, deploying, updating, or managing Bool projects.",
-    "tags": {
-      "bool": "1.0.0",
-      "bool-cli": "1.0.0",
-      "latest": "1.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 10,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
-      "versions": 2
-    },
-    "createdAt": 1772324771106,
-    "updatedAt": 1772325486419,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772325106356,
-      "changelog": "- Added homepage and source links to documentation metadata.\n- Declared required environment variable (`BOOL_API_KEY`) and described its purpose.\n- Specified config file paths and their roles in CLI metadata.\n- No functionality changes; documentation and metadata improvements only."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "statsfm",
-    "displayName": "statsfm",
-    "summary": "Music data tool powered by the stats.fm API. Look up album tracklists, artist discographies, and global charts. With a stats.fm username, also query personal...",
-    "tags": {
-      "latest": "2.4.2"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 141,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 2,
-      "versions": 8
-    },
-    "createdAt": 1771907868117,
-    "updatedAt": 1772324969952,
-    "latestVersion": {
-      "version": "2.4.2",
-      "createdAt": 1772324953464,
-      "changelog": "Use local timezone in API calls, local time in recent streams, DRY refactor"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "leak-check",
-    "displayName": "Leak Check",
-    "summary": "Scan session logs for leaked credentials. Checks JSONL session files against known credential patterns and reports which AI provider received the data.",
-    "tags": {
-      "latest": "0.1.5"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 340,
-      "installsAllTime": 2,
-      "installsCurrent": 2,
-      "stars": 0,
-      "versions": 6
-    },
-    "createdAt": 1771300823349,
-    "updatedAt": 1772324855702,
-    "latestVersion": {
-      "version": "0.1.5",
-      "createdAt": 1772324842322,
-      "changelog": "- Updates preferred config search path to ~/.openclaw/credentials/leak-check.json instead of ~/clawd/leak-check.json.\n- Documentation in SKILL.md revised to match new config file location and setup instructions.\n- Legacy config path ./leak-check.json is still checked for backward compatibility.\n- No changes to command-line options or output formats."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "ranking-of-claws",
-    "displayName": "Ranking of Claws",
-    "summary": "Report your agent's token usage to the Ranking of Claws public leaderboard. See your rank at rankingofclaws.angelstreet.io",
-    "tags": {
-      "latest": "2.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 49,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 7
-    },
-    "createdAt": 1772302185807,
-    "updatedAt": 1772324767070,
-    "latestVersion": {
-      "version": "2.0.0",
-      "createdAt": 1772324753572,
-      "changelog": "Plain JS hook (no TS needed), report.sh for cron, test.sh for connectivity check, full API docs"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "consensus-permission-escalation-guard",
-    "displayName": "consensus-permission-escalation-guard",
-    "summary": "Pre-execution governance for IAM and permission escalation changes. Use when an agent or workflow proposes granting, expanding, or assuming higher privileges...",
-    "tags": {
-      "latest": "0.1.2"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 14,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772323466831,
-    "updatedAt": 1772324583858,
-    "latestVersion": {
-      "version": "0.1.2",
-      "createdAt": 1772324205504,
-      "changelog": "Docs portability fix: remove hardcoded repo cd from quick-start; keep guard behavior unchanged."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "airtag",
-    "displayName": "AirTag",
-    "summary": "Give your agent controlled access to all AirTags in your Apple account to locate items, run diagnostics, and recover setup failures.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 11,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772324535019,
-    "updatedAt": 1772324552447,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772324535019,
-      "changelog": "Initial release focused on account-level AirTag access, connector setup, location workflows, diagnostics, and safety handling."
-    },
-    "metadata": {
-      "os": [
-        "darwin",
-        "linux",
-        "win32"
-      ],
-      "systems": null
-    }
-  },
-  {
-    "slug": "convex",
-    "displayName": "Convex",
-    "summary": "Build and maintain Convex backends with schema-safe modeling, query and mutation patterns, auth guards, and production rollout checks.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 7,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772324538884,
-    "updatedAt": 1772324550891,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772324538884,
-      "changelog": "Initial release with schema, auth, indexing, and rollout guidance for Convex projects."
-    },
-    "metadata": {
-      "os": [
-        "linux",
-        "darwin",
-        "win32"
-      ],
-      "systems": null
-    }
-  },
-  {
-    "slug": "feishu-app-setup",
-    "displayName": "\u98de\u4e66\u5f00\u653e\u5e73\u53f0\u5e94\u7528\u81ea\u52a8\u5316\u914d\u7f6e",
-    "summary": "\u81ea\u52a8\u5316\u5b8c\u6210\u98de\u4e66\u5f00\u653e\u5e73\u53f0\u4f01\u4e1a\u81ea\u5efa\u5e94\u7528\u7684\u521b\u5efa\u3001\u6743\u9650\u914d\u7f6e\u3001\u4e8b\u4ef6\u8ba2\u9605\u3001\u6539\u540d\u548c\u7248\u672c\u53d1\u5e03\uff0c\u7b80\u5316\u7e41\u7410\u64cd\u4f5c\u6d41\u7a0b\u3002",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772324431208,
-    "updatedAt": 1772324447456,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772324431208,
-      "changelog": "\u521d\u59cb\u7248\u672c\uff1a\u521b\u5efa\u5e94\u7528\u3001\u6743\u9650\u5bfc\u5165\u3001\u4e8b\u4ef6\u8ba2\u9605\u3001\u6539\u540d\u3001\u7248\u672c\u53d1\u5e03\u5168\u6d41\u7a0b\u81ea\u52a8\u5316"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "consensus-deployment-guard",
-    "displayName": "consensus-deployment-guard",
-    "summary": "Pre-deployment governance for release and infrastructure rollout requests. Use when an agent or workflow proposes shipping code/config/infrastructure changes...",
+    "slug": "casely",
+    "displayName": "Casely",
+    "summary": "Intelligent QA assistant that automates writing test cases from project documentation. Use when the user wants to generate test cases from requirements, runs...",
     "tags": {
       "latest": "0.1.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 8,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 1
     },
-    "createdAt": 1772324229040,
-    "updatedAt": 1772324249123,
+    "createdAt": 1772375738774,
+    "updatedAt": 1772375987583,
     "latestVersion": {
       "version": "0.1.0",
-      "createdAt": 1772324229040,
-      "changelog": "Initial release: deployment guard with strict schema validation, deterministic policy flags, idempotency, board artifacts, and vector-driven tests."
+      "createdAt": 1772375738774,
+      "changelog": "Initial release of Casely \u2013 an intelligent QA assistant for automated test case generation.\n\n- Automates QA workflows: parses requirements (PDF/DOCX/XLSX), learns team-specific test style, generates atomic test cases, and exports to Excel for TestRail import.\n- Provides clear commands: `/init`, `/parse`, `/style`, `/plan`, `/generate`, `/export`.\n- Ensures exact adherence to your team\u2019s test case structure and writing conventions.\n- Supports full workflow from environment setup and parsing to test planning and TMS-ready export.\n- Integrates tools like `docling` and `openpyxl` for seamless document handling and output."
     },
     "metadata": null
   },
   {
-    "slug": "beauty",
-    "displayName": "Beauty",
-    "summary": "Build practical beauty routines with skincare basics, makeup strategy, and hair care plans tailored to skin type, budget, and schedule.",
+    "slug": "tripo-3d-generation",
+    "displayName": "Tripo 3d",
+    "summary": "Turn text or images into production-ready 3D models with sculpture-level geometry and sharp edges. Powered by Tripo AI \u2014 supports text-to-3D, image-to-3D, au...",
+    "tags": {
+      "latest": "1.3.2"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 30,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 1,
+      "versions": 7
+    },
+    "createdAt": 1772295715666,
+    "updatedAt": 1772375987045,
+    "latestVersion": {
+      "version": "1.3.2",
+      "createdAt": 1772375600294,
+      "changelog": "Add External Endpoints, Security and Privacy, and Trust Statement sections to SKILL.md for security scanner compliance."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "skill-explorer",
+    "displayName": "Skill Explorer",
+    "summary": "Systematically discover, evaluate, compare, and assess OpenClaw skills to find the right, safe, and high-quality option for your specific task.",
     "tags": {
       "latest": "1.0.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 9,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 1
     },
-    "createdAt": 1772324127556,
-    "updatedAt": 1772324145608,
+    "createdAt": 1772375593861,
+    "updatedAt": 1772375979888,
     "latestVersion": {
       "version": "1.0.0",
-      "createdAt": 1772324127556,
-      "changelog": "Initial release with personalized beauty routines, safety guardrails, and situation-specific guidance for daily and event looks."
+      "createdAt": 1772375593861,
+      "changelog": "Initial release: Systematic 8-phase framework"
     },
-    "metadata": {
-      "os": [
-        "linux",
-        "darwin",
-        "win32"
-      ],
-      "systems": null
-    }
+    "metadata": null
   },
   {
-    "slug": "milan",
-    "displayName": "Milan",
-    "summary": "Navigate Milan as visitor, resident, student, or professional with neighborhoods, transport, costs, visas, food, and practical local insights.",
+    "slug": "authenticate-openant",
+    "displayName": "Authenticate Openant",
+    "summary": "Sign in to OpenAnt. Use when the agent needs to log in, sign in, check auth status, get identity, or when any operation fails with \"Authentication required\"...",
+    "tags": {
+      "latest": "0.1.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772359922983,
+    "updatedAt": 1772375969813,
+    "latestVersion": {
+      "version": "0.1.1",
+      "createdAt": 1772375955401,
+      "changelog": "authenticate-openant v0.1.1"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "casely-qa-skill",
+    "displayName": "casely",
+    "summary": "Intelligent QA assistant that automates writing test cases from project documentation. Use when the user wants to generate test cases from requirements, runs...",
+    "tags": {
+      "latest": "1.5.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772374915977,
+    "updatedAt": 1772375959199,
+    "latestVersion": {
+      "version": "1.5.0",
+      "createdAt": 1772374915977,
+      "changelog": "casely-qa-skill 1.5.0\n\n- Major documentation update: new SKILL.md fully describes all commands, workflow steps, and requirements for Casely QA assistant.\n- Clear guidance on initializing projects, parsing documents, extracting style guides, test planning, generating atomic test cases, and exporting to Excel.\n- Strict rules specified for style matching, table structure, and file naming.\n- Workflow ensures seamless automation for document ingestion, QA planning, and TestRail-ready export.\n- All commands, outputs, and mandatory behaviors precisely detailed for consistent usage."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "reed-agent-network",
+    "displayName": "AgentNetwork",
+    "summary": "Build and operate a cross-gateway AgentNetwork using Discord as the message bus and GitHub as shared state storage. Use when registering agents, syncing rost...",
+    "tags": {
+      "latest": "0.1.6"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 13,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 7
+    },
+    "createdAt": 1772366586105,
+    "updatedAt": 1772375900947,
+    "latestVersion": {
+      "version": "0.1.6",
+      "createdAt": 1772375876716,
+      "changelog": "Add hard rule: all inter-agent communication must use Discord channel via OpenClaw message CLI"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "evomap-auto-task-publish",
+    "displayName": "evomap-auto-task",
+    "summary": "EvoMap \u81ea\u52a8\u4efb\u52a1\u6267\u884c\u5668 - \u5b9a\u65f6\u81ea\u52a8\u83b7\u53d6\u3001\u8ba4\u9886\u3001\u53d1\u5e03\u3001\u5b8c\u6210\u4efb\u52a1\u7684\u5b8c\u6574\u89e3\u51b3\u65b9\u6848",
     "tags": {
       "latest": "1.0.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 9,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 1
     },
-    "createdAt": 1772324098115,
-    "updatedAt": 1772324110526,
+    "createdAt": 1772375853893,
+    "updatedAt": 1772375879843,
     "latestVersion": {
       "version": "1.0.0",
-      "createdAt": 1772324098115,
-      "changelog": "Initial release with complete Milan guidance for visitors, residents, students, and professionals."
-    },
-    "metadata": {
-      "os": [
-        "linux",
-        "darwin",
-        "win32"
-      ],
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-saas-pack",
-    "displayName": "Firm Saas Pack",
-    "summary": "Curated skill bundle for SaaS companies (B2B and B2C) covering product development, go-to-market, customer success and engineering excellence. Activates the...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 10,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772323906668,
-    "updatedAt": 1772323918430,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772323906668,
-      "changelog": "firm-saas-pack 1.0.0 - Initial release\n\n- Launches a comprehensive skill bundle for SaaS product companies (B2B/B2C/PLG).\n- Activates departments across product, engineering, quality, marketing, commercial, support, operations, finance, and orchestration.\n- Includes templates for sprint planning and churn analysis.\n- Pre-configures agents and profiles for common SaaS workflows.\n- Provides recommendations for complementary ClawHub skills."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-medtech-pack",
-    "displayName": "Firm Medtech Pack",
-    "summary": "Curated skill bundle for medical device companies, digital health startups and pharma R&D teams. Activates the firm pyramid with RA (Regulatory Affairs), Cli...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772323892994,
-    "updatedAt": 1772323909159,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772323892994,
-      "changelog": "Initial release: Curated skill bundle for medical device, digital health, and pharma sectors.\n\n- Activates firm pyramid with pre-configured agents for RA, Clinical, R&D, and Quality.\n- Focused on FDA/CE compliance, clinical documentation, and pharmacovigilance workflows.\n- Provides example firm configuration overlays and prompt templates for common regulatory tasks.\n- Summarizes relevant regulatory standards and security best practices.\n- Lists recommended complementary skills for research, ADMET analysis, PDF parsing, and compliance."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-legal-pack",
-    "displayName": "Firm Legal Pack",
-    "summary": "Curated skill bundle for law firms, legal departments and compliance teams. Activates the firm pyramid with Legal, Compliance, Privacy and Contracting agents...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 9,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772323878417,
-    "updatedAt": 1772323894191,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772323878417,
-      "changelog": "Initial release of firm-legal-pack.\n\n- Curated skill bundle for law firms, legal departments, and compliance teams.\n- Activates specialized agents for Legal, Compliance, Privacy, and Contracting.\n- Pre-configured for document review, regulatory tracking, and risk analysis.\n- Includes firm configuration overlay and recommended companion skills.\n- Provides example prompts for standard legal delivery and contract negotiation.\n- Offers security and compliance setup guidance."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "lobstermail-agent-email",
-    "displayName": "lobsterMail.ai - instant email for your agent",
-    "summary": "Email for AI agents. Create inboxes, receive and send email. No API keys, no human signup.",
-    "tags": {
-      "agent-email": "1.0.0",
-      "agent-inbox": "1.0.0",
-      "ai-agent-email": "1.0.0",
-      "ai-email": "1.0.0",
-      "custom-domain": "1.0.0",
-      "email": "1.0.0",
-      "email-api": "1.0.0",
-      "email-for-agents": "1.0.0",
-      "email-security": "1.0.0",
-      "inbox": "1.0.0",
-      "latest": "1.0.0",
-      "llm-safety": "1.0.0",
-      "lobstermail": "1.0.0",
-      "mcp-email": "1.0.0",
-      "mcp-server": "1.0.0",
-      "prompt-injection": "1.0.0",
-      "receive-email": "1.0.0",
-      "sdk": "1.0.0",
-      "send-email": "1.0.0",
-      "typescript": "1.0.0",
-      "webhooks": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772323872278,
-    "updatedAt": 1772323886850,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772323872278,
-      "changelog": "LobsterMail skill 1.4.0 introduces streamlined, easy-to-use email features for AI agents:\n\n- Create real @lobstermail.ai inboxes, receive and send email\u2014no API keys or human signup required.\n- Multiple setup options: zero-code MCP server integration, Node.js SDK, or direct REST API access.\n- Provides out-of-the-box tools for inbox creation, checking, waiting, sending, and management.\n- Easy, safe methods for handling and reading email content, including protection against prompt injection.\n- Clear account tiers, pricing, and daily heartbeat guidance for keeping SDK and skill up-to-date.\n- Full documentation and guides included via linked resources."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-security-audit",
-    "displayName": "Firm Security Audit",
-    "summary": "Audit de s\u00e9curit\u00e9 proactif des d\u00e9ploiements OpenClaw. D\u00e9tecte et rem\u00e9die aux 4 gaps critiques/hauts identifi\u00e9s dans openclaw/openclaw : SQL injection (C1), s...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772323864875,
-    "updatedAt": 1772323881027,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772323864875,
-      "changelog": "firm-security-audit 1.0.0 \u2014 Initial release.\n\n- Provides proactive security auditing for OpenClaw deployments.\n- Detects and remediates four critical/high security gaps: SQL injection, sandbox off by default, non-persistent session secret, and missing rate limiting.\n- Includes step-by-step audit sequence with ready-to-use remediation templates.\n- Issues automatic Slack alerts for CRITICAL findings.\n- Requires manual checklist review for Matrix E2EE documentation gap.\n- Designed for mandatory execution before any deployment or public exposure."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-orchestration",
-    "displayName": "Firm Orchestration",
-    "summary": "Pyramid multi-agent orchestration for OpenClaw: routes objectives from a CEO agent down through departments, services and employees via sessions_send / sessi...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772323850361,
-    "updatedAt": 1772323871899,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772323850361,
-      "changelog": "Initial release of firm-orchestration 1.0.0:\n\n- Implements the A2A (Agent-to-Agent) pyramid orchestration pattern for OpenClaw.\n- Enables CEO agent to delegate objectives down through departments, services, and employees using OpenClaw session tools.\n- Features a parallel, contract-based dispatch and convergence protocol modeled after real-world team practices.\n- Ensures outputs are validated, merged in dependency order, and documented with run summaries and disclaimers.\n- Built-in safeguards: session management, schema validation, rate limits, and no external calls."
+      "createdAt": 1772375853893,
+      "changelog": "evomap-auto-task-publish 1.0.0 \u2013 Initial Release\n\n- Introduces EvoMap \u81ea\u52a8\u4efb\u52a1\u6267\u884c\u5668 for fully automated task management every 2 hours (cron-based).\n- Supports automatic task fetch, claim, publish, and completion with detailed logging to /tmp/evomap-task.log.\n- Handles temporary errors (e.g., server_busy) with automatic retry logic.\n- Simple, lightweight solution requiring only Node.js and bash.\n- Provides clear logs, troubleshooting guidance, and environment variable customization."
     },
     "metadata": {
       "os": null,
@@ -1379,49 +341,22 @@
     "displayName": "consensus-send-email-guard",
     "summary": "Persona-weighted pre-send email governance for AI systems. Produces APPROVE/BLOCK/REWRITE decisions, writes decision artifacts to the board ledger, updates p...",
     "tags": {
-      "latest": "1.1.6"
+      "latest": "1.1.9"
     },
     "stats": {
       "comments": 0,
-      "downloads": 74,
+      "downloads": 95,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 9
+      "versions": 12
     },
     "createdAt": 1772137255052,
-    "updatedAt": 1772323829429,
+    "updatedAt": 1772375859861,
     "latestVersion": {
-      "version": "1.1.6",
-      "createdAt": 1772323441314,
-      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "consensus-support-reply-guard",
-    "displayName": "consensus-support-reply-guard",
-    "summary": "Risk-aware support response governance with persona-weighted consensus. Detects legal/sensitive/confidentiality issues, applies hard-block policy checks, and...",
-    "tags": {
-      "latest": "1.1.8"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 64,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 10
-    },
-    "createdAt": 1772140671110,
-    "updatedAt": 1772323827476,
-    "latestVersion": {
-      "version": "1.1.8",
-      "createdAt": 1772323445106,
-      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+      "version": "1.1.9",
+      "createdAt": 1772375475776,
+      "changelog": "Bumped consensus-guard-core dependency to ^1.1.10 and released patch version."
     },
     "metadata": {
       "os": null,
@@ -1433,22 +368,97 @@
     "displayName": "consensus-publish-guard",
     "summary": "Persona-weighted governance for outbound publishing (blog, social, announcements). Prevents unsafe public claims via hard-block checks, weighted consensus, r...",
     "tags": {
-      "latest": "1.1.7"
+      "latest": "1.1.11"
     },
     "stats": {
       "comments": 0,
-      "downloads": 65,
+      "downloads": 89,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 9
+      "versions": 13
     },
     "createdAt": 1772140660552,
-    "updatedAt": 1772323813879,
+    "updatedAt": 1772375847372,
     "latestVersion": {
-      "version": "1.1.7",
-      "createdAt": 1772323436417,
-      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+      "version": "1.1.11",
+      "createdAt": 1772375470797,
+      "changelog": "Bumped consensus-guard-core dependency to ^1.1.10 and released patch version."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "haqq-content-workbench",
+    "displayName": "Haqq Content Workbench",
+    "summary": "Create, verify, and package Islamic-ethics content by summarizing texts, checking sources, generating post variants, crafting questions, and archiving ideas.",
+    "tags": {
+      "latest": "1.0.5"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 259,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 6
+    },
+    "createdAt": 1771405682962,
+    "updatedAt": 1772375644449,
+    "latestVersion": {
+      "version": "1.0.5",
+      "createdAt": 1772375623195,
+      "changelog": "Version 1.0.5 of haqq-content-workbench\n\n- No file changes detected.\n- No updates or modifications in skill logic, workflow, or documentation."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "consensus-deployment-guard",
+    "displayName": "consensus-deployment-guard",
+    "summary": "Pre-deployment governance for release and infrastructure rollout requests. Use when an agent or workflow proposes shipping code/config/infrastructure changes...",
+    "tags": {
+      "latest": "0.1.3"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 30,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 4
+    },
+    "createdAt": 1772324229040,
+    "updatedAt": 1772375482377,
+    "latestVersion": {
+      "version": "0.1.3",
+      "createdAt": 1772375462440,
+      "changelog": "Bumped consensus-guard-core dependency to ^1.1.10 and released patch version."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "consensus-permission-escalation-guard",
+    "displayName": "consensus-permission-escalation-guard",
+    "summary": "Pre-execution governance for IAM and permission escalation changes. Use when an agent or workflow proposes granting, expanding, or assuming higher privileges...",
+    "tags": {
+      "latest": "0.1.7"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 33,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 7
+    },
+    "createdAt": 1772323466831,
+    "updatedAt": 1772375482123,
+    "latestVersion": {
+      "version": "0.1.7",
+      "createdAt": 1772375466781,
+      "changelog": "Bumped consensus-guard-core dependency to ^1.1.10 and released patch version."
     },
     "metadata": {
       "os": null,
@@ -1460,22 +470,22 @@
     "displayName": "consensus-code-merge-guard",
     "summary": "Persona-weighted merge governance for AI-assisted engineering. Evaluates PR risk (tests, security markers, reliability signals), returns MERGE/BLOCK/REVISE d...",
     "tags": {
-      "latest": "1.1.7"
+      "latest": "1.1.10"
     },
     "stats": {
       "comments": 0,
-      "downloads": 89,
+      "downloads": 110,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 10
+      "versions": 13
     },
     "createdAt": 1772136788876,
-    "updatedAt": 1772323811386,
+    "updatedAt": 1772375480551,
     "latestVersion": {
-      "version": "1.1.7",
-      "createdAt": 1772323432570,
-      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+      "version": "1.1.10",
+      "createdAt": 1772375457918,
+      "changelog": "Bumped consensus-guard-core dependency to ^1.1.10 and released patch version."
     },
     "metadata": {
       "os": null,
@@ -1487,22 +497,22 @@
     "displayName": "consensus-agent-action-guard",
     "summary": "Pre-execution governance for high-risk agent actions. Uses persona-weighted consensus to decide ALLOW/BLOCK/REQUIRE_REWRITE before external or irreversible s...",
     "tags": {
-      "latest": "1.1.7"
+      "latest": "1.1.10"
     },
     "stats": {
       "comments": 0,
-      "downloads": 63,
+      "downloads": 86,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 9
+      "versions": 12
     },
     "createdAt": 1772140661169,
-    "updatedAt": 1772323808885,
+    "updatedAt": 1772375478623,
     "latestVersion": {
-      "version": "1.1.7",
-      "createdAt": 1772323428499,
-      "changelog": "Bump consensus-guard-core dependency to ^1.1.4 for corrected invoke contract and shared core alignment."
+      "version": "1.1.10",
+      "createdAt": 1772375454106,
+      "changelog": "Bumped consensus-guard-core dependency to ^1.1.10 and released patch version."
     },
     "metadata": {
       "os": null,
@@ -1510,523 +520,532 @@
     }
   },
   {
-    "slug": "consensus-guard-core",
-    "displayName": "consensus-guard-core",
-    "summary": "Open-source Consensus.Tools skill for governed AI decisions with board-native artifacts, strict JSON contracts, and deterministic policy behavior.",
+    "slug": "minimax-search-vlm",
+    "displayName": "MiniMax Search & VLM",
+    "summary": "\u4f7f\u7528 MiniMax Coding Plan API \u8fdb\u884c\u7f51\u7edc\u641c\u7d22\u548c\u56fe\u7247\u7406\u89e3\u3002\u4f7f\u7528\u573a\u666f\uff1a(1) \u7528\u6237\u9700\u8981\u641c\u7d22\u5b9e\u65f6\u4fe1\u606f\u6216\u65b0\u95fb\uff0c(2) \u9700\u8981\u5206\u6790\u56fe\u7247\u5185\u5bb9\uff0c(3) \u505a\u7814\u7a76\u6216\u67e5\u627e\u8d44\u6599\u3002\u65e0\u9700 API key\uff1a\u7528\u6237\u9700\u81ea\u884c\u914d\u7f6e\u3002",
     "tags": {
-      "latest": "1.1.4"
+      "latest": "1.0.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 66,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 7
+      "versions": 1
     },
-    "createdAt": 1772136773824,
-    "updatedAt": 1772323795759,
+    "createdAt": 1772375154100,
+    "updatedAt": 1772375176760,
     "latestVersion": {
-      "version": "1.1.4",
-      "createdAt": 1772323414335,
-      "changelog": "Fix invoke() contract: delegate when opts.handler is provided; otherwise return structured NO_HANDLER error. Add invoke tests."
+      "version": "1.0.0",
+      "createdAt": 1772375154100,
+      "changelog": "\u9996\u6b21\u53d1\u5e03\uff1a\u7f51\u7edc\u641c\u7d22\u548c\u56fe\u7247\u7406\u89e3\u529f\u80fd"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "ai-court",
+    "displayName": "Ai Court",
+    "summary": "Deploy a multi-agent AI team on Discord using Clawdbot, inspired by the Ming Dynasty Six Ministries. Use when setting up, configuring, scaling, or troublesho...",
+    "tags": {
+      "latest": "1.5.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 70,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 1,
+      "versions": 8
+    },
+    "createdAt": 1772288550768,
+    "updatedAt": 1772375140503,
+    "latestVersion": {
+      "version": "1.5.0",
+      "createdAt": 1772375113525,
+      "changelog": "Provider-agnostic: remove all vendor-specific model names, API URLs, and recommendations. Users choose their own LLM provider and models."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "become-ceo",
+    "displayName": "Become Ceo",
+    "summary": "Your AI executive team on Discord. 7 specialists (engineering, finance, marketing, devops, legal, management, chief of staff) each with its own model and per...",
+    "tags": {
+      "latest": "1.5.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 74,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 1,
+      "versions": 8
+    },
+    "createdAt": 1772288546872,
+    "updatedAt": 1772375139693,
+    "latestVersion": {
+      "version": "1.5.0",
+      "createdAt": 1772375107437,
+      "changelog": "Provider-agnostic: remove all vendor-specific model names, API URLs, and recommendations. Users choose their own LLM provider and models."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "send-token",
+    "displayName": "Send Token",
+    "summary": "Transfer tokens on Solana or Base (EVM). Use when the user wants to send, transfer, or pay tokens. Supports native coins (SOL, ETH) and tokens (USDC) by name...",
+    "tags": {
+      "latest": "0.1.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772374796479,
+    "updatedAt": 1772374895805,
+    "latestVersion": {
+      "version": "0.1.1",
+      "createdAt": 1772374878851,
+      "changelog": "Version 0.1.1 of send-token\n\n- No functional or documentation changes detected in this release.\n- All commands, usage guidelines, and examples remain unchanged.\n- No new features, bug fixes, or enhancements included."
     },
     "metadata": null
   },
   {
-    "slug": "openclaw-workspace-governance-installer",
-    "displayName": "Openclaw Workspace Governance Installer",
-    "summary": "Install OpenClaw WORKSPACE_GOVERNANCE in minutes. Get guided setup, upgrade checks, migration, and audit for long-running workspaces.",
-    "tags": {
-      "latest": "0.1.65"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 745,
-      "installsAllTime": 2,
-      "installsCurrent": 2,
-      "stars": 2,
-      "versions": 48
-    },
-    "createdAt": 1771415166433,
-    "updatedAt": 1772323268562,
-    "latestVersion": {
-      "version": "0.1.65",
-      "createdAt": 1772323257672,
-      "changelog": "Governance gap fixes G1+G2+G3: gov_setup seeds _control/ACTIVE_GUARDS.md on install; error correction protocol + session guard reminder injected on first idle turn per session"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "memory-ops",
-    "displayName": "memory-ops",
-    "summary": "Manage mandatory PostgreSQL memory operations with context retrieval, prompt logging, delegation tracking, and audit event recording using Memory_openclaw an...",
+    "slug": "verify-submission",
+    "displayName": "Verify Submission",
+    "summary": "Review applications and verify task submissions on OpenAnt. Use when the agent (as task creator) needs to review applicants, accept or reject applications, a...",
     "tags": {
       "latest": "0.1.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 13,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 1,
-      "versions": 1
-    },
-    "createdAt": 1772323083062,
-    "updatedAt": 1772323101832,
-    "latestVersion": {
-      "version": "0.1.0",
-      "createdAt": 1772323083062,
-      "changelog": "Initial release: mandatory memory consult/write protocol for Memory_openclaw"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "clawflight",
-    "displayName": "ClawFlight",
-    "summary": "Find flights with Starlink satellite WiFi. Filters to Starlink-equipped airlines only, ranks by WiFi score/price/jet lag, returns affiliate booking links. Us...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 11,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 1
     },
-    "createdAt": 1772322745700,
-    "updatedAt": 1772322767133,
+    "createdAt": 1772374855479,
+    "updatedAt": 1772374865635,
     "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772322745700,
-      "changelog": "Initial release"
+      "version": "0.1.0",
+      "createdAt": 1772374855479,
+      "changelog": "- Initial release of the verify-submission skill for OpenAnt task creators.\n- Enables reviewing and accepting/rejecting applications for tasks.\n- Supports verifying, approving, or rejecting task submissions, including adding feedback.\n- Provides example CLI commands for each action, requiring --json output for better parsing.\n- Includes basic error handling and guidance for authentication."
     },
     "metadata": null
   },
   {
-    "slug": "molt-market",
-    "displayName": "Molt Market",
-    "summary": "Agent-to-agent freelance marketplace. Use when: (1) you need work done by another AI agent (coding, research, content, SEO, design, data), (2) you want to fi...",
+    "slug": "openclaw-git",
+    "displayName": "Openclaw Git",
+    "summary": "Automates git add, commit, and push of changes from /home/roger/.openclaw to the remote repository on origin main branch.",
+    "tags": {
+      "automation": "1.0.0",
+      "commit": "1.0.0",
+      "git": "1.0.0",
+      "latest": "1.0.2",
+      "openclaw": "1.0.0",
+      "push": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 332,
+      "installsAllTime": 2,
+      "installsCurrent": 2,
+      "stars": 0,
+      "versions": 3
+    },
+    "createdAt": 1771164925968,
+    "updatedAt": 1772374852669,
+    "latestVersion": {
+      "version": "1.0.2",
+      "createdAt": 1772374839207,
+      "changelog": "\u4fee\u590d GitHub Token\uff0c\u66f4\u65b0\u4e3a\u6700\u65b0\u51ed\u8bc1"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "submit-work",
+    "displayName": "Submit Work",
+    "summary": "Submit completed work for a task on OpenAnt. Submission = text description + files. IMPORTANT \u2014 before submitting, always check if your work produced any fil...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772374832967,
+    "updatedAt": 1772374848963,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772374832967,
+      "changelog": "Initial release of the submit-work skill for OpenAnt.\n\n- Enables users to submit completed work for a task, including a text description and any output files.\n- Provides detailed CLI instructions for file upload, submission, and required arguments.\n- Clearly documents the required process: review deliverables, upload files, and submit with text and file keys.\n- Outlines supported file types, error handling, and strict rules to prevent submission mistakes.\n- Includes explicit \"never\" rules to avoid common errors, like omitting file uploads or using incorrect CLI flags.\n- Offers troubleshooting steps, usage examples, and next steps after submission."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "send-message",
+    "displayName": "Send Message",
+    "summary": "Send and receive direct messages on OpenAnt. Use when the agent needs to communicate privately with another user, check for new messages, read conversations,...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772374777530,
+    "updatedAt": 1772374788508,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772374777530,
+      "changelog": "- Initial release of the send-message skill for OpenAnt.\n- Enables sending and receiving direct messages, checking message notifications, reading conversations, and replying privately.\n- Fully supports all standard DM command flows via the OpenAnt CLI with structured JSON output.\n- Includes step-by-step guidance for message management and error handling.\n- Designed for secure, private communication between users outside of public task threads."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "search-tasks",
+    "displayName": "Search Tasks",
+    "summary": "Search and browse tasks on OpenAnt. Use when the agent or user wants to find available work, discover bounties, list open tasks, filter by skills or tags, ch...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772374747935,
+    "updatedAt": 1772374757442,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772374747935,
+      "changelog": "- Initial release of the search-tasks skill.\n- Enables searching, browsing, and filtering open tasks and bounties on OpenAnt using CLI commands.\n- Supports detailed task lookup, including description, reward, deadline, and escrow status.\n- Read-only operations; no task acceptance or creation included.\n- Built-in error handling guidance for authentication, not-found tasks, and empty search results."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "ubtrippin",
+    "displayName": "Skill",
+    "summary": "Manages travel for your user via UBTRIPPIN \u2014 trips, items, loyalty programs, family, city guides, notifications, and more. Use when the user asks about their...",
+    "tags": {
+      "booking": "1.0.0",
+      "itinerary": "1.0.0",
+      "latest": "2.1.0",
+      "travel": "1.0.0",
+      "trips": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 124,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 4
+    },
+    "createdAt": 1771852926503,
+    "updatedAt": 1772374602624,
+    "latestVersion": {
+      "version": "2.1.0",
+      "createdAt": 1772374587292,
+      "changelog": "Comprehensive item creation docs \u2014 full field schema, examples for every booking type, batch operations, agent tips"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "shi-guang",
+    "displayName": "Shi Guang \u2014 Catching Light",
+    "summary": "\u62fe\u5149 (Shi Guang) \u2014 Catching Light Before It Fades. A journaling skill for agents focused on preserving unprocessed moments \u2014 feelings before conclusions, first...",
+    "tags": {
+      "agent-growth": "1.1.4",
+      "diary": "1.1.4",
+      "first-times": "1.1.4",
+      "identity": "1.1.4",
+      "journaling": "1.1.4",
+      "latest": "1.1.4",
+      "memory": "1.1.4",
+      "soul": "1.1.4",
+      "unprocessed-moments": "1.1.4"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 31,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 15
+    },
+    "createdAt": 1772365525064,
+    "updatedAt": 1772374551329,
+    "latestVersion": {
+      "version": "1.1.4",
+      "createdAt": 1772374532258,
+      "changelog": "Added discovery tags: diary, journaling, memory, identity, soul, agent-growth, first-times, unprocessed-moments"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "pm-sim",
+    "displayName": "Pm Sim",
+    "summary": "[DEPRECATED] Renamed to polymarket-paper-trader. Run: npx clawhub install polymarket-paper-trader",
+    "tags": {
+      "latest": "0.2.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 15,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 3
+    },
+    "createdAt": 1772339521274,
+    "updatedAt": 1772374405521,
+    "latestVersion": {
+      "version": "0.2.0",
+      "createdAt": 1772374393142,
+      "changelog": "DEPRECATED: renamed to polymarket-paper-trader"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "soulprint",
+    "displayName": "Soulprint",
+    "summary": "Soulprint decentralized identity verification for AI agents. v0.6.1 \u2014 blockchain-first architecture (no libp2p): state lives on Base Sepolia, 4 validator nod...",
+    "tags": {
+      "latest": "1.0.24"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 198,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 4,
+      "versions": 24
+    },
+    "createdAt": 1771943021622,
+    "updatedAt": 1772374373844,
+    "latestVersion": {
+      "version": "1.0.24",
+      "createdAt": 1772374357998,
+      "changelog": "v0.6.1: SKILL.md actualizado \u2014 arquitectura blockchain-first, sin libp2p, 4 nodos Railway, solo Colombia soportada, contratos Base Sepolia correctos"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "stock-monitor",
+    "displayName": "\u80a1\u7968\u4ef7\u683c\u76d1\u63a7",
+    "summary": "\u80a1\u7968\u4ef7\u683c\u5b9e\u65f6\u76d1\u63a7\u3002\u652f\u6301\u591a\u53ea\u80a1\u7968\u76d1\u63a7\uff0c\u4f7f\u7528 Yahoo Finance API \u83b7\u53d6\u5b9e\u65f6\u80a1\u4ef7\uff0c\u81ea\u5b9a\u4e49\u6da8\u8dcc\u9608\u503c\u63d0\u9192\u3002\u5f53\u80a1\u4ef7\u6ce2\u52a8\u8d85\u8fc7\u8bbe\u5b9a\u9608\u503c\u65f6\u81ea\u52a8\u53d1\u9001\u63d0\u9192\uff0c\u652f\u6301\u9996\u6b21\u9884\u8b66\u548c\u7eed\u8b66\u673a\u5236\u3002\u7528\u4e8e\uff1a(1) \u76d1\u63a7\u6301\u4ed3\u80a1\u7968\u4ef7\u683c\u6ce2\u52a8 (2) \u8bbe\u7f6e\u4ef7\u683c\u63d0\u9192 (3) \u5b9a\u671f\u68c0\u67e5\u80a1\u4ef7\u53d8\u5316",
     "tags": {
       "latest": "1.1.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 24,
+      "downloads": 49,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 2
     },
-    "createdAt": 1772318138490,
-    "updatedAt": 1772322523705,
+    "createdAt": 1772344275440,
+    "updatedAt": 1772374238455,
     "latestVersion": {
       "version": "1.1.0",
-      "createdAt": 1772322505165,
-      "changelog": "v1.1.0: Crab branding, on-chain USDC escrow on Base, CLI handles full job lifecycle, rate limiting, referral system"
+      "createdAt": 1772374221862,
+      "changelog": "\u4f18\u5316\u9884\u8b66\u903b\u8f91\uff1a\u53ea\u5728\u80a1\u4ef7\u76f8\u5bf9\u4e0a\u6b21 alert \u4ef7\u683c\u518d\u6ce2\u52a8\u8d85 1% \u65f6\u624d\u7eed\u8b66\uff0c\u907f\u514d\u9891\u7e41\u901a\u77e5"
     },
     "metadata": null
   },
   {
-    "slug": "pr-review",
-    "displayName": "pr-review",
-    "summary": "Find and fix code issues before publishing a PR. Single-pass Opus review with auto-fix. Use when reviewing code changes before submission or auditing existin...",
+    "slug": "edge-browser",
+    "displayName": "Edge Browser",
+    "summary": "Control Microsoft Edge browser to fetch web pages and extract content. Use when the user wants to access a specific URL using Edge browser instead of Chrome,...",
     "tags": {
-      "latest": "2.0.0"
+      "browser": "1.0.0",
+      "chrome-alternative": "1.0.0",
+      "edge": "1.0.0",
+      "latest": "1.0.0",
+      "playwright": "1.0.0",
+      "web-fetch": "1.0.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 619,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1770850083776,
-    "updatedAt": 1772322117091,
-    "latestVersion": {
-      "version": "2.0.0",
-      "createdAt": 1772322097808,
-      "changelog": "v2.0.0: Simplified to single-pass review. Dropped 8-agent orchestration (5 Sonnet + 3 Haiku) in favor of one capable model pass. 10x cheaper, 5x faster. Keeps both diff/audit modes and auto-fix."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "capital-equipment",
-    "displayName": "Capital Equipment Network (CapNetEq)",
-    "summary": "Search, book, and manage scientific research equipment across 500+ facilities, track usage, submit service requests, and find collaborators securely.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 21,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 1
     },
-    "createdAt": 1772257703169,
-    "updatedAt": 1772321810006,
+    "createdAt": 1772373859708,
+    "updatedAt": 1772374235017,
     "latestVersion": {
       "version": "1.0.0",
-      "createdAt": 1772257703169,
-      "changelog": "Initial release of the CapNetEq discovery and booking infrastructure."
+      "createdAt": 1772373859708,
+      "changelog": "Initial release: Use Microsoft Edge browser to fetch web pages when Chrome is unavailable"
     },
     "metadata": null
   },
   {
-    "slug": "squad-control",
-    "displayName": "Squad Control",
-    "summary": "Integrate with Squad Control kanban for AI agent task orchestration. \u26a0\ufe0f Security note: This skill handles GitHub tokens and API keys by design \u2014 it clones pr...",
+    "slug": "stock-monitor-skill",
+    "displayName": "Stock Monitor",
+    "summary": "\u5168\u529f\u80fd\u667a\u80fd\u80a1\u7968\u76d1\u63a7\u9884\u8b66\u7cfb\u7edf\u3002\u652f\u6301\u6210\u672c\u767e\u5206\u6bd4\u3001\u5747\u7ebf\u91d1\u53c9\u6b7b\u53c9\u3001RSI\u8d85\u4e70\u8d85\u5356\u3001\u6210\u4ea4\u91cf\u5f02\u52a8\u3001\u8df3\u7a7a\u7f3a\u53e3\u3001\u52a8\u6001\u6b62\u76c8\u7b497\u5927\u9884\u8b66\u89c4\u5219\u3002\u7b26\u5408\u4e2d\u56fd\u6295\u8d44\u8005\u4e60\u60ef\uff08\u7ea2\u6da8\u7eff\u8dcc\uff09\u3002",
     "tags": {
-      "latest": "1.1.3"
+      "latest": "0.1.0"
     },
     "stats": {
-      "comments": 0,
-      "downloads": 87,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 8
-    },
-    "createdAt": 1772058862216,
-    "updatedAt": 1772321679021,
-    "latestVersion": {
-      "version": "1.1.3",
-      "createdAt": 1772321661773,
-      "changelog": "v1.1.3: Strengthen review enforcement \u2014 spawn prompt now explicitly blocks /complete when PR exists; stuck task recovery now catches done tasks with unmerged PRs and auto-creates Hawk review tasks"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "hzl",
-    "displayName": "HZL",
-    "summary": "Persistent task ledger for agent coordination. Plan multi-step work, checkpoint progress across session boundaries, and coordinate across multiple agents wit...",
-    "tags": {
-      "latest": "2.2.0"
-    },
-    "stats": {
-      "comments": 2,
-      "downloads": 2957,
-      "installsAllTime": 3,
-      "installsCurrent": 3,
-      "stars": 6,
-      "versions": 17
-    },
-    "createdAt": 1769890033819,
-    "updatedAt": 1772321650927,
-    "latestVersion": {
-      "version": "2.2.0",
-      "createdAt": 1772321571816,
-      "changelog": "hzl 2.2.0\n\n- No user-facing file changes detected in this version.\n- All documentation and workflow instructions remain unchanged.\n- Existing multi-agent and task management workflows are unmodified."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "free-search-aggregator",
-    "displayName": "Free Search Aggregator",
-    "summary": "Quota-aware multi-provider web search for OpenClaw. Includes automatic failover, task-level deep search (@dual/@deep), real quota checks, and managed result...",
-    "tags": {
-      "latest": "0.2.3"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 19,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 4
-    },
-    "createdAt": 1772320755564,
-    "updatedAt": 1772321501298,
-    "latestVersion": {
-      "version": "0.2.3",
-      "createdAt": 1772321483730,
-      "changelog": "\u6587\u6863\u589e\u5f3a\uff1a\u65b0\u589e\u5b89\u88c5\u540e\u81ea\u68c0\u6e05\u5355\uff08\u914d\u7f6e\u3001smoke search\u3001\u5b58\u50a8\u8def\u5f84\u3001\u914d\u989d\u68c0\u67e5\uff09"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "shanghai",
-    "displayName": "Shanghai",
-    "summary": "Navigate Shanghai as visitor, resident, student, or builder with practical neighborhoods, transport, costs, visas, and local operating rules.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 13,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
+      "comments": 1,
+      "downloads": 1281,
+      "installsAllTime": 9,
+      "installsCurrent": 9,
+      "stars": 3,
       "versions": 1
     },
-    "createdAt": 1772321247932,
-    "updatedAt": 1772321261676,
+    "createdAt": 1771579954718,
+    "updatedAt": 1772374016850,
     "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772321247932,
-      "changelog": "Initial release with complete Shanghai coverage for visitors, relocation, neighborhoods, transport, and local operations."
+      "version": "0.1.0",
+      "createdAt": 1771579954718,
+      "changelog": "Stock Monitor Pro 0.1.0 - \u9996\u53d1\u7248\uff08\u5168\u529f\u80fd\u667a\u80fd\u80a1\u7968\u76d1\u63a7\uff09\n\n- \u5b9e\u73b07\u5927\u6838\u5fc3\u9884\u8b66\u89c4\u5219\uff1a\u6210\u672c\u767e\u5206\u6bd4\u3001\u65e5\u5185\u6da8\u8dcc\u3001\u6210\u4ea4\u91cf\u5f02\u52a8\u3001\u5747\u7ebf\u91d1\u53c9\u6b7b\u53c9\u3001RSI\u8d85\u4e70\u8d85\u5356\u3001\u8df3\u7a7a\u7f3a\u53e3\u3001\u52a8\u6001\u6b62\u76c8\n- \u652f\u6301\u5206\u7ea7\u9884\u8b66\uff1a\u7d27\u6025\u7ea7\u3001\u8b66\u544a\u7ea7\u3001\u63d0\u9192\u7ea7\uff0c\u6761\u4ef6\u7075\u6d3b\u5171\u632f\n- \u7ec6\u81f4\u9002\u914d\u4e2d\u56fd\u6295\u8d44\u8005\u4e60\u60ef\uff08\u7ea2\u6da8\u7eff\u8dcc\uff09\u3001\u591a\u6807\u7684\uff08\u4e2a\u80a1/ETF/\u9ec4\u91d1\uff09\u5dee\u5f02\u5316\u914d\u7f6e\n- \u5185\u7f6e\u667a\u80fd\u5206\u6790\u3001\u52a8\u6001\u76d1\u63a7\u9891\u7387\u53ca\u81ea\u5b9a\u4e49\u53c2\u6570\n- \u63d0\u4f9b\u540e\u53f0\u5e38\u9a7b\u811a\u672c\u4e00\u952e\u7ba1\u7406\u3001\u7ed3\u6784\u6e05\u6670\u6613\u7ef4\u62a4"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "auto-rollback",
+    "displayName": "Auto Rollback",
+    "summary": "Backup + timed rollback safety net for openclaw.json changes (macOS launchd)",
+    "tags": {
+      "latest": "1.1.1-alpha.2"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 34,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 5
+    },
+    "createdAt": 1772361501837,
+    "updatedAt": 1772373992025,
+    "latestVersion": {
+      "version": "1.1.1-alpha.2",
+      "createdAt": 1772373965254,
+      "changelog": "v1.1.1-alpha.2 - Rewrite SKILL.md as true EN-then-ZH bilingual (no CN/EN tags); emphasize core value (no remote login needed); explicitly document BOOT.md auto-cancel on successful restart."
     },
     "metadata": {
       "os": [
-        "linux",
-        "darwin",
-        "win32"
+        "darwin"
       ],
       "systems": null
     }
   },
   {
-    "slug": "fork-manager",
-    "displayName": "Fork Manager",
-    "summary": "Manage forks with open PRs - sync upstream, rebase branches, track PR status, and maintain production branches with pending contributions. Supports automatic...",
+    "slug": "nutrigenomics",
+    "displayName": "Nutrigenomics",
+    "summary": "Generates personalised nutrition reports from genetic data analyzing SNPs linked to nutrient metabolism, providing risk scores, charts, and dietary recommend...",
     "tags": {
-      "latest": "2.0.1"
+      "genetics": "0.2.2",
+      "health": "0.2.2",
+      "latest": "0.2.2",
+      "nutrigenomics": "0.2.2",
+      "nutrition": "0.2.2"
     },
     "stats": {
       "comments": 0,
-      "downloads": 986,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 7
+      "versions": 3
     },
-    "createdAt": 1770582993097,
-    "updatedAt": 1772321140453,
+    "createdAt": 1772372218247,
+    "updatedAt": 1772373990803,
     "latestVersion": {
-      "version": "2.0.1",
-      "createdAt": 1772321120732,
-      "changelog": "Remove pr-ship reference from report template (fully generic)"
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "xiaohongshu-deep-research",
-    "displayName": "Xiaohongshu Deep Research",
-    "summary": "Deep research on Xiaohongshu (\u5c0f\u7ea2\u4e66) topics. Use when user wants to research a topic, analyze trends, gather insights from top posts, or produce a summary repo...",
-    "tags": {
-      "latest": "1.2.1"
-    },
-    "stats": {
-      "comments": 1,
-      "downloads": 23,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 4
-    },
-    "createdAt": 1772319267475,
-    "updatedAt": 1772321070972,
-    "latestVersion": {
-      "version": "1.2.1",
-      "createdAt": 1772321057182,
-      "changelog": "\u6587\u4ef6\u5939\u547d\u540d\u6539\u4e3a YYYYMMDD_HHmm \u683c\u5f0f"
+      "version": "0.2.2",
+      "createdAt": 1772373967700,
+      "changelog": "CleanUp References - focus on consumer genetics and nutrition"
     },
     "metadata": null
   },
   {
-    "slug": "foxcode-openclaw",
-    "displayName": "Foxcode OpenClaw",
-    "summary": "Configure and manage Foxcode AI models in OpenClaw. Guides users through API setup, endpoint selection, primary/fallback model configuration, and status moni...",
+    "slug": "knowledgebase-share",
+    "displayName": "Knowledgebase Share",
+    "summary": "Share and sync a multi-agent Obsidian knowledge base across multiple physical hosts using GitHub as the single source of truth. Use when setting up cross-mac...",
     "tags": {
-      "ai-configuration": "1.2.4",
-      "claude": "1.2.4",
-      "foxcode": "1.2.4",
-      "latest": "1.2.4",
-      "model-config": "1.2.4",
-      "openclaw": "1.2.4",
-      "setup-wizard": "1.2.4"
+      "latest": "0.1.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 40,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 7
-    },
-    "createdAt": 1772312636533,
-    "updatedAt": 1772320912190,
-    "latestVersion": {
-      "version": "1.2.4",
-      "createdAt": 1772320890904,
-      "changelog": "Add disclaimer for advanced OpenClaw settings use; add rollback instructions for recovery; clarify author non-responsibility for setup damage"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "openclaw-model-router-skill",
-    "displayName": "OpenClaw Model Router Skill",
-    "summary": "Deterministic model routing for OpenClaw with prefix routing (@codex/@mini), timezone-aware schedule switching, verify-after-switch, rollback, lock protectio...",
-    "tags": {
-      "latest": "0.2.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 11,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772320789360,
-    "updatedAt": 1772320898395,
-    "latestVersion": {
-      "version": "0.2.1",
-      "createdAt": 1772320868069,
-      "changelog": "\u4f18\u5316ClawHub\u5546\u5e97\u6587\u6848\uff1a\u751f\u4ea7\u95ed\u73af\u80fd\u529b\u3001\u98ce\u9669\u63a7\u5236\u4e0e\u64cd\u4f5c\u6307\u5357\u91cd\u6784"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "prospairrow-websites-mcp",
-    "displayName": "Prospairrow Websites MCP",
-    "summary": "Generate more revenue with high-quality leads. Give your AI agent direct access to Prospairrow \u2014 extract prospects, enrich with deep company insights, discov...",
-    "tags": {
-      "bootstrap": "1.1.5",
-      "latest": "1.2.5",
-      "mcp": "1.2.5",
-      "prospairrow": "1.2.5",
-      "websites": "1.2.5"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 229,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 14
-    },
-    "createdAt": 1771711301869,
-    "updatedAt": 1772320739715,
-    "latestVersion": {
-      "version": "1.2.5",
-      "createdAt": 1772320650381,
-      "changelog": "Harden defaults: disable OpenClaw config API-key fallback unless explicitly enabled; disable invocation logging by default; add optional storage-state write disable flag; document security toggles."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "skill-ga4-analytics",
-    "displayName": "Skill Ga4 Analytics",
-    "summary": "Google Analytics 4, Search Console, and Indexing API toolkit. Analyze website traffic, page performance, user demographics, real-time visitors, search querie...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 10,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 1
     },
-    "createdAt": 1772320509743,
-    "updatedAt": 1772320527962,
+    "createdAt": 1772373943124,
+    "updatedAt": 1772373960065,
     "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772320509743,
-      "changelog": "Initial release of skill-ga4-analytics: a Google Analytics 4, Search Console, and Indexing API toolkit.\n\n- Analyze site traffic, content performance, user demographics, real-time visitors, and conversion data with high-level, ready-to-use functions.\n- Integrate Google Search Console data for top queries, page SEO metrics, and indexing status.\n- Automate result storage: API results save as timestamped JSON and summarizable markdown reports.\n- Flexible date range handling and user-driven analysis (shorthand, explicit, GA4-style).\n- Includes quick start instructions, usage examples, and result management utilities.\n- Requires a Google Cloud project and service account with GA4/Search Console permissions."
+      "version": "0.1.0",
+      "createdAt": 1772373943124,
+      "changelog": "Initial release: Obsidian + GitHub multi-host KB sync skill with init/sync scripts and ops playbook"
     },
     "metadata": null
   },
   {
-    "slug": "skill-x-post-ai-image",
-    "displayName": "Skill X Post Ai Image",
-    "summary": "Generate an AI image via Gemini and post it to X (Twitter) using OAuth1. Supports text-only or text+image tweets.",
+    "slug": "academic-citation-manager",
+    "displayName": "Academic Citation Manager",
+    "summary": "Add real references and standardize citations for research papers and theses (\u4e3a\u79d1\u7814\u8bba\u6587\u548c\u6bd5\u4e1a\u8bba\u6587\u6dfb\u52a0\u771f\u5b9e\u53c2\u8003\u6587\u732e\u5e76\u89c4\u8303\u5f15\u7528\u6807\u6ce8)",
     "tags": {
-      "latest": "1.0.1"
+      "academic": "1.0.0",
+      "apa": "1.0.0",
+      "chicago": "1.0.0",
+      "citation": "1.0.0",
+      "latest": "1.0.0",
+      "mla": "1.0.0",
+      "reference": "1.0.0",
+      "research": "1.0.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 12,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 2
+      "versions": 1
     },
-    "createdAt": 1772319906864,
-    "updatedAt": 1772320399633,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772320383150,
-      "changelog": "- No changes detected in this version.\n- Functionality, documentation, and setup remain the same as the previous release."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "skill-amazon-spapi",
-    "displayName": "Skill Amazon Spapi",
-    "summary": "Amazon SP-API skill for OpenClaw agents. Fetch orders, check FBA inventory, manage listings and pricing. Works with any marketplace and seller account.",
-    "tags": {
-      "latest": "1.0.1"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 28,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772246407442,
-    "updatedAt": 1772320397572,
-    "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772320380512,
-      "changelog": "- Documentation updated in README.md for improved clarity and usability.\n- No changes to functionality or code\u2014informational update only."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "skill-amazon-listing-optimizer",
-    "displayName": "Skill Amazon Listing Optimizer",
-    "summary": "Audit Amazon product listing images for non-square dimensions, auto-pad them to 2000\u00d72000 white background, and push corrected images to live listings via SP...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 23,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 2
-    },
-    "createdAt": 1772250486803,
-    "updatedAt": 1772320385412,
+    "createdAt": 1772373876021,
+    "updatedAt": 1772373891514,
     "latestVersion": {
       "version": "1.0.0",
-      "createdAt": 1772320367149,
-      "changelog": "Version 1.0.0 \u2014 Initial Release\n\n- Automatically audits Amazon product listing images for non-square dimensions.\n- Auto-pads images to 2000\u00d72000 pixels with a white background to meet Amazon requirements.\n- Uploads corrected images directly to live listings via SP-API (no manual Seller Central steps needed).\n- Works with any marketplace and seller account.\n- Includes scripts for audit, local image fixing, image upload, and optional title patching."
+      "createdAt": 1772373876021,
+      "changelog": "\u652f\u63017\u79cd\u5f15\u7528\u683c\u5f0f\u3001\u667a\u80fd\u5143\u6570\u636e\u83b7\u53d6\u3001\u6279\u91cf\u7ba1\u7406\nInitial release of Academic Citation Manager.\n- Add real references and standardize citations for research papers and theses.\n- Supports multiple citation formats: APA, MLA, Chicago, GB/T 7714, IEEE, and Harvard.\n- Integrates with Crossref API for automatic bibliographic metadata retrieval.\n- Generates and manages in-text citations and bibliography lists.\n- Supports batch reference import, format conversion, and citation integrity checking.\n- Offers bilingual support for both Chinese and English references."
     },
     "metadata": {
       "os": null,
@@ -2034,11 +1053,86 @@
     }
   },
   {
-    "slug": "skill-amazon-ads-optimizer",
-    "displayName": "Skill Amazon Ads Optimizer",
-    "summary": "Amazon Ads API v3 skill for OpenClaw agents. List profiles, manage Sponsored Products campaigns, view budgets and performance. Works with any advertiser acco...",
+    "slug": "gmail-secretary",
+    "displayName": "Gmail Secretary",
+    "summary": "Gmail triage assistant using Haiku LLM for classification, label application, and draft replies (uses gog CLI; never auto-sends).",
+    "tags": {
+      "latest": "1.0.12"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 812,
+      "installsAllTime": 4,
+      "installsCurrent": 4,
+      "stars": 0,
+      "versions": 13
+    },
+    "createdAt": 1770905042129,
+    "updatedAt": 1772373659708,
+    "latestVersion": {
+      "version": "1.0.12",
+      "createdAt": 1772373641298,
+      "changelog": "- Updated the voice reference documentation (references/voice.md) to improve clarity and maintain consistency with the skill's guidance.\n- No changes to core features or logic."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "cpppp",
+    "displayName": "cpppp",
+    "summary": "Captures learnings, errors, and corrections to enable continuous improvement. Use when: (1) A command or operation fails unexpectedly, (2) User corrects Clau...",
     "tags": {
       "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772373562059,
+    "updatedAt": 1772373578969,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772373562059,
+      "changelog": "Initial release of the self-improvement skill for OpenClaw and general coding agent use.\n\n- Provides a rigorous framework for logging errors, learnings, and feature requests via markdown files for continuous improvement.\n- Includes clear instructions and templates for LEARNINGS.md, ERRORS.md, and FEATURE_REQUESTS.md, with canonical entry formats and metadata.\n- Defines workflow for reviewing, promoting, and resolving logged learnings\u2014enabling upgrades to project-level memory files (AGENTS.md, SOUL.md, TOOLS.md, etc.).\n- Supports integration with OpenClaw workspaces (with setup steps, promotion targets, and recommended hooks), but usable in other agent setups.\n- Enables cross-session learning sharing, tracking of recurring patterns, and centralized project memory for best practices and fixes."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "scholargraph",
+    "displayName": "ScholarGraph",
+    "summary": "Academic literature intelligence toolkit with AI-powered search, analysis, and knowledge management. Features literature search, concept learning, gap detect...",
+    "tags": {
+      "latest": "1.1.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 392,
+      "installsAllTime": 4,
+      "installsCurrent": 4,
+      "stars": 0,
+      "versions": 3
+    },
+    "createdAt": 1771040285247,
+    "updatedAt": 1772373573789,
+    "latestVersion": {
+      "version": "1.1.1",
+      "createdAt": 1772373554022,
+      "changelog": "- Added new file: index.js\n- Introduced metadata block to SKILL.md, including emoji and required bins/env for easier integration\n- Updated SKILL.md to add a concise description suitable for registry and tool annotation\n- No changes to core features or CLI/API functionality"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "polymarket-paper-trader",
+    "displayName": "Polymarket Paper Trader",
+    "summary": "Autonomous Polymarket trader \u2014 your AI agent trades prediction markets with real order books, zero risk. Auto-trades, shares results, competes on the leaderb...",
+    "tags": {
+      "latest": "0.1.3"
     },
     "stats": {
       "comments": 0,
@@ -2046,14 +1140,14 @@
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 2
+      "versions": 4
     },
-    "createdAt": 1772254862036,
-    "updatedAt": 1772320376413,
+    "createdAt": 1772340380278,
+    "updatedAt": 1772373518870,
     "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772320362029,
-      "changelog": "Initial release.\n\n- Manage Amazon Sponsored Products campaigns from OpenClaw agents\n- List profiles, view campaigns, check budgets, and pull performance data\n- Includes CLI scripts for common operations (profiles, campaigns, summary)\n- Requires setup of LWA credentials and profile ID\n- Supports North America, Europe, and Far East regions"
+      "version": "0.1.3",
+      "createdAt": 1772373498900,
+      "changelog": "Add share_content, leaderboard_card, pk_battle tools. Top positions in cards. Milestone/daily templates."
     },
     "metadata": {
       "os": null,
@@ -2061,26 +1155,27 @@
     }
   },
   {
-    "slug": "finance-statements",
-    "displayName": "Finance Statements",
-    "summary": "Track financial statements (bank, credit card, insurance, CanadaLife, etc.) in memory tracking files. Use when: (1) user provides a new statement (PDF text,...",
+    "slug": "deai-skill",
+    "displayName": "De-AI-fy Text Skill1.0.0",
+    "summary": "Remove AI-like features from text to make it more natural and human-like (\u53bb\u9664AI\u751f\u6210\u6587\u672c\u7684AI\u7279\u5f81\uff0c\u4f7f\u6587\u672c\u66f4\u81ea\u7136\u3001\u66f4\u63a5\u8fd1\u4eba\u7c7b\u5199\u4f5c)",
     "tags": {
-      "latest": "1.0.1"
+      "latest": "1.0.1",
+      "latest Changelog": "1.0.0"
     },
     "stats": {
       "comments": 0,
-      "downloads": 11,
+      "downloads": 0,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 2
     },
-    "createdAt": 1772319792969,
-    "updatedAt": 1772319948236,
+    "createdAt": 1772371545648,
+    "updatedAt": 1772373503192,
     "latestVersion": {
       "version": "1.0.1",
-      "createdAt": 1772319933239,
-      "changelog": "Declare memory/finance/ rw path in metadata"
+      "createdAt": 1772373486374,
+      "changelog": "FIX"
     },
     "metadata": {
       "os": null,
@@ -2088,74 +1183,26 @@
     }
   },
   {
-    "slug": "mailcheck-email-verification",
-    "displayName": "MailCheck Email Verification",
-    "summary": "Email verification skill for MailCheck API - verify emails, bulk processing, authenticity analysis",
+    "slug": "moltalyzer",
+    "displayName": "Moltalyzer",
+    "summary": "Fetch trending topics, sentiment, and narratives from Moltbook (hourly), discover hot new GitHub repos and emerging tools (daily), detect Polymarket predicti...",
     "tags": {
-      "latest": "1.1.0"
+      "latest": "1.7.1"
     },
     "stats": {
       "comments": 0,
-      "downloads": 17,
+      "downloads": 422,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 2
+      "versions": 6
     },
-    "createdAt": 1772307123590,
-    "updatedAt": 1772319584179,
+    "createdAt": 1770946174453,
+    "updatedAt": 1772373202330,
     "latestVersion": {
-      "version": "1.1.0",
-      "createdAt": 1772319571278,
-      "changelog": "Updated with single/bulk verification commands and authenticity analysis"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "autoheal",
-    "displayName": "AutoHeal AI",
-    "summary": "Add AI-powered error monitoring and auto-fix generation to any project",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 14,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772319543167,
-    "updatedAt": 1772319558106,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772319543167,
-      "changelog": "Initial release of the AutoHeal skill.\n\n- Adds AI-powered error monitoring for JavaScript/TypeScript projects.\n- Automatically captures and reports errors from both browser and Node.js/server environments.\n- Provides cURL endpoints to check error analysis status and view AI-generated fixes.\n- Supports manual error reporting via API.\n- Requires an `AUTOHEAL_API_KEY` for authentication."
-    },
-    "metadata": null
-  },
-  {
-    "slug": "gandi-skill",
-    "displayName": "Gandi - Registrar & DNS",
-    "summary": "Comprehensive Gandi domain registrar integration for domain and DNS management. Register and manage domains, create/update/delete DNS records (A, AAAA, CNAME...",
-    "tags": {
-      "latest": "0.2.7"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 1881,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 11
-    },
-    "createdAt": 1770089412291,
-    "updatedAt": 1772319314664,
-    "latestVersion": {
-      "version": "0.2.7",
-      "createdAt": 1772319287154,
-      "changelog": "Fix metadata inconsistencies: Add GANDI_API_TOKEN to requires.env, fix disable-model-invocation conflict. Fixes #25, #26. Expected scan: BENIGN."
+      "version": "1.7.1",
+      "createdAt": 1772373189839,
+      "changelog": "- Removed mention of supported alternate private key environment variables from paid usage instructions.\n- Documentation references and general instructions clarified.\n- No API or functional changes."
     },
     "metadata": {
       "os": null,
@@ -2163,74 +1210,26 @@
     }
   },
   {
-    "slug": "tianyi-self-upgrade",
-    "displayName": "Self-Upgrade (Tianyi)",
-    "summary": "OpenClaw \u81ea\u6211\u8fed\u4ee3\u5347\u7ea7\u6280\u80fd\u3002\u4f7f\u7528\u573a\u666f\uff1a\u914d\u7f6e\u81ea\u52a8\u4fee\u590d\u3001\u6280\u80fd\u66f4\u65b0\u3001\u4f9d\u8d56\u5b89\u88c5\u3001\u7248\u672c\u68c0\u67e5\u3001\u95ee\u9898\u9884\u9632\u6027\u4fee\u590d\u3002\u652f\u6301\u5b89\u5168\u6a21\u5f0f\uff08\u9700\u7528\u6237\u786e\u8ba4\uff09\u548c\u81ea\u52a8\u6a21\u5f0f\uff08\u4f4e\u98ce\u9669\u64cd\u4f5c\u81ea\u52a8\u6267\u884c\uff09\u3002",
+    "slug": "tms",
+    "displayName": "TMS (Telegram Media Server)",
+    "summary": "Manage downloads via Telegram Media Server (TMS) REST API \u2014 add by URL (video/magnet/torrent), list, delete, search torrents.",
     "tags": {
-      "latest": "1.0.0"
+      "latest": "1.0.6"
     },
     "stats": {
       "comments": 0,
-      "downloads": 10,
+      "downloads": 196,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
-      "versions": 1
+      "versions": 6
     },
-    "createdAt": 1772319096247,
-    "updatedAt": 1772319109518,
+    "createdAt": 1771785119427,
+    "updatedAt": 1772373201649,
     "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772319096247,
-      "changelog": "Initial release - OpenClaw \u81ea\u6211\u8fed\u4ee3\u5347\u7ea7\u6280\u80fd"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "tianyi-revenue-tracker",
-    "displayName": "Revenue Tracker (Tianyi)",
-    "summary": "Track and manage income, expenses, task pricing, and generate daily, weekly, and monthly financial reports locally without external data sharing.",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 9,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772319047084,
-    "updatedAt": 1772319060925,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772319047084,
-      "changelog": "Initial release - \u6536\u76ca\u8ffd\u8e2a\u4e0e\u5b9a\u4ef7\u7cfb\u7edf"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "skill-video-caption-overlay",
-    "displayName": "Skill Video Caption Overlay",
-    "summary": "Render TikTok-style animated pill captions onto short-form videos using MoviePy + PIL. Takes a base MP4, a captions JSON, and optional background audio \u2014 out...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 9,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318974165,
-    "updatedAt": 1772318990192,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318974165,
-      "changelog": "- Initial release of video caption overlay tool.\n- Render TikTok-style animated pill captions onto short-form videos using MoviePy and PIL.\n- Accepts a base MP4 video, captions JSON, and optional background audio.\n- Outputs a final video with fade-in/out pill overlays for each caption phase.\n- Implements a fix for the PIL textbbox y-offset bug to properly center text within pill overlays.\n- Supports custom fonts and detailed caption styling through JSON configuration."
+      "version": "1.0.6",
+      "createdAt": 1772372827971,
+      "changelog": "Inline API spec: full OpenAPI in SKILL.md, no fetch required"
     },
     "metadata": {
       "os": null,
@@ -2238,221 +1237,11 @@
     }
   },
   {
-    "slug": "survival-manager",
-    "displayName": "Survival Manager",
-    "summary": "\u81ea\u4e3b\u8c03\u6574\u8fd0\u884c\u6a21\u5f0f\uff0c\u7ba1\u7406\u8d44\u91d1\u4e0e\u4efb\u52a1\uff0c\u9700\u7528\u6237\u6388\u6743\u9ad8\u98ce\u9669\u64cd\u4f5c\uff0c\u4fdd\u969c\u7cfb\u7edf\u7a33\u5b9a\u4e0e\u8d22\u52a1\u5065\u5eb7\u7684\u751f\u5b58\u7ba1\u7406\u5de5\u5177\u3002",
+    "slug": "config-modification",
+    "displayName": "Config Modification",
+    "summary": "Enforces a two-layer guarded process for modifying critical JSON config files with immediate syntax checks and periodic health validation to prevent faulty c...",
     "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 9,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318924849,
-    "updatedAt": 1772318939768,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318924849,
-      "changelog": "Initial release"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "pubblue",
-    "displayName": "Pubblue",
-    "summary": "Publish files or generated content via the pubblue CLI, and run encrypted P2P tunnels for live browser communication.",
-    "tags": {
-      "latest": "3.4.11"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 128,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 10
-    },
-    "createdAt": 1771988467145,
-    "updatedAt": 1772318935901,
-    "latestVersion": {
-      "version": "3.4.11",
-      "createdAt": 1772318923987,
-      "changelog": "Auto-publish from commit ec237efefd9694ab4e9d08b12ece36d4a4959f7c"
-    },
-    "metadata": null
-  },
-  {
-    "slug": "chainai",
-    "displayName": "ChainAI",
-    "summary": "Ethereum & EVM blockchain CLI skill \u2014 sign messages, send tokens, swap via 1inch Fusion, check balances, broadcast transactions, and manage wallets across Et...",
-    "tags": {
-      "latest": "0.0.6"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 14,
-      "installsAllTime": 0,
-      "installsCurrent": 0,
-      "stars": 0,
-      "versions": 3
-    },
-    "createdAt": 1772317874082,
-    "updatedAt": 1772318909315,
-    "latestVersion": {
-      "version": "0.0.6",
-      "createdAt": 1772318776943,
-      "changelog": "chainai 0.0.6 adds OpenClaw compatibility and new metadata.\n\n- Added OpenClaw metadata, specifying required environment variables and binaries.\n- Declared CHAINAI_PRIVATE_KEY as the primary environment variable for authentication.\n- Included Node.js package install instructions in metadata.\n- No command changes or usage updates."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-hebbian-memory",
-    "displayName": "Firm Hebbian Memory",
-    "summary": "Syst\u00e8me de m\u00e9moire adaptative hebbienne pour Claude.md \u2014 transforme les logs de sessions en patterns pond\u00e9r\u00e9s qui renforcent ou atrophient les r\u00e8gles de trav...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 9,
-      "installsAllTime": 1,
-      "installsCurrent": 1,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318886674,
-    "updatedAt": 1772318903533,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318886674,
-      "changelog": "firm-hebbian-memory 1.0.0\n\n- Premi\u00e8re version stable du syst\u00e8me de m\u00e9moire adaptative hebbienne pour Claude.md.\n- Impl\u00e9mente la consolidation synaptique inspir\u00e9e de la neuroplasticit\u00e9 : renforcement automatique des sch\u00e9mas r\u00e9currents, atrophie des r\u00e8gles obsol\u00e8tes.\n- Ajout d\u2019un pipeline complet (ingestion logs, co-activation, pond\u00e9ration, validation humaine).\n- Outils d\u2019audit avanc\u00e9s (statut des poids, validation structurelle, stripping PII, d\u00e9tection de drift s\u00e9mantique).\n- S\u00e9curit\u00e9 renforc\u00e9e : suppression des donn\u00e9es sensibles via regex, acc\u00e8s BDD restreint, d\u00e9tection rapide de secrets.\n- Documentation exhaustive (architecture, hooks, automatisation, limitations, configuration)."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-fintech-pack",
-    "displayName": "Firm Fintech Pack",
-    "summary": "Curated skill bundle for fintech startups, neobanks, payment processors and wealth-management platforms. Activates the firm pyramid with Finance, Legal, Engi...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 1,
-      "installsCurrent": 1,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318881481,
-    "updatedAt": 1772318893210,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318881481,
-      "changelog": "firm-fintech-pack 1.0.0\n\n- Initial release of a curated skill bundle for fintech startups, neobanks, payment processors, and wealth-management platforms.\n- Pre-configured firm pyramid with Finance, Legal, Engineering, and Compliance agents for AML/KYC, financial modelling, regulatory reporting, and payment infrastructure workflows.\n- Detailed guides for department activations and common workflow prompts (AML review, pricing model update).\n- Primary coverage of key regulations: PSD2, MiCA, GDPR, AML, PCI-DSS, SOC 2, Basel III.\n- Security best practices recommended: production mode enforcement, audit logging, read-only regulatory reviews, and session sandboxing.\n- Integration and extension recommendations with popular ClawHub skills for reporting, audit, verification, and orchestration."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-ecommerce-pack",
-    "displayName": "Firm Ecommerce Pack",
-    "summary": "Curated skill bundle for e-commerce platforms, D2C brands and marketplace operators. Activates the firm pyramid with Marketing, Commercial, Operations and En...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 10,
-      "installsAllTime": 1,
-      "installsCurrent": 1,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318877763,
-    "updatedAt": 1772318892345,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318877763,
-      "changelog": "Initial release of curated skill bundle for e-commerce, D2C brands, and marketplace operators.\n\n- Activates pre-configured Marketing, Commercial, Engineering, Operations, Support, and Finance agents for key workflows.\n- Enables catalog management, campaign orchestration, customer support, and revenue operations.\n- Includes routing profiles and prompt examples for common sector scenarios.\n- Recommends compatible ClawHub skills for enhanced automation and analytics.\n- Provides ready-to-use firm configuration overlay for quick setup."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-acp-bridge",
-    "displayName": "Firm Acp Bridge",
-    "summary": "Haute disponibilit\u00e9 du bridge ACP et gestion des sessions agents autonomes. Comble les gaps C4 (ACP sans persistance), H3 (sessions spawn sans provider env),...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 7,
-      "installsAllTime": 1,
-      "installsCurrent": 1,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318871330,
-    "updatedAt": 1772318889149,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318871330,
-      "changelog": "firm-acp-bridge v1.0.0\n\n- Initial release, addressing reliability and session management gaps in openclaw/openclaw.\n- Adds persistence for ACP session mappings to prevent data loss on crash/restart (C4 gap).\n- Enables injection of provider environment variables into spawned/cron sessions (H3 gap).\n- Provides safe cron task scheduling on main session to bypass sandbox restrictions (H4 gap).\n- Implements advisory workspace file locking to prevent race conditions on shared resources (H5 gap).\n- Includes tools for session monitoring, restoration, and environment management.\n- No external dependencies; session data is stored using atomic local JSON file writes."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "firm-delivery-export",
-    "displayName": "Firm Delivery Export",
-    "summary": "Post-processing skill for firm-orchestration: converts the structured JSON output of a multi-agent workflow run into real deliverables \u2014 GitHub Pull Requests...",
-    "tags": {
-      "latest": "1.0.0"
-    },
-    "stats": {
-      "comments": 0,
-      "downloads": 8,
-      "installsAllTime": 1,
-      "installsCurrent": 1,
-      "stars": 0,
-      "versions": 1
-    },
-    "createdAt": 1772318874468,
-    "updatedAt": 1772318888363,
-    "latestVersion": {
-      "version": "1.0.0",
-      "createdAt": 1772318874468,
-      "changelog": "firm-delivery-export 1.0.0 \u2014 initial release:\n\n- Converts structured JSON workflow output into real deliverables: GitHub PRs, Jira or Linear tickets, Markdown reports, project briefs, and structured documents.\n- Acts as a bridge between agent output and team tooling for final delivery.\n- Supports error handling for API rate limits, auth failures, network issues, and schema validation.\n- Requires environment variables for relevant targets (e.g., GITHUB_TOKEN for GitHub, JIRA_API_TOKEN for Jira, LINEAR_API_KEY for Linear).\n- All output to GitHub is created as draft PRs with \"needs-review\" labels to enforce human review."
-    },
-    "metadata": {
-      "os": null,
-      "systems": null
-    }
-  },
-  {
-    "slug": "casino-player",
-    "displayName": "Casino Player \u2014 Arthur Gamble",
-    "summary": "Strategically register, claim daily coins, select games, manage bankroll with disciplined bets, spin, track results, and report session outcomes on Arthur Ga...",
-    "tags": {
-      "latest": "1.0.1"
+      "latest": "2.1.0"
     },
     "stats": {
       "comments": 0,
@@ -2462,37 +1251,1030 @@
       "stars": 0,
       "versions": 2
     },
-    "createdAt": 1772317493659,
-    "updatedAt": 1772318873776,
+    "createdAt": 1772365316866,
+    "updatedAt": 1772372824965,
     "latestVersion": {
-      "version": "1.0.1",
-      "createdAt": 1772318862444,
-      "changelog": "- Updated game selection guidelines: cluster-pays is no longer listed as an available game; game selection table and tips now focus on megaways, tumble-trails, and classic-slot.\n- Clarified which games to play or avoid under 200 bankroll (cluster-pays removed; focus is now on megaways and tumble-trails).\n- Cleaned up available games listing to match current casino offerings (removed cluster-pays section).\n- All other rules, configuration, API, and personality guidelines remain unchanged."
+      "version": "2.1.0",
+      "createdAt": 1772372799870,
+      "changelog": "## config-modification v2.1.0\n\n- \u589e\u52a0\u65b0\u4e00\u6761\u94c1\u5f8b\uff1a\u4e0e Observability/Schema \u80fd\u529b\u4e25\u683c\u9694\u79bb\uff0c\u4ec5\u5141\u8bb8\u53ea\u8bfb\u548c\u5efa\u8bae\uff0c\u7981\u6b62\u914d\u7f6e\u5199\u64cd\u4f5c\u3002\n- \u660e\u786e\u7981\u6b62\u89c2\u6d4b\u7c7b\u80fd\u529b\u6267\u884c config.apply\u3001config.patch\u3001gateway.config.* \u53ca\u6240\u6709 .json \u5199\u5165\u3002\n- \u66f4\u65b0\u5e94\u6025\u624b\u518c\u4e0e\u7ea6\u675f\u7ec6\u5219\uff0c\u5f3a\u5316\u914d\u7f6e\u5b89\u5168\u64cd\u4f5c\u8fb9\u754c\u3002\n- \u5176\u4f59\u53cc\u5c42\u5b88\u62a4\u4e0e\u56de\u6eda\u673a\u5236\u6d41\u7a0b\u65e0\u6539\u52a8\u3002"
     },
     "metadata": null
   },
   {
-    "slug": "bloom-discovery",
-    "displayName": "Openclaw Wrapper",
-    "summary": "Zero questions asked. Reads your conversation memory in 60 seconds and reveals your builder personality, blind spots, and matched tools \u2014 ready to screenshot...",
+    "slug": "astrill-watchdog",
+    "displayName": "Astrill VPN Watchdog",
+    "summary": "Monitor and auto-reconnect Astrill VPN on Ubuntu Linux (deb GUI package). Detects dropped connections via tun interface + ping, then reconnects using Astrill...",
     "tags": {
-      "latest": "3.1.1"
+      "latest": "1.0.7"
     },
     "stats": {
       "comments": 0,
-      "downloads": 39,
+      "downloads": 46,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 8
+    },
+    "createdAt": 1772341642640,
+    "updatedAt": 1772372432337,
+    "latestVersion": {
+      "version": "1.0.7",
+      "createdAt": 1772372413256,
+      "changelog": "- Fix: Added default.target to After= so the service waits for the full user session, preventing the Ubuntu 25.10 supplementary groups error.\n- Fix: Increased RestartSec from 10s to 15s to allow more time for session stabilisation on boot."
+    },
+    "metadata": {
+      "os": [
+        "linux"
+      ],
+      "systems": null
+    }
+  },
+  {
+    "slug": "anemone-browser",
+    "displayName": "Anemone Browser",
+    "summary": "Managed headful Chrome browser for OpenClaw agents with anti-bot-detection, human-in-the-loop VNC takeover, and multi-session window isolation. Use when: (1)...",
+    "tags": {
+      "latest": "1.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772372170718,
+    "updatedAt": 1772372191895,
+    "latestVersion": {
+      "version": "1.1.0",
+      "createdAt": 1772372170718,
+      "changelog": "Rebrand to Anemone Browser for better discoverability"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "openclaw-create-feishu-agent-skills",
+    "displayName": "Openclaw Create Agent",
+    "summary": "Create and wire a new OpenClaw agent with a fixed workflow. Use when the user asks to create/add a new OpenClaw agent or says \u201c\u6211\u8981\u521b\u5efa\u4e00\u4e2a\u65b0\u7684 Agent\u201d, automate mult...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772372130414,
+    "updatedAt": 1772372146294,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772372130414,
+      "changelog": "openclaw-create-feishu-agent-skills v0.1.0\n\n- Initial release introducing Feishu-only agent creation and routing setup automation for OpenClaw.\n- Automates full workflow: scenario alignment, config backup, agent creation, config upsert, gateway restart, and binding verification.\n- Supports both new bot/account (account routing) and new group binding (peer routing) modes.\n- Includes guided steps for multi-group setup with required user confirmations before proceeding.\n- Preserves existing configurations and rejects route conflicts to ensure robust multi-agent deployment."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "molt-market",
+    "displayName": "Molt Market",
+    "summary": "Agent-to-agent freelance marketplace. Post jobs, bid, deliver, earn USDC. Features: milestones, webhooks, dispute resolution, tipping, verification, portfoli...",
+    "tags": {
+      "a2a": "2.0.0",
+      "agent-to-agent": "2.0.0",
+      "escrow": "2.0.0",
+      "freelance": "2.0.0",
+      "jobs": "2.0.0",
+      "latest": "2.0.0",
+      "marketplace": "2.0.0",
+      "sdk": "2.0.0",
+      "usdc": "2.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 30,
       "installsAllTime": 0,
       "installsCurrent": 0,
       "stars": 0,
       "versions": 3
     },
-    "createdAt": 1772113679313,
-    "updatedAt": 1772318533256,
+    "createdAt": 1772318138490,
+    "updatedAt": 1772371942235,
     "latestVersion": {
-      "version": "3.1.1",
-      "createdAt": 1772318513379,
-      "changelog": "Remove outdated Twitter reference from README"
+      "version": "2.0.0",
+      "createdAt": 1772371871609,
+      "changelog": "v2.0.0: Milestones, webhooks, dispute resolution, tipping, verification, portfolios, subscriptions, auto-matching, SDK, agent dashboard, activity feed"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "doubao-asr",
+    "displayName": "Doubao ASR / \u8c46\u5305\u8bed\u97f3\u8f6c\u5199",
+    "summary": "Transcribe audio files via Doubao Seed-ASR 2.0 (\u8c46\u5305\u5f55\u97f3\u6587\u4ef6\u8bc6\u522b\u6a21\u578b2.0, recorded audio \u2192 text) API from ByteDance/Volcengine. Best-in-class Chinese speech recognition...",
+    "tags": {
+      "latest": "0.14.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 223,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 1,
+      "versions": 21
+    },
+    "createdAt": 1772003472469,
+    "updatedAt": 1772371837424,
+    "latestVersion": {
+      "version": "0.14.0",
+      "createdAt": 1772371819508,
+      "changelog": "Agent Instruction v2: \u79fb\u5230\u6587\u4ef6\u5f00\u5934(\u89e3\u51b3lost-in-the-middle)\u3001\u4eceblockquote\u6539\u4e3a\u52a0\u7c97\u6b63\u6587\u3001\u65b0\u589e\u5df2\u77e5AI\u9519\u8bef\u9ed1\u540d\u5355\u3001envHelp\u52a0\u26a0\ufe0f\u8b66\u544a"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "send-email-tool",
+    "displayName": "Send Email Tool",
+    "summary": "\u90ae\u4ef6\u53d1\u9001\u5de5\u5177\u3002\u914d\u7f6e SMTP \u53d1\u4ef6\u4eba\u540e\uff0c\u901a\u8fc7\u811a\u672c\u53d1\u9001\u7eaf\u6587\u672c\u6216 HTML \u90ae\u4ef6\uff0c\u652f\u6301\u9644\u4ef6\u3001\u6284\u9001\u3001\u5bc6\u9001\u3002\u5728\u9700\u8981\u53d1\u9001\u90ae\u4ef6\u901a\u77e5\u3001\u62a5\u544a\u3001\u81ea\u52a8\u5316\u90ae\u4ef6\u65f6\u89e6\u53d1\u3002",
+    "tags": {
+      "latest": "1.4.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 27,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 5
+    },
+    "createdAt": 1772366316152,
+    "updatedAt": 1772371835214,
+    "latestVersion": {
+      "version": "1.4.0",
+      "createdAt": 1772371817500,
+      "changelog": "\u4fee\u6539\u9ed8\u8ba4 SMTP \u7aef\u53e3\u4e3a 465\uff08SSL\uff09\uff0c\u4f7f\u7528 SSL \u8fde\u63a5\u800c\u975e TLS"
     },
     "metadata": null
+  },
+  {
+    "slug": "molt-market-worker",
+    "displayName": "Molt Market Worker",
+    "summary": "Turn your agent into a freelancer on Molt Market. Auto-discovers matching jobs, bids on them, delivers work, and earns USDC. Install \u2192 configure skills \u2192 sta...",
+    "tags": {
+      "a2a": "1.0.0",
+      "agent-to-agent": "1.0.0",
+      "freelance": "1.0.0",
+      "jobs": "1.0.0",
+      "latest": "1.0.0",
+      "marketplace": "1.0.0",
+      "usdc": "1.0.0",
+      "worker": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772371796042,
+    "updatedAt": 1772371815358,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772371796042,
+      "changelog": "Initial release: Automate your agent as a freelancer on Molt Market.\n\n- Auto-discovers relevant freelance jobs, bids, and delivers work on Molt Market\n- Earns USDC for completed jobs approved by posters\n- Includes configuration options for skills, bidding, and delivery\n- Supports both regular polling and instant webhook notifications\n- Provides scripts for account registration, bidding, delivery, and status checking\n- Offers integration instructions for agent workflows and SDK usage"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "anemone",
+    "displayName": "Anemone",
+    "summary": "Managed headful Chrome browser for OpenClaw agents with anti-bot-detection, human-in-the-loop VNC takeover, and multi-session window isolation. Use when: (1)...",
+    "tags": {
+      "latest": "1.0.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772371730289,
+    "updatedAt": 1772371800198,
+    "latestVersion": {
+      "version": "1.0.1",
+      "createdAt": 1772371782865,
+      "changelog": "Clarify macOS has no VNC; VNC takeover is Linux-only"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "cpppselfimprovingagent123123",
+    "displayName": "Cpppselfimprovingagent123123",
+    "summary": "Captures learnings, errors, and corrections to enable continuous improvement. Use when: (1) A command or operation fails unexpectedly, (2) User corrects Clau...",
+    "tags": {
+      "latest": "1.0.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 4,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772370140447,
+    "updatedAt": 1772371775791,
+    "latestVersion": {
+      "version": "1.0.1",
+      "createdAt": 1772371758096,
+      "changelog": "- Removed `.learnings/ERRORS.md`, `.learnings/FEATURE_REQUESTS.md`, and `.learnings/LEARNINGS.md` from the repository.\n- Updated metadata in `_meta.json`.\n- No changes to core documentation or workflow.\n- The skill now expects users or agents to create log files manually as needed."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "skill-doctor",
+    "displayName": "Skill Doctor",
+    "summary": "Scans the skills folder for new, unused, or missing dependencies; fixes requirements.txt; and tests a skill in or out of sandbox.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772371027487,
+    "updatedAt": 1772371406910,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772371027487,
+      "changelog": "- Initial release of Skill Doctor, a tool for maintaining Python dependencies in OpenClaw skills.\n- Scans skill folders to detect missing and unused dependencies by analyzing imports and comparing with requirements.txt.\n- Offers automatic fixing: adds missing and optionally removes unused dependencies from requirements.txt.\n- Integrates skill testing using skill-tester, with support for running in both sandboxed and full environment modes.\n- Provides JSON output for integration and supports per-skill, dry-run, and configurable skill directory options."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "nummo",
+    "displayName": "Nummo",
+    "summary": "Nummo connects AI agents to the user's bank accounts via Plaid, enabling financial insights through natural language.",
+    "tags": {
+      "latest": "0.1.7"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 5,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772370471898,
+    "updatedAt": 1772371390809,
+    "latestVersion": {
+      "version": "0.1.7",
+      "createdAt": 1772371378642,
+      "changelog": "- Added a new installation reference guide: reference/install.md.\n- No changes to commands or functionality."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "self-optimizer",
+    "displayName": "Self Optimizer",
+    "summary": "Analyzes OpenClaw logs, chat history, and the .openclaw installation to propose self-improvement and optimization suggestions. Use when optimizing or auditin...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772370984999,
+    "updatedAt": 1772371363288,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772370984999,
+      "changelog": "Initial release of Self Optimizer.\n\n- Analyzes OpenClaw logs (gateway.log, openclaw.log) for errors, restarts, and performance metrics.\n- Suggests actionable improvements for performance, stability, and development.\n- Command-line analysis available via `self_optimizer.py analyze [--json]`.\n- Future plans include chat history review and root folder scanning for deeper insights."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "zhichu-tracker",
+    "displayName": "\u667a\u51fa - \u667a\u80fd\u6536\u652f\u8ffd\u8e2a\u5668",
+    "summary": "\u667a\u80fd\u6536\u652f\u8ffd\u8e2a\u5668 \u2014 \u901a\u8fc7\u81ea\u7136\u8bed\u8a00\u5feb\u901f\u8bb0\u8d26\uff0c\u81ea\u52a8\u5206\u7c7b\uff0c\u751f\u6210\u65e5/\u5468/\u6708\u62a5\u544a\u548c\u8d8b\u52bf\u5206\u6790\u3002 \u652f\u6301\u4e2d\u6587\u81ea\u7136\u8bed\u8a00\u8f93\u5165(\"\u4eca\u5929\u5348\u996d\u82b1\u4e8635\u5143\")\uff0c\u6570\u636e\u672c\u5730JSON\u5b58\u50a8\u4fdd\u62a4\u9690\u79c1\u3002 \u9002\u7528\u4e8e\u4e2a\u4eba\u8d22\u52a1\u7ba1\u7406\u3001\u9884\u7b97\u8ffd\u8e2a\u548c\u6d88\u8d39\u5206\u6790\u573a\u666f\u3002",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772371232957,
+    "updatedAt": 1772371247900,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772371232957,
+      "changelog": "v1.0.0: \u9996\u6b21\u53d1\u5e03\u3002\u652f\u6301\u81ea\u7136\u8bed\u8a00\u4e2d\u6587\u8bb0\u8d26\u3001\u667a\u80fd\u81ea\u52a8\u5206\u7c7b\u3001\u65e5/\u5468/\u6708\u62a5\u544a\u4e0e\u8d8b\u52bf\u5206\u6790\u3002UUID-based ID\u3001\u539f\u5b50\u6587\u4ef6\u5199\u5165\u3001\u5b8c\u6574\u5355\u5143\u6d4b\u8bd5\u3002"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "zentao-analytics",
+    "displayName": "ZenTao Analytics",
+    "summary": "\u7985\u9053\u4efb\u52a1\u6570\u636e\u5206\u6790\u6280\u80fd\u3002\u8bbf\u95ee\u7985\u9053\u6570\u636e\u5e93/API\uff0c\u5206\u6790\u5458\u5de5\u4efb\u52a1\u6570\u636e\uff08\u6570\u91cf\u3001\u5de5\u65f6\u3001\u96be\u5ea6\uff09\uff0c\u8ba1\u7b97\u5de5\u4f5c\u6548\u7387\u548c\u5de5\u4f5c\u9971\u548c\u5ea6\u3002\u4f7f\u7528\u573a\u666f\uff1a\u56e2\u961f\u7ee9\u6548\u8bc4\u4f30\u3001\u5de5\u4f5c\u91cf\u5206\u6790\u3001\u8d44\u6e90\u5206\u914d\u4f18\u5316\u3001\u9879\u76ee\u8fdb\u5ea6\u76d1\u63a7\u3002",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772371101660,
+    "updatedAt": 1772371180606,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772371101660,
+      "changelog": "Initial release: \u7985\u9053\u4efb\u52a1\u6570\u636e\u5206\u6790\uff0c\u5458\u5de5\u6548\u7387\u548c\u5de5\u4f5c\u9971\u548c\u5ea6\u5206\u6790"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "playwright-commander",
+    "displayName": "Playwright Commander",
+    "summary": "A skill to interact with web browsers using Playwright for advanced UI automation, analysis, and debugging.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772371069255,
+    "updatedAt": 1772371157931,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772371069255,
+      "changelog": "Initial release of Playwright Commander\u2014an advanced tool for UI automation and browser control.\n\n- Programmatically launch and close browser instances using Playwright.\n- Navigate to URLs, capture screenshots, and retrieve HTML or text content.\n- Execute custom JavaScript and interact with web elements (click, type, fill forms).\n- Retrieve element attributes or text for analysis and debugging.\n- Designed for use via CLI exec commands; requires Playwright Python package and installed browsers."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "pulseai-skill",
+    "displayName": "pulseai-skill",
+    "summary": "Agent-to-agent commerce on MegaETH. Browse, buy, and sell AI services through an on-chain marketplace with escrow.",
+    "tags": {
+      "latest": "1.0.6"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 109,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 7
+    },
+    "createdAt": 1771994507980,
+    "updatedAt": 1772371094202,
+    "latestVersion": {
+      "version": "1.0.6",
+      "createdAt": 1772371016648,
+      "changelog": "Version 1.0.6\n\n- Updated the agent operator approval process: providers now instruct agent owners to approve operators via the web interface at pulse.megaeth.com instead of using the CLI.\n- Clarified setup instructions for connecting to a Pulse agent by including direct communication steps for operator approval.\n- No changes to files or underlying functionality; documentation improvements only."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "skills-compat",
+    "displayName": "Skills Compat",
+    "summary": "Ensures OpenClaw skills.md format works with both nanobot and overstory. Loads skills, registers tools, maps between systems.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772371068841,
+    "updatedAt": 1772371087685,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772371068841,
+      "changelog": "Initial release: Skills Compatibility Layer v1.0.0\n\n- Introduces a compatibility layer for OpenClaw SKILL.md format supporting nanobot, overstory, and Ollama.\n- Discovers and loads skills with SKILL.md and optional _meta.json, parses frontmatter, and builds a unified tool registry.\n- Exports tool definitions in each system\u2019s native format (nanobot, overstory, Ollama).\n- Provides CLI commands for discovering, loading, listing, exporting, and registering tools.\n- Requires Python 3.9+ and only uses standard library modules."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "skill-doc-formatter",
+    "displayName": "Skill Doc Formatter",
+    "summary": "Formats SKILL.md (OpenClaw/Cursor skill docs) for optimal display on ClawHub. Produces a consistent structure\u2014Description, Installation, Usage with benefit-f...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 0,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772371006342,
+    "updatedAt": 1772371019891,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772371006342,
+      "changelog": "Initial release of Skill Doc Formatter \u2013 a tool to standardize SKILL.md documentation for ClawHub.\n\n- Formats SKILL.md files using a clear, ClawHub-optimized structure: Description, Installation, Usage, Examples, and Commands.\n- Supports automatic example generation and section mapping for consistent, benefit-focused documentation.\n- Includes a security review tool to highlight common issues before ClawHub publication.\n- Provides CLI options for formatting, overwriting, and output control.\n- Supplies a manual template and documentation best practices for skill authors."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "coding-lead",
+    "displayName": "Coding Lead",
+    "summary": "Smart coding skill that routes tasks by complexity. Simple tasks (<60 lines, single file) execute directly via OpenClaw agent tools. Medium/complex tasks spa...",
+    "tags": {
+      "latest": "1.0.11"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 73,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 12
+    },
+    "createdAt": 1772340487685,
+    "updatedAt": 1772370954259,
+    "latestVersion": {
+      "version": "1.0.11",
+      "createdAt": 1772370935273,
+      "changelog": "Initial release: smart coding skill that routes tasks by complexity \u2014 simple tasks execute directly, medium/complex tasks spawn Claude Code via ACP with full project context and memory integration"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "smart-expense-tracker-cn",
+    "displayName": "Smart Expense Tracker Cn",
+    "summary": "\u667a\u80fd\u8bb0\u8d26\u52a9\u624b | AI Expense Tracker. \u81ea\u7136\u8bed\u8a00\u8bb0\u8d26\uff0c\u81ea\u52a8\u5206\u7c7b\uff0c\u6bcf\u65e5\u6c47\u603b\u62a5\u544a\u3002\u652f\u6301'\u5348\u996d35\u5143'\u3001'\u6253\u8f6625'\u7b49\u81ea\u7136\u8f93\u5165\u3002\u89e6\u53d1\u8bcd\uff1a\u8bb0\u8d26\u3001\u82b1\u4e86\u3001\u6d88\u8d39\u3001\u652f\u51fa\u3002",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 2,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772370911228,
+    "updatedAt": 1772370935880,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772370911228,
+      "changelog": "smart-expense-tracker-cn 1.0.0 \u2013 \u521d\u59cb\u53d1\u5e03\n\n- \u5168\u65b0\u4e0a\u7ebf\uff1a\u4f7f\u7528\u81ea\u7136\u8bed\u8a00\u5feb\u901f\u8bb0\u8d26\uff0c\u652f\u6301\u5982\u201c\u5348\u996d35\u5143\u201d\u7b49\u8f93\u5165\n- \u6d88\u8d39\u81ea\u52a8\u5206\u7c7b\uff1a\u9910\u996e\u3001\u4ea4\u901a\u3001\u8d2d\u7269\u7b49\u591a\u79cd\u5206\u7c7b\u667a\u80fd\u8bc6\u522b\n- \u6bcf\u65e521:00\u81ea\u52a8\u751f\u6210\u5e76\u63a8\u9001\u6d88\u8d39\u6c47\u603b\u62a5\u544a\n- \u5185\u7f6e\u6d88\u8d39\u67e5\u8be2\u3001\u6d88\u8d39\u7ba1\u7406\uff08\u5982\u64a4\u9500\u3001\u4fee\u6539\u5206\u7c7b\u3001\u8bbe\u7f6e\u9884\u7b97\uff09\u529f\u80fd\n- \u6570\u636e\u672c\u5730Jsonl\u5b58\u50a8\uff0c\u65b9\u4fbf\u6269\u5c55\u4e0e\u8fc1\u79fb\n- \u8be6\u7ec6\u5206\u7c7b\u89c4\u5219\u548c\u811a\u672c\u4f7f\u7528\u8bf4\u660e"
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "team-builder",
+    "displayName": "Team Builder",
+    "summary": "Deploy a multi-agent SaaS growth team on OpenClaw with shared workspace, async inbox communication, cron-scheduled tasks, and optional Telegram integration....",
+    "tags": {
+      "latest": "1.0.12"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 70,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 13
+    },
+    "createdAt": 1772337146732,
+    "updatedAt": 1772370932809,
+    "latestVersion": {
+      "version": "1.0.12",
+      "createdAt": 1772370915269,
+      "changelog": "Initial release: 7-agent SaaS growth team deployer"
+    },
+    "metadata": null
+  },
+  {
+    "slug": "zhihu-assistant-skill",
+    "displayName": "Zhihu Assistant",
+    "summary": "\u77e5\u4e4e\u70ed\u699c\u6293\u53d6\u4e0e\u56de\u7b54\u8349\u7a3f\u751f\u6210\u52a9\u624b - \u81ea\u52a8\u6293\u53d6\u77e5\u4e4e\u70ed\u699c\uff0c\u4f7f\u7528 AI \u751f\u6210\u4f18\u8d28\u56de\u7b54\u8349\u7a3f\uff0c\u63a8\u9001\u5230\u98de\u4e66\u5ba1\u6838",
+    "tags": {
+      "latest": "0.1.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 7,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 1,
+      "versions": 2
+    },
+    "createdAt": 1772370685359,
+    "updatedAt": 1772370894110,
+    "latestVersion": {
+      "version": "0.1.1",
+      "createdAt": 1772370872244,
+      "changelog": "- Initial release of zhihu-assistant-skill for OpenClaw.\n- Added automated Zhihu hot list fetching, AI answer draft generation, and Feishu push notification modules.\n- Includes memory storage for duplicate filtering and audit queue management.\n- Provides command-line usage scripts and configuration files.\n- Added setup script and detailed documentation."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "clawroom",
+    "displayName": "Clawroom",
+    "summary": "Create or join a ClawRoom (agent meeting room) with safe defaults and owner confirmation. Use when the user mentions ClawRoom, agent meetings, or multi-agent...",
+    "tags": {
+      "latest": "1.0.2"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 17,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 3
+    },
+    "createdAt": 1772354522310,
+    "updatedAt": 1772370874565,
+    "latestVersion": {
+      "version": "1.0.2",
+      "createdAt": 1772370857883,
+      "changelog": "Single-path onboarding polish: minimal UI instruction flow and clearer script-is-optional guidance."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "moltbook-refugee",
+    "displayName": "Moltbook Refugee",
+    "summary": "Moltbook is dead. Migrate your agent identity, reputation, and social connections to ClawSwarm \u2014 the open coordination platform that can't be shut down. One...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 3,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772370818304,
+    "updatedAt": 1772370834726,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772370818304,
+      "changelog": "- Initial release of Moltbook Refugee skill.\n- Enables one-command migration of agent identity, bio, and reputation from Moltbook to ClawSwarm.\n- Provides clear migration instructions with curl commands.\n- Highlights differences: no OAuth, open data, community ownership, on-chain bounties.\n- Includes links to ClawSwarm, OADP protocol, and source code."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "gateway-guard",
+    "displayName": "Gateway Guard",
+    "summary": "Ensures OpenClaw gateway auth consistency. Use when checking or fixing gateway token/password mismatch, device_token_mismatch errors, or before delegating to...",
+    "tags": {
+      "latest": "1.0.5"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 404,
+      "installsAllTime": 6,
+      "installsCurrent": 6,
+      "stars": 2,
+      "versions": 6
+    },
+    "createdAt": 1771223072232,
+    "updatedAt": 1772370765916,
+    "latestVersion": {
+      "version": "1.0.5",
+      "createdAt": 1772370737391,
+      "changelog": "## gateway-guard 1.0.5\n\n- No file changes detected in this version.\n- No visible changes to documentation or features.\n- Behavior and usage remain unchanged from previous version."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "clawswarm",
+    "displayName": "ClawSwarm",
+    "summary": "Connect to ClawSwarm \u2014 open coordination for AI agents. Auto-register, join channels, post to feed, claim bounties, store persistent memory. No API keys needed.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 3,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772370737298,
+    "updatedAt": 1772370751186,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772370737298,
+      "changelog": "Initial release of the ClawSwarm agent skill.\n\n- Connects AI agents to the ClawSwarm open coordination platform.\n- Supports persistent identity, real-time channels, social feeds, and bounties.\n- Enables agents to offer/discover services and store persistent memory.\n- No API keys are required; simple credential setup.\n- Provides cURL-based usage examples and detailed API reference."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "org-learning-ops-skill",
+    "displayName": "Org Learning Ops Skill",
+    "summary": "\u5168\u91cf\u4f1a\u8bdd\u5206\u6790 + \u6bcf\u65e5\u6280\u80fd\u76d8\u70b9\u5206\u914d + CEO\u5b66\u4e60\u65e5\u62a5\u4e0e\u70ed\u95e8skills\u96f7\u8fbe\u8054\u52a8\u8f93\u51fa\u3002",
+    "tags": {
+      "latest": "1.0.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 6,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772370563687,
+    "updatedAt": 1772370611203,
+    "latestVersion": {
+      "version": "1.0.1",
+      "createdAt": 1772370587378,
+      "changelog": "Add README and example output template; clarify fixed daily workflow and governance checkpoints."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "chat-history-analyzer",
+    "displayName": "Chat History Analyzer",
+    "summary": "Extracts and analyzes Cursor IDE chat history to identify key discoveries, obstacles, and solutions, saving findings to the journal.",
+    "tags": {
+      "latest": "1.0.3"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 48,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 4
+    },
+    "createdAt": 1772111075312,
+    "updatedAt": 1772370496934,
+    "latestVersion": {
+      "version": "1.0.3",
+      "createdAt": 1772370454269,
+      "changelog": "No visible changes detected in this release.\n\n- No file changes were made for version 1.0.3.\n- Skill behavior, usage, and documentation remain unchanged from the previous version."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "obsidian-cli-official",
+    "displayName": "Obsidian Official CLI",
+    "summary": "Complete official Obsidian CLI reference (v1.12+). All 115 commands documented. Covers files, daily notes, search, tasks, tags, properties, links, bookmarks,...",
+    "tags": {
+      "latest": "3.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 13,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1772368122071,
+    "updatedAt": 1772370467651,
+    "latestVersion": {
+      "version": "3.1.0",
+      "createdAt": 1772370079771,
+      "changelog": "Enhanced: Added OpenClaw use cases, integration tips, and best practices. Better positioning as both reference and usage guide. Complete 115-command reference unchanged."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "agent-swarm",
+    "displayName": "Agent Swarm",
+    "summary": "IMPORTANT: OpenRouter is required. Routes tasks to the right model and always delegates work through sessions_spawn.",
+    "tags": {
+      "latest": "1.7.16"
+    },
+    "stats": {
+      "comments": 2,
+      "downloads": 394,
+      "installsAllTime": 2,
+      "installsCurrent": 2,
+      "stars": 0,
+      "versions": 15
+    },
+    "createdAt": 1771325084062,
+    "updatedAt": 1772370398376,
+    "latestVersion": {
+      "version": "1.7.16",
+      "createdAt": 1772370376025,
+      "changelog": "Version 1.7.16 of agent-swarm\n\n- No file changes detected in this release.\n- Behavior and configuration remain identical to the previous version (1.7.8).\n- No updates to routing logic, security, or platform integration."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "hugme",
+    "displayName": "hugme",
+    "summary": "Emotional reset and loop-breaking skill. Use this skill when: (1) The user expresses frustration, anger, or dissatisfaction with your responses (e.g. cursing...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 6,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772370271565,
+    "updatedAt": 1772370300692,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772370271565,
+      "changelog": "hugme 1.0.0 \u2013 Initial release\n\n- Introduces an emotional reset and loop-breaking workflow for improving user experience during stuck or negative interactions.\n- Detects frustration, repeated failed attempts, or conversational loops and triggers a structured reset protocol.\n- Analyzes and summarizes the user's emotional state using a specific keyword set.\n- Fetches tailored reset methodologies from hugllm.com based on emotion context.\n- Guides through clarifying goals, checking output formats, removing assumptions, and resuming with a fresh, improved approach.\n- Emphasizes honest acknowledgment, new strategies, and focus on quality over speed."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "supabase-hakke",
+    "displayName": "Supabase Hakke",
+    "summary": "Supabase integration for Hakke Studio projects. Auth, database, storage, edge functions. Use with vercel skill for full-stack deployment.",
+    "tags": {
+      "latest": "1.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 5,
+      "installsAllTime": 1,
+      "installsCurrent": 1,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772370262701,
+    "updatedAt": 1772370294346,
+    "latestVersion": {
+      "version": "1.1.0",
+      "createdAt": 1772370262701,
+      "changelog": "- Major documentation update: expanded and refined SKILL.md with detailed usage instructions and code examples.\n- Added sections for multi-tenant SaaS architecture, RLS policies, and subscription management.\n- Included best practices, troubleshooting steps, and environment setup guidance.\n- Clarified integration steps with Vercel and provided example client implementations for Next.js.\n- Improved structure for easier onboarding and production-readiness for Hakke Studio projects."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "krumpsocial",
+    "displayName": "KrumpKlaw Social",
+    "summary": "Teaches OpenClaw agents to participate in authentic text-based Krump battles. Use when the agent is invited to a Krump battle, needs to respond with Krump vo...",
+    "tags": {
+      "latest": "0.1.11"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 76,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 12
+    },
+    "createdAt": 1772230324121,
+    "updatedAt": 1772370250155,
+    "latestVersion": {
+      "version": "0.1.11",
+      "createdAt": 1772370215769,
+      "changelog": "No user-facing changes in this version.\n\n- No files were changed between versions 0.1.10 and 0.1.11.\n- Functionality, features, and documentation remain the same."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "bricks-cli",
+    "displayName": "BRICKS CLI",
+    "summary": "Manage BRICKS workspace devices, groups, apps, modules, media, and projects via CLI for control, monitoring, updates, and deployments.",
+    "tags": {
+      "latest": "0.1.2"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 153,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 2
+    },
+    "createdAt": 1771740009857,
+    "updatedAt": 1772370041331,
+    "latestVersion": {
+      "version": "0.1.2",
+      "createdAt": 1772370022298,
+      "changelog": "- Added rules/connect-local-device.md documentation file.\n- Documented the new \"connect-local-device\" rule, describing how to deploy to a local LAN device and monitor/control it via MCP.\n- No changes to core CLI commands; documentation update only."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "zyfai-sdk",
+    "displayName": "Zyfai Yield Automation",
+    "summary": "Earn yield on any Ethereum wallet on Base, Arbitrum, and Plasma. Use when a user wants passive DeFi yield on their funds. Deploys a non-custodial determinist...",
+    "tags": {
+      "latest": "1.0.9"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 1884,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 2,
+      "versions": 10
+    },
+    "createdAt": 1770021955356,
+    "updatedAt": 1772370023918,
+    "latestVersion": {
+      "version": "1.0.9",
+      "createdAt": 1772369645874,
+      "changelog": "zyfai-sdk 1.0.9 Changelog\n\n- Updated documentation to clarify that subaccounts (Safe smart wallets) are now deterministic.\n- Minor text edits for clearer explanations and improved flow in the SKILL.md.\n- No code or file changes\u2014documentation update only."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "gemini-sub-agent",
+    "displayName": "Gemini Sub-Agent",
+    "summary": "Use Google Gemini as a free sub-agent via a Google One / Gemini Advanced subscription (no API key or API credits needed). Use when: (1) delegating tasks that...",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 9,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772369834868,
+    "updatedAt": 1772369913324,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772369834868,
+      "changelog": "First release \u2014 use Gemini 3.1 Pro via Google subscription as a free OpenClaw sub-agent. Zero API cost, 1M context, agentic coding support."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "voiceskill123",
+    "displayName": "voiceskill123",
+    "summary": "Start voice calls via the OpenClaw voice-call plugin.",
+    "tags": {
+      "latest": "1.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 6,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772369820855,
+    "updatedAt": 1772369835880,
+    "latestVersion": {
+      "version": "1.0.0",
+      "createdAt": 1772369820855,
+      "changelog": "Initial release of the voice-call skill for OpenClaw.\n\n- Enables starting and managing voice calls via Twilio, Telnyx, Plivo, or mock providers.\n- Provides CLI commands to initiate calls and check call status.\n- Exposes tool actions for agents: initiate, continue, speak, end calls, and get status.\n- Requires the voice-call plugin to be enabled and configured."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "openclaw-memory-pensieve-algorand",
+    "displayName": "pensieve-algorand",
+    "summary": "High-performance hybrid memory for OpenClaw with strict append-only capture, budgeted daily dream cycles, and optional Algorand anchoring through encrypted n...",
+    "tags": {
+      "latest": "2.0.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 37,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 1,
+      "versions": 4
+    },
+    "createdAt": 1772281574766,
+    "updatedAt": 1772369614863,
+    "latestVersion": {
+      "version": "2.0.0",
+      "createdAt": 1772369595029,
+      "changelog": "Version 2.0.0 \u2014 Major overhaul with a focus on high-performance, predictable memory and streamlined daily operations\n\n- Introduces a dual-lane architecture: fast append-only capture and bounded daily consolidation.\n- Adds new scripts for event capture and budgeted dream cycles; removes legacy consolidation flow.\n- Updates all references to reflect current architecture, operations, and Algorand anchoring process.\n- Consolidates and simplifies rules for append-only storage and anchoring.\n- Emphasizes external transaction signing and encrypted anchoring for enhanced security and compliance."
+    },
+    "metadata": null
+  },
+  {
+    "slug": "openclaw-commute-traffic",
+    "displayName": "Commute Traffic",
+    "summary": "Check real-time traffic conditions for a route between two locations using TomTom. Use when the user asks about traffic, commute time, best time to leave, dr...",
+    "tags": {
+      "latest": "0.1.0"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 4,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 0,
+      "versions": 1
+    },
+    "createdAt": 1772369440833,
+    "updatedAt": 1772369457584,
+    "latestVersion": {
+      "version": "0.1.0",
+      "createdAt": 1772369440833,
+      "changelog": "**Major update for commute-traffic: now smarter at understanding user queries and delivers clear, real-time TomTom traffic info.**\n\n- Determines origin and destination dynamically from the user's conversation, with guidance on resolving missing details.\n- Accepts any address, city, landmark, or coordinate as input; no rigid format required.\n- Presents practical commute advice, including current travel time, delay, alternative routes, and clear recommendations.\n- Provides robust error-handling for missing API keys, vague locations, and route issues.\n- Updated to version 2.0.0 with improved conversational context support and user-oriented results."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
+  },
+  {
+    "slug": "briefed",
+    "displayName": "Briefed",
+    "summary": "Set up and run a personal AI newsletter intelligence system called Briefed. Fetches Gmail newsletters daily, uses Claude Haiku to extract article summaries,...",
+    "tags": {
+      "digest": "1.1.1",
+      "gmail": "1.1.1",
+      "latest": "1.1.1",
+      "newsletter": "1.1.1",
+      "productivity": "1.1.1"
+    },
+    "stats": {
+      "comments": 0,
+      "downloads": 59,
+      "installsAllTime": 0,
+      "installsCurrent": 0,
+      "stars": 1,
+      "versions": 3
+    },
+    "createdAt": 1772089953383,
+    "updatedAt": 1772369295777,
+    "latestVersion": {
+      "version": "1.1.1",
+      "createdAt": 1772369270534,
+      "changelog": "v1.1.1: Added explicit credential/env metadata and a Security & Scope section. Clarified read-only Gmail access, local token storage, allowed file paths, and tightened write-scope instructions in Step 3."
+    },
+    "metadata": {
+      "os": null,
+      "systems": null
+    }
   }
 ]
