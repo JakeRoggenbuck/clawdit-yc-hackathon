@@ -70,6 +70,11 @@ function SkillCard({ item }) {
   const status = statusOf(item)
   const risk = normalizeRisk(item.audit?.risk_level)
   const findings = asArray(item.audit?.findings)
+  const sourceLabel = String(item.slug || '').includes('/') ? 'skills.sh' : 'clawhub.ai'
+  const sourceTone =
+    sourceLabel === 'skills.sh'
+      ? 'border-emerald-200/30 bg-emerald-500/15 text-emerald-100'
+      : 'border-orange-200/30 bg-orange-500/15 text-orange-100'
   const summary =
     item.error || item.audit?.summary || (item.skill_md_found === false ? 'SKILL.md missing in zip.' : 'No summary available.')
 
@@ -84,6 +89,9 @@ function SkillCard({ item }) {
           <span className={`rounded-full border px-2 py-1 font-mono ${riskTone[risk]}`}>risk:{risk}</span>
           <span className="rounded-full border border-slate-200/25 bg-slate-800/50 px-2 py-1 font-mono text-slate-200">
             status:{status}
+          </span>
+          <span className={`rounded-full border px-2 py-1 font-mono ${sourceTone}`}>
+            {sourceLabel}
           </span>
           {typeof item.audit?.dangerous === 'boolean' && (
             <span className="rounded-full border border-fuchsia-200/30 bg-fuchsia-600/20 px-2 py-1 font-mono text-fuchsia-200">

@@ -25,7 +25,7 @@ from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
 DEFAULT_BASE_URL = "https://skills.sh"
-DEFAULT_LIST_URL = "https://skills.sh/?view=leaderboard"
+DEFAULT_LIST_URL = "https://skills.sh/hot"
 DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1/responses"
 DEFAULT_AUDIT_MODEL = "gpt-4.1-mini"
 
@@ -477,7 +477,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--list-url",
         default=DEFAULT_LIST_URL,
-        help="skills.sh list page URL used for scraping (default: leaderboard view).",
+        help="skills.sh list page URL used for scraping (default: hot feed).",
     )
     parser.add_argument("--output", default="skills_sh_skills.json", help="Output JSON file path.")
     parser.add_argument("--limit", type=int, default=100, help="Max skills scraped from list page.")
