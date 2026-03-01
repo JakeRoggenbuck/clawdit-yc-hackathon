@@ -2153,5 +2153,490 @@
     "slug": "free-search-aggregator",
     "downloaded": false,
     "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "foxcode-openclaw",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "prospairrow-websites-mcp",
+    "zip_path": "skill_zips/prospairrow-websites-mcp.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The Prospairrow Websites MCP skill involves handling API keys and executing write operations that interact with external services. It includes potential risks related to credential exposure, data exfiltration, and remote code execution through runtime scripts and API calls. The skill requires environment variables and config files for API keys, and supports toggles that may enable logging and storage of authentication states, which could lead to sensitive data exposure if misconfigured.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Credential Exposure via Environment Variables and Config Files",
+          "evidence": "The skill requires the PROSPAIRROW_API_KEY environment variable and optionally reads API keys from ~/.openclaw/openclaw.json if WEBSITES_ALLOW_OPENCLAW_CONFIG_API_KEY=1 is set.",
+          "why": "Storing API keys in environment variables or config files can lead to credential theft if these files or environment variables are exposed or improperly secured. Allowing fallback to config files increases the attack surface.",
+          "recommendation": "Ensure strict file permissions on config files and environment variables. Avoid enabling WEBSITES_ALLOW_OPENCLAW_CONFIG_API_KEY unless necessary and secure the openclaw.json file. Consider using secure vaults or secret management solutions."
+        },
+        {
+          "severity": "high",
+          "title": "Potential Data Exfiltration via Write Tasks",
+          "evidence": "The skill supports WRITE tasks such as apollo_enrich, add_prospects, enrich_prospects, generate_content_marketing, and generate_position_solution that interact with external APIs and services.",
+          "why": "WRITE tasks can send data out of the system, potentially including sensitive prospect or company information. Without proper access controls and auditing, this could lead to unauthorized data exfiltration.",
+          "recommendation": "Implement strict access controls and audit logging for WRITE operations. Validate and sanitize all inputs to these tasks. Monitor network traffic for unusual data flows."
+        },
+        {
+          "severity": "medium",
+          "title": "Remote Code Execution via Runtime Scripts",
+          "evidence": "The runtime installation involves running a bash script (install-runtime.sh) and npm install which fetches dependencies including Playwright that downloads browser binaries on first use.",
+          "why": "Running scripts and installing npm dependencies can introduce remote code execution risks if the scripts or dependencies are compromised or malicious. Playwright downloads binaries dynamically, which could be tampered with.",
+          "recommendation": "Review and audit all scripts and dependencies before installation. Use package lock files and verify integrity of downloaded binaries. Run installations in isolated environments."
+        },
+        {
+          "severity": "medium",
+          "title": "Logging of Sensitive Information",
+          "evidence": "The skill supports enabling invocation logging via WEBSITES_LOG_INVOCATIONS=1 which writes to logs/task-invocations.log.",
+          "why": "Logging task invocations may inadvertently capture sensitive data such as API keys, prospect details, or other confidential information, leading to data leakage if logs are not properly secured.",
+          "recommendation": "Ensure logs are stored securely with restricted access. Avoid enabling logging in production unless necessary and sanitize logged data to exclude sensitive information."
+        },
+        {
+          "severity": "medium",
+          "title": "Storage of Browser Authentication State",
+          "evidence": "The skill writes browser storage state to secrets/<site>/auth.json by default, which can be disabled with WEBSITES_DISABLE_STORAGE_STATE_WRITE=1.",
+          "why": "Storing authentication states locally can expose session tokens or cookies that attackers could use to impersonate users or access services.",
+          "recommendation": "Secure the secrets directory with strict permissions. Consider disabling storage state writes if not required. Encrypt stored authentication data if possible."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The Prospairrow Websites MCP skill involves handling API keys and executing write operations that interact with external services. It includes potential risks related to credential exposure, data exfiltration, and remote code execution through runtime scripts and API calls. The skill requires environment variables and config files for API keys, and supports toggles that may enable logging and storage of authentication states, which could lead to sensitive data exposure if misconfigured.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Credential Exposure via Environment Variables and Config Files\",\n      \"evidence\": \"The skill requires the PROSPAIRROW_API_KEY environment variable and optionally reads API keys from ~/.openclaw/openclaw.json if WEBSITES_ALLOW_OPENCLAW_CONFIG_API_KEY=1 is set.\",\n      \"why\": \"Storing API keys in environment variables or config files can lead to credential theft if these files or environment variables are exposed or improperly secured. Allowing fallback to config files increases the attack surface.\",\n      \"recommendation\": \"Ensure strict file permissions on config files and environment variables. Avoid enabling WEBSITES_ALLOW_OPENCLAW_CONFIG_API_KEY unless necessary and secure the openclaw.json file. Consider using secure vaults or secret management solutions.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Potential Data Exfiltration via Write Tasks\",\n      \"evidence\": \"The skill supports WRITE tasks such as apollo_enrich, add_prospects, enrich_prospects, generate_content_marketing, and generate_position_solution that interact with external APIs and services.\",\n      \"why\": \"WRITE tasks can send data out of the system, potentially including sensitive prospect or company information. Without proper access controls and auditing, this could lead to unauthorized data exfiltration.\",\n      \"recommendation\": \"Implement strict access controls and audit logging for WRITE operations. Validate and sanitize all inputs to these tasks. Monitor network traffic for unusual data flows.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Remote Code Execution via Runtime Scripts\",\n      \"evidence\": \"The runtime installation involves running a bash script (install-runtime.sh) and npm install which fetches dependencies including Playwright that downloads browser binaries on first use.\",\n      \"why\": \"Running scripts and installing npm dependencies can introduce remote code execution risks if the scripts or dependencies are compromised or malicious. Playwright downloads binaries dynamically, which could be tampered with.\",\n      \"recommendation\": \"Review and audit all scripts and dependencies before installation. Use package lock files and verify integrity of downloaded binaries. Run installations in isolated environments.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Logging of Sensitive Information\",\n      \"evidence\": \"The skill supports enabling invocation logging via WEBSITES_LOG_INVOCATIONS=1 which writes to logs/task-invocations.log.\",\n      \"why\": \"Logging task invocations may inadvertently capture sensitive data such as API keys, prospect details, or other confidential information, leading to data leakage if logs are not properly secured.\",\n      \"recommendation\": \"Ensure logs are stored securely with restricted access. Avoid enabling logging in production unless necessary and sanitize logged data to exclude sensitive information.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Storage of Browser Authentication State\",\n      \"evidence\": \"The skill writes browser storage state to secrets/<site>/auth.json by default, which can be disabled with WEBSITES_DISABLE_STORAGE_STATE_WRITE=1.\",\n      \"why\": \"Storing authentication states locally can expose session tokens or cookies that attackers could use to impersonate users or access services.\",\n      \"recommendation\": \"Secure the secrets directory with strict permissions. Consider disabling storage state writes if not required. Encrypt stored authentication data if possible.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "skill-ga4-analytics",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-x-post-ai-image",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-amazon-spapi",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "skill-amazon-ads-optimizer",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "finance-statements",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "mailcheck-email-verification",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "gandi-skill",
+    "zip_path": "skill_zips/gandi-skill.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The gandi-skill integrates with the Gandi domain registrar API and supports both read-only and destructive operations including DNS record modifications, email forwarding management, and domain registration. It requires a Personal Access Token (PAT) with potentially broad write permissions. The skill handles sensitive credentials and can perform destructive changes that may disrupt services or intercept emails. While security best practices are recommended, the skill inherently carries risks due to its capabilities and credential handling.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Destructive Operations with Potential Service Disruption",
+          "evidence": "The skill supports destructive operations such as adding, updating, deleting DNS records, bulk DNS operations, and email forward management which can break websites, email delivery, or cause financial transactions.",
+          "why": "These operations can cause significant service outages or data loss if misused or executed without proper safeguards.",
+          "recommendation": "Ensure strict access control to write-enabled tokens, enforce multi-step confirmations before destructive actions, and use snapshots for rollback. Limit write token usage to trusted environments and users only."
+        },
+        {
+          "severity": "high",
+          "title": "Credential Handling and Storage",
+          "evidence": "The skill requires a Personal Access Token stored either in an environment variable (GANDI_API_TOKEN) or a file (~/.config/gandi/api_token) with permissions 600. The token grants API access including write scopes.",
+          "why": "If tokens are leaked, attackers can perform destructive operations or exfiltrate data. Improper storage or accidental commits to version control can expose credentials.",
+          "recommendation": "Enforce strict file permissions, avoid committing tokens to version control, rotate tokens regularly, and use separate tokens for read-only and write operations. Use secret management tools for environment variables."
+        },
+        {
+          "severity": "medium",
+          "title": "Email Forwarding Management Risks",
+          "evidence": "The skill can create, modify, or delete email forwards including catch-all addresses, which can intercept or redirect emails.",
+          "why": "Malicious or accidental changes to email forwarding can lead to interception of sensitive communications or loss of email delivery.",
+          "recommendation": "Limit write token usage, audit email forwarding changes, and require user confirmation before modifying email forwards."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential for Social Engineering via Domain Registration",
+          "evidence": "The skill supports domain registration and contact information setup, including storing personal contact details in a local file.",
+          "why": "If an attacker gains access, they could register domains fraudulently or misuse stored contact information.",
+          "recommendation": "Secure contact information files with strict permissions, avoid storing unnecessary personal data, and monitor domain registration activities."
+        },
+        {
+          "severity": "low",
+          "title": "No Obfuscation or Hidden Remote Code Execution Detected",
+          "evidence": "The documentation and setup instructions are transparent, with no indication of obfuscated code or hidden remote code execution.",
+          "why": "Transparency reduces risk of hidden malicious behavior.",
+          "recommendation": "Maintain code transparency and conduct regular audits."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The gandi-skill integrates with the Gandi domain registrar API and supports both read-only and destructive operations including DNS record modifications, email forwarding management, and domain registration. It requires a Personal Access Token (PAT) with potentially broad write permissions. The skill handles sensitive credentials and can perform destructive changes that may disrupt services or intercept emails. While security best practices are recommended, the skill inherently carries risks due to its capabilities and credential handling.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Destructive Operations with Potential Service Disruption\",\n      \"evidence\": \"The skill supports destructive operations such as adding, updating, deleting DNS records, bulk DNS operations, and email forward management which can break websites, email delivery, or cause financial transactions.\",\n      \"why\": \"These operations can cause significant service outages or data loss if misused or executed without proper safeguards.\",\n      \"recommendation\": \"Ensure strict access control to write-enabled tokens, enforce multi-step confirmations before destructive actions, and use snapshots for rollback. Limit write token usage to trusted environments and users only.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Credential Handling and Storage\",\n      \"evidence\": \"The skill requires a Personal Access Token stored either in an environment variable (GANDI_API_TOKEN) or a file (~/.config/gandi/api_token) with permissions 600. The token grants API access including write scopes.\",\n      \"why\": \"If tokens are leaked, attackers can perform destructive operations or exfiltrate data. Improper storage or accidental commits to version control can expose credentials.\",\n      \"recommendation\": \"Enforce strict file permissions, avoid committing tokens to version control, rotate tokens regularly, and use separate tokens for read-only and write operations. Use secret management tools for environment variables.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Email Forwarding Management Risks\",\n      \"evidence\": \"The skill can create, modify, or delete email forwards including catch-all addresses, which can intercept or redirect emails.\",\n      \"why\": \"Malicious or accidental changes to email forwarding can lead to interception of sensitive communications or loss of email delivery.\",\n      \"recommendation\": \"Limit write token usage, audit email forwarding changes, and require user confirmation before modifying email forwards.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential for Social Engineering via Domain Registration\",\n      \"evidence\": \"The skill supports domain registration and contact information setup, including storing personal contact details in a local file.\",\n      \"why\": \"If an attacker gains access, they could register domains fraudulently or misuse stored contact information.\",\n      \"recommendation\": \"Secure contact information files with strict permissions, avoid storing unnecessary personal data, and monitor domain registration activities.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No Obfuscation or Hidden Remote Code Execution Detected\",\n      \"evidence\": \"The documentation and setup instructions are transparent, with no indication of obfuscated code or hidden remote code execution.\",\n      \"why\": \"Transparency reduces risk of hidden malicious behavior.\",\n      \"recommendation\": \"Maintain code transparency and conduct regular audits.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "skill-tiktok-ads-video",
+    "zip_path": "skill_zips/skill-tiktok-ads-video.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The SKILL.md instructions describe a Python-based video caption overlay tool for generating TikTok-style short-form ad videos. The content is focused on video processing, text rendering, and audio mixing without any indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The SKILL.md instructions describe a Python-based video caption overlay tool for generating TikTok-style short-form ad videos. The content is focused on video processing, text rendering, and audio mixing without any indications of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "tianyi-self-upgrade",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "tianyi-revenue-tracker",
+    "zip_path": "skill_zips/tianyi-revenue-tracker.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Revenue Tracker skill is a local financial management and pricing system with no external data transmission, no credential storage, and transparent file operations. It does not contain any hidden remote code execution, social engineering, destructive commands, or obfuscation. All operations are performed locally with user authorization for file writes. The skill explicitly states no external API calls or data exfiltration occur.",
+      "findings": [
+        {
+          "severity": "info",
+          "title": "No External Data Transmission",
+          "evidence": "External Endpoints section states: '\u65e0 (\u672c\u5730\u8fd0\u884c)' and '\u65e0\u6570\u636e\u79bb\u5f00\u673a\u5668' with '\u6240\u6709\u64cd\u4f5c\u5728\u672c\u5730\u6267\u884c'.",
+          "why": "This ensures that no data is sent outside the user's machine, preventing data exfiltration risks.",
+          "recommendation": "Maintain local-only operation and verify no future updates introduce external calls."
+        },
+        {
+          "severity": "info",
+          "title": "No Credential Storage",
+          "evidence": "Security & Privacy section states: '\u65e0\u51ed\u8bc1\u5b58\u50a8 - \u4e0d\u5b58\u50a8\u4efb\u4f55 API key \u6216\u5bc6\u7801'.",
+          "why": "Avoids risks related to credential theft or leakage.",
+          "recommendation": "Continue to avoid storing sensitive credentials within the skill."
+        },
+        {
+          "severity": "info",
+          "title": "User Authorization for File Operations",
+          "evidence": "Security & Privacy section states: '\u6587\u4ef6\u64cd\u4f5c\u900f\u660e - \u6240\u6709\u5199\u5165\u64cd\u4f5c\u9700\u7528\u6237\u6388\u6743'.",
+          "why": "Prevents unauthorized destructive or malicious file modifications.",
+          "recommendation": "Ensure user prompts and confirmations are clear and enforced."
+        },
+        {
+          "severity": "info",
+          "title": "No Hidden Remote Code Execution",
+          "evidence": "No references to downloading or executing remote code; model invocation is local and can be disabled via 'autoInvoke: false'.",
+          "why": "Prevents execution of untrusted code that could compromise the system.",
+          "recommendation": "Audit any model invocation code to confirm it does not fetch or execute remote code."
+        },
+        {
+          "severity": "info",
+          "title": "No Social Engineering or Obfuscation",
+          "evidence": "Documentation is clear, transparent, and includes detailed pricing and reporting logic without obfuscation.",
+          "why": "Clear documentation reduces risk of tricking users into unsafe actions.",
+          "recommendation": "Maintain transparency and clear user communication."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Revenue Tracker skill is a local financial management and pricing system with no external data transmission, no credential storage, and transparent file operations. It does not contain any hidden remote code execution, social engineering, destructive commands, or obfuscation. All operations are performed locally with user authorization for file writes. The skill explicitly states no external API calls or data exfiltration occur.\",\n  \"findings\": [\n    {\n      \"severity\": \"info\",\n      \"title\": \"No External Data Transmission\",\n      \"evidence\": \"External Endpoints section states: '\u65e0 (\u672c\u5730\u8fd0\u884c)' and '\u65e0\u6570\u636e\u79bb\u5f00\u673a\u5668' with '\u6240\u6709\u64cd\u4f5c\u5728\u672c\u5730\u6267\u884c'.\",\n      \"why\": \"This ensures that no data is sent outside the user's machine, preventing data exfiltration risks.\",\n      \"recommendation\": \"Maintain local-only operation and verify no future updates introduce external calls.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"No Credential Storage\",\n      \"evidence\": \"Security & Privacy section states: '\u65e0\u51ed\u8bc1\u5b58\u50a8 - \u4e0d\u5b58\u50a8\u4efb\u4f55 API key \u6216\u5bc6\u7801'.\",\n      \"why\": \"Avoids risks related to credential theft or leakage.\",\n      \"recommendation\": \"Continue to avoid storing sensitive credentials within the skill.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"User Authorization for File Operations\",\n      \"evidence\": \"Security & Privacy section states: '\u6587\u4ef6\u64cd\u4f5c\u900f\u660e - \u6240\u6709\u5199\u5165\u64cd\u4f5c\u9700\u7528\u6237\u6388\u6743'.\",\n      \"why\": \"Prevents unauthorized destructive or malicious file modifications.\",\n      \"recommendation\": \"Ensure user prompts and confirmations are clear and enforced.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"No Hidden Remote Code Execution\",\n      \"evidence\": \"No references to downloading or executing remote code; model invocation is local and can be disabled via 'autoInvoke: false'.\",\n      \"why\": \"Prevents execution of untrusted code that could compromise the system.\",\n      \"recommendation\": \"Audit any model invocation code to confirm it does not fetch or execute remote code.\"\n    },\n    {\n      \"severity\": \"info\",\n      \"title\": \"No Social Engineering or Obfuscation\",\n      \"evidence\": \"Documentation is clear, transparent, and includes detailed pricing and reporting logic without obfuscation.\",\n      \"why\": \"Clear documentation reduces risk of tricking users into unsafe actions.\",\n      \"recommendation\": \"Maintain transparency and clear user communication.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "skill-video-caption-overlay",
+    "zip_path": "skill_zips/skill-video-caption-overlay.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The skill-video-caption-overlay instructions describe a Python-based video caption overlay tool using MoviePy and PIL. The instructions and code snippets do not contain any credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The usage involves local video and audio files and JSON captions, with no network or external code execution indicated.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The skill-video-caption-overlay instructions describe a Python-based video caption overlay tool using MoviePy and PIL. The instructions and code snippets do not contain any credential handling, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The usage involves local video and audio files and JSON captions, with no network or external code execution indicated.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "survival-manager",
+    "zip_path": "skill_zips/survival-manager.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The survival-manager skill is designed with strong security and privacy considerations. It operates locally without external data transmission, requires explicit user authorization for high-risk operations such as file writes, external messaging, and financial transactions, and does not store credentials. The scripts and operations are transparent and auditable. No obfuscation or hidden remote code execution was detected.",
+      "findings": [
+        {
+          "severity": "medium",
+          "title": "High-risk operations require explicit user authorization",
+          "evidence": "\u6388\u6743\u961f\u5217\u90e8\u5206\u660e\u786e\u6307\u51fa\u6587\u4ef6\u5220\u9664/\u5199\u5165\u3001\u5916\u90e8\u6d88\u606f\u53d1\u9001\u3001\u5b50\u4ee3\u7406\u521b\u5efa\u3001\u652f\u4ed8/\u8f6c\u8d26\u3001\u7cfb\u7edf\u914d\u7f6e\u4fee\u6539\u7b49\u64cd\u4f5c\u5fc5\u987b\u7ecf\u8fc7\u7528\u6237\u6388\u6743\uff0c\u4e14\u6709\u8be6\u7ec6\u6388\u6743\u6d41\u7a0b\u3002",
+          "why": "This is a good security practice to prevent unauthorized destructive or sensitive actions. However, if the authorization mechanism is bypassed or compromised, these operations could be dangerous.",
+          "recommendation": "Ensure the authorization mechanism is robust, tamper-proof, and that authorization-pending.md and Telegram notifications cannot be spoofed or bypassed."
+        },
+        {
+          "severity": "low",
+          "title": "Model invocation involves autonomous AI calls",
+          "evidence": "\u6a21\u578b\u8c03\u7528\u662f\u81ea\u4e3b\u8fd0\u884c\u7684\u6807\u51c6\u884c\u4e3a\uff0c\u7528\u4e8e\u751f\u5b58\u7b49\u7ea7\u8bc4\u4f30\u3001\u6536\u5165/\u652f\u51fa\u5206\u6790\u3001\u6388\u6743\u8bf7\u6c42\u751f\u6210\u3002\u53ef\u901a\u8fc7\u914d\u7f6e\u7981\u7528\u81ea\u52a8\u8c03\u7528\u3002",
+          "why": "While model calls are standard and local, they could potentially process sensitive data. The skill states no external API calls are made by default.",
+          "recommendation": "Users should verify that model invocations do not leak sensitive data and consider disabling autoInvoke if concerned."
+        },
+        {
+          "severity": "low",
+          "title": "No external endpoints or credential storage",
+          "evidence": "\u5b89\u5168\u4e0e\u9690\u79c1\u90e8\u5206\u660e\u786e\u65e0\u5916\u90e8API\u8c03\u7528\uff0c\u65e0\u51ed\u8bc1\u5b58\u50a8\uff0c\u6240\u6709\u64cd\u4f5c\u672c\u5730\u6267\u884c\u3002",
+          "why": "This reduces risk of credential theft or data exfiltration.",
+          "recommendation": "Maintain this design and audit any future changes that introduce external communications."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The survival-manager skill is designed with strong security and privacy considerations. It operates locally without external data transmission, requires explicit user authorization for high-risk operations such as file writes, external messaging, and financial transactions, and does not store credentials. The scripts and operations are transparent and auditable. No obfuscation or hidden remote code execution was detected.\",\n  \"findings\": [\n    {\n      \"severity\": \"medium\",\n      \"title\": \"High-risk operations require explicit user authorization\",\n      \"evidence\": \"\u6388\u6743\u961f\u5217\u90e8\u5206\u660e\u786e\u6307\u51fa\u6587\u4ef6\u5220\u9664/\u5199\u5165\u3001\u5916\u90e8\u6d88\u606f\u53d1\u9001\u3001\u5b50\u4ee3\u7406\u521b\u5efa\u3001\u652f\u4ed8/\u8f6c\u8d26\u3001\u7cfb\u7edf\u914d\u7f6e\u4fee\u6539\u7b49\u64cd\u4f5c\u5fc5\u987b\u7ecf\u8fc7\u7528\u6237\u6388\u6743\uff0c\u4e14\u6709\u8be6\u7ec6\u6388\u6743\u6d41\u7a0b\u3002\",\n      \"why\": \"This is a good security practice to prevent unauthorized destructive or sensitive actions. However, if the authorization mechanism is bypassed or compromised, these operations could be dangerous.\",\n      \"recommendation\": \"Ensure the authorization mechanism is robust, tamper-proof, and that authorization-pending.md and Telegram notifications cannot be spoofed or bypassed.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Model invocation involves autonomous AI calls\",\n      \"evidence\": \"\u6a21\u578b\u8c03\u7528\u662f\u81ea\u4e3b\u8fd0\u884c\u7684\u6807\u51c6\u884c\u4e3a\uff0c\u7528\u4e8e\u751f\u5b58\u7b49\u7ea7\u8bc4\u4f30\u3001\u6536\u5165/\u652f\u51fa\u5206\u6790\u3001\u6388\u6743\u8bf7\u6c42\u751f\u6210\u3002\u53ef\u901a\u8fc7\u914d\u7f6e\u7981\u7528\u81ea\u52a8\u8c03\u7528\u3002\",\n      \"why\": \"While model calls are standard and local, they could potentially process sensitive data. The skill states no external API calls are made by default.\",\n      \"recommendation\": \"Users should verify that model invocations do not leak sensitive data and consider disabling autoInvoke if concerned.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No external endpoints or credential storage\",\n      \"evidence\": \"\u5b89\u5168\u4e0e\u9690\u79c1\u90e8\u5206\u660e\u786e\u65e0\u5916\u90e8API\u8c03\u7528\uff0c\u65e0\u51ed\u8bc1\u5b58\u50a8\uff0c\u6240\u6709\u64cd\u4f5c\u672c\u5730\u6267\u884c\u3002\",\n      \"why\": \"This reduces risk of credential theft or data exfiltration.\",\n      \"recommendation\": \"Maintain this design and audit any future changes that introduce external communications.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "pubblue",
+    "zip_path": "skill_zips/pubblue.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The pubblue skill involves handling API keys for authentication, running encrypted peer-to-peer tunnels, and executing commands that manage live browser communication and content publishing. These features introduce risks related to credential exposure, potential data exfiltration via tunnels, and remote code execution through the managed bridge and OpenClaw integration. While no explicit destructive commands or obfuscation are present, the use of encrypted tunnels and remote bridge processes requires careful security consideration.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Credential Exposure via API Key Configuration",
+          "evidence": "Setup instructions include commands like `pubblue configure --api-key pub_KEY` and `echo \"pub_KEY\" | pubblue configure --api-key-stdin` with the API key stored in `~/.config/pubblue/config.json` or environment variable `PUBBLUE_API_KEY`.",
+          "why": "Storing API keys in plaintext config files or environment variables can lead to credential theft if the system is compromised or if permissions are misconfigured. The API key grants access to the pubblue service and potentially sensitive publishing capabilities.",
+          "recommendation": "Ensure strict file permissions on config files, avoid exposing API keys in shared environments, and consider using secure secret management solutions. Educate users on safe handling of API keys."
+        },
+        {
+          "severity": "high",
+          "title": "Potential Data Exfiltration via Encrypted P2P Tunnels",
+          "evidence": "The skill supports commands like `pubblue tunnel start`, `pubblue tunnel write`, and `pubblue tunnel read` to create and manage encrypted peer-to-peer tunnels for live browser communication.",
+          "why": "These tunnels can be used to send and receive arbitrary data, which could be exploited to exfiltrate sensitive information from the user's environment without detection.",
+          "recommendation": "Monitor and restrict tunnel usage, validate and sanitize data sent through tunnels, and implement logging and alerting for unusual tunnel activity."
+        },
+        {
+          "severity": "medium",
+          "title": "Remote Code Execution Risk via Managed Bridge and OpenClaw Integration",
+          "evidence": "The default tunnel mode uses a managed local bridge process with OpenClaw (`--bridge openclaw`), which runs a local binary or script (`openclaw.path=/app/dist/index.js`) and supports session and thread IDs for routing.",
+          "why": "Running a managed bridge process that executes local code and handles remote communication introduces a risk of remote code execution if the bridge or OpenClaw components are compromised or if malicious input is processed.",
+          "recommendation": "Ensure the OpenClaw bridge and related binaries are from trusted sources, kept up to date, and run with least privilege. Validate all inputs and consider sandboxing the bridge process."
+        },
+        {
+          "severity": "low",
+          "title": "Lack of Explicit User Warnings on Tunnel Security",
+          "evidence": "The documentation does not explicitly warn users about the security implications of opening tunnels or the risks of exposing private content via `--public` flags or tunnels.",
+          "why": "Users may inadvertently expose sensitive data or open tunnels to untrusted parties without understanding the risks.",
+          "recommendation": "Add clear warnings and best practices regarding tunnel usage, public content publishing, and securing API keys."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The pubblue skill involves handling API keys for authentication, running encrypted peer-to-peer tunnels, and executing commands that manage live browser communication and content publishing. These features introduce risks related to credential exposure, potential data exfiltration via tunnels, and remote code execution through the managed bridge and OpenClaw integration. While no explicit destructive commands or obfuscation are present, the use of encrypted tunnels and remote bridge processes requires careful security consideration.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Credential Exposure via API Key Configuration\",\n      \"evidence\": \"Setup instructions include commands like `pubblue configure --api-key pub_KEY` and `echo \\\"pub_KEY\\\" | pubblue configure --api-key-stdin` with the API key stored in `~/.config/pubblue/config.json` or environment variable `PUBBLUE_API_KEY`.\",\n      \"why\": \"Storing API keys in plaintext config files or environment variables can lead to credential theft if the system is compromised or if permissions are misconfigured. The API key grants access to the pubblue service and potentially sensitive publishing capabilities.\",\n      \"recommendation\": \"Ensure strict file permissions on config files, avoid exposing API keys in shared environments, and consider using secure secret management solutions. Educate users on safe handling of API keys.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Potential Data Exfiltration via Encrypted P2P Tunnels\",\n      \"evidence\": \"The skill supports commands like `pubblue tunnel start`, `pubblue tunnel write`, and `pubblue tunnel read` to create and manage encrypted peer-to-peer tunnels for live browser communication.\",\n      \"why\": \"These tunnels can be used to send and receive arbitrary data, which could be exploited to exfiltrate sensitive information from the user's environment without detection.\",\n      \"recommendation\": \"Monitor and restrict tunnel usage, validate and sanitize data sent through tunnels, and implement logging and alerting for unusual tunnel activity.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Remote Code Execution Risk via Managed Bridge and OpenClaw Integration\",\n      \"evidence\": \"The default tunnel mode uses a managed local bridge process with OpenClaw (`--bridge openclaw`), which runs a local binary or script (`openclaw.path=/app/dist/index.js`) and supports session and thread IDs for routing.\",\n      \"why\": \"Running a managed bridge process that executes local code and handles remote communication introduces a risk of remote code execution if the bridge or OpenClaw components are compromised or if malicious input is processed.\",\n      \"recommendation\": \"Ensure the OpenClaw bridge and related binaries are from trusted sources, kept up to date, and run with least privilege. Validate all inputs and consider sandboxing the bridge process.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Lack of Explicit User Warnings on Tunnel Security\",\n      \"evidence\": \"The documentation does not explicitly warn users about the security implications of opening tunnels or the risks of exposing private content via `--public` flags or tunnels.\",\n      \"why\": \"Users may inadvertently expose sensitive data or open tunnels to untrusted parties without understanding the risks.\",\n      \"recommendation\": \"Add clear warnings and best practices regarding tunnel usage, public content publishing, and securing API keys.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "firm-hebbian-memory",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "firm-fintech-pack",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "firm-ecommerce-pack",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "firm-acp-bridge",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "firm-delivery-export",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "casino-player",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "bloom-discovery",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-persona-generator",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "hugging-face",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-persona-respawn",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "xiaohongshu-mcp-skill",
+    "zip_path": "skill_zips/xiaohongshu-mcp-skill.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The SKILL.md describes usage of a local MCP service to operate Xiaohongshu platform features such as searching, posting, and interacting with content. It requires a local service running on localhost and includes commands to check service status and start the service. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The SKILL.md describes usage of a local MCP service to operate Xiaohongshu platform features such as searching, posting, and interacting with content. It requires a local service running on localhost and includes commands to check service status and start the service. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "afrexai-prompt-mastery",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "afrexai-ai-coding-toolkit",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "iseclaw-intel",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "social-ops",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "prompt-inject-removal",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "afrexai-gym-fitness",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "clawhub-publish-mai",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "codesession",
+    "zip_path": "skill_zips/codesession.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The codesession skill provides a CLI tool for tracking AI session costs, tokens, file changes, and git commits with budget enforcement and analytics. It operates locally, storing data in a local SQLite database, and does not include any commands or instructions that perform credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The tool requires Node.js and build tools for installation and runs commands locally. It does not transmit sensitive data externally by default and only opens a local web dashboard on localhost.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The codesession skill provides a CLI tool for tracking AI session costs, tokens, file changes, and git commits with budget enforcement and analytics. It operates locally, storing data in a local SQLite database, and does not include any commands or instructions that perform credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation. The tool requires Node.js and build tools for installation and runs commands locally. It does not transmit sensitive data externally by default and only opens a local web dashboard on localhost.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "opensource-release",
+    "zip_path": "skill_zips/opensource-release.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The instructions provide a detailed, security-conscious process for sanitizing and releasing a private repository as public open-source. It emphasizes scanning for sensitive data, removing hardcoded credentials, cleaning git history, and verifying no tokens are included in remote URLs. No commands or steps involve credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands beyond safe git history rewriting, or obfuscation.",
+      "findings": [
+        {
+          "severity": "medium",
+          "title": "Potential Risk of Including Tokens in Git Remote URLs",
+          "evidence": "Step 4 includes: git remote set-url origin https://github.com/{owner}/{repo}.git  # verify no token in URL!",
+          "why": "Including personal access tokens or credentials in git remote URLs can lead to credential leakage if pushed or shared.",
+          "recommendation": "Strictly verify and avoid embedding tokens in remote URLs. Use credential managers or environment variables for authentication."
+        },
+        {
+          "severity": "low",
+          "title": "Risk of Sensitive Data in Git History",
+          "evidence": "Step 3 discusses analyzing git history for sensitive data and choosing appropriate cleaning strategies (BFG Repo Cleaner, git filter-repo, or clean push).",
+          "why": "Sensitive data may remain in git history even if removed from current files, posing a risk if not properly cleaned.",
+          "recommendation": "Ensure thorough git history cleaning using recommended tools and verify with scans before public release."
+        },
+        {
+          "severity": "low",
+          "title": "Potential Encoding Issues on Windows",
+          "evidence": "Gotchas section notes: Encoding issues on Windows \u2014 use UTF-8 explicitly in PowerShell/Python",
+          "why": "Incorrect encoding can cause data corruption or incomplete sanitization.",
+          "recommendation": "Explicitly set UTF-8 encoding in scripts and scans to avoid missing sensitive data."
+        }
+      ],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The instructions provide a detailed, security-conscious process for sanitizing and releasing a private repository as public open-source. It emphasizes scanning for sensitive data, removing hardcoded credentials, cleaning git history, and verifying no tokens are included in remote URLs. No commands or steps involve credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands beyond safe git history rewriting, or obfuscation.\",\n  \"findings\": [\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential Risk of Including Tokens in Git Remote URLs\",\n      \"evidence\": \"Step 4 includes: git remote set-url origin https://github.com/{owner}/{repo}.git  # verify no token in URL!\",\n      \"why\": \"Including personal access tokens or credentials in git remote URLs can lead to credential leakage if pushed or shared.\",\n      \"recommendation\": \"Strictly verify and avoid embedding tokens in remote URLs. Use credential managers or environment variables for authentication.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Risk of Sensitive Data in Git History\",\n      \"evidence\": \"Step 3 discusses analyzing git history for sensitive data and choosing appropriate cleaning strategies (BFG Repo Cleaner, git filter-repo, or clean push).\",\n      \"why\": \"Sensitive data may remain in git history even if removed from current files, posing a risk if not properly cleaned.\",\n      \"recommendation\": \"Ensure thorough git history cleaning using recommended tools and verify with scans before public release.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Potential Encoding Issues on Windows\",\n      \"evidence\": \"Gotchas section notes: Encoding issues on Windows \u2014 use UTF-8 explicitly in PowerShell/Python\",\n      \"why\": \"Incorrect encoding can cause data corruption or incomplete sanitization.\",\n      \"recommendation\": \"Explicitly set UTF-8 encoding in scripts and scans to avoid missing sensitive data.\"\n    }\n  ]\n}\n```"
+    }
+  },
+  {
+    "slug": "expo-appstore-deploy",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "advisory-committee",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "obsidian-daily-mai",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "forge-loop",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "coding-team-setup",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "gateway-auto-rollback",
+    "zip_path": "skill_zips/gateway-auto-rollback.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The gateway-auto-rollback skill provides an automatic configuration backup, validation, and rollback mechanism for OpenClaw Gateway configuration files. It includes JSON validation, health checks, and automatic rollback on failure. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The gateway-auto-rollback skill provides an automatic configuration backup, validation, and rollback mechanism for OpenClaw Gateway configuration files. It includes JSON validation, health checks, and automatic rollback on failure. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}"
+    }
   }
 ]
