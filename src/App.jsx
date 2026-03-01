@@ -28,6 +28,10 @@ function asArray(value) {
   return Array.isArray(value) ? value : []
 }
 
+function sourceOf(item) {
+  return String(item.slug || '').includes('/') ? 'skills.sh' : 'clawhub.ai'
+}
+
 function StatCard({ label, value }) {
   return (
     <div className="rounded-2xl border border-cyan-200/20 bg-cyan-950/25 p-4 shadow-xl shadow-black/20">
@@ -70,7 +74,7 @@ function SkillCard({ item }) {
   const status = statusOf(item)
   const risk = normalizeRisk(item.audit?.risk_level)
   const findings = asArray(item.audit?.findings)
-  const sourceLabel = String(item.slug || '').includes('/') ? 'skills.sh' : 'clawhub.ai'
+  const sourceLabel = sourceOf(item)
   const sourceTone =
     sourceLabel === 'skills.sh'
       ? 'border-emerald-200/30 bg-emerald-500/15 text-emerald-100'
@@ -189,6 +193,16 @@ export default function App() {
       }
       if (sortBy === 'risk_asc') {
         return riskRank[normalizeRisk(a.audit?.risk_level)] - riskRank[normalizeRisk(b.audit?.risk_level)]
+      }
+      if (sortBy === 'source_skills_first') {
+        const av = sourceOf(a) === 'skills.sh' ? 0 : 1
+        const bv = sourceOf(b) === 'skills.sh' ? 0 : 1
+        return av - bv
+      }
+      if (sortBy === 'source_clawhub_first') {
+        const av = sourceOf(a) === 'clawhub.ai' ? 0 : 1
+        const bv = sourceOf(b) === 'clawhub.ai' ? 0 : 1
+        return av - bv
       }
       return riskRank[normalizeRisk(b.audit?.risk_level)] - riskRank[normalizeRisk(a.audit?.risk_level)]
     })
@@ -315,6 +329,8 @@ export default function App() {
               <option value="risk_asc">Risk: Low to High</option>
               <option value="findings_desc">Findings: Most to Least</option>
               <option value="findings_asc">Findings: Least to Most</option>
+              <option value="source_skills_first">Source: skills.sh first</option>
+              <option value="source_clawhub_first">Source: clawhub.ai first</option>
               <option value="slug_asc">Name: A to Z</option>
               <option value="slug_desc">Name: Z to A</option>
             </select>
