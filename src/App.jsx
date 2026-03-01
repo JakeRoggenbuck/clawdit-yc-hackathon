@@ -105,7 +105,7 @@ function SkillCard({ item }) {
               return (
                 <li key={`${item.slug}-finding-${idx}`} className="rounded-xl border border-slate-200/10 bg-slate-800/40 p-3">
                   <p className="font-medium">
-                    <span className={`mr-2 font-mono text-xs uppercase ${riskTone[sev].split(' ')[0]`}>[{sev}]</span>
+                    <span className={`mr-2 font-mono text-xs uppercase ${riskTone[sev].split(' ')[0]}`}>[{sev}]</span>
                     {f.title || 'Untitled finding'}
                   </p>
                   <p className="mt-1 text-slate-300">{f.why || 'No rationale provided.'}</p>
