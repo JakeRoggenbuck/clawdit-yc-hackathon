@@ -1623,5 +1623,289 @@
       "findings": [],
       "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The mac-cleaner skill provides instructions for safely analyzing and cleaning disk space on macOS. It focuses on removing caches, logs, trash, and other non-critical files, with clear warnings about what not to delete. Manual deletion commands are provided for user backups and snapshots, but these require user review and confirmation. No credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands without confirmation, or obfuscation are present.\",\n  \"findings\": []\n}\n```"
     }
+  },
+  {
+    "slug": "sergei-mikhailov-tg-channel-reader",
+    "zip_path": "skill_zips/sergei-mikhailov-tg-channel-reader.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The skill requires Telegram API credentials and a session file that grants full access to the user's Telegram account. It involves handling sensitive credentials and session files, which if leaked or mishandled, could lead to credential theft or unauthorized account access. The skill fetches data from Telegram channels but does not appear to exfiltrate data externally by itself. However, the session file and credentials must be securely stored. The skill uses network connections to Telegram servers and supports running in isolated Docker containers, which may introduce risks if session files are improperly shared or mounted. There is no obfuscation or hidden remote code execution detected. The instructions emphasize security best practices but the inherent risk of credential misuse remains.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Credential Theft Risk via API Credentials and Session File",
+          "evidence": "The skill requires TG_API_ID and TG_API_HASH from my.telegram.org and a session file that grants full Telegram account access. The session file is stored on disk (e.g., ~/.tg-reader-session.session) and must be secured with chmod 600.",
+          "why": "If these credentials or the session file are leaked, an attacker can gain full access to the user's Telegram account, including private messages and channels.",
+          "recommendation": "Ensure credentials and session files are stored securely with strict file permissions. Avoid sharing session files or credentials. Use environment variables or config files with restricted access. Educate users about the risks."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential Unauthorized Access via Session File in Docker Containers",
+          "evidence": "The skill supports running in isolated Docker containers where the session file must be mounted into the container. Telegram may invalidate sessions if used from a different environment.",
+          "why": "Mounting session files into containers can expose them to other processes or users on the host or container, increasing risk of credential theft or misuse.",
+          "recommendation": "Use Option A (main session) for scheduled tasks when possible. If using Docker, ensure strict access controls on mounted volumes and monitor for session invalidation errors."
+        },
+        {
+          "severity": "low",
+          "title": "No Obfuscation or Hidden Remote Code Execution Detected",
+          "evidence": "The skill's instructions and commands are transparent, with no signs of obfuscated code or hidden remote execution.",
+          "why": "This reduces risk of hidden malicious behavior.",
+          "recommendation": "Maintain transparency and audit dependencies regularly."
+        },
+        {
+          "severity": "low",
+          "title": "No Destructive Commands or Social Engineering Detected",
+          "evidence": "The skill does not include commands that delete data or manipulate user accounts beyond reading Telegram channel data. The authentication process is standard Telegram login.",
+          "why": "No direct risk of destructive actions or social engineering attacks within the skill.",
+          "recommendation": "Continue to monitor for any changes that might introduce such risks."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The skill requires Telegram API credentials and a session file that grants full access to the user's Telegram account. It involves handling sensitive credentials and session files, which if leaked or mishandled, could lead to credential theft or unauthorized account access. The skill fetches data from Telegram channels but does not appear to exfiltrate data externally by itself. However, the session file and credentials must be securely stored. The skill uses network connections to Telegram servers and supports running in isolated Docker containers, which may introduce risks if session files are improperly shared or mounted. There is no obfuscation or hidden remote code execution detected. The instructions emphasize security best practices but the inherent risk of credential misuse remains.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Credential Theft Risk via API Credentials and Session File\",\n      \"evidence\": \"The skill requires TG_API_ID and TG_API_HASH from my.telegram.org and a session file that grants full Telegram account access. The session file is stored on disk (e.g., ~/.tg-reader-session.session) and must be secured with chmod 600.\",\n      \"why\": \"If these credentials or the session file are leaked, an attacker can gain full access to the user's Telegram account, including private messages and channels.\",\n      \"recommendation\": \"Ensure credentials and session files are stored securely with strict file permissions. Avoid sharing session files or credentials. Use environment variables or config files with restricted access. Educate users about the risks.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential Unauthorized Access via Session File in Docker Containers\",\n      \"evidence\": \"The skill supports running in isolated Docker containers where the session file must be mounted into the container. Telegram may invalidate sessions if used from a different environment.\",\n      \"why\": \"Mounting session files into containers can expose them to other processes or users on the host or container, increasing risk of credential theft or misuse.\",\n      \"recommendation\": \"Use Option A (main session) for scheduled tasks when possible. If using Docker, ensure strict access controls on mounted volumes and monitor for session invalidation errors.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No Obfuscation or Hidden Remote Code Execution Detected\",\n      \"evidence\": \"The skill's instructions and commands are transparent, with no signs of obfuscated code or hidden remote execution.\",\n      \"why\": \"This reduces risk of hidden malicious behavior.\",\n      \"recommendation\": \"Maintain transparency and audit dependencies regularly.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"No Destructive Commands or Social Engineering Detected\",\n      \"evidence\": \"The skill does not include commands that delete data or manipulate user accounts beyond reading Telegram channel data. The authentication process is standard Telegram login.\",\n      \"why\": \"No direct risk of destructive actions or social engineering attacks within the skill.\",\n      \"recommendation\": \"Continue to monitor for any changes that might introduce such risks.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "vitavault",
+    "zip_path": "skill_zips/vitavault.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The VitaVault SKILL.md describes an iOS health data integration skill that processes user-exported Apple Health data locally or via user-provided sync tokens. It includes instructions for environment variable setup and API usage with bearer tokens. There is no evidence of credential theft, data exfiltration beyond user-authorized sync, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [
+        {
+          "severity": "medium",
+          "title": "Use of Sync Token Environment Variable",
+          "evidence": "Set your sync token as an environment variable: export VITAVAULT_SYNC_TOKEN=\"your-token-here\"",
+          "why": "The skill requires users to set a sync token as an environment variable to enable automatic syncing of health data to the cloud and querying by the OpenClaw agent. If this token is mishandled or leaked, it could expose sensitive health data.",
+          "recommendation": "Ensure users understand the sensitivity of the sync token and store it securely. The skill should not log or expose the token. Consider implementing token scope and expiration to limit risk."
+        },
+        {
+          "severity": "low",
+          "title": "User-initiated Data Sharing",
+          "evidence": "VitaVault processes all health data on-device. Exports are user-initiated only. When users share exports with their AI agent, remind them this is their choice and the data is being processed by the AI provider.",
+          "why": "The skill relies on explicit user action to share health data exports. This reduces risk of unauthorized data exfiltration but requires user awareness.",
+          "recommendation": "Maintain clear user communication about data sharing and privacy. Avoid any automatic data upload without explicit user consent."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The VitaVault SKILL.md describes an iOS health data integration skill that processes user-exported Apple Health data locally or via user-provided sync tokens. It includes instructions for environment variable setup and API usage with bearer tokens. There is no evidence of credential theft, data exfiltration beyond user-authorized sync, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": [\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Use of Sync Token Environment Variable\",\n      \"evidence\": \"Set your sync token as an environment variable: export VITAVAULT_SYNC_TOKEN=\\\"your-token-here\\\"\",\n      \"why\": \"The skill requires users to set a sync token as an environment variable to enable automatic syncing of health data to the cloud and querying by the OpenClaw agent. If this token is mishandled or leaked, it could expose sensitive health data.\",\n      \"recommendation\": \"Ensure users understand the sensitivity of the sync token and store it securely. The skill should not log or expose the token. Consider implementing token scope and expiration to limit risk.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"User-initiated Data Sharing\",\n      \"evidence\": \"VitaVault processes all health data on-device. Exports are user-initiated only. When users share exports with their AI agent, remind them this is their choice and the data is being processed by the AI provider.\",\n      \"why\": \"The skill relies on explicit user action to share health data exports. This reduces risk of unauthorized data exfiltration but requires user awareness.\",\n      \"recommendation\": \"Maintain clear user communication about data sharing and privacy. Avoid any automatic data upload without explicit user consent.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "coinank-openapi-skill",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "base-alpha-scanner",
+    "zip_path": "skill_zips/base-alpha-scanner.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The Base Alpha Scanner SKILL.md describes a set of scripts and workflows for on-chain intelligence and token scanning on the Base blockchain. It primarily focuses on data analysis, alerting, and monitoring token launches and holder distributions. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation in the instructions provided.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The Base Alpha Scanner SKILL.md describes a set of scripts and workflows for on-chain intelligence and token scanning on the Base blockchain. It primarily focuses on data analysis, alerting, and monitoring token launches and holder distributions. There is no indication of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation in the instructions provided.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "larry-tiktok-agent",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "build-transparency-dashboard",
+    "zip_path": "skill_zips/build-transparency-dashboard.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The skill involves using a GitHub Personal Access Token (PAT) with repo scope to push updates from a private repository to a public repository. This token, if leaked or misused, could lead to unauthorized access or modification of repositories. Additionally, the skill includes an optional Express API that uses a flat JSON file for storage, which may have security implications if not properly secured. There is no obfuscation or destructive commands detected, but credential handling and data exposure risks exist.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Use of GitHub Personal Access Token (PAT) with repo scope",
+          "evidence": "Add to your private repo \u2192 Settings \u2192 Secrets and variables \u2192 Actions:\n\n- `GH_PAT` \u2014 Personal Access Token with `repo` scope (to push to the public site repo)",
+          "why": "The PAT with repo scope grants broad access to repositories, including pushing commits. If this token is leaked or compromised, an attacker could modify or exfiltrate code from private or public repositories.",
+          "recommendation": "Ensure the PAT is stored securely as a GitHub secret and never exposed in logs or code. Use the least privilege principle by limiting token scopes if possible. Rotate tokens regularly and monitor usage."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential exposure of private repo data via public status.json",
+          "evidence": "The workflow generates status.json from the private repo's git log and commits it to the public site repo, which is then fetched and displayed publicly.",
+          "why": "While the data exposed is limited to commit counts, messages, and timestamps, sensitive information could be inadvertently included in commit messages or metadata, leading to information leakage.",
+          "recommendation": "Review commit messages and metadata to ensure no sensitive information is included. Consider sanitizing or filtering data before publishing publicly."
+        },
+        {
+          "severity": "medium",
+          "title": "Optional Express API using flat JSON file for community ideas board",
+          "evidence": "The community ideas board requires a running API. Copy `scripts/ideas-api.js` into your backend app and mount the routes. It uses a flat JSON file for storage \u2014 no database needed.",
+          "why": "Using a flat JSON file for storage without authentication or access controls may lead to unauthorized data modification or exposure. The API could be a vector for injection or other attacks if not properly secured.",
+          "recommendation": "Implement proper authentication and authorization for the ideas API. Validate and sanitize all inputs. Consider using a more robust storage solution if needed."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The skill involves using a GitHub Personal Access Token (PAT) with repo scope to push updates from a private repository to a public repository. This token, if leaked or misused, could lead to unauthorized access or modification of repositories. Additionally, the skill includes an optional Express API that uses a flat JSON file for storage, which may have security implications if not properly secured. There is no obfuscation or destructive commands detected, but credential handling and data exposure risks exist.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Use of GitHub Personal Access Token (PAT) with repo scope\",\n      \"evidence\": \"Add to your private repo \u2192 Settings \u2192 Secrets and variables \u2192 Actions:\\n\\n- `GH_PAT` \u2014 Personal Access Token with `repo` scope (to push to the public site repo)\",\n      \"why\": \"The PAT with repo scope grants broad access to repositories, including pushing commits. If this token is leaked or compromised, an attacker could modify or exfiltrate code from private or public repositories.\",\n      \"recommendation\": \"Ensure the PAT is stored securely as a GitHub secret and never exposed in logs or code. Use the least privilege principle by limiting token scopes if possible. Rotate tokens regularly and monitor usage.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential exposure of private repo data via public status.json\",\n      \"evidence\": \"The workflow generates status.json from the private repo's git log and commits it to the public site repo, which is then fetched and displayed publicly.\",\n      \"why\": \"While the data exposed is limited to commit counts, messages, and timestamps, sensitive information could be inadvertently included in commit messages or metadata, leading to information leakage.\",\n      \"recommendation\": \"Review commit messages and metadata to ensure no sensitive information is included. Consider sanitizing or filtering data before publishing publicly.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Optional Express API using flat JSON file for community ideas board\",\n      \"evidence\": \"The community ideas board requires a running API. Copy `scripts/ideas-api.js` into your backend app and mount the routes. It uses a flat JSON file for storage \u2014 no database needed.\",\n      \"why\": \"Using a flat JSON file for storage without authentication or access controls may lead to unauthorized data modification or exposure. The API could be a vector for injection or other attacks if not properly secured.\",\n      \"recommendation\": \"Implement proper authentication and authorization for the ideas API. Validate and sanitize all inputs. Consider using a more robust storage solution if needed.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "statsfm",
+    "zip_path": "skill_zips/statsfm.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": true,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The statsfm skill provides a Python CLI tool to query music listening data from the stats.fm API. It requires a stats.fm username but does not require authentication tokens or credentials. The tool only accesses public profile data and does not handle or store sensitive credentials. There are no commands or instructions that perform destructive actions, hidden remote code execution, or obfuscation. The tool's functionality is limited to querying and displaying music listening statistics and metadata. No social engineering or data exfiltration risks are evident.",
+      "findings": [],
+      "_raw_text": "{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The statsfm skill provides a Python CLI tool to query music listening data from the stats.fm API. It requires a stats.fm username but does not require authentication tokens or credentials. The tool only accesses public profile data and does not handle or store sensitive credentials. There are no commands or instructions that perform destructive actions, hidden remote code execution, or obfuscation. The tool's functionality is limited to querying and displaying music listening statistics and metadata. No social engineering or data exfiltration risks are evident.\",\n  \"findings\": []\n}"
+    }
+  },
+  {
+    "slug": "leak-check",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "ranking-of-claws",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "polymarket-manual-trade",
+    "zip_path": "skill_zips/polymarket-manual-trade.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The skill requires sensitive credentials including a private wallet key and an API key, and it performs on-chain trade operations which involve signing transactions. This poses risks of credential theft and unauthorized fund transfers if the environment or code is compromised. There is no explicit obfuscation or social engineering, but the handling of private keys and automated trade execution requires careful security controls.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Exposure of Wallet Private Key",
+          "evidence": "Requires environment variable WALLET_PRIVATE_KEY for on-chain signing of trades.",
+          "why": "The private key is highly sensitive and if leaked or mishandled, attackers can steal funds or perform unauthorized trades.",
+          "recommendation": "Ensure private keys are stored securely using secret management solutions and never hardcoded or logged. Use hardware wallets or secure enclaves if possible."
+        },
+        {
+          "severity": "high",
+          "title": "Automated On-Chain Trade Execution",
+          "evidence": "The skill signs and submits trades on Polymarket using simmer-sdk with the wallet private key.",
+          "why": "Automated signing and submission of trades can lead to unintended or malicious transactions if the skill or environment is compromised.",
+          "recommendation": "Implement strict input validation, audit the code for vulnerabilities, and restrict execution environments. Monitor transactions for anomalies."
+        },
+        {
+          "severity": "medium",
+          "title": "Use of API Key for Market Data Import",
+          "evidence": "Requires SIMMER_API_KEY environment variable to import market data and resolve market IDs.",
+          "why": "API keys can be abused to access or manipulate market data if leaked.",
+          "recommendation": "Protect API keys with environment variable management and rotate keys regularly."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The skill requires sensitive credentials including a private wallet key and an API key, and it performs on-chain trade operations which involve signing transactions. This poses risks of credential theft and unauthorized fund transfers if the environment or code is compromised. There is no explicit obfuscation or social engineering, but the handling of private keys and automated trade execution requires careful security controls.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Exposure of Wallet Private Key\",\n      \"evidence\": \"Requires environment variable WALLET_PRIVATE_KEY for on-chain signing of trades.\",\n      \"why\": \"The private key is highly sensitive and if leaked or mishandled, attackers can steal funds or perform unauthorized trades.\",\n      \"recommendation\": \"Ensure private keys are stored securely using secret management solutions and never hardcoded or logged. Use hardware wallets or secure enclaves if possible.\"\n    },\n    {\n      \"severity\": \"high\",\n      \"title\": \"Automated On-Chain Trade Execution\",\n      \"evidence\": \"The skill signs and submits trades on Polymarket using simmer-sdk with the wallet private key.\",\n      \"why\": \"Automated signing and submission of trades can lead to unintended or malicious transactions if the skill or environment is compromised.\",\n      \"recommendation\": \"Implement strict input validation, audit the code for vulnerabilities, and restrict execution environments. Monitor transactions for anomalies.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Use of API Key for Market Data Import\",\n      \"evidence\": \"Requires SIMMER_API_KEY environment variable to import market data and resolve market IDs.\",\n      \"why\": \"API keys can be abused to access or manipulate market data if leaked.\",\n      \"recommendation\": \"Protect API keys with environment variable management and rotate keys regularly.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "statsfm",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "leak-check",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-permission-escalation-guard",
+    "zip_path": "skill_zips/consensus-permission-escalation-guard.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "low",
+      "dangerous": false,
+      "summary": "The consensus-permission-escalation-guard skill is designed as a safety gate to validate and control IAM permission escalation requests. It enforces strict schema validation, policy checks, and voting mechanisms to allow, block, or require rewrite of privilege elevation attempts. It does not require credentials, does not perform network communication during guard evaluation, and only writes audit artifacts to a configured state path. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.",
+      "findings": [],
+      "_raw_text": "```json\n{\n  \"risk_level\": \"low\",\n  \"dangerous\": false,\n  \"summary\": \"The consensus-permission-escalation-guard skill is designed as a safety gate to validate and control IAM permission escalation requests. It enforces strict schema validation, policy checks, and voting mechanisms to allow, block, or require rewrite of privilege elevation attempts. It does not require credentials, does not perform network communication during guard evaluation, and only writes audit artifacts to a configured state path. There is no evidence of credential theft, data exfiltration, social engineering, hidden remote code execution, destructive commands, or obfuscation.\",\n  \"findings\": []\n}\n```"
+    }
+  },
+  {
+    "slug": "airtag",
+    "zip_path": "skill_zips/airtag.zip",
+    "skill_md_found": true,
+    "skill_md_path": "SKILL.md",
+    "skill_md_truncated": false,
+    "audit": {
+      "risk_level": "medium",
+      "dangerous": true,
+      "summary": "The AirTag skill involves accessing Apple account-level AirTag data, including location and diagnostics, using multiple access modes that require user trust and explicit confirmation. It handles sensitive data such as iCloud session traffic and Find My item metadata, and interacts with unofficial third-party tooling for private Apple protocols. While it explicitly avoids requesting raw Apple ID passwords and undeclared endpoints, the use of unofficial APIs and programmatic access modes introduces risks of credential misuse, data exfiltration, and privacy exposure if misconfigured or used without proper user consent.",
+      "findings": [
+        {
+          "severity": "high",
+          "title": "Use of Unofficial Programmatic API Mode with Third-Party Tooling",
+          "evidence": "Programmatic API Mode depends on third-party tooling for Apple private protocols. Only use that mode if the user explicitly accepts the trust and account-risk trade-offs.",
+          "why": "Using unofficial APIs and third-party tools to access private Apple protocols can expose user credentials and session data to untrusted code, increasing the risk of credential theft and unauthorized data access.",
+          "recommendation": "Ensure users are fully informed about the risks before enabling Programmatic API Mode. Implement strict validation and sandboxing of third-party tooling. Prefer Direct App Control or Shared Link Mode when possible."
+        },
+        {
+          "severity": "medium",
+          "title": "Transmission of Sensitive Account Session Data to External Endpoints",
+          "evidence": "Data sent to https://www.icloud.com/find includes iCloud session data and Find My item metadata (API mode only). Also, shared item location data is sent to https://find.apple.com in Shared Link Mode.",
+          "why": "Sending session data and location metadata externally can lead to data exfiltration if endpoints are compromised or if man-in-the-middle attacks occur.",
+          "recommendation": "Use secure, encrypted connections only. Validate endpoints strictly. Limit data sent to the minimum necessary. Inform users about what data is transmitted."
+        },
+        {
+          "severity": "medium",
+          "title": "Potential for Unauthorized Access Without Explicit User Confirmation",
+          "evidence": "Core Rule 7 states: Ask Before Persisting Logs or Sensitive Context. Never request Apple ID password sharing or guide key extraction inside this skill. Also, Core Rule 1 requires confirming access mode before action.",
+          "why": "If the skill or agent acts without explicit user confirmation, it could perform unauthorized actions, leading to privacy violations or data leakage.",
+          "recommendation": "Enforce strict user confirmation before any connector action, location pull, or local write. Implement audit logs and user notifications for all sensitive operations."
+        },
+        {
+          "severity": "low",
+          "title": "Local Storage of Sensitive Data in User Directory",
+          "evidence": "Memory and logs are stored locally under ~/airtag/, including incident notes and connector context.",
+          "why": "Local storage of sensitive data can be a target for local attackers or malware, potentially exposing user location history and AirTag data.",
+          "recommendation": "Encrypt local storage files and restrict file permissions. Inform users about local data storage and provide options to clear or secure data."
+        }
+      ],
+      "_raw_text": "{\n  \"risk_level\": \"medium\",\n  \"dangerous\": true,\n  \"summary\": \"The AirTag skill involves accessing Apple account-level AirTag data, including location and diagnostics, using multiple access modes that require user trust and explicit confirmation. It handles sensitive data such as iCloud session traffic and Find My item metadata, and interacts with unofficial third-party tooling for private Apple protocols. While it explicitly avoids requesting raw Apple ID passwords and undeclared endpoints, the use of unofficial APIs and programmatic access modes introduces risks of credential misuse, data exfiltration, and privacy exposure if misconfigured or used without proper user consent.\",\n  \"findings\": [\n    {\n      \"severity\": \"high\",\n      \"title\": \"Use of Unofficial Programmatic API Mode with Third-Party Tooling\",\n      \"evidence\": \"Programmatic API Mode depends on third-party tooling for Apple private protocols. Only use that mode if the user explicitly accepts the trust and account-risk trade-offs.\",\n      \"why\": \"Using unofficial APIs and third-party tools to access private Apple protocols can expose user credentials and session data to untrusted code, increasing the risk of credential theft and unauthorized data access.\",\n      \"recommendation\": \"Ensure users are fully informed about the risks before enabling Programmatic API Mode. Implement strict validation and sandboxing of third-party tooling. Prefer Direct App Control or Shared Link Mode when possible.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Transmission of Sensitive Account Session Data to External Endpoints\",\n      \"evidence\": \"Data sent to https://www.icloud.com/find includes iCloud session data and Find My item metadata (API mode only). Also, shared item location data is sent to https://find.apple.com in Shared Link Mode.\",\n      \"why\": \"Sending session data and location metadata externally can lead to data exfiltration if endpoints are compromised or if man-in-the-middle attacks occur.\",\n      \"recommendation\": \"Use secure, encrypted connections only. Validate endpoints strictly. Limit data sent to the minimum necessary. Inform users about what data is transmitted.\"\n    },\n    {\n      \"severity\": \"medium\",\n      \"title\": \"Potential for Unauthorized Access Without Explicit User Confirmation\",\n      \"evidence\": \"Core Rule 7 states: Ask Before Persisting Logs or Sensitive Context. Never request Apple ID password sharing or guide key extraction inside this skill. Also, Core Rule 1 requires confirming access mode before action.\",\n      \"why\": \"If the skill or agent acts without explicit user confirmation, it could perform unauthorized actions, leading to privacy violations or data leakage.\",\n      \"recommendation\": \"Enforce strict user confirmation before any connector action, location pull, or local write. Implement audit logs and user notifications for all sensitive operations.\"\n    },\n    {\n      \"severity\": \"low\",\n      \"title\": \"Local Storage of Sensitive Data in User Directory\",\n      \"evidence\": \"Memory and logs are stored locally under ~/airtag/, including incident notes and connector context.\",\n      \"why\": \"Local storage of sensitive data can be a target for local attackers or malware, potentially exposing user location history and AirTag data.\",\n      \"recommendation\": \"Encrypt local storage files and restrict file permissions. Inform users about local data storage and provide options to clear or secure data.\"\n    }\n  ]\n}"
+    }
+  },
+  {
+    "slug": "convex",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "feishu-app-setup",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "consensus-deployment-guard",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "beauty",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
+  },
+  {
+    "slug": "milan",
+    "downloaded": false,
+    "error": "Download failed: HTTP Error 429: Too Many Requests"
   }
 ]
