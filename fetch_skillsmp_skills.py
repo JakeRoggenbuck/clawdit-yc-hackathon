@@ -22,6 +22,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode, urljoin, urlparse
 from urllib.request import Request, urlopen
 
+from alert_mail import add_alert_mail_args, build_alert_mailer, maybe_send_alert_email
+
 DEFAULT_BASE_URL = "https://skillsmp.com"
 DEFAULT_API_PATH = "/api/skills"
 DEFAULT_OPENAI_BASE_URL = "https://api.openai.com/v1/responses"
@@ -718,12 +720,14 @@ def parse_args() -> argparse.Namespace:
         default="",
         help="Audit API URL (provider-specific default if omitted).",
     )
+    add_alert_mail_args(parser)
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
     log("INFO", f"Starting run with base URL: {args.base_url}")
+    alert_mailer = build_alert_mailer(args, log)
 
     if args.limit <= 0:
         log("ERROR", "--limit must be > 0")
@@ -930,6 +934,14 @@ def main() -> int:
                         "skill_md_truncated": md_info["truncated"],
                         "audit": audit,
                     }
+                )
+                maybe_send_alert_email(
+                    mailer=alert_mailer,
+                    source_name="skillsmp",
+                    slug=slug,
+                    audit=audit,
+                    zip_path=out_path,
+                    log=log,
                 )
                 audited_slugs.add(slug)
                 flush_audit_results(args.audit_output, audit_results)
