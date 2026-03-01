@@ -14,3 +14,4 @@ skill_zips/
 __pycache__/
 node_modules/
 dist/
+convex/_generated/
