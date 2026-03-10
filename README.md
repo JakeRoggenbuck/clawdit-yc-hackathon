@@ -1,5 +1,7 @@
 # Clawdit: Skill Audit Toolkit
 
+<img width="1433" height="513" alt="image" src="https://github.com/user-attachments/assets/042a4307-ec56-408f-a746-c9bb68aa5bc3" />
+
 Clawdit is a small toolkit for pulling OpenClaw skills from multiple sources, auditing `SKILL.md` instructions with an LLM for finding malware.
 
 This repo is intentionally simple: a few Python collectors + one Vite frontend.
